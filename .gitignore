@@ -1,0 +1,7 @@
+.settings/*
+.buildpath
+.project
+application/cache/*
+application/config/database.php
+application/logs/*.log.php
+.htaccess
