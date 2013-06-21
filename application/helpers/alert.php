@@ -47,8 +47,35 @@ class alert_Core {
 			}
 			$alert->save();
 
+			// HT: alert mail notification to admin
+			$from[] = ($settings['alerts_email'])
+			? $settings['alerts_email']
+			: $settings['site_email'];
+			
+			$from[] = $settings['site_name'];
+			$subject = Kohana::lang('alerts.alert_subscription_subject');
+			$msg = Kohana::lang('alerts.subscription_mobile').$post->alert_mobile."<br><br>";
+			$msg .= Kohana::lang('alerts.subscription_request')."<br><br>";
+			foreach ($post->alert_category as $item)
+			{
+				$category = ORM::factory('category')
+				->where('id',$item)
+				->find();
+			
+				if($category->loaded)
+				{
+			
+					$message .= "<ul><li>".$category->category_title ."</li></ul>";
+					// HT: alert mail notification to admin
+					$msg .= "<ul><li>".$category->category_title ."</li></ul>";
+				}
+			}
+			
 			self::_add_categories($alert, $post);
 
+			// HT: alert mail notification to admin
+			email::send($settings['site_email'], $from, $subject, $msg, TRUE);
+			
 			return TRUE;
 		}
 
@@ -60,7 +87,7 @@ class alert_Core {
 	 *
 	 * @param Validation_Core $post
 	 * @param Alert_Model $alert
-	 * @return bool 
+	 * @return bool
 	 */
 	public static function _send_email_alert($post, $alert)
 	{
@@ -78,7 +105,7 @@ class alert_Core {
 		$to = $alert_email;
 		$from = array();
 		
-		$from[] = ($settings['alerts_email']) 
+		$from[] = ($settings['alerts_email'])
 			? $settings['alerts_email']
 			: $settings['site_email'];
 		
@@ -87,9 +114,13 @@ class alert_Core {
 		
 
 		$message = Kohana::lang('ui_admin.confirmation_code').$alert_code."<br><br>";
+		// HT: alert mail notification to admin
+		$msg = Kohana::lang('alerts.subscription_email').$to."<br><br>";
 		if(!empty($post->alert_category))
 		{
 			$message .= Kohana::lang('alerts.alerts_subscribed')."\n";
+			// HT: alert mail notification to admin
+			$msg .= Kohana::lang('alerts.subscription_request')."<br><br>";
 			foreach ($post->alert_category as $item)
 			{
 				$category = ORM::factory('category')
@@ -100,6 +131,8 @@ class alert_Core {
 				{
 
 					$message .= "<ul><li>".$category->category_title ."</li></ul>";
+					// HT: alert mail notification to admin
+					$msg .= "<ul><li>".$category->category_title ."</li></ul>";
 				}
 			}
 			
@@ -120,11 +153,14 @@ class alert_Core {
 
 			self::_add_categories($alert, $post);
 
+			// HT: alert mail notification to admin
+			$subject = Kohana::lang('alerts.alert_subscription_subject');
+			email::send($settings['site_email'], $from, $subject, $msg, TRUE);
 			return TRUE;
 		}
 
 		return FALSE;
-	}   
+	}
 
 
 	/**
@@ -178,7 +214,7 @@ class alert_Core {
 
 	/**
 	 * This handles unsubscription from alerts via the mobile phone
-	 * 
+	 *
 	 * @param string $message_from Phone number of subscriber
 	 * @param string $message_description Message content
 	 * @return bool
@@ -219,13 +255,13 @@ class alert_Core {
 			}
 			return TRUE;
 		}
-		return FALSE;	
+		return FALSE;
 	}
 
 
-	/* This handles saving alert categories that a subscriber has subscribed for 
+	/* This handles saving alert categories that a subscriber has subscribed for
 	 *
-	 * @param $Alert_Model $alert 
+	 * @param $Alert_Model $alert
 	*/
 
 	private static function _add_categories(Alert_Model $alert, $post)
@@ -253,15 +289,15 @@ class alert_Core {
 		$settings = Kohana::config('settings');
 		
 		// Get SMS Numbers
-		if ( ! empty($settings['sms_no3'])) 
+		if ( ! empty($settings['sms_no3']))
 		{
 			$sms_from = $settings['sms_no3'];
 		}
-		elseif ( ! empty($settings['sms_no2'])) 
+		elseif ( ! empty($settings['sms_no2']))
 		{
 			$sms_from = $settings['sms_no2'];
 		}
-		elseif ( ! empty($settings['sms_no1'])) 
+		elseif ( ! empty($settings['sms_no1']))
 		{
 			$sms_from = $settings['sms_no1'];
 		}

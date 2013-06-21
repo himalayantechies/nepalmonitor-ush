@@ -3,5 +3,7 @@
 .project
 application/cache/*
 application/config/database.php
+application/config/config.php
+application/config/email.php
 application/logs/*.log.php
 .htaccess
