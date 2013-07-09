@@ -32,6 +32,7 @@ $lang = array(
 		'required' => 'You have not set a recipient for alerts.',
 	) ,
 	'alerts_subscribed' => 'You have subscribed for alerts with the following categories',
+	'alert_subscription_subject' => 'alerts - subscription',
 	'code_already_verified' => 'This code has been verified before!',
 	'code_not_found' => 'This verification code was not found! Please confirm that you have the correct URL.',
 	'code_verified' => ' Your code was verified correctly. You will now receive alerts about incidents as they happen.',
@@ -47,7 +48,14 @@ $lang = array(
 	'mobile_error_head' => 'Your Mobile Alert Request Has NOT Been Saved!',
 	'mobile_ok_head' => 'Your Mobile Alert Request Has Been Saved!',
 	'settings_error' => 'This deployment is not set up to correctly process alerts',
+<<<<<<< HEAD
 	'unsubcribe' => 'If your organization responded to this incident, Tell us your story. You can comment on this report by following the previous link or replying to this e-mail. Report incidents to NepalMonitor.org by sending e-mails to alert@nepalmonitor.org or SMS to 9818771555. The reports will be published online at NepalMonitor.org, forwarded to relevant organizations, and sent by e-mail and SMS to alert subscribers in your area. 													You have received this email because you subscribed to receive alerts. If you do not want to receive future alerts go to -',
+=======
+	'subscription_email' => 'Subscription Email : ',
+	'subscription_mobile' => 'Subscription Mobile No : ',
+	'subscription_request' => 'Subscribed for alerts with the following categories',
+	'unsubcribe' => 'Did your organization respond to this incident? Tell us your story! You can comment on this report by following the previous link or replying to this e-mail. Report incidents to NepalMonitor.org by sending e-mails to alert@nepalmonitor.org or SMS to 9818771555. The reports will be published online at NepalMonitor.org, forwarded to relivant organizations, and sent by e-mail and SMS to alert subscribers in your area. 													You have received this email because you subscribed to receive alerts. If you do not wish to receive future alerts go to ',
+>>>>>>> abe968407a32a79279206037ef6af79dbb3c78af
 	'unsubscribed' => 'You will no longer receive alerts from ',
 	'unsubscribe_failed' => 'We were not able to unsubscribe you. Please confirm that you have the correct URL.',
 	'verification_email_subject' => 'alerts - verification',
