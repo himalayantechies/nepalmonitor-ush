@@ -48,6 +48,7 @@ class alert_Core {
 			$alert->save();
 
 			// HT: alert mail notification to admin
+			$settings = kohana::config('settings'); // HT Fix associated with sms
 			$from[] = ($settings['alerts_email'])
 			? $settings['alerts_email']
 			: $settings['site_email'];

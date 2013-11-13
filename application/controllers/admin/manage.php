@@ -979,6 +979,7 @@ class Manage_Controller extends Admin_Controller
 					$latitude = $feed_data_item->get_latitude();
 					$longitude = $feed_data_item->get_longitude();
 					$categories = $feed_data_item->get_categories(); // HT: new code
+ 					$category_ids = new stdClass(); // HT: new code
 
 					// Make Sure Title is Set (Atleast)
 					if (isset($title) AND !empty($title ))

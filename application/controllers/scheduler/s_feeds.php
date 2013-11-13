@@ -30,7 +30,7 @@ class S_Feeds_Controller extends Controller {
 		
 		// Today's Date
 		$today = strtotime('now');
-		
+		w
 		// Get All Feeds From DB
 		$feeds = ORM::factory('feed')->find_all();
 		foreach ($feeds as $feed)
@@ -48,7 +48,8 @@ class S_Feeds_Controller extends Controller {
 				$date = $feed_data_item->get_date();
 				$latitude = $feed_data_item->get_latitude();
 				$longitude = $feed_data_item->get_longitude();
-				$categories = $feed_data_item->get_categories(); // HT: new code
+				$categories = $feed_data_item->get_categories(); // HT: new code			
+				$category_ids = new stdClass(); // HT: new code
 				// Make Sure Title is Set (Atleast)
 				if (isset($title) && !empty($title ))
 				{
@@ -113,7 +114,7 @@ class S_Feeds_Controller extends Controller {
 						// HT: End of new code
 						$newitem->save();
 						// HT: New code
-						if(!empty($category_ids)) {
+						if(!empty($category_ids->feed_category)) {
 							feed::save_category($category_ids, $newitem);
 						}
 						// HT: End of New code
