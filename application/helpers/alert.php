@@ -57,21 +57,23 @@ class alert_Core {
 			$subject = Kohana::lang('alerts.alert_subscription_subject');
 			$msg = Kohana::lang('alerts.subscription_mobile').$post->alert_mobile."<br><br>";
 			$msg .= Kohana::lang('alerts.subscription_request')."<br><br>";
-			foreach ($post->alert_category as $item)
+			if (isset($post->alert_category))
 			{
-				$category = ORM::factory('category')
-				->where('id',$item)
-				->find();
-			
-				if($category->loaded)
+				foreach ($post->alert_category as $item)
 				{
-			
-					$message .= "<ul><li>".$category->category_title ."</li></ul>";
-					// HT: alert mail notification to admin
-					$msg .= "<ul><li>".$category->category_title ."</li></ul>";
+					$category = ORM::factory('category')
+					->where('id',$item)
+					->find();
+				
+					if($category->loaded)
+					{
+				
+						$message .= "<ul><li>".$category->category_title ."</li></ul>";
+						// HT: alert mail notification to admin
+						$msg .= "<ul><li>".$category->category_title ."</li></ul>";
+					}
 				}
 			}
-			
 			self::_add_categories($alert, $post);
 
 			// HT: alert mail notification to admin
