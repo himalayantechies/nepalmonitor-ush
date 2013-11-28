@@ -94,7 +94,7 @@ class S_Alerts_Controller extends Controller {
 		$incidents = $db->query("SELECT i.id, incident_title,
 					incident_description, incident_verified,
 					l.latitude, l.longitude FROM ".$this->table_prefix."incident AS i INNER JOIN ".$this->table_prefix."location AS l ON i.location_id = l.id
-					WHERE i.incident_active=1 AND i.incident_alert_status = 1 AND DATE( i.incident_date ) < SUBDATE( CURDATE( ) , 5 )");
+					WHERE i.incident_active=1 AND i.incident_alert_status = 1 AND DATE( i.incident_date ) < SUBDATE( CURDATE( ) , 1 )");
 		// End of New Code - change the number at the end to the number of days old you shouldn't send alerts. 
 		foreach ($incidents as $incident)
 		{
