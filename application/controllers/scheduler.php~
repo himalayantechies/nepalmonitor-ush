@@ -24,8 +24,7 @@ class Scheduler_Controller extends Controller {
 	{
 		// Debug
 		$debug = "";
-		// HT add code - timelimit
-		set_time_limit(180);
+
 		// Get all active scheduled items
 		foreach (ORM::factory('scheduler')
 		->where('scheduler_active','1')
