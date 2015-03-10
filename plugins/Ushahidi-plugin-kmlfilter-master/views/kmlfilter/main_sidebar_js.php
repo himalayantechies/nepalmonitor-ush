@@ -56,4 +56,10 @@ jQuery(function() {
 		e.stopPropagation();
 		return false;
 	});
+
 });
+
+function triggerkmlfilter(layerId) {
+	if(layerId != 'undefined' && layerId != 0)
+		$("#kmlfilter_"+layerId).trigger('click');
+}

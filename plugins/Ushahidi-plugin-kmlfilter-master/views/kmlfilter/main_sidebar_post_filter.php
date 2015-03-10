@@ -1,6 +1,8 @@
 <!-- kml layer filters -->
 <script>
+//<![CDATA[
 <?php echo $js; ?>
+//]]>
 </script>
 <div class="cat-filters clearingfix">
 	<strong>
@@ -52,7 +54,7 @@
 						$child_description = htmlentities($placemark->description, ENT_QUOTES, "UTF-8");
 							
 						$color_css = 'class="swatch" style="background-color:#'.$child_color.'"';
-						$child = $kmllayer.'_'.str_replace('#', '', $placemark->styleUrl);
+						$child = $kmllayer.'_'.$placemark->ID;
 						
 						echo '<li style="padding-left:20px;" class="layer_child">'
 						. '<a href="#" id="kmlfilter_'. $child .'" title="'.$child_description.'">'

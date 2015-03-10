@@ -143,7 +143,7 @@ class Alerts_Controller extends Main_Controller {
         {
 			$form['alert_lat'] = Kohana::config('settings.default_lat');
 			$form['alert_lon'] = Kohana::config('settings.default_lon');
-			$form['alert_radius'] = 20;
+			$form['alert_radius'] = 50;
 			$form['alert_category'] = array();
         }
 

@@ -10,15 +10,42 @@ About
 Description
 -----------------
 *Adds layer filter to reports index filter page 
+*KML file will require some changes
+*If want don't want to work on KML file then prefer another branch (gadm) with KML files from 
+
+	http://www.gadm.org
 
 
 Installation
 ----------------
 *Copy the entire /kmlfilter/ directory into your /plugins/ directory.
+*Convert KML file in format mentioned on NOTE
 *Activate the plugin.
 
 
 __NOTE:__
+*KML file requires 
+
+	<Placemark>
+		<ID></ID>
+	</Placemark>
+	
+	tag with unique id inside <ID></ID> for each <Placemark>
+	and coordinates should be in format
+
+	<Placemark>
+		<MultiGeometry>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</MultiGeometry>
+	</Placemark>
+
 *If activating plugin does not show location filter on main page then search for
 
 	if (layerType !== Ushahidi.KML) {

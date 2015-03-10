@@ -830,7 +830,6 @@
 </Style>
 
 <Placemark>
-<ID>1</ID>
 <name>Saptari</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#0</styleUrl>
@@ -1042,7 +1041,6 @@
 </Placemark>
 
 <Placemark>
-<ID>2</ID>
 <name>Siraha</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#1</styleUrl>
@@ -1206,7 +1204,6 @@
 </Placemark>
 
 <Placemark>
-<ID>3</ID>
 <name>Solukhumbu</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#2</styleUrl>
@@ -1374,7 +1371,6 @@
 </Placemark>
 
 <Placemark>
-<ID>4</ID>
 <name>Udayapur</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#3</styleUrl>
@@ -1494,7 +1490,6 @@
 </Placemark>
 
 <Placemark>
-<ID>5</ID>
 <name>Baitadi</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#4</styleUrl>
@@ -1759,7 +1754,6 @@
 </Placemark>
 
 <Placemark>
-<ID>6</ID>
 <name>Dadeldhura</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#5</styleUrl>
@@ -1969,7 +1963,6 @@
 </Placemark>
 
 <Placemark>
-<ID>7</ID>
 <name>Darchula</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#6</styleUrl>
@@ -2366,7 +2359,6 @@
 </Placemark>
 
 <Placemark>
-<ID>8</ID>
 <name>Bhaktapur</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#7</styleUrl>
@@ -2407,7 +2399,6 @@
 </Placemark>
 
 <Placemark>
-<ID>9</ID>
 <name>Dhading</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#8</styleUrl>
@@ -2552,7 +2543,6 @@
 </Placemark>
 
 <Placemark>
-<ID>10</ID>
 <name>Kathmandu</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#9</styleUrl>
@@ -2622,7 +2612,6 @@
 </Placemark>
 
 <Placemark>
-<ID>11</ID>
 <name>KavrePalanchok</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#10</styleUrl>
@@ -2712,7 +2701,6 @@
 </Placemark>
 
 <Placemark>
-<ID>12</ID>
 <name>Lalitpur</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#11</styleUrl>
@@ -2765,7 +2753,6 @@
 </Placemark>
 
 <Placemark>
-<ID>13</ID>
 <name>Nuwakot</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#12</styleUrl>
@@ -2850,7 +2837,6 @@
 </Placemark>
 
 <Placemark>
-<ID>14</ID>
 <name>Rasuwa</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#13</styleUrl>
@@ -2983,7 +2969,6 @@
 </Placemark>
 
 <Placemark>
-<ID>15</ID>
 <name>Sindhupalchok</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#14</styleUrl>
@@ -3100,7 +3085,6 @@
 </Placemark>
 
 <Placemark>
-<ID>16</ID>
 <name>Dhanusa</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#15</styleUrl>
@@ -3329,7 +3313,6 @@
 </Placemark>
 
 <Placemark>
-<ID>17</ID>
 <name>Dolakha</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#16</styleUrl>
@@ -3504,7 +3487,6 @@
 </Placemark>
 
 <Placemark>
-<ID>18</ID>
 <name>Mahottari</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#17</styleUrl>
@@ -3679,7 +3661,6 @@
 </Placemark>
 
 <Placemark>
-<ID>19</ID>
 <name>Ramechhap</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#18</styleUrl>
@@ -3792,7 +3773,6 @@
 </Placemark>
 
 <Placemark>
-<ID>20</ID>
 <name>Sarlahi</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#19</styleUrl>
@@ -3976,7 +3956,6 @@
 </Placemark>
 
 <Placemark>
-<ID>21</ID>
 <name>Sindhuli</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#20</styleUrl>
@@ -4089,7 +4068,6 @@
 </Placemark>
 
 <Placemark>
-<ID>22</ID>
 <name>Bara</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#21</styleUrl>
@@ -4321,7 +4299,6 @@
 </Placemark>
 
 <Placemark>
-<ID>23</ID>
 <name>Chitwan</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#22</styleUrl>
@@ -4700,7 +4677,6 @@
 </Placemark>
 
 <Placemark>
-<ID>24</ID>
 <name>Makwanpur</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#23</styleUrl>
@@ -4824,7 +4800,6 @@
 </Placemark>
 
 <Placemark>
-<ID>25</ID>
 <name>Parsa</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#24</styleUrl>
@@ -5114,7 +5089,6 @@
 </Placemark>
 
 <Placemark>
-<ID>26</ID>
 <name>Rautahat</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#25</styleUrl>
@@ -5264,7 +5238,6 @@
 </Placemark>
 
 <Placemark>
-<ID>27</ID>
 <name>Bhojpur</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#26</styleUrl>
@@ -5364,7 +5337,6 @@
 </Placemark>
 
 <Placemark>
-<ID>28</ID>
 <name>Dhankuta</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#27</styleUrl>
@@ -5447,7 +5419,6 @@
 </Placemark>
 
 <Placemark>
-<ID>29</ID>
 <name>Morang</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#28</styleUrl>
@@ -5604,7 +5575,6 @@
 </Placemark>
 
 <Placemark>
-<ID>30</ID>
 <name>Sankhuwasabha</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#29</styleUrl>
@@ -5791,7 +5761,6 @@
 </Placemark>
 
 <Placemark>
-<ID>31</ID>
 <name>Sunsari</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#30</styleUrl>
@@ -5934,7 +5903,6 @@
 </Placemark>
 
 <Placemark>
-<ID>32</ID>
 <name>Terhathum</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#31</styleUrl>
@@ -6003,7 +5971,6 @@
 </Placemark>
 
 <Placemark>
-<ID>33</ID>
 <name>Ilam</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#32</styleUrl>
@@ -6230,7 +6197,6 @@
 </Placemark>
 
 <Placemark>
-<ID>34</ID>
 <name>Jhapa</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#33</styleUrl>
@@ -6583,7 +6549,6 @@
 </Placemark>
 
 <Placemark>
-<ID>35</ID>
 <name>Panchthar</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#34</styleUrl>
@@ -6766,7 +6731,6 @@
 </Placemark>
 
 <Placemark>
-<ID>36</ID>
 <name>Taplejung</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#35</styleUrl>
@@ -7077,7 +7041,6 @@
 </Placemark>
 
 <Placemark>
-<ID>37</ID>
 <name>Khotang</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#36</styleUrl>
@@ -7183,7 +7146,6 @@
 </Placemark>
 
 <Placemark>
-<ID>38</ID>
 <name>Okhaldhunga</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#37</styleUrl>
@@ -7260,7 +7222,6 @@
 </Placemark>
 
 <Placemark>
-<ID>39</ID>
 <name>Kanchanpur</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#38</styleUrl>
@@ -7607,7 +7568,6 @@
 </Placemark>
 
 <Placemark>
-<ID>40</ID>
 <name>Achham</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#39</styleUrl>
@@ -7714,7 +7674,6 @@
 </Placemark>
 
 <Placemark>
-<ID>41</ID>
 <name>Bajhang</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#40</styleUrl>
@@ -7833,7 +7792,6 @@
 </Placemark>
 
 <Placemark>
-<ID>42</ID>
 <name>Bajura</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#41</styleUrl>
@@ -7948,7 +7906,6 @@
 </Placemark>
 
 <Placemark>
-<ID>43</ID>
 <name>Doti</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#42</styleUrl>
@@ -8042,7 +7999,6 @@
 </Placemark>
 
 <Placemark>
-<ID>44</ID>
 <name>Kailali</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#43</styleUrl>
@@ -8430,7 +8386,6 @@
 </Placemark>
 
 <Placemark>
-<ID>45</ID>
 <name>Banke</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#44</styleUrl>
@@ -8631,7 +8586,6 @@
 </Placemark>
 
 <Placemark>
-<ID>46</ID>
 <name>Bardiya</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#45</styleUrl>
@@ -8886,7 +8840,6 @@
 </Placemark>
 
 <Placemark>
-<ID>47</ID>
 <name>Dailekh</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#46</styleUrl>
@@ -8970,7 +8923,6 @@
 </Placemark>
 
 <Placemark>
-<ID>48</ID>
 <name>Jajarkot</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#47</styleUrl>
@@ -9079,7 +9031,6 @@
 </Placemark>
 
 <Placemark>
-<ID>49</ID>
 <name>Surkhet</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#48</styleUrl>
@@ -9199,7 +9150,6 @@
 </Placemark>
 
 <Placemark>
-<ID>50</ID>
 <name>Dolpa</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#49</styleUrl>
@@ -9414,7 +9364,6 @@
 </Placemark>
 
 <Placemark>
-<ID>51</ID>
 <name>Humla</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#50</styleUrl>
@@ -9670,7 +9619,6 @@
 </Placemark>
 
 <Placemark>
-<ID>52</ID>
 <name>Jumla</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#51</styleUrl>
@@ -9769,7 +9717,6 @@
 </Placemark>
 
 <Placemark>
-<ID>53</ID>
 <name>Kalikot</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#52</styleUrl>
@@ -9873,7 +9820,6 @@
 </Placemark>
 
 <Placemark>
-<ID>54</ID>
 <name>Mugu</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#53</styleUrl>
@@ -10015,7 +9961,6 @@
 </Placemark>
 
 <Placemark>
-<ID>55</ID>
 <name>Dang Deokhuri</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#54</styleUrl>
@@ -10321,7 +10266,6 @@
 </Placemark>
 
 <Placemark>
-<ID>56</ID>
 <name>Pyuthan</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#55</styleUrl>
@@ -10408,7 +10352,6 @@
 </Placemark>
 
 <Placemark>
-<ID>57</ID>
 <name>Rolpa</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#56</styleUrl>
@@ -10503,7 +10446,6 @@
 </Placemark>
 
 <Placemark>
-<ID>58</ID>
 <name>Rukum</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#57</styleUrl>
@@ -10627,7 +10569,6 @@
 </Placemark>
 
 <Placemark>
-<ID>59</ID>
 <name>Salyan</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#58</styleUrl>
@@ -10739,7 +10680,6 @@
 </Placemark>
 
 <Placemark>
-<ID>60</ID>
 <name>Baglung</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#59</styleUrl>
@@ -10863,7 +10803,6 @@
 </Placemark>
 
 <Placemark>
-<ID>61</ID>
 <name>Mustang</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#60</styleUrl>
@@ -11034,7 +10973,6 @@
 </Placemark>
 
 <Placemark>
-<ID>62</ID>
 <name>Myagdi</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#61</styleUrl>
@@ -11156,7 +11094,6 @@
 </Placemark>
 
 <Placemark>
-<ID>63</ID>
 <name>Parbat</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#62</styleUrl>
@@ -11233,7 +11170,6 @@
 </Placemark>
 
 <Placemark>
-<ID>64</ID>
 <name>Gorkha</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#63</styleUrl>
@@ -11438,7 +11374,6 @@
 </Placemark>
 
 <Placemark>
-<ID>65</ID>
 <name>Kaski</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#64</styleUrl>
@@ -11529,7 +11464,6 @@
 </Placemark>
 
 <Placemark>
-<ID>66</ID>
 <name>Lamjung</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#65</styleUrl>
@@ -11603,7 +11537,6 @@
 </Placemark>
 
 <Placemark>
-<ID>67</ID>
 <name>Manang</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#66</styleUrl>
@@ -11735,7 +11668,6 @@
 </Placemark>
 
 <Placemark>
-<ID>68</ID>
 <name>Syangja</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#67</styleUrl>
@@ -11830,7 +11762,6 @@
 </Placemark>
 
 <Placemark>
-<ID>69</ID>
 <name>Tanahu</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#68</styleUrl>
@@ -11922,7 +11853,6 @@
 </Placemark>
 
 <Placemark>
-<ID>70</ID>
 <name>Arghakhanchi</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#69</styleUrl>
@@ -12004,7 +11934,6 @@
 </Placemark>
 
 <Placemark>
-<ID>71</ID>
 <name>Gulmi</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#70</styleUrl>
@@ -12101,7 +12030,6 @@
 </Placemark>
 
 <Placemark>
-<ID>72</ID>
 <name>Kapilvastu</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#71</styleUrl>
@@ -12373,7 +12301,6 @@
 </Placemark>
 
 <Placemark>
-<ID>73</ID>
 <name>Nawalparasi</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#72</styleUrl>
@@ -12581,7 +12508,6 @@
 </Placemark>
 
 <Placemark>
-<ID>74</ID>
 <name>Palpa</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#73</styleUrl>
@@ -12674,7 +12600,6 @@
 </Placemark>
 
 <Placemark>
-<ID>75</ID>
 <name>Rupandehi</name>
 <description><![CDATA[Jilla]]></description>
 <styleUrl>#74</styleUrl>
