@@ -117,7 +117,9 @@ class S_Alerts_Controller extends Controller {
 			// Remove line breaks
 			$sms_message = str_replace("\n", " ", $sms_message);
 			// Shorten to text message size
-			$sms_message = text::limit_chars($sms_message, 150, "...");
+			$sms_incident_url = url::site().'r/'.$incident->id;
+			$sms_message = text::limit_chars($sms_message, 120, "...");
+			$sms_message .= " ".$incident_url;
 			
 			$latitude = (double) $incident->latitude;
 			$longitude = (double) $incident->longitude;

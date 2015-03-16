@@ -58,6 +58,7 @@ ob_start();
 	header("Content-type: text/x-csv");
 	header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
 	header("Content-Disposition: attachment; filename=" . time() . ".csv");
+	header('Content-Transfer-Encoding: binary');
 	header("Content-Length: " . strlen($report_csv));
 	echo $report_csv;
 ?>
