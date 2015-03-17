@@ -13,7 +13,9 @@ class kmlfilter_helper_Core {
 	}
 
 	public static function get_layer_tree_view() {
+		$view = new View('kmlfilter/layer_filter');
 		$tree_html = "";
+		$parent_layers = $childrenLayer = array();
 		$layers = ORM::factory('layer')->where('layer_visible', 1)->find_all();
 		foreach($layers as $layer) {
 			$layer_url = $layer->layer_url;
@@ -30,21 +32,28 @@ class kmlfilter_helper_Core {
 				$xml = simplexml_load_string($content);
 	
 				$layer_class = "";
-				$tree_html .= "<li".$layer_class.">"
+				$parent_layers[] = $layer;
+				$childrenLayer[$layer->id] = $xml->Document->Placemark;
+
+				/* $tree_html .= "<li".$layer_class.">"
 				. "<a href=\"#\" class=\"lyr_selected\" id=\"filter_link_lyr_".$layer->id."\" title=\"{$layer->layer_name}\">"
 				. "<span class=\"item-title\">".strip_tags($layer->layer_name)."</span>"
 				. "</a></li>";
 				foreach($xml->Document->Placemark as $placemark) {
 					$layer_class = " class=\"report-listing-category-child\"";
 					$tree_html .= "<li".$layer_class.">"
-					. "<a href=\"#\" class=\"lyr_selected\" id=\"filter_link_lyr_".$layer->id."_".str_replace('#', '', $placemark->styleUrl)."\" title=\"{$placemark->description}\">"
+					. "<a href=\"#\" class=\"lyr_selected\" id=\"filter_link_lyr_".$layer->id."_".$placemark->ID."\" title=\"{$placemark->description}\">"
 					. "<span class=\"item-title\">".strip_tags($placemark->name)."</span>"
 					. "</a></li>";
-				}
+				} */
 			}
 		}
+		$view->layers = $parent_layers;
+		$view->layerChildrens = $childrenLayer;
+		$view->js = new View('kmlfilter/layer_filter_js');
+		return $view;
 		// Return
-		return $tree_html;
+// 		return $tree_html;
 	}
 	
 	public function addkmlfilter($params = array()) {
@@ -116,8 +125,9 @@ class kmlfilter_helper_Core {
 			$xml = simplexml_load_string($content);
 			foreach($xml->Document->Placemark as $placemark) {
 				$poly_cor = false;
-				if(in_array(str_replace('#', '', $placemark->styleUrl), self::$lyr[$layer->id])) {
+				if(in_array($placemark->ID, self::$lyr[$layer->id])) {
 					$cord = strval($placemark->MultiGeometry->Polygon->outerBoundaryIs->LinearRing->coordinates);
+					$cord = str_replace(" ", "\n", $cord);
 					$cords = explode("\n", $cord);
 					foreach($cords as $key => $cordinate) {
 						$cor = explode(',', $cordinate);
@@ -142,13 +152,17 @@ class kmlfilter_helper_Core {
 		if(isset($params['layer_id']) && isset($params['content'])) {
 			$xml = simplexml_load_string($params['content']);
 			foreach($xml->Document->Placemark as $key => $placemark) {
-				$placemarkKey = str_replace('#', '', $placemark->styleUrl);
+				$placemarkKey = str_replace('#', '', $placemark->ID);
 				$query = http_build_query(array_merge(
 					array(
 						'lkey[]' => $params['layer_id'].'_'.$placemarkKey,
 					),
 					$_GET
 				));
+				if($placemark->name) {
+					$filterLink = '<span class = "mapkmlfilter_switch" style="font-weight: normal; font-size: .8em; margin-left: 10px;" onclick=triggerkmlfilter("'.$params['layer_id'].'_'.$placemarkKey.'");>( Filter )</span>';
+					$placemark->name = $placemark->name.$filterLink;
+				}
 				$link = url::site('reports/index/?'.$query);
 				if(!$placemark->link) {
 					$placemark->addChild('link', '');

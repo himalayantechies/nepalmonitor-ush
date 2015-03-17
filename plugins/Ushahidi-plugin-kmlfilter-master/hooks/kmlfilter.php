@@ -13,6 +13,9 @@ class kmlfilter {
 	
 	public function add()
 	{
+		if(Router::$controller == 'reports') {
+			Event::add('ushahidi_action.header_scripts', array($this, '_add_report_filter_js'));
+		}
 		if (Router::$controller == 'reports' AND Router::$method == 'index') {
 			Event::add('ushahidi_action.report_filters_ui', array($this, '_filter_ui'));
 			Event::add('ushahidi_action.report_js_filterReportsAction', array($this, '_filter_js'));
@@ -26,11 +29,24 @@ class kmlfilter {
 			Event::add('ushahidi_filter.timeline_update_query', array($this, '_query_update_timeline'));
 		}
 		if (Router::$controller == 'main' AND Router::$method == 'index') {
+			Event::add('ushahidi_action.header_scripts', array($this, '_add_header_style'));
 			Event::add('ushahidi_action.main_sidebar_post_filters', array($this,'_main_sidebar_kmlfilter'));
 		}
 		//Event::add('ushahidi_filter.json_replace_markers', _json_replace_markers);
 	}
 
+	public function _add_report_filter_js() {
+		$view = new View('kmlfilter/report_filter_header_js');
+		$view->selected_layers = implode(",", $this->_get_layers());
+		//$view->selected_layers = $this->_get_layers();
+		$view->render(true);
+	}
+	
+	public function _add_header_style() {
+		$view = new View('kmlfilter/prev_layer_remove_style');
+		$view->render(true);
+	}
+	
 	public function _filter_js() {
 		$view = new View('kmlfilter/report_filter_js');
 		$view->render(true);
@@ -94,6 +110,23 @@ class kmlfilter {
 		$params = Event::$data;
 		Event::$data = kmlfilter_helper::addkmlfilter($params);
 	}*/
+	
+	private function _get_layers() {
+		$layer_ids = array();
+		if ( isset($_GET['lkey']) AND !is_array($_GET['lkey']) AND intval($_GET['lkey']) > 0) {
+			// Get the layer ID
+			$layer_ids[] = '"'.$_GET['lkey'].'"';
+		} elseif (isset($_GET['lkey']) AND is_array($_GET['lkey'])) {
+			// Sanitize each of the layer ids
+			foreach ($_GET['lkey'] as $lyr_id) {
+				if (intval($lyr_id) > 0) {
+					$layer_ids[] = '"'.$lyr_id.'"';
+				}
+			}
+		}
+		return $layer_ids;
+	}
+	
 
 }
 

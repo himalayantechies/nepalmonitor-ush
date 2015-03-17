@@ -34,14 +34,12 @@ class locationhighlightlite {
 				// Hook into the Report Add/Edit Form in Admin
 				case 'edit':
 					plugin::add_stylesheet('locationhighlightlite/media/css/locationhighlightlite');
-					Event::add('ushahidi_action.header_scripts', array($this, '_base_url_js')); // HT: new variable setup
 					plugin::add_javascript('locationhighlightlite/media/js/locationhighlightlite');
 					break;
 
 				//Hook into frontend Submit View
 				case 'submit':
 					plugin::add_stylesheet('locationhighlightlite/media/css/locationhighlightlite');
-					Event::add('ushahidi_action.header_scripts', array($this, '_base_url_js')); // HT: new variable setup
 					plugin::add_javascript('locationhighlightlite/media/js/locationhighlightlite');
 					break;
 

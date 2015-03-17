@@ -1053,7 +1053,7 @@ class Manage_Controller extends Admin_Controller
 							// HT: End of new code
 							$newitem->save();
 							// HT: New code
-							if(!empty($category_ids)) {
+							if(!empty($category_ids->feed_category)) {
 								feed::save_category($category_ids, $newitem);
 							}
 							// HT: End of New code
