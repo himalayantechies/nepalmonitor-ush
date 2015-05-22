@@ -286,5 +286,8 @@
 	<!-- /content blocks -->
 		</div>
 <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fnepalmonitor&amp;width=902&amp;height=550&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=True&amp;header=false&amp;appId=140091756132653" scrolling="yes" frameborder="0" style="border:none; overflow:hidden; width:902px; height:550px;" allowTransparency="true"></iframe>
+<a class="twitter-timeline" href="https://twitter.com/Nepal_Monitor" data-widget-id="591117697875750912">Tweets by @Nepal_Monitor</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>
 <!-- content -->
+
