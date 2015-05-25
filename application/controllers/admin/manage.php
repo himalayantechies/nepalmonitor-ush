@@ -125,6 +125,13 @@ class Manage_Controller extends Admin_Controller
 				// Test to see if things passed the rule checks
 				if ($category->validate($category_data) AND $post->validate(FALSE))
 				{
+                   // Get Category position for a new category
+                   if (empty($_POST['category_id']))
+                   {
+                           $cat_count = ORM::factory('category')->count_all();
+                           $category->category_position = $cat_count;
+                   }
+					
 					// Save the category
 					$category->save();
 					
@@ -304,6 +311,8 @@ class Manage_Controller extends Admin_Controller
 					$form_action = utf8::strtoupper(Kohana::lang('ui_admin.modified'));
 				}
 			}
+			kmlfilter_helper::layer_placemark($layer->id);
+
 		}
 
 		// Pagination
@@ -663,8 +672,10 @@ class Manage_Controller extends Admin_Controller
 			if( $post->validate() )
 			{
 				$item_id = $this->input->post('item_id');
-
-				ORM::factory('feed_item')->delete($item_id);
+ 				if (!is_array($item_id)) $item_id = array($item_id);
+				
+				// ORM::factory('feed_item')->delete($item_id);
+				ORM::factory('feed_item')->in('id', $item_id)->delete_all($item_id);
 
 				$form_saved = TRUE;
 				$form_action = utf8::strtoupper(Kohana::lang('ui_admin.deleted'));

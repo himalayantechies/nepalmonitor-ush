@@ -45,6 +45,7 @@ $lang = array(
 	'settings_allow_clustering' => 'This allows bundling of similar reports into a single dot on the map',
 	'settings_allow_comments' => 'Allow users to comment on reports on the main site.',
 	'settings_allow_feed' => 'This allows RSS News feeds to be displayed on the main site.',
+	'settings_allow_feed_category' => 'This allows creating new Category from RSS News feeds.',
 	'settings_allow_reports' => 'Allow users to submit information via the web form.',
 	'settings_api_default_record_limit' => 'Default number of records to be fetched per API request',
 	'settings_api_max_record_limit' => 'Maximum number of records to be fetched per API request',
@@ -87,5 +88,6 @@ $lang = array(
 	'settings_site_tagline' => 'In a few words, explain what this site is about.',
 	'settings_site_timezone' => 'This is the timezone that your site will operate on. This has an impact on any actions you have set up that utilize time and date, as well as the default current time for reports on the front and back end of the site.',
 	'settings_twitter_configuration' => 'Set the twitter hashtag that will be used on a tweet',
+	'feed_geolocation_user'	=> "If you want to geocode your feed entries, grab an user http://geonames.org, enable the free webservices and enter it here. Leave empty to disable this function.<br /><br />Beware of the the use limits!"
 );
 ?>

@@ -10,9 +10,11 @@ class Feed_Item_Model extends ORM
 	
 	// Database table name
 	protected $table_name = 'feed_item';
-// HT: New code
+	
+	// HT: New code
 	protected $has_many = array(
-			'category' => 'feed_category',
+			'category' => 'feed_item_category',
 	);
-// HT: End of new code
+	// HT: End of new code
+	
 }

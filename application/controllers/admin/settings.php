@@ -64,6 +64,7 @@ class Settings_Controller extends Admin_Controller {
 			'allow_reports' => '',
 			'allow_comments' => '',
 			'allow_feed' => '',
+            'allow_feed_category' => '',	
 			'allow_stat_sharing' => '',
 			'cache_pages' => '',
 			'cache_pages_lifetime' => '',
@@ -75,6 +76,7 @@ class Settings_Controller extends Admin_Controller {
 			'twitter_hashtags' => '',
 			'api_akismet' => '',
 			'timeline_graph' => '', // HT: Timeline graph type bar or line
+			'alert_days' => 0, // HT: No of days of alert to be sent	
 		);
 		//	Copy the form as errors, so the errors will be stored with keys
 		//	corresponding to the form field names
@@ -110,6 +112,7 @@ class Settings_Controller extends Admin_Controller {
 			$post->add_rules('allow_reports','required','between[0,1]');
 			$post->add_rules('allow_comments','required','between[0,2]');
 			$post->add_rules('allow_feed','required','between[0,1]');
+			$post->add_rules('allow_feed_category','required','between[0,1]');
 			$post->add_rules('allow_stat_sharing','required','between[0,1]');
 			$post->add_rules('cache_pages','required','between[0,1]');
 			$post->add_rules('cache_pages_lifetime','required','in_array[60,300,600,900,1800]');
@@ -120,10 +123,11 @@ class Settings_Controller extends Admin_Controller {
 			$post->add_rules('google_analytics','length[0,20]');
 			$post->add_rules('twitter_hashtags','length[0,500]');
 			$post->add_rules('api_akismet','length[0,100]', 'alpha_numeric');
+			$post->add_rules('alert_days', 'numeric'); // HT: No of days of alert to be sent
 
 			// Add rules for file upload
 			$files = Validation::factory($_FILES);
-			$files->add_rules('banner_image', 'upload::valid', 'upload::type[gif,jpg,png]', 'upload::size[250K]');
+			$files->add_rules('banner_image', 'upload::valid', 'upload::type[gif,jpg,jpeg,png]', 'upload::size[250K]');
 
 			// Test to see if things passed the rule checks
 			if ($post->validate() AND $files->validate(FALSE))
@@ -243,6 +247,7 @@ class Settings_Controller extends Admin_Controller {
 		else
 		{
 			$settings = Settings_Model::get_array();
+            $settings['alert_days'] = (isset($settings['alert_days'])) ? $settings['alert_days'] : 0; // HT: might not be in database
 
 			$form = array(
 				'site_name' => $settings['site_name'],
@@ -263,6 +268,7 @@ class Settings_Controller extends Admin_Controller {
 				'allow_reports' => $settings['allow_reports'],
 				'allow_comments' => $settings['allow_comments'],
 				'allow_feed' => $settings['allow_feed'],
+				'allow_feed_category' => $settings['allow_feed_category'],
 				'allow_stat_sharing' => $settings['allow_stat_sharing'],
 				'cache_pages' => $settings['cache_pages'],
 				'cache_pages_lifetime' => $settings['cache_pages_lifetime'],
@@ -273,6 +279,7 @@ class Settings_Controller extends Admin_Controller {
 				'google_analytics' => $settings['google_analytics'],
 				'twitter_hashtags' => $settings['twitter_hashtags'],
 				'api_akismet' => $settings['api_akismet'],
+				'alert_days' => $settings['alert_days'] // HT: No of days of alert to be sent
 			);
 		}
 
@@ -366,7 +373,8 @@ class Settings_Controller extends Admin_Controller {
 			'default_map_all_icon_id' => '',
 			'delete_default_map_all_icon' => '',
 			'enable_timeline' => '',
-			'timeline_graph' => '' // HT: To choose graph type line or bar
+            'timeline_graph' => '', // HT: To choose graph type line or bar
+            'timeline_point_label' => '' // HT: Timeline graph point label
 		);
 		//	Copy the form as errors, so the errors will be stored with keys
 		//	corresponding to the form field names
@@ -392,7 +400,8 @@ class Settings_Controller extends Admin_Controller {
 			    ->add_rules('api_google', 'length[0,200]')
 			    ->add_rules('api_live', 'length[0,200]')
 				->add_rules('enable_timeline', 'numeric', 'length[1,1]')
-				->add_rules('timeline_graph', 'alpha'); // HT: Timeline graph type
+				->add_rules('timeline_graph', 'in_array[line, bar]') // HT: Timeline graph type
+				->add_rules('timeline_point_label', 'numeric', 'length[1,1]'); // HT: Timeline graph type
 
 			// Add rules for file upload
 			$files = Validation::factory($_FILES);
@@ -401,8 +410,12 @@ class Settings_Controller extends Admin_Controller {
 			// Test to see if things passed the rule checks
 			if ($post->validate() AND $files->validate(FALSE))
 			{
+				// HT: Default timeline_graph if not in database
 				if(!Settings_Model::get_setting('timeline_graph'))
 					Settings_Model::save_setting('timeline_graph', $post->timeline_graph);
+				if(!Settings_Model::get_setting('timeline_point_label'))
+                	Settings_Model::save_setting('timeline_point_label', $post->timeline_point_label);
+				
 				// Save all the settings
 				Settings_Model::save_all($post);
 				
@@ -521,6 +534,9 @@ class Settings_Controller extends Admin_Controller {
 			// Retrieve Current Settings
 			$settings = Settings_Model::get_settings(array_keys($form));
 			$settings['timeline_graph'] = Settings_Model::get_setting('timeline_graph'); // HT: might not be in database so calling manually retrun NULL if not exist
+			$settings['timeline_graph'] = (isset($settings['timeline_graph'])) ? $settings['timeline_graph'] : 'line'; // HT: might be returned from database so setting it 'line' by default
+			$settings['timeline_point_label'] = (isset($settings['timeline_point_label'])) ? $settings['timeline_point_label'] : false; // HT: might be returned from database so setting it 'false' by default
+
 			$form = array(
 				'default_map' => $settings['default_map'],
 				'api_google' => $settings['api_google'],
@@ -535,6 +551,7 @@ class Settings_Controller extends Admin_Controller {
 				'default_map_all_icon_id' => $settings['default_map_all_icon_id'],
 				'enable_timeline' => $settings['enable_timeline'],
 				'timeline_graph' => $settings['timeline_graph'], // HT: Timeline graph type line or bar
+				'timeline_point_label' => $settings['timeline_point_label'] // HT: Timeline graph point label
 			);
 		}
 
@@ -619,7 +636,8 @@ class Settings_Controller extends Admin_Controller {
 			'sms_provider' => '',
 			'sms_no1' => '',
 			'sms_no2' => '',
-			'sms_no3' => ''
+			'sms_no3' => '',
+           'sms_alert_url' => '' // HT: new setting for url on sms
 		);
 		//	Copy the form as errors, so the errors will be stored with keys
 		//	corresponding to the form field names
@@ -643,10 +661,13 @@ class Settings_Controller extends Admin_Controller {
 			$post->add_rules('sms_no1', 'numeric', 'length[1,30]');
 			$post->add_rules('sms_no2', 'numeric', 'length[1,30]');
 			$post->add_rules('sms_no3', 'numeric', 'length[1,30]');
+			$post->add_rules('sms_alert_url','required','between[0,1]'); // HT: new setting for url on sms
 
 			// Test to see if things passed the rule checks
 			if ($post->validate())
 			{
+				if(!Settings_Model::get_setting('sms_alert_url'))
+		            Settings_Model::save_setting('sms_alert_url', $post->sms_alert_url);
 				// Yes! everything is valid
 				Settings_Model::save_all($post);
 
@@ -678,12 +699,14 @@ class Settings_Controller extends Admin_Controller {
 		{
 			$settings = Settings_Model::get_settings(array_keys($form))
 			;
+			$settings['sms_alert_url'] = (isset($settings['sms_alert_url'])) ? $settings['sms_alert_url'] : 0; // HT: might not be in the database
 			// Retrieve Current Settings
 			$form = array(
 				'sms_provider' => $settings['sms_provider'],
 				'sms_no1' => $settings['sms_no1'],
 				'sms_no2' => $settings['sms_no2'],
-				'sms_no3' => $settings['sms_no3']
+				'sms_no3' => $settings['sms_no3'],
+                'sms_alert_url' => $settings['sms_alert_url'] // HT: new setting for url on sms
 			);
 		}
 
@@ -691,6 +714,7 @@ class Settings_Controller extends Admin_Controller {
 		$this->template->content->errors = $errors;
 		$this->template->content->form_error = $form_error;
 		$this->template->content->form_saved = $form_saved;
+        $this->template->content->alert_url_array = array('1'=>Kohana::lang('ui_admin.yes'),'0'=>Kohana::lang('ui_admin.no'));		
 
 		$this->template->content->sms_provider_array = array_merge(
 			array("" => "-- Select One --"),
