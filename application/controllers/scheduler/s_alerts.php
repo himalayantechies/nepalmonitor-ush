@@ -127,15 +127,22 @@ class S_Alerts_Controller extends Controller {
 			$sms_message = str_replace("\n", " ", $sms_message);
 			// Shorten to text message size
 			$sms_incident_url = url::site().'r/'.$incident->id;
-           if(Kohana::config("settings.sms_alert_url"))
-           {
+			
+            if(Kohana::config("settings.sms_alert_url"))
+            {
                    $sms_message = text::limit_chars($sms_message, 100, "..."); // HT: Decreased sms length of sms to add incident_
+                   if(strpos($sms_message, '.') !== false) {
+						$sms_message = substr($message, 0, strpos($sms_message, '.')+1);
+				   }
                    $sms_message .= " ".$sms_incident_url; // HT: Added incident_url to sms
-           }
-           else
-           {
+            }
+            else
+            {
                    $sms_message = text::limit_chars($sms_message, 150, "...");
-           }
+				   if(strpos($sms_message, '.') !== false) {
+						$sms_message = substr($message, 0, strpos($sms_message, '.')+1);
+				   }
+            }
 			
 			$latitude = (double) $incident->latitude;
 			$longitude = (double) $incident->longitude;

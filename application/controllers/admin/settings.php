@@ -268,7 +268,7 @@ class Settings_Controller extends Admin_Controller {
 				'allow_reports' => $settings['allow_reports'],
 				'allow_comments' => $settings['allow_comments'],
 				'allow_feed' => $settings['allow_feed'],
-				'allow_feed_category' => $settings['allow_feed_category'],
+				'allow_feed_category' => isset($settings['allow_feed_category']) ? $settings['allow_feed_category'] : 'no',
 				'allow_stat_sharing' => $settings['allow_stat_sharing'],
 				'cache_pages' => $settings['cache_pages'],
 				'cache_pages_lifetime' => $settings['cache_pages_lifetime'],
