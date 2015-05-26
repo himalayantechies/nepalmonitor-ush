@@ -62,6 +62,10 @@ class enhancedmap_helper_Core {
 			plugin::add_stylesheet($map_css);
 		}
 		
+		plugin::add_javascript("enhancedmap/js/jquery.flot");
+		plugin::add_javascript("enhancedmap/js/excanvas.min");
+		plugin::add_javascript("enhancedmap/js/timeline");
+		plugin::add_javascript("enhancedmap/js/jquery.hovertip-1.0");
 		
 		$map_controller->template->content = new View($map_view);
 		
@@ -842,9 +846,10 @@ class enhancedmap_helper_Core {
 		$color = self::merge_colors($colors);	
 		
 		//if simple groups are involved things get crazy
-		$sg_cat_str = "";//only used by highest first coloring mode		
+		
 		if(isset($_GET['sgid']))
 		{
+			$sg_cat_str = "";//only used by highest first coloring mode
 			//reset colors if the all cat color is currently being used
 			if($all_categories)
 			{
@@ -983,7 +988,7 @@ class enhancedmap_helper_Core {
 			$json_item .= "\"properties\": {";
 			$json_item .= "\"id\": \"".$marker->incident_id."\", \n";
 
-			$encoded_title = htmlentities($marker->incident_title, TRUE);
+			$encoded_title = utf8tohtml::convert($marker->incident_title, TRUE);
 			$encoded_title = str_ireplace('"','&#34;',$encoded_title);
 			$encoded_title = json_encode($encoded_title);
 			$encoded_title = str_ireplace('"', '', $encoded_title);
@@ -1002,6 +1007,7 @@ class enhancedmap_helper_Core {
 			$json_item .= "\"icon\": \"".$icon."\", \n";
 			$json_item .= "\"ids\": [".$marker->incident_id."], ";
 			$json_item .= "\"thumb\": \"".$thumb."\", \n";
+			$json_item .= "\"title\": \"".$encoded_title."\", \n";
 			$json_item .= "\"timestamp\": \"" . strtotime($marker->incident_date) . "\"";
 			$json_item .= "},";
 			$json_item .= "\"geometry\": {";
@@ -1262,10 +1268,10 @@ class enhancedmap_helper_Core {
 		}
 		$color = self::merge_colors($colors);	
 		//if simple groups are involved things get crazy
-		$sg_cat_str = "";//only used by highest first coloring mode		
+		
 		if(isset($_GET['sgid']))
 		{			
-
+			$sg_cat_str = "";//only used by highest first coloring mode
 			//reset colors if the all cat color is currently being used
 			if($all_categories)
 			{
@@ -1557,7 +1563,6 @@ class enhancedmap_helper_Core {
 		foreach ($clusters as $cluster)
 		{
 			// Calculate cluster center
-			
 			$cluster_center = $cluster['center'];
 			$southwest = $cluster['sw'];
 			$northeast = $cluster['ne'];
@@ -1582,6 +1587,7 @@ class enhancedmap_helper_Core {
 			$json_item .= "\"ids\": [".$id_str."], ";
 			$json_item .= "\"thumb\": \"\", ";
 			$json_item .= "\"timestamp\": \"0\", ";
+			$json_item .= "\"title\": \"0\", ";
 			$json_item .= "\"count\": \"" . $cluster_count . "\"";
 			$json_item .= "},";
 			$json_item .= "\"geometry\": {";
@@ -1609,6 +1615,7 @@ class enhancedmap_helper_Core {
 			// $json_item .= "\"thumb\": \"".$single['thumb']."\", ";
 			$json_item .= "\"timestamp\": \"0\", ";
 			$json_item .= "\"ids\": [".$single['id']."], ";
+			$json_item .= "\"title\": \"".str_replace('"','\"',$single['incident_title'])."\", ";
 			$json_item .= "\"count\": \"" . 1 . "\"";
 			$json_item .= "},";
 			$json_item .= "\"geometry\": {";
@@ -1864,6 +1871,7 @@ class enhancedmap_helper_Core {
 				$json_item .= "\"strokewidth\": \"" . $strokewidth . "\", ";
 				$json_item .= "\"link\": \"".url::base()."reports/view/".$incident_id."\", ";
 				$json_item .= "\"category\":[0], ";
+				$json_item .= "\"title\":".$title.", ";
 				$json_item .= "\"timestamp\": \"" . strtotime($incident_date) . "\"";
 				$json_item .= "},\"geometry\":".json_encode($geom_array)."}";
 				$geometry[] = $json_item;

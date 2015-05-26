@@ -33,6 +33,13 @@
 <div id="adminmap_map_embedd">
 <?php echo Kohana::lang("enhancedmap.embedd_html")?>
 <br/>
-	<input type="text" value="<?php echo $html; ?>"/>
+	<input type="text" value="<?php echo $html; ?>" />
 	
 </div>
+<script>
+	$('#adminmap_map_embedd').hover( function(){
+		$('#adminmap_map_embedd input').show();
+	}, function() {
+		$('#adminmap_map_embedd input').hide();
+	});
+</script>
