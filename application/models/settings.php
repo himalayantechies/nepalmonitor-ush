@@ -4,14 +4,14 @@
 * Model for Settings
  *
  * PHP version 5
- * LICENSE: This source file is subject to LGPL license
+ * LICENSE: This source file is subject to LGPL license 
  * that is available through the world-wide-web at the following URI:
  * http://www.gnu.org/copyleft/lesser.html
- * @author     Ushahidi Team <team@ushahidi.com>
+ * @author     Ushahidi Team <team@ushahidi.com> 
  * @package    Ushahidi - http://source.ushahididev.com
  * @subpackage Models
  * @copyright  Ushahidi - http://www.ushahidi.com
- * @license    http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL)
+ * @license    http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL) 
  */
 
 class Settings_Model extends ORM {
@@ -84,9 +84,17 @@ class Settings_Model extends ORM {
 		}
 		else
 		{
-			$settings = ORM::factory('settings', 1);
-			$settings->$key = $value;
-			$settings->save();
+			try
+			{
+				$settings = ORM::factory('settings', 1);
+				$settings->$key = $value;
+				$settings->save();
+			}
+			// Catch errors from missing settings and log
+			catch (Exception $e)
+			{
+				Kohana::log('alert',(string)$e);
+			}
 		}
 	}
 
@@ -131,7 +139,7 @@ class Settings_Model extends ORM {
 		$all_settings = self::get_array();
 
 		// Settings update query
-		$query = sprintf("UPDATE `%ssettings` SET `value` = CASE `key` ",
+		$query = sprintf("UPDATE `%ssettings` SET `value` = CASE `key` ", 
 		    Kohana::config('database.default.table_prefix'));
 
 		// Used for building the query clauses for the final query
@@ -146,7 +154,7 @@ class Settings_Model extends ORM {
 		$value_expr = new Database_Expression("WHEN :key THEN :value ");
 		foreach ($settings as $key => $value)
 		{
-			// If an item has been marked for skipping or is a
+			// If an item has been marked for skipping or is a 
 			// non-existent setting, skip current iteration
 			if (in_array($key, $skip) OR empty($key) OR ! array_key_exists($key, $all_settings))
 				continue;
@@ -166,6 +174,7 @@ class Settings_Model extends ORM {
 		
 		// Construct the final query
 		$query .= implode(" ", $values)."END WHERE `key` IN :keys";
+
 		// Performa batch update
 		Database::instance()->query($query, array(':keys' => $keys));
 	}
@@ -177,7 +186,7 @@ class Settings_Model extends ORM {
 	 * An exception is thrown if the parameter is not an array or is an empty
 	 * array
 	 *
-	 * @param    array $keys
+	 * @param    array $keys 
 	 * @return   array
 	 */
 	public function get_settings($keys)

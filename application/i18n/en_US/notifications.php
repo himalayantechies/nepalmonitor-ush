@@ -26,6 +26,12 @@ $lang = array(
 		'message' => 'You Have Received a Private Message',
 		'subject' => 'New Private Message',
 		'footer' => 'To Reply Please Go To: ',
+	),
+	'member_new_comment' => array(
+		'message' => 'A new comment has been submitted',
+		'comment' => 'Comment Message: ',
+		'subject' => 'New Comment',
+		'footer' => 'To View Please Go To: ',
 	)
 );
 ?>

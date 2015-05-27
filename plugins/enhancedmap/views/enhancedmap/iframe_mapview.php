@@ -38,7 +38,7 @@
  */
 ?>
 <div id="title">
-<h1><a href="<?php echo url::base(); ?>"><?php echo $site_name;?></a></h1>
+<h1><a href="<?php echo url::base(); ?>" target="_blank"><?php echo $site_name;?></a></h1>
 </div>
 
 

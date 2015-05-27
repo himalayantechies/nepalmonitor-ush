@@ -18,7 +18,7 @@ $config['site_protocol'] = 'http';
  *
  * This can be removed by using URL rewriting.
  */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /**
  * Whether or not you want to have the auto upgrader enabled.
@@ -148,6 +148,15 @@ $config['installer_check'] = FALSE;
  * Output scheduler JS in footer
  */
 $config['output_scheduler_js'] = FALSE;
+
+/**
+ * Protocol to use for loading external requests
+ *
+ * This is used for requests from PHP to external APIs that offer
+ * both http and https. Normally this should default to 'https'
+ * but some countries/firewalls block https requests so its a setting.
+ */
+$config['external_site_protocol'] = 'https';
 
 /**
  * Additional resource paths, or "modules". Each path can either be absolute

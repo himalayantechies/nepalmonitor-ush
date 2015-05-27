@@ -78,24 +78,33 @@ class S_Alerts_Controller extends Controller {
 		  - 1, Incident has been tagged for sending by updating it with 'approved' or 'verified'
 		  - 2, Incident has been tagged as sent. No need to resend again
 		*/
-		/*$incidents = $db->query("SELECT i.id, incident_title,
-			incident_description, incident_verified,
-			l.latitude, l.longitude, a.alert_id, a.incident_id
-			FROM ".$this->table_prefix."incident AS i INNER JOIN ".$this->table_prefix."location AS l ON i.location_id = l.id
-			LEFT OUTER JOIN ".$this->table_prefix."alert_sent AS a ON i.id = a.incident_id WHERE
-			i.incident_active=1 AND i.incident_alert_status = 1 ");*/
-		/*// HT: New Code
-		$incidents = $db->query("SELECT i.id, incident_title,
-					incident_description, incident_verified,
-					l.latitude, l.longitude FROM ".$this->table_prefix."incident AS i INNER JOIN ".$this->table_prefix."location AS l ON i.location_id = l.id
-					WHERE i.incident_active=1 AND i.incident_alert_status = 1 ");
-		// End of New Code*/
+
 		// HT: New code -  Don't send old alerts
 		$incidents = $db->query("SELECT i.id, incident_title,
 					incident_description, incident_verified,
 					l.latitude, l.longitude FROM ".$this->table_prefix."incident AS i INNER JOIN ".$this->table_prefix."location AS l ON i.location_id = l.id
 					WHERE i.incident_active=1 AND i.incident_alert_status = 1 AND DATE( i.incident_date ) >= SUBDATE( CURDATE( ) , 5 )");
 		// End of New Code - change the number at the end to the number of days old you shouldn't send alerts. 
+       // HT: New Code
+       // Fixes an issue with one report being sent out as an alert more than ones
+       // becoming spam to users
+       $incident_query = "SELECT i.id, incident_title,
+                       incident_description, incident_verified,
+                       l.latitude, l.longitude FROM ".$this->table_prefix."incident AS i INNER JOIN ".$this->table_prefix."location AS
+                       WHERE i.incident_active=1 AND i.incident_alert_status = 1 ";
+       /** HT: Code for alert days limitation
+        * @int alert_days = 0 : All alerts
+        * @int alert_days = 1 : TODAY
+        * @int alert_days > 1 : alert_days - 1 days before
+        */
+       if($alert_days = $settings['alert_days'])
+       {
+               $incident_query .= "AND DATE(i.incident_date) >= DATE_SUB( CURDATE(), INTERVAL ".($alert_days-1)." DAY )";
+       }
+       // End of New Code
+
+       $incidents = $db->query($incident_query);
+
 		foreach ($incidents as $incident)
 		{
 			// ** Pre-Formatting Message ** //
@@ -118,8 +127,22 @@ class S_Alerts_Controller extends Controller {
 			$sms_message = str_replace("\n", " ", $sms_message);
 			// Shorten to text message size
 			$sms_incident_url = url::site().'r/'.$incident->id;
-			$sms_message = text::limit_chars($sms_message, 120, "...");
-			$sms_message .= " ".$incident_url;
+			
+            if(Kohana::config("settings.sms_alert_url"))
+            {
+                   $sms_message = text::limit_chars($sms_message, 100, "..."); // HT: Decreased sms length of sms to add incident_
+                   if(strpos($sms_message, '.') !== false) {
+						$sms_message = substr($message, 0, strpos($sms_message, '.')+1);
+				   }
+                   $sms_message .= " ".$sms_incident_url; // HT: Added incident_url to sms
+            }
+            else
+            {
+                   $sms_message = text::limit_chars($sms_message, 150, "...");
+				   if(strpos($sms_message, '.') !== false) {
+						$sms_message = substr($message, 0, strpos($sms_message, '.')+1);
+				   }
+            }
 			
 			$latitude = (double) $incident->latitude;
 			$longitude = (double) $incident->longitude;
@@ -137,10 +160,11 @@ class S_Alerts_Controller extends Controller {
 			// End of new code
 			foreach ($alertees as $alertee)
 			{
-				// Has this alert been sent to this alertee?
-				/*if ($alertee->id == $incident->alert_id) {
-					continue;
-				}*/
+               // HT: check same alert_receipent multi subscription does not get multiple alert
+               if($this->_multi_subscribe($alertee, $incident->id)) {
+                        continue;
+
+               }
 				// Check the categories
 				if (!$this->_check_categories($alertee, $category_ids)) {
 				  continue;
@@ -279,4 +303,17 @@ class S_Alerts_Controller extends Controller {
 
 	  return $ret;
 	}
+
+   /**
+    * HT: Function to verify that alert is not sent to same alert_receipent being subscribed multiple time
+    * @param Alert_Model $alertee
+    * @param integer $incident_id
+    * @return boolean
+    */
+   private function _multi_subscribe(Alert_Model $alertee, $incident_id) {
+           $multi_subscribe_ids = ORM::factory('alert')->where('alert_confirmed','1')->where('alert_recipient', $alertee->alert_recipient)->select_list('id', 'id');
+           $subscription_alert = ORM::factory('alert_sent')->where('incident_id', $incident_id)->in('alert_id', $multi_subscribe_ids)->find();
+           return ((boolean) $subscription_alert->id);
+   }
+
 }

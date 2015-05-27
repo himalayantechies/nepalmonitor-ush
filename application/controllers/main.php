@@ -296,7 +296,7 @@ class Main_Controller extends Template_Controller {
 		$this->template->content->external_apps = $external_apps;
 
         // Get The START, END and Incident Dates
-		$intervalDate = ""; // HT: commented for ushahidi new code
+		$intervalDate = ""; // HT: manual intervalDate
 		$startDate = "";
 		$endDate = "";
 		$display_startDate = 0;
@@ -406,7 +406,7 @@ class Main_Controller extends Template_Controller {
 		$intervals = array('' =>'Auto', 'hour' => 'Hourly', 'day' => 'Daily', 'week' => 'Weekly', 'month' => 'Monthly');
 		foreach($intervals as $val => $label) {
 			$intervalDate .= "<option value=\"".$val."\"";
-			$intervalDate .= ">".$label."</option>";
+			$intervalDate .= ">".Kohana::lang('ui_main.'.$label)."</option>";
 		}
 		// HT: End of time interval form input
 		
@@ -422,6 +422,12 @@ class Main_Controller extends Template_Controller {
 		// Javascript Header
 		$this->themes->map_enabled = TRUE;
 		$this->themes->main_page = TRUE;
+       $this->themes->slider_enabled = TRUE;
+
+       if (Kohana::config('settings.enable_timeline'))
+       {
+               $this->themes->timeline_enabled = TRUE;
+       }
 
 		// Map Settings
 		$marker_radius = Kohana::config('map.marker_radius');

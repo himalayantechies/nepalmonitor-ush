@@ -614,6 +614,11 @@
 				removeParameterItem("v", verification);
 				
 			}
+			
+			<?php
+				// Action, allows plugins to add custom filters
+				Event::run('ushahidi_action.report_js_filterReportsActionRemove');
+			?>
 		}
 	}
 	
@@ -622,7 +627,9 @@
 	 */
 	function attachFilterReportsAction()
 	{
-		$("#applyFilters").click(function(){
+		$("#applyFilters").click(function(event){
+			event.preventDefault();
+
 			//
 			// Get all the selected categories
 			//

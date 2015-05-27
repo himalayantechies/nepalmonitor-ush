@@ -105,6 +105,10 @@ function refreshTimeline(options) {
 			options.i = "month";
 		}
 	}
+    // HT: More info link
+    var urlLink = "<?php echo url::site().'reports/index/?'?>"+$.param(options);
+    $('#timelineMoreLink').attr('href', urlLink);
+
 	// Get the graph data
 	$.ajax({
 		url: url,
@@ -140,15 +144,21 @@ function refreshTimeline(options) {
 					color: response[0].color,
 					lineWidth: 1.6,
 					markerOptions: {
-						//show: false
-						show: true, // HT: To show the points
-						style: 'circle', // HT: Circle point
-					},
-					pointLabels: { // HT: To show point label
-						show: true,
-						edgeTolerance: -10,
-						ypadding: 3
-					},
+                       <?php if (Kohana::config('settings.timeline_point_label')) { ?>
+                               show: true, // HT: To show the points
+                               //style: 'circle' // HT: Circle point
+                       <?php } else { ?>
+                               show: false,
+                       <?php } ?>
+                    },
+					<?php if (Kohana::config('settings.timeline_point_label')) { ?>
+                        pointLabels: { // HT: To show point label
+                            show: true,
+                            edgeTolerance: -10,
+                            ypadding: 3
+                        }
+	                <?php } ?>
+
 				},
 				axesDefaults: {
 					pad: 1.23,
@@ -167,8 +177,11 @@ function refreshTimeline(options) {
 						}
 					}
 				},
-				//cursor: {show: false},
-				cursor: {show: true}, // HT: To show current point detail
+				<?php if (Kohana::config('settings.timeline_point_label')) { ?>
+                        cursor: {show: true}, // HT: To show current point detail
+                <?php } else { ?>
+                        cursor: {show: false},
+                <?php } ?>
 			});
 		},
 		dataType: "json"

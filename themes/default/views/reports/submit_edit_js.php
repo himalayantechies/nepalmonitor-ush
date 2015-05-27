@@ -396,6 +396,7 @@
 		        var category_name = $("input#category_name").val();
 		        var category_description = $("input#category_description").val();
 		        var category_color = $("input#category_color").val();
+		        var category_parent_id = $("select#category_parent_id").val(); // HT: Parent category in report edit new category
 
 				//trim the form fields
 				//Removed ".toUpperCase()" from name and desc for Ticket #38
@@ -417,7 +418,7 @@
 		        }
 		
 				$.post("<?php echo url::base() . 'admin/reports/save_category/' ?>", 
-					{ category_title: category_name, category_description: category_description, category_color: category_color },
+					{ category_title: category_name, category_description: category_description, category_color: category_color, parent_id : category_parent_id }, // HT: Parent category in report edit new category
 					function(data){
 						if ( data.status == 'saved')
 						{
