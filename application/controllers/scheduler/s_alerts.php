@@ -80,17 +80,17 @@ class S_Alerts_Controller extends Controller {
 		*/
 
 		// HT: New code -  Don't send old alerts
-		$incidents = $db->query("SELECT i.id, incident_title,
+/*		$incidents = $db->query("SELECT i.id, incident_title,
 					incident_description, incident_verified,
 					l.latitude, l.longitude FROM ".$this->table_prefix."incident AS i INNER JOIN ".$this->table_prefix."location AS l ON i.location_id = l.id
-					WHERE i.incident_active=1 AND i.incident_alert_status = 1 AND DATE( i.incident_date ) >= SUBDATE( CURDATE( ) , 5 )");
+					WHERE i.incident_active=1 AND i.incident_alert_status = 1 AND DATE( i.incident_date ) >= SUBDATE( CURDATE( ) , 5 )"); */
 		// End of New Code - change the number at the end to the number of days old you shouldn't send alerts. 
        // HT: New Code
        // Fixes an issue with one report being sent out as an alert more than ones
        // becoming spam to users
        $incident_query = "SELECT i.id, incident_title,
                        incident_description, incident_verified,
-                       l.latitude, l.longitude FROM ".$this->table_prefix."incident AS i INNER JOIN ".$this->table_prefix."location AS
+                       l.latitude, l.longitude FROM ".$this->table_prefix."incident AS i INNER JOIN ".$this->table_prefix."location AS l ON i.location_id = l.id
                        WHERE i.incident_active=1 AND i.incident_alert_status = 1 ";
        /** HT: Code for alert days limitation
         * @int alert_days = 0 : All alerts
