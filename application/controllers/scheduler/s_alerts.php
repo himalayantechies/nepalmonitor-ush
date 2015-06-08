@@ -140,7 +140,7 @@ class S_Alerts_Controller extends Controller {
             {
                    $sms_message = text::limit_chars($sms_message, 150, "...");
 				   if(strpos($sms_message, '.') !== false) {
-						$sms_message = substr($message, 0, strpos($sms_message, '.')+1);
+						$sms_message = substr($sms_message, 0, strpos($sms_message, '.')+1);
 				   }
             }
 			
