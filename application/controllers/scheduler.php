@@ -136,11 +136,16 @@ class Scheduler_Controller extends Controller {
 
 					if ($dispatch instanceof Dispatch && method_exists($dispatch,'method'))
 					{
+
 						$run = $dispatch->method('index', '');
 					}
 				}
 				catch (Exception $e)
 				{
+					if (isset($_GET['debug']) AND $_GET['debug'] == 1)
+                                        {
+                                                $debug .= "<BR /> STATUS: {{ ".$e. " }} ";
+                                        }
 					// Nada.
 				}
 				
