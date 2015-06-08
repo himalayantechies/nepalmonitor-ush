@@ -132,7 +132,7 @@ class S_Alerts_Controller extends Controller {
             {
                    $sms_message = text::limit_chars($sms_message, 100, "..."); // HT: Decreased sms length of sms to add incident_
                    if(strpos($sms_message, '.') !== false) {
-						$sms_message = substr($message, 0, strpos($sms_message, '.')+1);
+						$sms_message = substr($sms_message, 0, strpos($sms_message, '.')+1);
 				   }
                    $sms_message .= " ".$sms_incident_url; // HT: Added incident_url to sms
             }
