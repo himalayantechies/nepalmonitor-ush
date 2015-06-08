@@ -1007,7 +1007,7 @@ class enhancedmap_helper_Core {
 			$json_item .= "\"icon\": \"".$icon."\", \n";
 			$json_item .= "\"ids\": [".$marker->incident_id."], ";
 			$json_item .= "\"thumb\": \"".$thumb."\", \n";
-			$json_item .= "\"title\": \"".$encoded_title."\", \n";
+			$json_item .= "\"title\": \"".$marker->incident_title."\", \n";
 			$json_item .= "\"timestamp\": \"" . strtotime($marker->incident_date) . "\"";
 			$json_item .= "},";
 			$json_item .= "\"geometry\": {";

@@ -998,11 +998,16 @@ class adminmap_helper_Core {
 			$lon = $single->lon ? $single->lon : "0";
 			$lat = $single->lat ? $single->lat : "0";
 			
+			$encoded_title = utf8tohtml::convert($single->incident_title, TRUE);
+			$encoded_title = str_ireplace('"','&#34;',$encoded_title);
+			$encoded_title = json_encode($encoded_title);
+			$encoded_title = str_ireplace('"', '', $encoded_title);
+			
 			$json_item = "{";
 			$json_item .= "\"type\":\"Feature\",";
 			$json_item .= "\"properties\": {";
 			$json_item .= "\"name\":\"" . str_replace(chr(10), ' ', str_replace(chr(13), ' ', "<a target = ".$link_target." href=" . url::base().$admin_path.$link_path_prefix
-					. "reports/".$view_or_edit."/" . $single->id . "/>".str_replace('"','\"',$single->incident_title)."</a>")) . "\",";
+					. "reports/".$view_or_edit."/" . $single->id . "/>".str_replace('"','\"',$encoded_title)."</a>")) . "\",";
 			$json_item .= "\"link\": \"".url::base().$admin_path.$link_path_prefix."reports/".$view_or_edit."/".$single->id."\", ";
 			$json_item .= "\"category\":[0], ";
 			$json_item .= "\"color\": \"".$color."\", ";

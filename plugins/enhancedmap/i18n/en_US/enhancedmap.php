@@ -69,7 +69,7 @@
 	'or_details' => 'Show all reports that fall under at least one of the categories selected below',
 	'and_details' => 'Show all reports that fall under all of the categories selected below',
 	'show_all_reports' => 'Show All Reports',
-	'embedd_html' => 'To embed this map in your own site use this HTML:',
+	'embedd_html' => '<a href="#"><b>EMBED THIS MAP</b></a>',
 	//john's entries
 	'group_categories' => 'Group Categories',
 	'site_categories' => 'Site Categories',

@@ -137,6 +137,8 @@ $lang = array(
 	'select_default_location' => 'Please select a default country',
 	'set_location' => 'Click and drag the map to set your exact location',
 	'site' => array(
+		'alert_days' => 'Alert Days Limit',
+		'alert_days_notice' => 'Limit the days of previous alert to be sent from current day.',
 		'allow_clustering' => 'Cluster Reports on Map',
 		'allow_comments' => 'Allow Users to Submit Comments to Reports',
 		'allow_feed' => 'Include RSS News Feed on Website',
@@ -199,6 +201,7 @@ $lang = array(
 		'required' => 'The tagline field is required.',
 	) ,
 	'sms' => array(
+		'alert_url_text' => 'Send the url in the sms alert',
 		'clickatell_api' => 'Your Clickatell API Number',
 		'clickatell_check_balance' => 'Check Your Clickatell Credit Balance',
 		'clickatell_load_balance' => 'Load Credit Balance',
@@ -230,6 +233,7 @@ $lang = array(
 		'length' => 'The phone 3 field is too long.',
 		'numeric' => 'The phone 3 field should contain numbers only.',
 	),
+	'timeline_point_label' => 'Timeline Point Label',
 	'twitter' => array(
 		'title' => 'Twitter Setup Options',
 		'description' => 'To get the information below, set up your deployment as a new Twitter application at',

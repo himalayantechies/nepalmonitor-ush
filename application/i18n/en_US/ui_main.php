@@ -37,6 +37,7 @@ $lang = array(
 	'alerts_step3_select_catgories' => '<strong>Step 3 (Optional):</strong> Select Categories - Highly recommended for nation wide alerts to avoid excess messages.',
 	'alert_confirm_previous' => 'Confirm A Previous Alert Request',
 	'alert_saved' => 'Your Alert Has Been Saved!',
+	'alert_url' => 'Alert Url',
 	'all' => 'All',
 	'allowed' => 'Allowed',
 	'allowed_tags' => 'Allowed HTML tags: "%s".',
