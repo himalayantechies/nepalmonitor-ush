@@ -746,6 +746,7 @@ class Reports_Controller extends Main_Controller {
 		$this->template->content = new View('reports/submit_thanks');
 
 		// Rebuild Header Block
+		$this->template->content->report_email = Kohana::config('settings.site_email');
 		$this->template->header->header_block = $this->themes->header_block();
 		$this->template->footer->footer_block = $this->themes->footer_block();
 	}
