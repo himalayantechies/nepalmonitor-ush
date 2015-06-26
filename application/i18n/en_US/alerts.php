@@ -51,8 +51,9 @@ $lang = array(
 	'subscription_email' => 'Subscription Email : ',
 	'subscription_mobile' => 'Subscription Mobile No : ',
 	'subscription_request' => 'Subscribed for alerts with the following categories',
-	'unsubscribe' => "If your organization responded to this incident, Tell us your story. You can comment on this report by following the previous link or replying to this e-mail. Report incidents to NepalMonitor.org by sending e-mails to alert@nepalmonitor.org or SMS to 9818771555. The reports will be published online at NepalMonitor.org, forwarded to relevant organizations, and sent by e-mail and SMS to alert subscribers in your area. Our new duty phone number is:
-[6/18/2015 16:43:52] Friso Hecker: 9808975502													Disclaimer: Reports are sent to the best of NepalMonitor.org's knowledge. We cannot independently verify all reports, but once we get new information on a case try to update it as soon as possible. However, NepalMonitor.org accepts no liability for the consequences of any actions taken on the basis of the information provided. You have received this email because you subscribed to receive alerts. If you do not want to receive future alerts go to -",
+	'unsubscribe' => "If your organization responded to this incident, Tell us your story. You can comment on this report by following the previous link or replying to this e-mail. Report incidents to NepalMonitor.org by sending e-mails to alert@nepalmonitor.org or SMS to : 9808975502. The reports will be published online at NepalMonitor.org, forwarded to relevant organizations, and sent by e-mail and SMS to alert subscribers in your area. 
+					You have received this email because you subscribed to receive alerts. If you do not want to receive future alerts go to -",
+	'disclaimer' => "Disclaimer: Reports are sent to the best of NepalMonitor.org's knowledge. We cannot independently verify all reports, but once we get new information on a case try to update it as soon as possible. However, NepalMonitor.org accepts no liability for the consequences of any actions taken on the basis of the information provided.",
 	'unsubscribed' => 'You will no longer receive alerts from ',
 	'unsubscribe_failed' => 'We were not able to unsubscribe you. Please confirm that you have the correct URL.',
 	'verification_email_subject' => 'alerts - verification',
