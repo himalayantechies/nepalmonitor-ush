@@ -222,9 +222,10 @@ class S_Alerts_Controller extends Controller {
 						// HT: html br for \n
 						$message = $email_message
 						."<br/><br/>".$unsubscribe_message
+						.$alertee->alert_code
 						.'<br/>'
 						.Kohana::lang('alerts.disclaimer')
-						.$alertee->alert_code."<br/>";
+						."<br/>";
 						
 						//if (email::send($to, $from, $subject, $message, FALSE) == 1)
 						if (email::send($to, $from, $subject, $message, TRUE) == 1) // HT: New Code to make email as html
