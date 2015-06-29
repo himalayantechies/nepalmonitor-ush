@@ -59,9 +59,7 @@ class S_Alerts_Controller extends Controller {
 		$alerts_email = ($settings['alerts_email']) ? $settings['alerts_email']
 			: $settings['site_email'];
 		$unsubscribe_message = Kohana::lang('alerts.unsubscribe')
-								.url::site().'alerts/unsubscribe/'
-								.'<br/>'
-								.Kohana::lang('alerts.disclaimer');
+								.url::site().'alerts/unsubscribe/';
 
 				$database_settings = kohana::config('database'); //around line 33
 				$this->table_prefix = $database_settings['default']['table_prefix']; //around line 34
@@ -224,6 +222,8 @@ class S_Alerts_Controller extends Controller {
 						// HT: html br for \n
 						$message = $email_message
 						."<br/><br/>".$unsubscribe_message
+						.'<br/>'
+						.Kohana::lang('alerts.disclaimer')
 						.$alertee->alert_code."<br/>";
 						
 						//if (email::send($to, $from, $subject, $message, FALSE) == 1)
