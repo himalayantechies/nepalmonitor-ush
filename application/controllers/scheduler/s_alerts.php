@@ -64,7 +64,6 @@ class S_Alerts_Controller extends Controller {
 				$database_settings = kohana::config('database'); //around line 33
 				$this->table_prefix = $database_settings['default']['table_prefix']; //around line 34
 
-		$settings = NULL;
 		$sms_from = NULL;
 
 		$db = new Database();
@@ -101,6 +100,8 @@ class S_Alerts_Controller extends Controller {
        {
                $incident_query .= "AND DATE(i.incident_date) >= DATE_SUB( CURDATE(), INTERVAL ".($alert_days-1)." DAY )";
        }
+	   
+	   //print_r($incident_query); exit;
        // End of New Code
 
        $incidents = $db->query($incident_query);
