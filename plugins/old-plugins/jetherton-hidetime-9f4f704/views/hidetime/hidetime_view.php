@@ -1,1 +1,0 @@
-<h4> Hide Time</h4>

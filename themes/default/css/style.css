@@ -345,13 +345,13 @@ div#mainmenu ul{
 div#mainmenu li{
     float: left;
     display: block;
-    margin-right: 15px;
+    margin-right: 5px;
 }
 
 div#mainmenu a{
     display: block;
     position: relative;
-    padding: 7px 10px;
+    padding: 7px 6px;
     color: #fff;
     overflow: hidden;
     text-transform: uppercase;
