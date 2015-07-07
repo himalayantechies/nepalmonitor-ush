@@ -27,5 +27,8 @@ $config = array
 	'api_url_all' => '',
 	'subdomain' => $subdomain,
 	'title_delimiter' => ' | ',
+	'allow_feed_category' => 'no',
+	'alert_days' => 5, // HT: No of days of alert to be sent
 	'timeline_graph' => 'line', // HT: Timeline graph type
+	'timeline_point_label' => false // HT: Timeline graph point label
 );

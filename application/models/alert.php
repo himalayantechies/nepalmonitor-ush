@@ -97,7 +97,7 @@ class Alert_Model extends ORM {
 			->add_rules('alert_email', 'email', 'length[3,64]')
 			->add_rules('alert_lat', 'required', 'between[-90,90]')
 			->add_rules('alert_lon', 'required', 'between[-180,180]')
-			->add_rules('alert_radius','required','in_array[5,10,20,50,100,500]');
+			->add_rules('alert_radius','required','in_array[1,5,10,20,50,100,500]');
 				
 		// TODO Callbacks to check for duplicate alert subscription - same
 		// subscriber for the same lat/lon

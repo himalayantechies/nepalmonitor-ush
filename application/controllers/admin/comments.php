@@ -88,6 +88,11 @@ class Comments_Controller extends Admin_Controller {
             {
                 if ($post->action == 'a')       
                 { // Approve Action
+            
+		            $settings = kohana::config('settings');
+					$site_name = $settings['site_name'];
+					$alerts_email = ($settings['alerts_email']) ? $settings['alerts_email']
+						: $settings['site_email'];
                     foreach($post->comment_id as $item)
                     {
                         $update = new Comment_Model($item);
@@ -96,6 +101,54 @@ class Comments_Controller extends Admin_Controller {
                             $update->comment_spam = '0';
                             $update->save();
                         }
+                        $comment = ORM::factory('comment')->where('id', $item)->find();
+						$subscribe = ORM::factory('comment')->where('incident_id', $comment->incident_id)->notin('id', $item)->select_list('comment_email', 'comment_author');
+						$person = ORM::factory('incident_person')->where('incident_id', $comment->incident_id)->find_all();
+						$phone = ORM::factory('form_response')->where('form_field_id', 2)->select_list('id', 'form_response');
+						foreach($person as $per) {
+							if(!empty($per->person_email)) {
+								$subscribe[$per->person_email] = $per->person_first.' '.$per->person_last;
+							} 
+							if(!empty($per->person_phone)) {
+								$phone[$per->person_phone] = $per->id; 
+							}
+						}
+							
+						$subject = "[".$site_name."] ".Kohana::lang('notifications.member_new_comment.subject');
+						$message = text::auto_p(Kohana::lang('notifications.member_new_comment.message')
+									. "\n" .url::site('reports/view/'.$comment->incident_id)
+									. "\n\n".Kohana::lang('notifications.member_new_comment.comment').
+									"\n".$comment->comment_description."\n");
+						$sms_message = $message;
+						$sms_message = str_replace("\n", " ", $sms_message);
+						$sms_message = text::limit_chars($sms_message, 150, "...");
+						foreach($subscribe as $mailAdd => $sub) {
+							if(!empty($mailAdd)) {
+								$from = array();
+								$from[] = $alerts_email;
+								$from[] = $site_name;
+								$to = $mailAdd;
+								
+								email::send($to, $from, $subject, $message, TRUE);
+							} 
+						}	
+						
+						if (Kohana::config("settings.sms_no3"))
+							$sms_from = Kohana::config("settings.sms_no3");
+						elseif (Kohana::config("settings.sms_no2"))
+							$sms_from = Kohana::config("settings.sms_no2");
+						elseif (Kohana::config("settings.sms_no1"))
+							$sms_from = Kohana::config("settings.sms_no1");
+						else
+							$sms_from = "12053705050";		// Admin needs to set up an SMS number	
+
+						foreach($phone as $no => $ph) {
+							if(!empty($no)) {
+								$sms_to = $no;
+								sms::send($sms_to, $sms_from, $sms_message);
+							}
+						}
+
                     }
                     $form_action = utf8::strtoupper(Kohana::lang('ui_admin.approved'));
                 }

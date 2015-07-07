@@ -8,6 +8,10 @@ $lang = array(
 		'between' => 'The include feed field does not appear to contain a valid value.',
 		'required' => 'The include feed field is required.',
 	) ,
+	'allow_feed_category' => array(
+		'between' => 'The include feed category field does not appear to contain a valid value.',
+		'required' => 'The include feed category field is required.',
+	) ,
 	'allow_alerts' => array(
 		'between' => 'The allow alerts field does not appear to contain a valid value.',
 		'required' => 'The allow alerts field is required.',
@@ -93,6 +97,7 @@ $lang = array(
 	'facebook' => array(
 		'title' => 'Facebook Setup Options',
 		'description' => 'To get the information below you will need to create a new Facebook application at',
+		'description_2' => 'These settings allow users to login via Facebook, this <strong>does not</strong> create a facebook application for your deployment',
 		'app_id' => 'Facebook App ID',
 		'app_secret' => 'Facebook App Secret',
 	) ,
@@ -132,9 +137,12 @@ $lang = array(
 	'select_default_location' => 'Please select a default country',
 	'set_location' => 'Click and drag the map to set your exact location',
 	'site' => array(
+		'alert_days' => 'Alert Days Limit',
+		'alert_days_notice' => 'Limit the days of previous alert to be sent from current day.',
 		'allow_clustering' => 'Cluster Reports on Map',
 		'allow_comments' => 'Allow Users to Submit Comments to Reports',
 		'allow_feed' => 'Include RSS News Feed on Website',
+		'allow_feed_category' => 'Create New Category from Feeds',
 		'allow_alerts' => 'Allow Users To Subscribe For Alerts',
 		'allow_reports' => 'Allow Users To Submit Reports',
 		'api_akismet' => 'Akismet Key',
@@ -173,6 +181,12 @@ $lang = array(
 		'title' => 'Site Settings',
 		'twitter_configuration' => 'Twitter Search Terms',
 		'twitter_hashtags' => 'Hashtags - Separate with commas ',
+		'feed_geolocation_user' => 'Feeds geolocation - Geonames username'
+	) ,
+	'banner_image' => array(
+		'type' => 'The Site Banner field does not appear to contain a valid image. The only accepted formats are .JPG, .PNG and .GIF.',
+		'size' => 'Please ensure that "Banner Image" size is less than 250 KB.',
+		'valid' => 'The "Banner Image" field does not appear to contain a valid file.',
 	) ,
 	'site_email' => array(
 		'email' => 'The site email field does not appear to contain a valid email address.',
@@ -187,6 +201,7 @@ $lang = array(
 		'required' => 'The tagline field is required.',
 	) ,
 	'sms' => array(
+		'alert_url_text' => 'Send the url in the sms alert',
 		'clickatell_api' => 'Your Clickatell API Number',
 		'clickatell_check_balance' => 'Check Your Clickatell Credit Balance',
 		'clickatell_load_balance' => 'Load Credit Balance',
@@ -194,12 +209,12 @@ $lang = array(
 		'clickatell_text_1' => 'Sign up for Clickatells service by <a href="https://www.clickatell.com/central/user/client/step1.php?prod_id=2" target="_blank">clicking here</a>',
 		'clickatell_text_2' => 'Enter your Clickatell access information below',
 		'clickatell_username' => 'Your Clickatell User Name',
-		'flsms_description' => 'FrontlineSMS is free open source software that turns a laptop and a mobile phone into a central communications hub. Once installed, the program enables users to send and receive text messages with large groups of people through mobile phones. Click on the grey box to request a download from FrontlineSMS.com',
-		'flsms_download' => 'Download Frontline SMS and install it on your computer',
-		'flsms_instructions' => 'Messages received into a FrontlineSMS hub can be synched with Ushahidi. Detailed instructions on how to sync can be found <strong><a href="http://wiki.ushahidi.com/display/WIKI/How+to+Set-up+FrontlineSMS+and+Ushahidi" target="_blank">here</a></strong>. You will require the key and link below to set up the sync with FrontlineSMS',
-		'flsms_key' => 'Your Ushahidi Sync Key',
-		'flsms_link' => 'FrontlineSMS HTTP Post LINK',
-		'flsms_synchronize' => 'Sync with Ushahidi',
+        'flsms_description' => 'FrontlineSMS is free open source software that turns a laptop and a mobile phone into a central communications hub. Once installed, the program enables users to send and receive text messages with large groups of people through mobile phones. Click on the grey box to request a download from FrontlineSMS.com',
+        'flsms_download' => 'Download Frontline SMS and install it on your computer',
+        'flsms_instructions' => 'Messages received into a FrontlineSMS hub can be synched with Ushahidi. Detailed instructions on how to sync can be found <strong><a href="http://wiki.ushahidi.com/display/WIKI/How+to+Set-up+FrontlineSMS+and+Ushahidi" target="_blank">here</a></strong>. You will require the key and link below to set up the sync with FrontlineSMS',
+        'flsms_key' => 'Your Ushahidi Sync Key',
+        'flsms_link' => 'FrontlineSMS HTTP Post LINK',
+        'flsms_synchronize' => 'Sync with Ushahidi',
 		'flsms_text_1' => 'Enter phone number(s) connected to Frontline SMS in the field(s) below',
 		'flsms_text_2' => 'Enter the number without any + or dashes below',
 		'option_1' => 'Option 1: Use Frontline SMS',
@@ -217,6 +232,17 @@ $lang = array(
 	'sms_no3' => array(
 		'length' => 'The phone 3 field is too long.',
 		'numeric' => 'The phone 3 field should contain numbers only.',
-	)
+	),
+	'timeline_point_label' => 'Timeline Point Label',
+	'twitter' => array(
+		'title' => 'Twitter Setup Options',
+		'description' => 'To get the information below, set up your deployment as a new Twitter application at',
+		'api_key' => 'Consumer Key',
+		'api_key_secret' => 'Consumer secret',
+		'token' => 'Access Token',
+		'token_secret' => 'Access Token Secret',
+	),
+	'test_settings' => 'Test settings'
+
 );
 ?>

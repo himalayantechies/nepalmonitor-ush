@@ -1,16 +1,16 @@
-<?php
+<?php 
 /**
  * Settings view page.
  *
  * PHP version 5
- * LICENSE: This source file is subject to LGPL license
+ * LICENSE: This source file is subject to LGPL license 
  * that is available through the world-wide-web at the following URI:
  * http://www.gnu.org/copyleft/lesser.html
- * @author     Ushahidi Team <team@ushahidi.com>
+ * @author     Ushahidi Team <team@ushahidi.com> 
  * @package    Ushahidi - http://source.ushahididev.com
  * @module     API Controller
  * @copyright  Ushahidi - http://www.ushahidi.com
- * @license    http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL)
+ * @license    http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL) 
  */
 ?>
 			<div class="bg">
@@ -86,7 +86,8 @@
 								<?php if ($form['enable_timeline'] !=1)
 								{
 									echo " checked=\"checked\" ";
-								}?>> <?php echo Kohana::lang('ui_main.no');?>
+								}?>> <?php echo Kohana::lang('ui_main.no');?> 
+								<!--  HT: Timeline Graph style setting -->
 								<h4><?php echo Kohana::lang('settings.graph_style');?></h4>
 								<input type="radio" name="timeline_graph" value="line"
 								<?php if ($form['timeline_graph'] != 'bar')
@@ -98,6 +99,18 @@
 								{
 									echo " checked=\"checked\" ";
 								}?>> <?php echo Kohana::lang('settings.bar');?>
+								<h4><?php echo Kohana::lang('settings.timeline_point_label');?></h4>
+								<input type="radio" name="timeline_point_label" value="1"
+								<?php if ($form['timeline_point_label'] == 1)
+								{
+									echo " checked=\"checked\" ";
+								}?>> <?php echo Kohana::lang('ui_main.yes');?>
+								<input type="radio" name="timeline_point_label" value="0"
+								<?php if ($form['timeline_point_label'] != 1)
+								{
+									echo " checked=\"checked\" ";
+								}?>> <?php echo Kohana::lang('ui_main.no');?>
+								<!--  HT: End of Timeline Graph style setting -->
 							</div>
 
 							<div class="has_border">
@@ -107,7 +120,7 @@
 								<span class="dark_span"><?php echo Kohana::lang('settings.map_provider.choose');?></span><br />
 								<div class="c_push">
 									<span class="my-sel-holder">
-										<?php
+										<?php										
 										print form::dropdown('default_map',$map_array,$form['default_map']);
 										?>
 									</span>
@@ -146,7 +159,7 @@
 									<?php if ($form['allow_clustering'] !=1)
 									{
 										echo " checked=\"checked\" ";
-									}?>> <?php echo Kohana::lang('ui_main.no');?>
+									}?>> <?php echo Kohana::lang('ui_main.no');?> 
 								</div>
 								
 								<h4><a href="#" class="tooltip" title="<?php echo Kohana::lang("tooltips.settings_default_category_colors"); ?>"><?php echo Kohana::lang('settings.site.default_category_colors');?></a></h4>
@@ -211,7 +224,7 @@
 							<p class="bold_desc"><?php echo Kohana::lang('settings.set_location');?>.</p>
 
 							<div id="map_holder">
-								<div id="map" class="mapstraction"></div>
+								<div id="map" class="mapstraction"></div>    
 							</div>
 							<div style="margin-top:25px" id="map_loaded"></div>
 						</div>

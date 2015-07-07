@@ -2,6 +2,8 @@
 	<?php echo form::open(NULL, array('method' => 'get')); ?>
 		<input type="hidden" value="0" name="currentCat" id="currentCat"/>
 		<fieldset>
+			<!-- HT: More info link -->
+			<a class="f-clear" href="#" id="timelineMoreLink" style="font-size: 11px;"><?php echo Kohana::lang('ui_main.more_information'); ?></a>
 			<!-- HT: Manual time interval for timeline select input -->
 			<label for="intervalDate"><?php echo Kohana::lang('ui_main.interval'); ?>:</label>
 			<select name="intervalDate" id="intervalDate"><?php echo $intervalDate; ?></select>
@@ -13,4 +15,6 @@
 		</fieldset>
 	<?php echo form::close(); ?>
 </div>
+<?php if (Kohana::config('settings.enable_timeline')): ?>
 <div id="graph" class="graph-holder"></div>
+<?php endif; ?>

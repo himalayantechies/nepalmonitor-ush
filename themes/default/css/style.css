@@ -513,6 +513,9 @@ ul.category-filters li a{
     position: relative;
     line-height: 17px;
     overflow: hidden;
+    /* HT : new */
+    font-size: 11px;
+    line-height: 1.3;
 }
 
 ul.category-filters li a:hover, ul.category-filters li a.active {
@@ -994,7 +997,7 @@ div.incident-notation ul li{
     font-weight: bold;
     text-decoration: underline;
 }
-
+/*
 .swatch {
     float:left;
     height:16px;
@@ -1002,11 +1005,13 @@ div.incident-notation ul li{
     width:16px;
     border:1px solid white;
 }
+*/
+.swatch { display:block; height:16px; width:16px; margin-right: 8px; border:1px solid white; float:left; overflow: hidden; }
 
 .category-title {
     padding-left: 0;
 }
-
+.category-title { display:block; padding:0 40px 0 26px; }
 
 /*-----UI Slider CSS-----*/
 .ui-slider { clear: both; top: 5px; text-decoration: none !important; }

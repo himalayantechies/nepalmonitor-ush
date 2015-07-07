@@ -71,6 +71,7 @@
 	 	 	var style = new OpenLayers.Style({
 	 	 		'externalGraphic': "${icon}",
 	 	 		'graphicTitle': "${cluster_count}",
+	 	 		//'graphicTitle': "",
 				pointRadius: "${radius}",
 				fillColor: "${color}",
 				fillOpacity: "${opacity}",
@@ -80,10 +81,18 @@
 				label:"${clusterCount}",
 				fontWeight: "${fontweight}",
 				fontColor: "#ffffff",
-				fontSize: "${fontsize}"
+				fontSize: "${fontsize}",
+				title: "${title}"
 			},
 			{
 				context: {
+					title: function(feature) {
+            			if (feature.attributes.count >= 2) {
+              				return feature.attributes.count + " reports";
+            			} else {
+              				return feature.attributes.title;
+            			}
+          			},
 					count: function(feature) {
 						if (feature.attributes.count < 2) {
 							return 2 * Ushahidi.markerRadius;

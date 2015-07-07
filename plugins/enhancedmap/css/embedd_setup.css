@@ -42,3 +42,7 @@ div#adminmap_map_embedd input{
 		color:#333;		
 		width: 99%;		
 	}
+	
+div#adminmap_map_embedd input {
+	display: none;
+}

@@ -62,14 +62,11 @@ class enhancedmap {
 	public function add()
 	{
 		//Just in case we need this
-            
-		Event::add('ushahidi_action.nav_main_top', array($this, '_add_big_map_tab'));	 //adds the big map  tab
+		Event::add('ushahidi_action.nav_main_top', array($this, '_add_big_map_tab'));	 //adds the big map  tab		
 		Event::add('ushahidi_action.nav_admin_main_top', array($this, '_admin_nav_tab'));	 //adds the admin map  tab
 		if(Router::$controller == "main")
 		{
-                        if (ORM::factory('enhancedmap_settings')->where('key', 'enable_bigmap')->find()->value == "true"){
-                            Event::add('ushahidi_action.map_main_filters', array($this, '_add_big_map_main_button'));	 //adds the big map  tab
-                        }
+			Event::add('ushahidi_action.map_main_filters', array($this, '_add_big_map_main_button'));	 //adds the big map  tab
 			//use sneaky JS
 			if (ORM::factory('enhancedmap_settings')->where('key', 'enable_iframemap')->find()->value == "true")
 			{
@@ -77,12 +74,9 @@ class enhancedmap {
 				plugin::add_stylesheet("enhancedmap/css/embedd_setup");
 				Event::add('ushahidi_action.main_sidebar', array($this, '_add_embedd'));
 			}
-                        if(ORM::factory('enhancedmap_settings')->where('key','enable_printmap')->find()->value == "true"){
-                            plugin::add_stylesheet("enhancedmap/css/printmap_link");
-                            Event::add('ushahidi_filter.map_main', array($this, '_add_printmap'));
-                        }
+			plugin::add_stylesheet("enhancedmap/css/printmap_link");
+			Event::add('ushahidi_filter.map_main', array($this, '_add_printmap'));
 		}
-            
 		//if dealing with the
 		if(Router::$controller == "reports")
 		{
@@ -95,12 +89,15 @@ class enhancedmap {
 		if(Router::$controller != "hpbigmap_json" AND Router::$controller != "hpiframemap_json"
 				AND Router::$controller != "hpadminmap_json")
 		{
+			plugin::add_javascript("enhancedmap/js/LoadingPanel");
 			Event::add('ushahidi_filter.fetch_incidents_set_params', array($this,'_add_logical_operator_filter'));
 		}
 
 		
 		if(Router::$controller == "adminmap")
 		{
+			plugin::add_javascript("enhancedmap/js/LoadingPanel");
+			//hide the content div
 			Event::add('ushahidi_action.header_scripts_admin',array($this,'_hide_content_for_adminmap'));
 		}
 		
@@ -131,10 +128,10 @@ class enhancedmap {
 		//see if the user we're dealing with can see reports
 		// If user doesn't have access, redirect to dashboard
 		if(isset($_SESSION['auth_user']))
-		{
+		{		
 			$user = new User_Model($_SESSION['auth_user']->id);
 			$user_view_reports = admin::permissions($user, "reports_view");
-		}
+		} 
 		else
 		{
 			$user_view_reports = false;
@@ -145,7 +142,7 @@ class enhancedmap {
 		//also check and see if we want to show maybe, online approved, or only unapproved, you never know.
 		//but check against the settings first
 		if((ORM::factory('enhancedmap_settings')->where('key', 'show_unapproved_backend')->find()->value == 'true' AND $on_backend)
-				OR (ORM::factory('enhancedmap_settings')->where('key', 'show_unapproved_frontend')->find()->value == 'true' AND !$on_backend AND $user_view_reports))
+				OR (ORM::factory('enhancedmap_settings')->where('key', 'show_unapproved_frontend')->find()->value == 'true' AND !$on_backend AND $user_view_reports)) 
 		{
 			if(isset($_GET['u']) AND intval($_GET['u']) > 0)
 			{
@@ -228,7 +225,7 @@ class enhancedmap {
 	 *
 	 * Description: This little zinger does all the HTTP GET parsing to figure out what categories are in play
 	 * Called as a result of the following event(s): none, this is a helper method
-	 *
+	 * 
 	 * @return array - Category IDs
 	 *
 	 * Views:
@@ -242,7 +239,7 @@ class enhancedmap {
 			if ( isset($_GET['c']) AND !is_array($_GET['c']) AND intval($_GET['c']) > 0)
 			{
 				// Get the category ID
-				$category_ids[] = intval($_GET['c']);
+				$category_ids[] = intval($_GET['c']);			
 			}
 			elseif (isset($_GET['c']) AND is_array($_GET['c']))
 			{
@@ -279,7 +276,7 @@ class enhancedmap {
 			
 		$operator = $this->_get_logical_operator();
 		$view = new View('enhancedmap/report_filter_ui');
-		$view->operator = $operator;
+		$view->operator = $operator;		
 		$view->render(true);
 	}
 	
@@ -301,7 +298,7 @@ class enhancedmap {
 	 * Results: the fetch parameters are altered
 	 */
 	public function _add_logical_operator_filter()
-	{
+	{		
 		//are we dealing with AND, cause if we're not we don't have to do anything?
 		if($this->_get_logical_operator() == "and")
 		{
@@ -326,7 +323,7 @@ class enhancedmap {
 					if($params[$i] == $category_sql)
 					{
 						$found_it = true;
-						break;
+						break;					
 					}
 				}
 				$i++;
@@ -335,7 +332,7 @@ class enhancedmap {
 			{
 				unset($params[$i]);
 				
-				$only_public = (strpos(url::current(), "admin/") === 0) ? "" : " AND amc.category_visible = 1 ";
+				$only_public = (strpos(url::current(), "admin/") === 0) ? "" : " AND amc.category_visible = 1 "; 
 				
 				//now replace it
 				$category_sql = "";
@@ -349,35 +346,14 @@ class enhancedmap {
 				}
 				elseif (isset($_GET['c']) AND is_array($_GET['c']))
 				{
-					/**
-					 * HT:
-					 * added by http://himalayantechies.com
-					 * to run query faster removed join and added AND condition
-					 * @return $sql query
-					 */
-					$sql = '';
-					foreach ($_GET['c'] as $c_id)
-					{
-						if (intval($c_id) > 0)
-						{
-							if($sql) $sql .= ' AND ';
-							$sql .= '(c.id = '.intval($c_id).' OR c.parent_id = '.intval($c_id).')';
-						}
-					}
-					array_push($params, '('.$sql.')');
-					/*
-					 * HT: removed the old condition from this plugin
-					 * as join was making it too slow
+					
 					// Sanitize each of the category ids
 					$category_ids = array();
-					$sql = '';
 					foreach ($_GET['c'] as $c_id)
 					{
 						if (intval($c_id) > 0)
 						{
 							$category_ids[] = intval($c_id);
-							if($sql) $sql .= ' AND ';
-							$sql .= '(c.id = '.intval($c_id).' OR c.parent_id = '.intval($c_id).')';
 						}
 					}
 					
@@ -393,15 +369,15 @@ class enhancedmap {
 						$category_ids = implode(",", $category_ids);
 							
 						$sql .=	'(amc.id IN ('.$category_ids.') OR amc.parent_id IN ('.$category_ids.'))';
-						$sql .= $only_public;
+						$sql .= $only_public; 
 						$sql .= ' GROUP BY incident_id HAVING COUNT(*) = '. $cat_count. ')';
 						
 						array_push($params, $sql);
-					} */
+					}
 				}//end it's an array
-				Event::$data = $params;
+				Event::$data = $params;				
 			}//end found it
-		}//end it's == and
+		}//end it's == and		
 	}//end method
 	
 	
@@ -420,7 +396,7 @@ class enhancedmap {
 	 */
 	private function _create_default_category_sql()
 	{
-		//
+		// 
 		// Check for the category parameter
 		//
 
@@ -488,7 +464,7 @@ class enhancedmap {
 	/**
 	 * Function: _add_embedd
 	 *
-	 * Description: Hides the url base for the iframe embedding code in a hidden span.
+	 * Description: Hides the url base for the iframe embedding code in a hidden span. 
 	 * Now that Ushahidi has events in the JS headers this isn't really needed.
 	 * Triggered by: ushahidi_action.main_sidebar
 	 *
@@ -606,7 +582,7 @@ class enhancedmap {
 	 * Function: _on_back_end
 	 *
 	 * Description: Looks at the URL and figures out if we're on the backend end or not
-	 *
+	 * 
 	 * @return bool - True if we're on the backend, otherwise, false.
 	 *
 	 * Views:

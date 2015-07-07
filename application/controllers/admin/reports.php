@@ -541,11 +541,11 @@ class Reports_Controller extends Admin_Controller {
 					$form['location_name'] = $feed_item->location->location_name;
 				}
 				// HT: new code
-				$feed_categories = ORM::factory('feed_category')->where('feed_item_id', $feed_item->id)->select_list('id', 'category_id');
-				if ($feed_categories)
+				$feed_item_categories = ORM::factory('feed_item_category')->where('feed_item_id', $feed_item->id)->select_list('id', 'category_id');
+				if ($feed_item_categories)
 				{
-					foreach($feed_categories as $feed_category) {
-						$form['incident_category'][] = $feed_category;
+					foreach($feed_item_categories as $feed_item_category) {
+						$form['incident_category'][] = $feed_item_category;
 					}
 				}
 				// HT: end of new code
@@ -1262,7 +1262,20 @@ class Reports_Controller extends Admin_Controller {
 		if ($_POST)
 		{
 			// Instantiate Validation, use $post, so we don't overwrite $_POST fields with our own things
-			$post = Validation::factory($_POST);
+			// HT: New code for category save with parent
+           $post = arr::extract($_POST, 'parent_id',
+                           'category_title', 'category_description', 'category_color');
+
+           // Category instance for the operation
+           $category = new Category_Model();
+           if ($category->validate($post)) {
+                   $category->save();
+                   $form_saved = TRUE;
+
+                   echo json_encode(array("status"=>"saved", "id"=>$category->id));
+           }
+           // HT: End of code for category save with parent
+           /*$post = Validation::factory($_POST);
 
 			 //	Add some filters
 			$post->pre_filter('trim', TRUE);
@@ -1284,7 +1297,7 @@ class Reports_Controller extends Admin_Controller {
 				$form_saved = TRUE;
 
 				echo json_encode(array("status"=>"saved", "id"=>$category->id));
-			}
+			} */
 			else
 			{
 				echo json_encode(array("status"=>"error"));
@@ -1301,10 +1314,25 @@ class Reports_Controller extends Admin_Controller {
 	// Dynamic categories form fields
 	private function _new_categories_form_arr()
 	{
+		// HT: Parent category list
+       $parents_array = ORM::factory('category')
+       ->where('parent_id','0')
+       ->where('category_trusted != 1')
+       ->select_list('id', 'category_title');
+
+       // add none to the list
+       $parents_array[0] = "--- Top Level Category ---";
+
+       // Put "--- Top Level Category ---" at the top of the list
+       ksort($parents_array);
+       // HT: End of Parent category list
+			
 		return array(
 			'category_name' => '',
 			'category_description' => '',
 			'category_color' => '',
+           'parent_id' => 0, // HT: new category parent
+           'category_parent_array' => $parents_array, // HT: new category parent
 		);
 	}
 

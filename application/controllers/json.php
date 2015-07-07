@@ -228,7 +228,8 @@ class Json_Controller extends Template_Controller {
 				'thumb' => $thumb,
 				'timestamp' => strtotime($marker->incident_date),
 				'count' => 1,
-				'class' => get_class($marker)
+				'class' => get_class($marker),
+				'title'  => $marker->incident_title
 			);
 			$json_item['geometry'] = array(
 				'type' => 'Point',
@@ -601,6 +602,14 @@ class Json_Controller extends Template_Controller {
 			array_push($graph_data[0]['data'], array((int)$_GET['s'] * 1000, 0));
 			array_push($graph_data[0]['data'], array((int)$_GET['e'] * 1000, 0));
 		}
+       // HT: If only one point append start and end with 0 unless start or end has value
+       elseif (count($graph_data[0]['data']) == 1) {
+               $start = $end = false;
+               if($graph_data[0]['data'][0][0] == (int)$_GET['s']) $start = true;
+               if($graph_data[0]['data'][0][0] == (int)$_GET['e']) $end = true;
+               if(!$start) array_unshift($graph_data[0]['data'], array((int)$_GET['s'] * 1000, 0));
+               if(!$end) array_push($graph_data[0]['data'], array((int)$_GET['e'] * 1000, 0));
+       }
 
 		// Debug: push the query back in json
 		//$graph_data['query'] = $db->last_query();
