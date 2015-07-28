@@ -311,7 +311,7 @@ class Manage_Controller extends Admin_Controller
 					$form_action = utf8::strtoupper(Kohana::lang('ui_admin.modified'));
 				}
 			}
-			kmlfilter_helper::layer_placemark($layer->id);
+			
 
 		}
 
@@ -895,6 +895,7 @@ class Manage_Controller extends Admin_Controller
 					$form_action = utf8::strtoupper(Kohana::lang('ui_admin.modified'));
 				}
 			}
+			kmlfilter_helper::layer_placemark($layer->id);
 		}
 
 		// Pagination
