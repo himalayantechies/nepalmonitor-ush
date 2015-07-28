@@ -4,14 +4,14 @@
  * then a full URL will be used, eg: http://localhost/ushahidi/. If it only includes
  * the path, and a site_protocol is specified, the domain will be auto-detected.
  */
-$config['site_domain'] = '/nepalmonitor';
+$config['site_domain'] = '/projects/nepalmonitor';
 
 /**
  * Force a default protocol to be used by the site. If no site_protocol is
  * specified, then the current protocol is used, or when possible, only an
  * absolute path (with no protocol/domain) is used.
  */
-$config['site_protocol'] = 'http';
+$config['site_protocol'] = 'https';
 
 /**
  * Name of the front controller for this application. Default: index.php
@@ -70,7 +70,6 @@ $config['output_compression'] = TRUE;
  * Enable or disable global XSS filtering of GET, POST, and SERVER data. This
  * option also accepts a string to specify a specific XSS filtering tool.
  */
-//$config['global_xss_filtering'] = TRUE;
 $config['global_xss_filtering'] = 'htmlpurifier';
 
 /**
@@ -148,15 +147,6 @@ $config['installer_check'] = FALSE;
  * Output scheduler JS in footer
  */
 $config['output_scheduler_js'] = FALSE;
-
-/**
- * Protocol to use for loading external requests
- *
- * This is used for requests from PHP to external APIs that offer
- * both http and https. Normally this should default to 'https'
- * but some countries/firewalls block https requests so its a setting.
- */
-$config['external_site_protocol'] = 'https';
 
 /**
  * Additional resource paths, or "modules". Each path can either be absolute

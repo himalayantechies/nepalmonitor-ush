@@ -286,7 +286,7 @@
 	<!-- /content blocks -->
 		</div>
 		<div style="margin-top: 10px;">
-			<iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fnepalmonitor&amp;width=902&amp;height=550&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=True&amp;header=false&amp;appId=140091756132653" scrolling="yes" frameborder="0" style="border:none; overflow:hidden; width:49%; height:550px; margin-right: 2%; float: left;" allowTransparency="true"></iframe>
+			<div class="fb-page" data-href="https://www.facebook.com/nepalmonitor" data-width="450" data-height="600" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/nepalmonitor"><a href="https://www.facebook.com/nepalmonitor">NepalMonitor.org</a></blockquote></div></div>
 			<a class="twitter-timeline" href="https://twitter.com/Nepal_Monitor" data-widget-id="591117697875750912">Tweets by @Nepal_Monitor</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 			<style>
