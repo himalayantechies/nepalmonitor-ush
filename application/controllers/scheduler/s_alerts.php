@@ -128,20 +128,24 @@ class S_Alerts_Controller extends Controller {
 			$sms_message = str_replace("\n", " ", $sms_message);
 			// Shorten to text message size
 			$sms_incident_url = url::site().'r/'.$incident->id;
+			$sms_incident_url = str_replace("nepalmonitor.org", "Nepalmonitor.org", $sms_incident_url);
+			$sms_incident_url = str_replace("www.", "", $sms_incident_url);
+			$sms_incident_url = str_replace("http://", "", $sms_incident_url);
+			$sms_incident_url = str_replace("https://", "", $sms_incident_url);
 			
             if(Kohana::config("settings.sms_alert_url"))
             {
-                   $sms_message = text::limit_chars($sms_message, 100, "..."); // HT: Decreased sms length of sms to add incident_
+                   $sms_message = text::limit_chars($sms_message, (160 - strlen($sms_incident_url) - 2), "..."); // HT: Decreased sms length of sms to add incident_
                    if(strpos($sms_message, '.') !== false) {
-						$sms_message = substr($sms_message, 0, strpos($sms_message, '.')+1);
+						$sms_message = substr($sms_message, 0, strpos($sms_message, '.') + 1);
 				   }
-                   $sms_message .= " ".$sms_incident_url; // HT: Added incident_url to sms
+                   $sms_message .= " " . $sms_incident_url; // HT: Added incident_url to sms
             }
             else
             {
-                   $sms_message = text::limit_chars($sms_message, 150, "...");
+                   $sms_message = text::limit_chars($sms_message, 160, "...");
 				   if(strpos($sms_message, '.') !== false) {
-						$sms_message = substr($sms_message, 0, strpos($sms_message, '.')+1);
+						$sms_message = substr($sms_message, 0, strpos($sms_message, '.') + 1);
 				   }
             }
 			
