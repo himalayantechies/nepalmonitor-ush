@@ -73,6 +73,14 @@ class nav_Core {
 			 	$menu .= ">".Kohana::lang('ui_main.contact')."</a></li>";	
 			}
 		}
+
+                // Blog
+                if( ! in_array('blog',$dontshow))
+                {
+							$menu .= "<li><a href=\"".url::site()."blog\" ";
+							$menu .= ($this_page == 'blog') ? " class=\"active\"" : "";
+							$menu .= ">".Kohana::lang('ui_main.blog')."</a></li>";
+                }
 		
 		// Custom Pages
 		
