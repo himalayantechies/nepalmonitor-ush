@@ -47,7 +47,8 @@ class Alerts_Controller extends Admin_Controller {
 			}
 			elseif ($type == '2')
 			{ // EMAIL
-				$filter = 'alert_type=2';
+				//$filter = 'alert_type=2'; // HT: email digest
+				$filter = 'alert_type IN (2,3)';
 			}
 			else
 			{ // ALL

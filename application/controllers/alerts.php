@@ -49,6 +49,14 @@ class Alerts_Controller extends Main_Controller {
 			$this->template->content->show_mobile = FALSE;
 		}
 
+		// Display Email Digest Option?
+		$this->template->content->show_digest = TRUE; // HT: email digest
+		if (!Kohana::config('settings.email_digest')) // HT: email digest
+		{
+			// Hide Email Digest
+			$this->template->content->show_digest = FALSE; // HT: email digest
+		}
+		
 		// Retrieve default country, latitude, longitude
 		$default_country = Kohana::config('settings.default_country');
 
@@ -64,6 +72,7 @@ class Alerts_Controller extends Main_Controller {
 			'alert_mobile_yes' => '',
 			'alert_email' => '',
 			'alert_email_yes' => '',
+			'alert_digest_yes' => '', // HT: email digest
 			'alert_lat' => '',
 			'alert_lon' => '',
 			'alert_radius' => '',
@@ -197,7 +206,15 @@ class Alerts_Controller extends Main_Controller {
 			// Hide Mobile
 			$this->template->content->show_mobile = FALSE;
 		}
-
+		
+		// Display Email Digest Option?
+		$this->template->content->show_digest = TRUE;  // HT: email digest
+		if (empty($_SESSION['alert_email']) || !Kohana::config('settings.email_digest'))  // HT: email digest
+		{
+			// Hide Email Digest
+			$this->template->content->show_digest = FALSE;  // HT: email digest
+		}
+		
 		// Rebuild Header Block
 		$this->template->header->header_block = $this->themes->header_block();
 		$this->template->footer->footer_block = $this->themes->footer_block();
@@ -235,7 +252,8 @@ class Alerts_Controller extends Main_Controller {
 			}
 			elseif (isset($_POST['alert_email']) AND ! empty($_POST['alert_email']))
 			{
-				$filter = "alert.alert_type=2 AND alert_code='".Database::instance()->escape_str($_POST['alert_code'])."' AND alert_recipient='".Database::instance()->escape_str($_POST['alert_email'])."' ";
+				/*$filter = "alert.alert_type=2 AND alert_code='".Database::instance()->escape_str($_POST['alert_code'])."' AND alert_recipient='".Database::instance()->escape_str($_POST['alert_email'])."' ";*/
+				$filter = "alert.alert_type IN(2,3) AND alert_code='".Database::instance()->escape_str($_POST['alert_code'])."' AND alert_recipient='".Database::instance()->escape_str($_POST['alert_email'])."' ";  // HT: email digest
 			}
 			else
 			{
