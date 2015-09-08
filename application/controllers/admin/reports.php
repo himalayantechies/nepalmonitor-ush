@@ -178,6 +178,7 @@ class Reports_Controller extends Admin_Controller {
 								// 2 = report that has had an alert sent
 								$update->incident_alert_status = '1';
 							}
+							$update->incident_datemodify = date("Y-m-d H:i:s",time());
 							$update->save();
 
 							// Record 'Verified By' Action
