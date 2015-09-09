@@ -113,7 +113,7 @@ class S_Digest_Controller extends Controller {
                        incident_description, incident_verified,
                        l.latitude, l.longitude FROM " . $this -> table_prefix . "incident AS i INNER JOIN " . $this -> table_prefix . "location AS l ON i.location_id = l.id
                        WHERE i.incident_active=1 AND i.incident_alert_status = 2 
-					   AND (DATE(i.incident_datemodify) >= " . ($settings['last_digest_schedule']) . ")";
+					   AND (DATE(i.incident_datemodify) >= '" . ($settings['last_digest_schedule']) . "')";
 			if (!empty($alert_sent))
 				$incident_query .= " AND i.id NOT IN " . $alert_sent;
 			if ($digest_days = $settings['digest_days']) {
