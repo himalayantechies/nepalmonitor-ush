@@ -120,8 +120,9 @@ class S_Digest_Controller extends Controller {
 				$incident_query .= " AND DATE(i.incident_datemodify) >= DATE_SUB( CURDATE(), INTERVAL " . ($digest_days) . " DAY )";
 			}
 			$incidents = $db -> query($incident_query);
-			
 			foreach ($incidents as $incident) {
+				$longitude2 = $incident->longitude;
+				$latitude2 = $incident->latitude;
 				$alert_incident = array();
 				// HT: check same alert_receipent multi subscription does not get multiple alert
 				if ($this -> _multi_subscribe($alertee, $incident -> id)) {
@@ -129,10 +130,10 @@ class S_Digest_Controller extends Controller {
 
 				}
 				// Check the categories
-				if (!$this -> _check_categories($alertee, $category_ids)) {
+				if (!$this -> _check_categories($incident, $category_ids)) {
 					continue;
 				}
-
+				
 				$distance = (string)new Distance($latitude, $longitude, $latitude2, $longitude2);
 
 				// If the calculated distance between the incident and the alert fits...
@@ -198,13 +199,13 @@ class S_Digest_Controller extends Controller {
 		}
 	}
 
-	private function _check_categories(Incident_Model $incident, array $category_ids) {
+	private function _check_categories($incident, array $category_ids) {
 		$ret = false;
-
 		$incident_categories = ORM::factory('incident_category') -> where('incident_id', $incident -> id) -> find_all();
-
 		if (count($incident_categories) == 0) {
 			$ret = true;
+		} elseif(empty($category_ids)) {
+				$ret = true;
 		} else {
 			foreach ($incident_categories as $ic) {
 				if (array_key_exists((string)$ic -> category_id, $category_ids)) {
@@ -212,7 +213,6 @@ class S_Digest_Controller extends Controller {
 				}
 			}
 		}
-
 		return $ret;
 	}
 
@@ -222,7 +222,7 @@ class S_Digest_Controller extends Controller {
 	 * @param integer $incident_id
 	 * @return boolean
 	 */
-	private function _multi_subscribe(Alert_Model $alertee, $incident_id) {
+	private function _multi_subscribe($alertee, $incident_id) {
 		$multi_subscribe_ids = ORM::factory('alert') -> where('alert_confirmed', '1') -> where('alert_recipient', $alertee -> alert_recipient) -> where('alert_type', 3) -> select_list('id', 'id');
 		$subscription_alert = ORM::factory('alert_sent') -> where('incident_id', $incident_id) -> in('alert_id', $multi_subscribe_ids) -> find();
 		return ((boolean)$subscription_alert -> id);
