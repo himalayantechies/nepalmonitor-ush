@@ -203,7 +203,7 @@ class S_Digest_Controller extends Controller {
 		$ret = false;
 		$incident_categories = ORM::factory('incident_category') -> where('incident_id', $incident -> id) -> find_all();
 		if (count($incident_categories) == 0) {
-			$ret = true;
+			$ret = false;
 		} elseif(empty($category_ids)) {
 				$ret = true;
 		} else {
