@@ -77,7 +77,7 @@ class S_Digest_Controller extends Controller {
 		// Fixes an issue with one report being sent out as an alert more than ones
 		// becoming spam to users
 
-		$alert_query = "SELECT *, MAX(s.alert_date) as last_date FROM " . $this -> table_prefix . "alert AS a 
+		$alert_query = "SELECT a.*, MAX(s.alert_date) as last_date FROM " . $this -> table_prefix . "alert AS a 
 			LEFT JOIN " . $this -> table_prefix . "alert_sent AS s ON
 				a.id = s.alert_id
 			WHERE a.alert_type = 3
@@ -113,14 +113,16 @@ class S_Digest_Controller extends Controller {
                        incident_description, incident_verified,
                        l.latitude, l.longitude FROM " . $this -> table_prefix . "incident AS i INNER JOIN " . $this -> table_prefix . "location AS l ON i.location_id = l.id
                        WHERE i.incident_active=1 AND i.incident_alert_status = 2 
-					   AND (DATE(i.incident_datemodify) >= '" . ($settings['last_digest_schedule']) . "')";
+					   AND (DATE_FORMAT(i.incident_datemodify,'%Y-%m-%d %T')>= '" . ($settings['last_digest_schedule']) . "') ";
 			if (!empty($alert_sent))
 				$incident_query .= " AND i.id NOT IN " . $alert_sent;
 			if ($digest_days = $settings['digest_days']) {
-				$incident_query .= " AND DATE(i.incident_datemodify) >= DATE_SUB( CURDATE(), INTERVAL " . ($digest_days) . " DAY )";
+				$incident_query .= " AND DATE_FORMAT(i.incident_datemodify,'%Y-%m-%d %T') >= DATE_SUB( NOW(), INTERVAL " . ($digest_days) . " DAY )";
 			}
+			$incident_query .= " ORDER BY i.latitude DESC";
 			$incidents = $db -> query($incident_query);
 			foreach ($incidents as $incident) {
+				
 				$longitude2 = $incident->longitude;
 				$latitude2 = $incident->latitude;
 				$alert_incident = array();
@@ -142,7 +144,7 @@ class S_Digest_Controller extends Controller {
 					$incident_url = url::site() . 'reports/view/' . $incident -> id;
 					$html2text = new Html2Text($incident_description);
 					// HT: br for \n
-					$email_message = $incident_description . "<br/><br/>" . $incident_url;
+					$email_message = $incident_description . "<br/><br/>" . $incident_url.'<br/><br/><hr><br/><br/>';
 					$alert_incident[] = $incident -> id;
 					$message = $email_message . $message;
 				}
