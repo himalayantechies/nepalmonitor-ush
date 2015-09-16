@@ -88,6 +88,7 @@ class S_Digest_Controller extends Controller {
 		$alertees = $db -> query($alert_query);
 
 		foreach ($alertees as $alertee) {
+			$alert_incident = array();
 			if($alertee->last_date > $settings['last_digest_schedule']) continue;
 			
 			$alert_radius = (int)$alertee -> alert_radius;
@@ -125,7 +126,6 @@ class S_Digest_Controller extends Controller {
 				
 				$longitude2 = $incident->longitude;
 				$latitude2 = $incident->latitude;
-				$alert_incident = array();
 				// HT: check same alert_receipent multi subscription does not get multiple alert
 				if ($this -> _multi_subscribe($alertee, $incident -> id)) {
 					continue;
@@ -145,7 +145,7 @@ class S_Digest_Controller extends Controller {
 					$html2text = new Html2Text($incident_description);
 					// HT: br for \n
 					$email_message = $incident_description . "<br/><br/>" . $incident_url.'<br/><br/><hr><br/><br/>';
-					$alert_incident[] = $incident -> id;
+					$alert_incident[$incident -> id] = $incident -> id;
 					$message = $email_message . $message;
 				}
 
