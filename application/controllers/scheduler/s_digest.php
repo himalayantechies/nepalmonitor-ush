@@ -106,6 +106,7 @@ class S_Digest_Controller extends Controller {
 			$subject = "[$site_name] Email Digest";
 			// HT: html br for \n
 			$message = "<br/><br/>" . $unsubscribe_message . $alertee -> alert_code . '<br/>' . Kohana::lang('alerts.disclaimer') . "<br/>";
+			$incident_msg_list = "";
 
 			// Get all incidents
 			$alert_sent = ORM::factory('alert_sent') -> where('alert_id', $alertee -> id) -> select_list('id', 'incident_id');
@@ -120,7 +121,7 @@ class S_Digest_Controller extends Controller {
 			if ($digest_days = $settings['digest_days']) {
 				$incident_query .= " AND DATE_FORMAT(i.incident_datemodify,'%Y-%m-%d %T') >= DATE_SUB( NOW(), INTERVAL " . ($digest_days) . " DAY )";
 			}
-			$incident_query .= " ORDER BY l.latitude DESC";
+			$incident_query .= " ORDER BY l.latitude ASC";
 			$incidents = $db -> query($incident_query);
 			foreach ($incidents as $incident) {
 				
@@ -140,16 +141,20 @@ class S_Digest_Controller extends Controller {
 
 				// If the calculated distance between the incident and the alert fits...
 				if ($distance <= $alert_radius) {
+					$incident_title = '<span id="title-'.$incident -> id.'">'.$incident -> incident_title.'</span>';
+					$title_anchor = '<a href="#title-'.$incident -> id.'">'.$incident -> incident_title.'</a><br/>';
 					$incident_description = $incident -> incident_description;
 					$incident_url = url::site() . 'reports/view/' . $incident -> id;
 					$html2text = new Html2Text($incident_description);
 					// HT: br for \n
-					$email_message = $incident_description . "<br/><br/>" . $incident_url.'<br/><br/><hr><br/><br/>';
+					$email_message = $incident_title . "<br/><br/>". $incident_description . "<br/><br/>" . $incident_url.'<br/><br/><hr><br/><br/>';
 					$alert_incident[$incident -> id] = $incident -> id;
 					$message = $email_message . $message;
+					$incident_msg_list =  $title_anchor . $incident_msg_list;
 				}
 
 			}
+			$message = $incident_msg_list . "<br/><br/>" . $message;
 			if(!empty($alert_incident)) {
 				if (email::send($to, $from, $subject, $message, TRUE) == 1)// HT: New Code to make email as html
 				{
