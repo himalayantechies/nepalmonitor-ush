@@ -117,7 +117,7 @@ class S_Digest_Controller extends Controller {
                        WHERE i.incident_active=1 AND i.incident_alert_status = 2 
 					   AND (DATE_FORMAT(i.incident_datemodify,'%Y-%m-%d %T')>= '" . ($settings['last_digest_schedule']) . "') ";
 			if (!empty($alert_sent))
-				$incident_query .= " AND i.id NOT IN " . $alert_sent;
+				$incident_query .= " AND i.id NOT IN (" . $alert_sent. ")";
 			if ($digest_days = $settings['digest_days']) {
 				$incident_query .= " AND DATE_FORMAT(i.incident_datemodify,'%Y-%m-%d %T') >= DATE_SUB( NOW(), INTERVAL " . ($digest_days) . " DAY )";
 			}
