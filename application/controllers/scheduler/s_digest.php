@@ -158,7 +158,7 @@ class S_Digest_Controller extends Controller {
 				}
 
 			}
-			$message = $incident_msg_list . "<br/><br/>" . $company_note. $message . $message_end;
+			$message = $company_note. $incident_msg_list . "<br/><br/>" . $message . $message_end;
 			if(!empty($alert_incident)) {
 				if (email::send($to, $from, $subject, $message, TRUE) == 1)// HT: New Code to make email as html
 				{
