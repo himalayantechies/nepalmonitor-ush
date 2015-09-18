@@ -87,9 +87,9 @@ class S_Digest_Controller extends Controller {
 			ORDER BY s.alert_date DESC";
 
 		$alertees = $db -> query($alert_query);
-
 		foreach ($alertees as $alertee) {
 			$alert_incident = array();
+			
 			if($alertee->last_date > $settings['last_digest_schedule']) continue;
 			
 			$alert_radius = (int)$alertee -> alert_radius;
@@ -104,7 +104,7 @@ class S_Digest_Controller extends Controller {
 			$from = array();
 			$from[] = $alerts_email;
 			$from[] = $site_name;
-			$subject = "[$site_name] Email Digest - ".date("dd M, Y");
+			$subject = "[$site_name] Email Digest - ".date("M d, Y");
 			// HT: html br for \n
 			$message_end = "<br/><br/>" . $unsubscribe_message . $alertee -> alert_code . '<br/>' . Kohana::lang('alerts.disclaimer') . "<br/>";
 			$incident_msg_list = "";
@@ -124,8 +124,9 @@ class S_Digest_Controller extends Controller {
 				$incident_query .= " AND DATE_FORMAT(i.incident_datemodify,'%Y-%m-%d %T') >= DATE_SUB( NOW(), INTERVAL " . ($digest_days) . " DAY )";
 			}
 			$incident_query .= " ORDER BY l.latitude DESC";
+			
 			$incidents = $db -> query($incident_query);
-			$incident_count = 1;
+			$incident_count = 0;
 			foreach ($incidents as $incident) {
 				
 				$longitude2 = $incident->longitude;
@@ -144,7 +145,8 @@ class S_Digest_Controller extends Controller {
 
 				// If the calculated distance between the incident and the alert fits...
 				if ($distance <= $alert_radius) {
-					$incident_title = '<span id="title-'.$incident -> id.'">'.$incident_count.'. '.$incident -> incident_title.'</span>';
+					$incident_count++;
+					$incident_title = '<a name="title-'.$incident -> id.'"><h4 id="title-'.$incident -> id.'">'.$incident_count.'. '.$incident -> incident_title.'</h4></a>';
 					$title_anchor = '<a href="#title-'.$incident -> id.'">'.$incident_count.'. '.$incident -> incident_title.'</a><br/>';
 					$incident_description = $incident -> incident_description;
 					$incident_url = url::site() . 'reports/view/' . $incident -> id;
@@ -154,11 +156,16 @@ class S_Digest_Controller extends Controller {
 					$alert_incident[$incident -> id] = $incident -> id;
 					$message .= $email_message;
 					$incident_msg_list .=  $title_anchor;
-					$incident_count++;
+					
 				}
 
 			}
-			$message = $company_note. $incident_msg_list . "<br/><br/>" . $message . $message_end;
+
+			$incident_head = '<b>'.$incident_count.' '.Kohana::lang('ui_main.incident');
+			$incident_head .= ($incident_count > 1) ? 's' : '';
+			$incident_head .= ' dated '.date("M d, Y").'</b><br/><br/>';
+			
+			$message = $company_note. $incident_head. $incident_msg_list . "<br/><br/>" . $message . $message_end;
 			if(!empty($alert_incident)) {
 				if (email::send($to, $from, $subject, $message, TRUE) == 1)// HT: New Code to make email as html
 				{
