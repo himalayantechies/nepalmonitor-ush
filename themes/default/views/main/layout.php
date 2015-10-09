@@ -286,13 +286,16 @@
 	<!-- /content blocks -->
 		</div>
 		<div style="margin-top: 10px;">
-			<div class="fb-page" data-href="https://www.facebook.com/nepalmonitor" data-width="450" data-height="600" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/nepalmonitor"><a href="https://www.facebook.com/nepalmonitor">NepalMonitor.org</a></blockquote></div></div>
+			<div class="fb-page" data-href="https://www.facebook.com/nepalmonitor" data-width="450" data-height="600" 
+				 data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true" data-show-posts="true">
+				 <div class="fb-xfbml-parse-ignore">
+				 	<blockquote cite="https://www.facebook.com/nepalmonitor"><a href="https://www.facebook.com/nepalmonitor">NepalMonitor.org</a></blockquote>
+				 </div>
+			</div>
 			<a class="twitter-timeline" href="https://twitter.com/Nepal_Monitor" data-widget-id="591117697875750912">Tweets by @Nepal_Monitor</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 			<style>
-				#twitter-widget-0 {
-					width: 49% !important;
-				}
+				.twitter-timeline {width: 49% !important;display: inline-block !important;}
 			</style>
 		</div>
 </div>
