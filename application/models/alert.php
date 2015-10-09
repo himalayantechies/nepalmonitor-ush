@@ -159,11 +159,11 @@ class Alert_Model extends ORM {
 
 		if ( $post->alert_email AND (bool) $this->db
 			->where(array(
-					'alert_type' => 2,
+					//'alert_type' => 2, // HT: email digest
 					'alert_recipient' => $post->alert_email,
 					'alert_lat' => $post->alert_lat,
 					'alert_lon' => $post->alert_lon
-				))
+				))->in('alert_type', array(2,3)) // HT: email digest
 			->count_records($this->table_name) )
 		{
 			$post->add_error('alert_email', 'email_check');

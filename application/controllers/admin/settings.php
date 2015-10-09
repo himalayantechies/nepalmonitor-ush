@@ -738,7 +738,9 @@ class Settings_Controller extends Admin_Controller {
 			'email_port' => '',
 			'email_host' => '',
 			'email_servertype' => '',
-			'email_ssl' => ''
+			'email_ssl' => '',
+			'email_digest' => '', // HT: email digest
+			'digest_days' => '' // HT: email digest
 		);
 		//	Copy the form as errors, so the errors will be stored with keys
 		//	corresponding to the form field names
@@ -805,7 +807,9 @@ class Settings_Controller extends Admin_Controller {
 				'email_port' => $settings['email_port'],
 				'email_host' => $settings['email_host'],
 				'email_servertype' => $settings['email_servertype'],
-				'email_ssl' => $settings['email_ssl']
+				'email_ssl' => $settings['email_ssl'],
+				'email_digest' => $settings['email_digest'], // HT: email digest
+				'digest_days' => $settings['digest_days'], // HT: email digest
 			);
 		}
 
@@ -814,6 +818,7 @@ class Settings_Controller extends Admin_Controller {
 		$this->template->content->form_error = $form_error;
 		$this->template->content->form_saved = $form_saved;
 		$this->template->content->email_ssl_array = array('1'=>Kohana::lang('ui_admin.yes'),'0'=>Kohana::lang('ui_admin.no'));
+		$this->template->content->email_digest_array = array('1'=>Kohana::lang('ui_admin.yes'),'0'=>Kohana::lang('ui_admin.no')); // HT: email digest
 
 		// Javascript Header
 		$this->template->js = new View('admin/settings/email_js');

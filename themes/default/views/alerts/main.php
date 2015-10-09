@@ -55,6 +55,27 @@
 							</label>
 							<span><?php print form::input('alert_email', $form['alert_email'], ' class="text long"'); ?></span>
 						</div>
+						
+						<?php // HT: email digest start
+						if ($show_digest == TRUE): ?>
+						<div class="box">
+							<label>
+								<?php $checked = ($form['alert_digest_yes'] == 1) ?> 
+								<?php print form::checkbox('alert_digest_yes', '1', $checked); ?>
+								<span>
+									<strong><?php echo Kohana::lang('ui_main.alerts_digest'); ?></strong><br />
+									<?php 
+									if(Kohana::config('settings.digest_days') > 1) {
+										echo str_replace('{day/s}', Kohana::lang('ui_main.days_label'), str_replace('{xx}', Kohana::config('settings.digest_days'), Kohana::lang('ui_main.alerts_digest_note'))); 
+									} else {
+										echo str_replace('{day/s}', Kohana::lang('ui_main.day_label'), str_replace('{xx}', Kohana::config('settings.digest_days'), Kohana::lang('ui_main.alerts_digest_note')));
+									} 							
+									?>
+								</span>
+							</label>
+						</div>
+						<?php endif; // HT: email digest end 
+						?>
 					</div>
 				</div>
 				<div class="step-3">

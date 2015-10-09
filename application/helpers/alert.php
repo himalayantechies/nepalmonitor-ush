@@ -13,6 +13,7 @@ class alert_Core {
 
 	const MOBILE_ALERT = 1;
 	const EMAIL_ALERT = 2;
+	const DIGEST_ALERT = 3; // HT: email digest
 
 	/**
 	 * Sends an alert to a mobile phone
@@ -149,6 +150,7 @@ class alert_Core {
 		if (email::send($to, $from, $subject, $message, TRUE) == 1)
 		{
 			$alert->alert_type = self::EMAIL_ALERT;
+			if($post['alert_digest_yes']) $alert->alert_type = self::DIGEST_ALERT; // HT: email digest
 			$alert->alert_recipient = $alert_email;
 			$alert->alert_code = $alert_code;
 			if (isset($_SESSION['auth_user']))

@@ -119,6 +119,22 @@
 						<span>
 							<?php echo Kohana::lang('ui_main.email_settings_comment_6');?>
 						</span>
+						<!-- HT: email digest -->
+						<div class="row">
+							<h4><a href="#" class="tooltip" title="<?php echo Kohana::lang("tooltips.settings_server_digest_enable"); ?>"><?php echo Kohana::lang('ui_main.settings_server_digest_enable');?></a></h4>
+								<?php print form::dropdown('email_digest', $email_digest_array, $form['email_digest']); ?>
+						</div>
+						<span>
+							<?php echo Kohana::lang('ui_main.email_settings_comment_7');?>
+						</span>
+						<div class="row">
+							<h4><a href="#" class="tooltip" title="<?php echo Kohana::lang("tooltips.email_digest_days"); ?>"><?php echo Kohana::lang('ui_main.email_digest_days');?></a></h4>
+							<?php print form::input('digest_days', $form['digest_days'], ' class="text long2"'); ?>
+						</div>
+						<span>
+							<?php echo Kohana::lang('ui_main.email_settings_comment_8');?>
+						</span>
+						<!-- HT: email digest -->
 					</div>
 		
 					<div class="simple_border"></div>
