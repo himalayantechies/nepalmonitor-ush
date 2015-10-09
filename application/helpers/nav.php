@@ -74,13 +74,7 @@ class nav_Core {
 			}
 		}
 
-                // Blog
-                if( ! in_array('blog',$dontshow))
-                {
-							$menu .= "<li><a href=\"".url::site()."blog\" ";
-							$menu .= ($this_page == 'blog') ? " class=\"active\"" : "";
-							$menu .= ">".Kohana::lang('ui_main.blog')."</a></li>";
-                }
+               
 		
 		// Custom Pages
 		
@@ -97,9 +91,14 @@ class nav_Core {
 				}
 			}
 		}
-
+ 		// Blog
+                if( ! in_array('blog',$dontshow))
+                {
+							$menu .= "<li><a href=\"".url::site()."blog\" ";
+							$menu .= ($this_page == 'blog') ? " class=\"active\"" : "";
+							$menu .= ">".Kohana::lang('ui_main.blog')."</a></li>";
+                }
 		echo $menu;
-		
 		// Action::nav_admin_reports - Add items to the admin reports navigation tabs
 		Event::run('ushahidi_action.nav_main_top', $this_page);
 	}
