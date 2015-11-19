@@ -150,7 +150,7 @@ class alert_Core {
 		if (email::send($to, $from, $subject, $message, TRUE) == 1)
 		{
 			$alert->alert_type = self::EMAIL_ALERT;
-			if($post['alert_digest_yes']) $alert->alert_type = self::DIGEST_ALERT; // HT: email digest
+			if(isset($post['alert_digest_yes']) && $post['alert_digest_yes']) $alert->alert_type = self::DIGEST_ALERT; // HT: email digest
 			$alert->alert_recipient = $alert_email;
 			$alert->alert_code = $alert_code;
 			if (isset($_SESSION['auth_user']))
@@ -207,6 +207,7 @@ class alert_Core {
 			'alert_lat'=> isset($geocoder['lat']) ? $geocoder['lat'] : FALSE,
 			'alert_radius'=>'20',
 			'alert_confirmed'=>'1'
+			
 		);
 
 		// Create ORM object for the alert and validate
