@@ -38,8 +38,11 @@ $lang = array(
 	'code_verified' => ' Your code was verified correctly. You will now receive alerts about incidents as they happen.',
 	'confirm_request' => 'To confirm your alert request, please go to ',
 	'create_more_alerts' => 'Return to the Alerts page to create more alerts',
+	'digest_company_title' => 'Human Rights. Security. Nepal',
 	'digest_company_note' => 'NepalMonitor.org is a COCAP protection and conflict prevention
 initiative, supported by pbi.',
+	'digest_unsubscribe' => 'Report incidents to NepalMonitor.org by sending e-mails to alert@nepalmonitor.org or SMS to: 9808975502. The reports will be published online at NepalMonitor.org, forwarded to relevant organizations, and sent by e-mail and SMS to alert subscribers in your area. You can check for the latest reports on NepalMonitor.org. Please also check out our NepalMonitor.org/blog.
+You have received this email because you subscribed to receive daily Email disgest. If you do not want to receive future digests go to - ',
 	'email_alert_request_created' => 'Your Email Alert request has been created and verification message has been sent to ',
 	'email_code' => 'Please enter the Email confirmation code you received below: ',
 	'email_error_head' => 'Your Email Alert Request Has NOT Been Saved!',

@@ -270,7 +270,7 @@ class Alerts_Controller extends Main_Controller {
 			else
 			{
 				if(! empty($email)) // HT: condition to check email alert
-					$filter = "alert.alert_type=2 AND alert_code='".Database::instance()->escape_str($code)."' AND alert_recipient='".Database::instance()->escape_str($email)."' ";
+					$filter = "(alert.alert_type=2 OR alert.alert_type=3) AND alert_code='".Database::instance()->escape_str($code)."' AND alert_recipient='".Database::instance()->escape_str($email)."' ";
 				elseif(! empty($mobile)) // HT: condition to check mobile alert
 				$filter = "alert.alert_type=1 AND alert_code='".Database::instance()->escape_str(utf8::strtoupper($code))."' AND alert_recipient='".Database::instance()->escape_str($mobile)."' ";
 			}

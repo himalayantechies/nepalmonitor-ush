@@ -55,7 +55,7 @@ class S_Digest_Controller extends Controller {
 		}
 		$site_name = $settings['site_name'];
 		$alerts_email = ($settings['alerts_email']) ? $settings['alerts_email'] : $settings['site_email'];
-		$unsubscribe_message = Kohana::lang('alerts.unsubscribe') . url::site() . 'alerts/unsubscribe/';
+		//$unsubscribe_message = Kohana::lang('alerts.unsubscribe') . url::site() . 'alerts/unsubscribe/';
 		$company_note = Kohana::lang('alerts.digest_company_note')."<br/><br/>";
 
 		$database_settings = kohana::config('database');
@@ -104,9 +104,11 @@ class S_Digest_Controller extends Controller {
 			$from = array();
 			$from[] = $alerts_email;
 			$from[] = $site_name;
-			$subject = "[$site_name] Email Digest - ".date("M d, Y");
+			$subject = "[$site_name] ".Kohana::lang('alerts.digest_company_title')." - Email Digest - ".date("M d, Y");
 			// HT: html br for \n
-			$message_end = "<br/><br/>" . $unsubscribe_message . $alertee -> alert_code . '<br/>' . Kohana::lang('alerts.disclaimer') . "<br/>";
+			$message_end = "<br/><br/>" . Kohana::lang('alerts.digest_unsubscribe') . 
+			"<a href=\"".url::site() . 'alerts/unsubscribe/'. $alertee -> alert_code . "\">".url::site() . 'alerts/unsubscribe/'. $alertee -> alert_code ."</a>".Kohana::lang('alerts.disclaimer') . "<br/>";
+			//$message_end = "<br/><br/>" . $unsubscribe_message . $alertee -> alert_code . '<br/>' . Kohana::lang('alerts.disclaimer') . "<br/>";
 			$incident_msg_list = "";
 			$message = "";
 
@@ -114,8 +116,8 @@ class S_Digest_Controller extends Controller {
 			$alert_sent = ORM::factory('alert_sent') -> where('alert_id', $alertee -> id) -> select_list('id', 'incident_id');
 
 			$incident_query = "SELECT i.id, incident_title,
-                       incident_description, incident_verified,
-                       l.latitude, l.longitude FROM " . $this -> table_prefix . "incident AS i INNER JOIN " . $this -> table_prefix . "location AS l ON i.location_id = l.id
+                       incident_description, incident_verified, i.incident_date,
+                       l.latitude, l.longitude, l.location_name FROM " . $this -> table_prefix . "incident AS i INNER JOIN " . $this -> table_prefix . "location AS l ON i.location_id = l.id
                        WHERE i.incident_active=1 AND i.incident_alert_status = 2 
 					   AND (DATE_FORMAT(i.incident_datemodify,'%Y-%m-%d %T')>= '" . ($settings['last_digest_schedule']) . "') ";
 			if (!empty($alert_sent))
@@ -147,12 +149,13 @@ class S_Digest_Controller extends Controller {
 				if ($distance <= $alert_radius) {
 					$incident_count++;
 					$incident_title = '<a name="title-'.$incident -> id.'"><h4 id="title-'.$incident -> id.'">'.$incident_count.'. '.$incident -> incident_title.'</h4></a>';
-					$title_anchor = '<a href="#title-'.$incident -> id.'">'.$incident_count.'. '.$incident -> incident_title.'</a><br/>';
+					$title_anchor = '<a href="#title-'.$incident -> id.'">'.$incident_count.'. '.$incident -> incident_title.'</a><br/>'
+									.' at '.$incident->location_name.' on '.$incident->incident_date.'<br/>';
 					$incident_description = $incident -> incident_description;
 					$incident_url = url::site() . 'reports/view/' . $incident -> id;
 					$html2text = new Html2Text($incident_description);
 					// HT: br for \n
-					$email_message = $incident_title . "<br/><br/>". $incident_description . "<br/><br/>" . $incident_url.'<br/><br/><hr><br/><br/>';
+					$email_message = $incident_title . "<br/><br/>". $incident_description . "<br/><br/><a href=\"".$incident_url."\">" . $incident_url.'</a><br/><br/><hr><br/><br/>';
 					$alert_incident[$incident -> id] = $incident -> id;
 					$message .= $email_message;
 					$incident_msg_list .=  $title_anchor;
@@ -165,7 +168,7 @@ class S_Digest_Controller extends Controller {
 			$incident_head .= ($incident_count > 1) ? 's' : '';
 			$incident_head .= ' dated '.date("M d, Y").'</b><br/><br/>';
 			
-			$message = $company_note. $incident_head. $incident_msg_list . "<br/><br/>" . $message . $message_end;
+			$message = $incident_head. $incident_msg_list . "<br/><br/>" .$company_note. $message . $message_end;
 			if(!empty($alert_incident)) {
 				if (email::send($to, $from, $subject, $message, TRUE) == 1)// HT: New Code to make email as html
 				{
@@ -194,9 +197,30 @@ class S_Digest_Controller extends Controller {
 		foreach ($alert_categories as $ac) {
 			$category = ORM::factory('category') -> where('id', $ac -> category_id) -> find();
 			$this -> _add_category($ret, $category);
+			$this -> _add_child_category($ret, $category);
 		}
 
 		return $ret;
+	}
+
+	private function _add_child_category(array & $ids, Category_Model $category) {
+		if ($category == null) {
+			return;
+		}
+
+		$id = (string)$category -> id;
+
+		if (!array_key_exists($id, $ids)) {
+			$ids[$id] = 1;
+		}
+
+		$child = ORM::factory('category') -> where('parent_id', $id) -> find();
+		if(!empty($child)) {
+			foreach($child as $ch) {
+				$this -> _add_child_category($ids, $ch);
+			}
+		}
+
 	}
 
 	private function _add_category(array & $ids, Category_Model $category) {
