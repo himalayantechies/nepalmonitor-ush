@@ -118,8 +118,8 @@ class S_Digest_Controller extends Controller {
 			$incident_query = "SELECT i.id, incident_title,
                        incident_description, incident_verified, i.incident_date,
                        l.latitude, l.longitude, l.location_name FROM " . $this -> table_prefix . "incident AS i INNER JOIN " . $this -> table_prefix . "location AS l ON i.location_id = l.id
-                       WHERE i.incident_active=1 AND i.incident_alert_status = 2 
-					   AND (DATE_FORMAT(i.incident_datemodify,'%Y-%m-%d %T')>= '" . ($settings['last_digest_schedule']) . "') ";
+                       WHERE i.incident_active = 1 AND i.incident_alert_status = 2 
+					   AND (DATE_FORMAT(i.incident_datemodify,'%Y-%m-%d %T') >= '" . ($settings['last_digest_schedule']) . "') ";
 			if (!empty($alert_sent))
 				$incident_query .= " AND i.id NOT IN (" . implode(",", $alert_sent). ")";
 			if ($digest_days = $settings['digest_days']) {
@@ -164,8 +164,8 @@ class S_Digest_Controller extends Controller {
 
 			}
 
-			$incident_head = '<b>'.$incident_count.' '.Kohana::lang('ui_main.incident');
-			$incident_head .= ($incident_count > 1) ? 's' : '';
+			$incident_head = '<b>'.$incident_count.' ';
+			$incident_head .= ($incident_count > 1) ? Kohana::lang('ui_main.incidents') : Kohana::lang('ui_main.incident');
 			$incident_head .= ' dated '.date("M d, Y").'</b><br/><br/>';
 			
 			$message = $incident_head. $incident_msg_list . "<br/><br/>" .$company_note. $message . $message_end;
@@ -196,7 +196,7 @@ class S_Digest_Controller extends Controller {
 
 		foreach ($alert_categories as $ac) {
 			$category = ORM::factory('category') -> where('id', $ac -> category_id) -> find();
-			$this -> _add_category($ret, $category);
+			//$this -> _add_category($ret, $category);
 			$this -> _add_child_category($ret, $category);
 		}
 
@@ -241,7 +241,7 @@ class S_Digest_Controller extends Controller {
 		}
 	}
 
-	private function _check_categories($incident, array $category_ids) {
+	private function _check_categories(Incident_Model $incident, array $category_ids) {
 		$ret = false;
 		$incident_categories = ORM::factory('incident_category') -> where('incident_id', $incident -> id) -> find_all();
 		if (count($incident_categories) == 0) {
@@ -250,7 +250,7 @@ class S_Digest_Controller extends Controller {
 				$ret = true;
 		} else {
 			foreach ($incident_categories as $ic) {
-				if (array_key_exists((string)$ic -> category_id, $category_ids)) {
+				if (array_key_exists((string) $ic -> category_id, $category_ids)) {
 					$ret = true;
 				}
 			}

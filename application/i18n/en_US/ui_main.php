@@ -228,6 +228,7 @@ $lang = array(
 	'inactive' => 'Inactive',
 	'inbox' => 'Inbox',
 	'incident' => 'Incident',
+	'incidents' => 'Incidents',
 	'incidents_nearby' => 'Incidents Nearby',
 	'incident_location' => 'Incident Location',
 	'include' => 'Include',
