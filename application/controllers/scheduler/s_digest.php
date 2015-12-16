@@ -241,7 +241,7 @@ class S_Digest_Controller extends Controller {
 		}
 	}
 
-	private function _check_categories(Incident_Model $incident, array $category_ids) {
+	private function _check_categories($incident, array $category_ids) {
 		$ret = false;
 		$incident_categories = ORM::factory('incident_category') -> where('incident_id', $incident -> id) -> find_all();
 		if (count($incident_categories) == 0) {
