@@ -125,7 +125,7 @@ class S_Digest_Controller extends Controller {
 			if ($digest_days = $settings['digest_days']) {
 				$incident_query .= " AND DATE_FORMAT(i.incident_datemodify,'%Y-%m-%d %T') >= DATE_SUB( NOW(), INTERVAL " . ($digest_days) . " DAY )";
 			}
-			$incident_query .= " ORDER BY l.latitude DESC";
+			$incident_query .= " ORDER BY l.latitude DESC, l.longitude DESC";
 			
 			$incidents = $db -> query($incident_query);
 			$incident_count = 0;
