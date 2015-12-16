@@ -214,7 +214,7 @@ class S_Digest_Controller extends Controller {
 			$ids[$id] = 1;
 		}
 
-		$child = ORM::factory('category') -> where('parent_id', $id) -> find();
+		$child = ORM::factory('category') -> where('parent_id', $id) -> find_all();
 		if(!empty($child)) {
 			foreach($child as $ch) {
 				$this -> _add_child_category($ids, $ch);
