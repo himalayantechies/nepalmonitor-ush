@@ -150,7 +150,7 @@ class S_Digest_Controller extends Controller {
 					$incident_count++;
 					$incident_title = '<a name="title-'.$incident -> id.'"><h4 id="title-'.$incident -> id.'">'.$incident_count.'. '.$incident -> incident_title.'</h4></a>';
 					$title_anchor = '<a href="#title-'.$incident -> id.'">'.$incident_count.'. '.$incident -> incident_title.'</a><br/>'
-									.' at '.$incident->location_name.' on '.$incident->incident_date.'<br/>';
+									.' at '.$incident->location_name.' on '.date('Y-m-d', strtotime($incident->incident_date)).'<br/>';
 					$incident_description = $incident -> incident_description;
 					$incident_url = url::site() . 'reports/view/' . $incident -> id;
 					$html2text = new Html2Text($incident_description);
@@ -166,7 +166,7 @@ class S_Digest_Controller extends Controller {
 
 			$incident_head = '<b>'.$incident_count.' ';
 			$incident_head .= ($incident_count > 1) ? Kohana::lang('ui_main.incidents') : Kohana::lang('ui_main.incident');
-			$incident_head .= ' dated '.date("M d, Y").'</b><br/><br/>';
+			$incident_head .= ' as of '.date("M d, Y").'</b><br/><br/>';
 			
 			$message = $incident_head. $incident_msg_list . "<br/><br/>" .$company_note. $message . $message_end;
 			if(!empty($alert_incident)) {
