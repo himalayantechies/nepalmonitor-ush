@@ -90,7 +90,7 @@
             			if (feature.attributes.count >= 2) {
               				return feature.attributes.count + " reports";
             			} else {
-              				return feature.attributes.title;
+              				return feature.attributes.title + " " + feature.attributes.date_string;
             			}
           			},
 					count: function(feature) {
@@ -803,9 +803,11 @@
 
 		var content = "<div class=\"infowindow\">" + image +
 		    "<div class=\"infowindow_content\">"+
-		    "<div class=\"infowindow_list\">"+event.feature.attributes.name+"</div>\n" +
-		    "<div class=\"infowindow_meta\">";
-
+		    "<div class=\"infowindow_list\">"+event.feature.attributes.name+"</div>\n";
+		    if(event.feature.attributes.count == 1) {
+				content += event.feature.attributes.date_string + "\n" ;	
+			}
+		content += "<div class=\"infowindow_meta\">";
 		if (typeof(event.feature.attributes.link) != 'undefined' &&
 		    event.feature.attributes.link != '') {
 

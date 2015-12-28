@@ -229,7 +229,8 @@ class Json_Controller extends Template_Controller {
 				'timestamp' => strtotime($marker->incident_date),
 				'count' => 1,
 				'class' => get_class($marker),
-				'title'  => $marker->incident_title
+				'title'  => $marker->incident_title,
+				'date_string' => date("M j Y", strtotime($marker->incident_date))
 			);
 			$json_item['geometry'] = array(
 				'type' => 'Point',
@@ -418,6 +419,7 @@ class Json_Controller extends Template_Controller {
 				'thumb' => '',
 				'timestamp' => 0,
 				'count' => $cluster_count,
+				'date_string' => '',
 			);
 			$json_item['geometry'] = array(
 				'type' => 'Point',
@@ -721,6 +723,7 @@ class Json_Controller extends Template_Controller {
 					'link' => $link,
 					'category' => array(0),
 					'timestamp' => strtotime($incident_date),
+					'date_string' => date("M j Y", strtotime($incident_date))
 				);
 				$json_item['geometry'] = $geom_array;
 
