@@ -24,6 +24,6 @@
  *           @see http://php.net/mcrypt
  */
 // CHANGE ME: THIS SHOULD BE UNIQUE TO YOUR DEPLOYMENT
-$config['default']['key'] = 'dN_o%J)N)WTf@7CTT?!X';
+$config['default']['key'] = 'dN_o%J)N)WTf@7CTT?!X4321';
 $config['default']['mode'] = MCRYPT_MODE_NOFB;
 $config['default']['cipher'] = MCRYPT_RIJNDAEL_128;
