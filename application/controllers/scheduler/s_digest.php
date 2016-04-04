@@ -148,11 +148,12 @@ class S_Digest_Controller extends Controller {
 				// If the calculated distance between the incident and the alert fits...
 				if ($distance <= $alert_radius) {
 					$incident_count++;
+					$incident_url = url::site() . 'reports/view/' . $incident -> id;
 					$incident_title = '<a name="title-'.$incident -> id.'"><h4 id="title-'.$incident -> id.'">'.$incident_count.'. '.$incident -> incident_title.'</h4></a>';
-					$title_anchor = '<a href="#title-'.$incident -> id.'">'.$incident_count.'. '.$incident -> incident_title.'</a><br/>'
+					$title_anchor = '<a href="'.$incident_url.'">'.$incident_count.'. '.$incident -> incident_title.'</a><br/>'
 									.' at '.$incident->location_name.' on '.date("M d, Y", strtotime($incident->incident_date)).'<br/>';
 					$incident_description = $incident -> incident_description;
-					$incident_url = url::site() . 'reports/view/' . $incident -> id;
+					
 					$html2text = new Html2Text($incident_description);
 					// HT: br for \n
 					$email_message = $incident_title . "<br/><br/>". $incident_description . "<br/><br/><a href=\"".$incident_url."\">" . $incident_url.'</a><br/><br/><hr><br/><br/>';
