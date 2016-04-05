@@ -216,5 +216,43 @@ class Alert_Model extends ORM {
 			return FALSE;
 		}
 	}
+	
+	/**
+	 * Removes the alert code in @param $alert_code from the list of alerts
+	 *
+	 * @param string $email, 
+	 * @return bool TRUE if succeeds, FALSE otherwise
+	 */
+	public static function switch_subscribe($alert_code)
+	{
+		// Fetch the alerts with the specified code
+		$alerts = ORM::factory('alert')
+			->where('alert_code', $alert_code)
+			->find();
+		
+		// Check if the alert exists
+		if ($alerts->loaded)
+		{
+			$table_prefix = Kohana::config('database.default.table_prefix');
+			if($alerts->alert_type == 2) { //Email
+				$alerts->alert_type = 3;
+				$alerts->save();
+				/*$this->db->query('UPDATE `'.$table_prefix.'alert` SET alert_type = ? WHERE alert_id = ?',
+					3, $alerts->id);*/
+			} elseif($alerts->alert_type == 3) { //Digest
+			    $alerts->alert_type = 2;
+				$alerts->save();
+				/*$this->db->query('UPDATE `'.$table_prefix.'alert` SET alert_type = ? WHERE alert_id = ?',
+					2, $alerts->id);*/
+			}
+			// Success!
+			return TRUE;
+		}
+		else
+		{
+			// Alert code not found. FAIL
+			return FALSE;
+		}
+	}
 
 } // END class Alert_Model

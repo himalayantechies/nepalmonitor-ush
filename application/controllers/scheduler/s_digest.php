@@ -107,7 +107,10 @@ class S_Digest_Controller extends Controller {
 			$subject = "[$site_name] ".Kohana::lang('alerts.digest_company_title')." - Email Digest - ".date("M d, Y");
 			// HT: html br for \n
 			$message_end = "<br/><br/>" . Kohana::lang('alerts.digest_unsubscribe') . 
-			"<a href=\"".url::site() . 'alerts/unsubscribe/'. $alertee -> alert_code . "\">".url::site() . 'alerts/unsubscribe/'. $alertee -> alert_code ."</a>".Kohana::lang('alerts.disclaimer') . "<br/>";
+			"<a href=\"".url::site() . 'alerts/unsubscribe/'. $alertee -> alert_code . "\">".url::site() . 'alerts/unsubscribe/'. $alertee -> alert_code ."</a>".
+			Kohana::lang('alerts.digest_switch_alert') . 
+			"<a href=\"".url::site() . 'alerts/alert_switch/'. $alertee -> alert_code . "\">".url::site() . 'alerts/alert_switch/'. $alertee -> alert_code ."</a>".
+			Kohana::lang('alerts.disclaimer') . "<br/>";
 			//$message_end = "<br/><br/>" . $unsubscribe_message . $alertee -> alert_code . '<br/>' . Kohana::lang('alerts.disclaimer') . "<br/>";
 			$incident_msg_list = "";
 			$message = "";

@@ -61,6 +61,9 @@ class S_Alerts_Controller extends Controller {
 		$unsubscribe_message = Kohana::lang('alerts.unsubscribe')
 								.url::site().'alerts/unsubscribe/';
 
+		$switch_message = Kohana::lang('alerts.switch_alert')
+								.url::site().'alerts/alert_switch/';
+								
 				$database_settings = kohana::config('database'); //around line 33
 				$this->table_prefix = $database_settings['default']['table_prefix']; //around line 34
 
@@ -228,6 +231,8 @@ class S_Alerts_Controller extends Controller {
 						$message = $email_message
 						."<br/><br/>".$unsubscribe_message
 						.$alertee->alert_code
+						.'<br/>'
+						.$switch_message.$alertee->alert_code
 						.'<br/>'
 						.Kohana::lang('alerts.disclaimer')
 						."<br/>";

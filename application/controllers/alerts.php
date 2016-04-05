@@ -333,6 +333,29 @@ class Alerts_Controller extends Main_Controller {
     }
 
 	/**
+	 * Switch alertee between email and digest using alertee's confirmation code
+	 *
+	 * @param string $code
+	 */
+    public function alert_switch($code = NULL)
+	{
+		$this->template->content = new View('alerts/alert_switch');
+		$this->template->header->this_page = 'alerts';
+		$this->template->content->switched = FALSE;
+
+		// XXX Might need to validate $code as well
+		if ($code != NULL)
+		{
+			Alert_Model::switch_subscribe($code);
+			$this->template->content->switched = TRUE;
+		}
+
+		// Rebuild Header Block
+		$this->template->header->header_block = $this->themes->header_block();
+		$this->template->footer->footer_block = $this->themes->footer_block();
+    }
+
+	/**
 	 * Retrieves Previously Cached Geonames Cities
 	 */
 	private function _get_cities()
