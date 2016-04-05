@@ -11,6 +11,8 @@ $lang = array(
 	'admin_role' => 'Admin',
 	'alerts' => 'Alerts',
 	'alerts_received' => 'Alerts Received',
+	'alert_switch_digest_message' => 'Subscription has switched from digest alert to individual alerts. Subscriber detail : ',
+	'alert_switch_email_message' => 'Subscription has switched from individual alerts to digest alert. Subscriber detail : ',
 	'all' => 'All',
 	'am' => 'AM',
 	'anonymous' => 'Anonymous',
@@ -322,5 +324,6 @@ $lang = array(
 	'user_no_logins'			=> 'Number of logins',
 	'user_last_login'			=> 'Last login',
 	'user_confirmed_account'	=> 'Confirmed account?'
+	
 );
 ?>

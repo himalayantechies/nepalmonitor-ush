@@ -346,8 +346,8 @@ class Alerts_Controller extends Main_Controller {
 		// XXX Might need to validate $code as well
 		if ($code != NULL)
 		{
-			Alert_Model::switch_subscribe($code);
-			$this->template->content->switched = TRUE;
+			$success = Alert_Model::switch_subscribe($code);
+			$this->template->content->switched = $success;
 		}
 
 		// Rebuild Header Block

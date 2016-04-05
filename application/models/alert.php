@@ -237,16 +237,13 @@ class Alert_Model extends ORM {
 			if($alerts->alert_type == 2) { //Email
 				$alerts->alert_type = 3;
 				$alerts->save();
-				/*$this->db->query('UPDATE `'.$table_prefix.'alert` SET alert_type = ? WHERE alert_id = ?',
-					3, $alerts->id);*/
 			} elseif($alerts->alert_type == 3) { //Digest
 			    $alerts->alert_type = 2;
 				$alerts->save();
-				/*$this->db->query('UPDATE `'.$table_prefix.'alert` SET alert_type = ? WHERE alert_id = ?',
-					2, $alerts->id);*/
 			}
+			alert::_switch_alert_notify($alerts);
 			// Success!
-			return TRUE;
+			return $alerts->alert_type;
 		}
 		else
 		{

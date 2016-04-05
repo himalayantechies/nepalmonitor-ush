@@ -317,5 +317,40 @@ class alert_Core {
 		
 		return $sms_from;
 	}
+	
+	/**
+	 * This handles unsubscription from alerts via the mobile phone
+	 *
+	 * @param AlertModel $alert 
+	 * @return bool
+	 */
+	public static function _switch_alert_notify($alert)
+	{
+		$settings = kohana::config('settings');
+
+		$to = "alert@nepalmonitor.org";
+		$from = array();
+		
+		$from[] = ($settings['alerts_email'])
+			? $settings['alerts_email']
+			: $settings['site_email'];
+		
+		$from[] = $settings['site_name'];
+		$subject = $settings['site_name']." ".Kohana::lang('alerts.alert_switch_subject');
+		
+
+		if($alert->type == 2) {
+			$message = Kohana::lang('ui_admin.alert_switch_digest_message').$alert->alert_recipient."<br><br>";
+		} else if($alert->type == 3) {
+			$message = Kohana::lang('ui_admin.alert_switch_email_message').$alert->alert_recipient."<br><br>";
+		}
+		
+		if (email::send($to, $from, $subject, $message, TRUE) == 1)
+		{
+			return TRUE;
+		}
+
+		return FALSE;
+	}
 
 }

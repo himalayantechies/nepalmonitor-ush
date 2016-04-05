@@ -33,6 +33,7 @@ $lang = array(
 	) ,
 	'alerts_subscribed' => 'You have subscribed for alerts with the following categories',
 	'alert_subscription_subject' => 'alerts - subscription',
+	'alert_switch_subject' => ' alerts - subscription switch',
 	'code_already_verified' => 'This code has been verified before!',
 	'code_not_found' => 'This verification code was not found! Please confirm that you have the correct URL.',
 	'code_verified' => ' Your code was verified correctly. You will now receive alerts about incidents as they happen.',
