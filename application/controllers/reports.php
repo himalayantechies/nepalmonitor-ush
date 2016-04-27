@@ -276,6 +276,7 @@ class Reports_Controller extends Main_Controller {
 			'person_last' => '',
 			'person_email' => '',
 			'form_id'	  => '',
+			'alert_mode'  => '',
 			'custom_field' => array()
 		);
 
@@ -298,6 +299,7 @@ class Reports_Controller extends Main_Controller {
 		// Initialize custom field array
 		$form['form_id'] = 1;
 		$form_id = $form['form_id'];
+		$form['alert_mode'] = 0;
 		$form['custom_field'] = customforms::get_custom_form_fields($id,$form_id,true);
 
 		// GET custom forms
@@ -373,6 +375,7 @@ class Reports_Controller extends Main_Controller {
 		$this->template->content->form = $form;
 		$this->template->content->errors = $errors;
 		$this->template->content->form_error = $form_error;
+		$this->template->content->alert_mode = array(0 => Kohana::lang('alerts.both_alert'), 1 => Kohana::lang('alerts.email_alert'), 2 => Kohana::lang('alerts.sms_alert'), 3 => Kohana::lang('alerts.no_alert'));
 		
 		 // Populate this for backwards compat
 		$this->template->content->categories = array();

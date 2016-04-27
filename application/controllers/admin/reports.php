@@ -347,7 +347,8 @@ class Reports_Controller extends Admin_Controller {
 			'custom_field' => array(),
 			'incident_active' => '',
 			'incident_verified' => '',
-			'incident_zoom' => ''
+			'incident_zoom' => '',
+			'alert_mode' => ''
 		);
 
 		// Copy the form as errors, so the errors will be stored with keys
@@ -365,6 +366,7 @@ class Reports_Controller extends Admin_Controller {
 		$form['incident_minute'] = date('i');
 		$form['incident_ampm'] = date('a');
 		$form['country_id'] = Kohana::config('settings.default_country');
+		$form['alert_mode'] = 0;
 
 		// get the form ID if relevant, kind of a hack
 		// to just hit the database like this for one
@@ -392,7 +394,7 @@ class Reports_Controller extends Admin_Controller {
 		// Time formatting
 		$this->template->content->hour_array = $this->_hour_array();
 		$this->template->content->minute_array = $this->_minute_array();
-		$this->template->content->ampm_array = $this->_ampm_array();
+		$this->template->content->ampm_array = $this->_ampm_array();		
 
 		$this->template->content->stroke_width_array = $this->_stroke_width_array();
 
@@ -413,6 +415,7 @@ class Reports_Controller extends Admin_Controller {
 		// just incase Reverse Geo coding yields no result
 		$form['country_name'] = $countries[$form['country_id']];
 		$this->template->content->countries = $countries;
+		$this->template->content->alert_mode = array(0 => Kohana::lang('alerts.both_alert'), 1 => Kohana::lang('alerts.email_alert'), 2 => Kohana::lang('alerts.sms_alert'), 3 => Kohana::lang('alerts.no_alert'));
 
 		// GET custom forms
 		$forms = array();
@@ -563,7 +566,6 @@ class Reports_Controller extends Admin_Controller {
 			// Instantiate Validation, use $post, so we don't overwrite
 			// $_POST fields with our own things
 			$post = array_merge($_POST, $_FILES);
-
 			// Check if the service id exists
 			if (isset($service_id) AND intval($service_id) > 0)
 			{
@@ -765,7 +767,8 @@ class Reports_Controller extends Admin_Controller {
 						'custom_field' => customforms::get_custom_form_fields($id,$incident->form_id,true),
 						'incident_active' => $incident->incident_active,
 						'incident_verified' => $incident->incident_verified,
-						'incident_zoom' => $incident->incident_zoom
+						'incident_zoom' => $incident->incident_zoom,
+						'alert_mode' => $incident->alert_mode
 					);
 
 					// Merge To Form Array For Display

@@ -145,6 +145,7 @@ class reports_Core {
 		$post->add_rules('incident_active', 'between[0,1]');
 		$post->add_rules('incident_verified', 'between[0,1]');
 		$post->add_rules('incident_zoom', 'numeric');
+		$post->add_rules('alert_mode', 'between[0,3]');
 		
 		// Custom form fields validation
 		$errors = customforms::validate_custom_form_fields($post);
@@ -242,7 +243,6 @@ class reports_Core {
 		{
 			$incident->user_id = $_SESSION['auth_user']->id;
 		}
-		
 		$incident->incident_title = $post->incident_title;
 		$incident->incident_description = $post->incident_description;
 
@@ -253,6 +253,7 @@ class reports_Core {
 		$incident_time = $post->incident_hour . ":" . $post->incident_minute . ":00 " . $post->incident_ampm;
 		$incident->incident_date = date( "Y-m-d H:i:s", strtotime($incident_date . " " . $incident_time) );
 				
+		$incident->alert_mode = $post->alert_mode;
 		
 		// Is this an Email, SMS, Twitter submitted report?
 		if ( ! empty($post->service_id))

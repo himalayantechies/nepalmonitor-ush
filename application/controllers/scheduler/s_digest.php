@@ -118,10 +118,11 @@ class S_Digest_Controller extends Controller {
 			// Get all incidents
 			$alert_sent = ORM::factory('alert_sent') -> where('alert_id', $alertee -> id) -> select_list('id', 'incident_id');
 
-			$incident_query = "SELECT i.id, incident_title,
+			$incident_query = "SELECT i.id, incident_title, alert_mode, 
                        incident_description, incident_verified, i.incident_date,
                        l.latitude, l.longitude, l.location_name FROM " . $this -> table_prefix . "incident AS i INNER JOIN " . $this -> table_prefix . "location AS l ON i.location_id = l.id
-                       WHERE i.incident_active = 1 AND i.incident_alert_status = 2 
+                       WHERE i.incident_active = 1 AND i.incident_alert_status = 2
+                       AND alert_mode IN (0, 1) 
 					   AND (DATE_FORMAT(i.incident_datemodify,'%Y-%m-%d %T') >= '" . ($settings['last_digest_schedule']) . "') ";
 			if (!empty($alert_sent))
 				$incident_query .= " AND i.id NOT IN (" . implode(",", $alert_sent). ")";

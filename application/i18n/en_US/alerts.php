@@ -68,5 +68,9 @@ You have received this email because you subscribed to receive daily Email disge
 	'unsubscribe_failed' => 'We were not able to unsubscribe you. Please confirm that you have the correct URL.',
 	'verification_email_subject' => 'alerts - verification',
 	'verify_code' => 'You will not receive alerts on this location until you confirm your request.',
+	'both_alert' => 'Both Email and Sms',
+	'email_alert' => 'Only Email',
+	'sms_alert' => 'Only Sms',
+	'no_alert' => 'No alert'
 );
 ?>

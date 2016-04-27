@@ -630,5 +630,6 @@ $lang = array(
 	'your_file' => 'Your file',
 	'zoom_in' => 'Zoom In',
 	'zoom_out' => 'Zoom Out',
+	'reports_alert_mode' => 'Send notification by following medium'
 );
 ?>

@@ -92,8 +92,8 @@ class S_Alerts_Controller extends Controller {
        // becoming spam to users
        $incident_query = "SELECT i.id, incident_title,
                        incident_description, incident_verified,
-                       l.latitude, l.longitude FROM ".$this->table_prefix."incident AS i INNER JOIN ".$this->table_prefix."location AS l ON i.location_id = l.id
-                       WHERE i.incident_active=1 AND i.incident_alert_status = 1 ";
+                       l.latitude, l.longitude, alert_mode FROM ".$this->table_prefix."incident AS i INNER JOIN ".$this->table_prefix."location AS l ON i.location_id = l.id
+                       WHERE i.incident_active=1 AND i.incident_alert_status = 1 AND alert_mode != 3";
        /** HT: Code for alert days limitation
         * @int alert_days = 0 : All alerts
         * @int alert_days = 1 : TODAY
@@ -188,7 +188,7 @@ class S_Alerts_Controller extends Controller {
 				// If the calculated distance between the incident and the alert fits...
 				if ($distance <= $alert_radius)
 				{
-					if ($alert_type == 1) // SMS alertee
+					if ($alert_type == 1 && ($incident->alert_mode == 0 || $incident->alert_mode == 2)) // SMS alertee
 					{
 						// Get SMS Numbers
 						if (Kohana::config("settings.sms_no3"))
@@ -217,7 +217,7 @@ class S_Alerts_Controller extends Controller {
 						}
 					}
 
-					elseif ($alert_type == 2) // Email alertee
+					elseif ($alert_type == 2 && ($incident->alert_mode == 0 || $incident->alert_mode == 1)) // Email alertee
 					{
 						$to = $alertee->alert_recipient;
 						$from = array();

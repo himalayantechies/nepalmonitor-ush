@@ -154,6 +154,10 @@
 								</div>
 							</div>
 							<div class="row">
+								<h4><?php echo Kohana::lang('ui_main.reports_alert_mode'); ?></h4>
+								<?php print form::dropdown('alert_mode', $alert_mode,$form['alert_mode'], ' class="select" '); ?>
+							</div>
+							<div class="row">
 							<?php Event::run('ushahidi_action.report_form_admin_after_time', $id); ?>
 							</div>
 							<div class="row">

@@ -121,7 +121,10 @@
 					</div>
 				</div>
 
-
+				<div class="report_row">
+					<h4><?php echo Kohana::lang('ui_main.reports_alert_mode'); ?></h4>
+					<?php print form::dropdown('alert_mode',$alert_mode,'0', ' class="select" '); ?>
+				</div>
 				<?php
 				// Action::report_form - Runs right after the report categories
 				Event::run('ushahidi_action.report_form');
