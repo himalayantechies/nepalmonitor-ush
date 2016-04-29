@@ -76,7 +76,8 @@ class Settings_Controller extends Admin_Controller {
 			'twitter_hashtags' => '',
 			'api_akismet' => '',
 			'timeline_graph' => '', // HT: Timeline graph type bar or line
-			'alert_days' => 0, // HT: No of days of alert to be sent	
+			'alert_days' => 0, // HT: No of days of alert to be sent
+			'geonames_user' => 'demo' // HT: geoname username required as per new request	
 		);
 		//	Copy the form as errors, so the errors will be stored with keys
 		//	corresponding to the form field names
@@ -279,7 +280,8 @@ class Settings_Controller extends Admin_Controller {
 				'google_analytics' => $settings['google_analytics'],
 				'twitter_hashtags' => $settings['twitter_hashtags'],
 				'api_akismet' => $settings['api_akismet'],
-				'alert_days' => $settings['alert_days'] // HT: No of days of alert to be sent
+				'alert_days' => $settings['alert_days'], // HT: No of days of alert to be sent
+				'geonames_user' => $settings['geonames_user'] // HT: geonames username
 			);
 		}
 

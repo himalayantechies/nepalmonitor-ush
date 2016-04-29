@@ -25,7 +25,7 @@ class feed_Core {
 		// To Disable Uncomment these 3 lines
 		//*******************************
 		$geocoder = new Geocoder();
-		$georss_feed = $geocoder->geocode_feed($feed_url);
+		$georss_feed = $geocoder->geocode_feed($feed_url, Kohana::config('settings.geonames_user'));
 	
 		$data->set_raw_data( $georss_feed );
 		// Uncomment Below to disable geocoding

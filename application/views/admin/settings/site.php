@@ -229,6 +229,9 @@
 							<?php echo Kohana::lang('settings.site.kismet_notice');?>.
 							<?php print form::input('api_akismet', $form['api_akismet'], ' class="text"'); ?>
 						</div>
+						<h4><a href="#" class="tooltip" title="<?php echo Kohana::lang("tooltips.feed_geolocation_user"); ?>"><?php echo Kohana::lang('settings.site.feed_geolocation_user');?></a></h4>
+							<?php print form::input('geonames_user', $form['geonames_user'], ' class="text"'); ?>
+						</div>
 					</div>
 
 					<div class="simple_border"></div>

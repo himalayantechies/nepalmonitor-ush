@@ -98,10 +98,10 @@ class Geocoder_Core {
 	 * @param   string location / address
 	 * @return  string raw georss data
 	 */
-	function geocode_feed ($feed_url = NULL)
+	function geocode_feed ($feed_url = NULL, $username = NULL)
 	{
 		$base_url = "http://" . GEOCODER_GEONAMES . "/rssToGeoRSS?";
-
+		if($username) $base_url = $base_url . "&username=".urlencode($username);
 		if ($feed_url)
 		{
 			// First check to make sure geonames webservice is running
