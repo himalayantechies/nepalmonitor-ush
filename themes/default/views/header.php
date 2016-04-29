@@ -12,7 +12,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<!Next lines to moderate facebook comments set default image etc. Set in /themes/default/views/header - NH>
 	<meta property="fb:app_id" content="140091756132653" />
-	<meta property="og:image" content="https://www.nepalmonitor.org/themes/default/images/logomod_260x260.png"/>
+	<!--<meta property="og:image" content="https://www.nepalmonitor.org/themes/default/images/logomod_260x260.png"/>-->
 	<meta property="og:image:height" content="158"/>
 	<meta property="og:image:width" content="158"/>
 	<meta property="og:image:type" content="image/png"/>
