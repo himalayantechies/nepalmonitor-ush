@@ -93,7 +93,7 @@ class S_Alerts_Controller extends Controller {
        $incident_query = "SELECT i.id, incident_title,
                        incident_description, incident_verified,
                        l.latitude, l.longitude, alert_mode FROM ".$this->table_prefix."incident AS i INNER JOIN ".$this->table_prefix."location AS l ON i.location_id = l.id
-                       WHERE i.incident_active=1 AND i.incident_alert_status = 1 AND alert_mode != 3";
+                       WHERE i.incident_active=1 AND i.incident_alert_status = 1 AND alert_mode != 3 ";
        /** HT: Code for alert days limitation
         * @int alert_days = 0 : All alerts
         * @int alert_days = 1 : TODAY
@@ -101,7 +101,7 @@ class S_Alerts_Controller extends Controller {
         */
        if($alert_days = $settings['alert_days'])
        {
-               $incident_query .= "AND DATE(i.incident_date) >= DATE_SUB( CURDATE(), INTERVAL ".($alert_days-1)." DAY )";
+               $incident_query .= " AND DATE(i.incident_date) >= DATE_SUB( CURDATE(), INTERVAL ".($alert_days-1)." DAY ) ";
        }
 	   
 	   //print_r($incident_query); exit;
