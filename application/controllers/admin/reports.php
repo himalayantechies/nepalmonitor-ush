@@ -348,7 +348,7 @@ class Reports_Controller extends Admin_Controller {
 			'incident_active' => '',
 			'incident_verified' => '',
 			'incident_zoom' => '',
-			'alert_mode' => ''
+			'alert_mode' => '0'
 		);
 
 		// Copy the form as errors, so the errors will be stored with keys
