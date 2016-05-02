@@ -339,9 +339,9 @@ class alert_Core {
 		$subject = $settings['site_name']." ".Kohana::lang('alerts.alert_switch_subject');
 		
 
-		if($alert->type == 2) {
+		if($alert->alert_type == 2) {
 			$message = Kohana::lang('ui_admin.alert_switch_digest_message').$alert->alert_recipient."<br><br>";
-		} else if($alert->type == 3) {
+		} else if($alert->alert_type == 3) {
 			$message = Kohana::lang('ui_admin.alert_switch_email_message').$alert->alert_recipient."<br><br>";
 		}
 		
