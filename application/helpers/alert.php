@@ -340,9 +340,9 @@ class alert_Core {
 		
 
 		if($alert->alert_type == 2) {
-			$message = Kohana::lang('ui_admin.alert_switch_digest_message').$alert->alert_recipient."<br><br>";
-		} else if($alert->alert_type == 3) {
 			$message = Kohana::lang('ui_admin.alert_switch_email_message').$alert->alert_recipient."<br><br>";
+		} else if($alert->alert_type == 3) {
+			$message = Kohana::lang('ui_admin.alert_switch_digest_message').$alert->alert_recipient."<br><br>";
 		}
 		
 		if (email::send($to, $from, $subject, $message, TRUE) == 1)
