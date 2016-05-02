@@ -149,6 +149,7 @@ class sms_Core {
 			$incident->incident_date = $sms->message_date;
 			$incident->incident_dateadd = date("Y-m-d H:i:s",time());
 			$incident->incident_active = 1;
+			$incident->alert_mode = 1;
 			if ($reporter_weight == 2)
 			{
 				$incident->incident_verified = 1;

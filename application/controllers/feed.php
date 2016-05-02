@@ -80,6 +80,7 @@ class Feed_Controller extends Controller {
 				$item['link'] = $site_url.'reports/view/'.$incident->id;
 				$item['description'] = $incident->incident_description;
 				$item['date'] = $incident->incident_date;
+				$item['alert_mode'] = $incident->alert_mode;
 				$item['categories'] = $categories;
 				
 				if

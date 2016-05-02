@@ -885,6 +885,7 @@ class actioner {
 		$incident->incident_date = $incident_date;
 		$incident->incident_active = $approve;
 		$incident->incident_verified = $verify;
+		$incident->alert_mode = 1;
 		$incident->incident_dateadd = date("Y-m-d H:i:s",time());
 		$incident->save();
 
