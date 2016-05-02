@@ -48,7 +48,7 @@ class feed_Core {
 	
 		foreach ($post->feed_item_category as $item)
 		{
-			$feed_category = new Feed_Item_Category_Model();
+			$feed_item_category = new Feed_Item_Category_Model();
 			$feed_item_category->feed_item_id = $feed_item->id;
 			$feed_item_category->category_id = $item;
 			$feed_item_category->save();
