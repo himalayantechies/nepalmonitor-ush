@@ -58,7 +58,7 @@ You have received this email because you subscribed to receive daily Email disge
 	'subscription_mobile' => 'Subscription Mobile No : ',
 	'subscription_request' => 'Subscribed for alerts with the following categories',
 	'switch_alert' => "If you wish to get digest alert instead of individual alerts, then go to -",
-	'digest_switch_alert' => "If you wish to get instead of individual alerts instead of digest alert, then go to -",
+	'digest_switch_alert' => "If you wish to get individual alerts instead of digest alert, then go to -",
 	'switched' => "Your digest email subscription has been updated.",
 	'unswitched' => "Your digest email subscription could not be updated.",
 	'unsubscribe' => "If your organization responded to this incident, Tell us your story. You can comment on this report by following the previous link or replying to this e-mail. Report incidents to NepalMonitor.org by sending e-mails to alert@nepalmonitor.org or SMS to: 9808975502. The reports will be published online at NepalMonitor.org, forwarded to relevant organizations, and sent by e-mail and SMS to alert subscribers in your area. 
