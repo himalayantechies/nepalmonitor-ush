@@ -23,9 +23,10 @@ Ushahidi.baseURL = "<?php echo url::site(); ?>";
 //]]> closes cdata tag so the browser looks at the following tags. Closes the Javascript and reopens it below meta tag.
 //</script>
 
-<!--enable for twitter cards>
-meta name="twitter:image" content="https://maps.google.com/maps/api/staticmap?markers=color:red%7C<?php echo $latitude; ?>%2C<?php echo$longitude; ?>&amp;zoom=10&amp;size=650x650&amp;language=en&amp;key=AIzaSyDADoHqkWBeeR4mYb_gkvWGBz9d3r7Ie58&amp;key=AIzaSyDdvni1bbT4CPAGo8s_5ToqY9LngWUaXFA" />
---->
+
+	<meta property="og:image" content="https://maps.google.com/maps/api/staticmap?markers=color:red%7C<?php echo $latitude; ?>%2C<?php echo$longitude; ?>&amp;zoom=10&amp;size=650x650&amp;language=en&amp;key=AIzaSyDADoHqkWBeeR4mYb_gkvWGBz9d3r7Ie58&amp;key=AIzaSyDdvni1bbT4CPAGo8s_5ToqY9LngWUaXFA" />
+	<meta property="og:image:height" content="300"/>
+	<meta property="og:image:width" content="650"/>
 //<script>
 //<![CDATA[ Re-opens cdata tag so the browser doesn't look at the following as html or xml
 
