@@ -10,9 +10,9 @@
 		</style>
 	<?php } ?>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<!Next lines to moderate facebook comments set default image etc. Set in /themes/default/views/header - NH>
+	<!-- Next lines to moderate facebook comments set default image etc. Set in /themes/default/views/header - NH -->
 	<meta property="fb:app_id" content="140091756132653" />
-	<?php if(!empty($latitude) && !empty($longitude)) { ?>
+	<?php /*if(!empty($latitude) && !empty($longitude)) { ?>
 		<meta property="og:image" content="https://maps.google.com/maps/api/staticmap?markers=color:red%7C<?php echo $latitude; ?>%2C<?php echo$longitude; ?>&amp;zoom=10&amp;size=650x650&amp;language=en&amp;key=AIzaSyDADoHqkWBeeR4mYb_gkvWGBz9d3r7Ie58&amp;key=AIzaSyDdvni1bbT4CPAGo8s_5ToqY9LngWUaXFA"/>
 	<meta property="og:image:width" content="600"/>
 	<meta property="og:image:height" content="315"/>
@@ -21,7 +21,7 @@
 	<meta property="og:image:height" content="158"/>
 	<meta property="og:image:width" content="158"/>
 	<meta property="og:image:type" content="image/png"/>
-	<?php } ?>
+	<?php } */?>
 	<?php echo $header_block; ?>
 	<?php
 	// Action::header_scripts - Additional Inline Scripts from Plugins
