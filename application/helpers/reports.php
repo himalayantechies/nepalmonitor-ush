@@ -76,7 +76,8 @@ class reports_Core {
 		}
 
 		// Validate only the fields that are filled in
-		if ( ! empty($post->incident_news))
+		// HT: remove validation in news source as it can be text as well
+		/*if ( ! empty($post->incident_news))
 		{
 			foreach ($post->incident_news as $key => $url)
 			{
@@ -85,7 +86,7 @@ class reports_Core {
 					$post->add_error('incident_news','url');
 				}
 			}
-		}
+		}*/
 
 		// Validate only the fields that are filled in
 		if ( ! empty($post->incident_video))

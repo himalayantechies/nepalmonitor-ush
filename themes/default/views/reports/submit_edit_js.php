@@ -14,6 +14,7 @@
  * @license    http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL) 
  */
 ?>
+		var newsList;
 		var map;
 		var thisLayer;
 		var proj_4326 = new OpenLayers.Projection('EPSG:4326');
@@ -652,17 +653,30 @@
 		
 		function addFormField(div, field, hidden_id, field_type) {
 			var id = document.getElementById(hidden_id).value;
-			
-			// HTML for the form field to be added
+			if(field_type == 'autosearch') {
+				var formFieldHTML = "<div class=\"row link-row second "+field_type+"\" id=\"" + field + "_" + id + "\">" +
+			    "<select name=\"" + field + "[]\" class=\"" + field_type + " " + field + " long2\" ><option value=\"\"></option></select>" +
+			    "<a href=\"#\" class=\"add\" "+
+			    "    onClick=\"addFormField('" + div + "','" + field + "','" + hidden_id + "','" + field_type + "'); return false;\">"+
+			    "    add</a>" +
+			    "<a href=\"#\" class=\"rem\"  onClick='removeFormField(\"#" + field + "_" + id + "\"); return false;'>remove</a></div>";
+			} 
+			else {
+				// HTML for the form field to be added
 			var formFieldHTML = "<div class=\"row link-row second\" id=\"" + field + "_" + id + "\">" +
 			    "<input type=\"" + field_type + "\" name=\"" + field + "[]\" class=\"" + field_type + " long2\" />" +
 			    "<a href=\"#\" class=\"add\" "+
 			    "    onClick=\"addFormField('" + div + "','" + field + "','" + hidden_id + "','" + field_type + "'); return false;\">"+
 			    "    add</a>" +
 			    "<a href=\"#\" class=\"rem\"  onClick='removeFormField(\"#" + field + "_" + id + "\"); return false;'>remove</a></div>";
-
+			}
 			$("#" + div).append(formFieldHTML);
-
+			if(field_type == 'autosearch') {
+				$("#" + field + "_" + id + " select.incident_news").select2({
+					data: newsList,
+					tags: true
+				});
+			}
 			$("#" + field + "_" + id).effect("highlight", {}, 800);
 
 			id = (id - 1) + 2;

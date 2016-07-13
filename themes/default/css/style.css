@@ -1172,6 +1172,9 @@ label.error {
 .select{
     overflow:hidden;
 }
+.autosearch{
+margin-bottom: 10px;	
+}
 .long{
     width:90%;
 }
@@ -1302,7 +1305,7 @@ a.add, a.rem{
     overflow:hidden;
     width:13px;
     height:13px;
-    float:left;
+    float:right;
     background:url(../images/icon-plus.gif) no-repeat;
 }
 a.rem { background:url(../images/icon-minus.gif) no-repeat;}

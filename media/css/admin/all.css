@@ -1200,7 +1200,7 @@ a.rem{
 	overflow:hidden;
 	width:13px;
 	height:13px;
-	float:left;
+	float:right;
 	background:url(../../img/icon-plus.gif) no-repeat;
 }
 a.rem { background:url(../../img/icon-minus.gif) no-repeat;}
@@ -1217,6 +1217,12 @@ input.long {
 	width:454px;
 }
 input.long2 {
+	width:300px;
+}
+select.long {
+	width:454px;
+}
+select.long2 {
 	width:300px;
 }
 .second { margin:13px 0 0 !important;}

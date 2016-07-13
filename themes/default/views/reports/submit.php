@@ -1,9 +1,9 @@
-// HT: Start of css and script for select2 autocomplete
 <?php
+// HT: Start of css and script for select2 autocomplete
 echo html::stylesheet(url::file_loc('css')."media/css/select2.min","",TRUE);
 echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
-?>
 // HT: End of css and script for select2 autocomplete
+?>
 <div id="content">
 	<div class="content-bg">
 
@@ -236,30 +236,51 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 					<?php 
 						// Initialize the counter
 						$i = (empty($form['incident_news'])) ? 1 : 0;
+						$newsoptions = array();
 					?>
 
 					<?php if (empty($form['incident_news'])): ?>
 						<div class="report_row">
-							<?php print form::input('incident_news[]', '', ' class="text long2"'); ?>
-							<a href="#" class="add" onClick="addFormField('divNews','incident_news','news_id','text'); return false;">add</a>
+							<?php //print form::input('incident_news[]', '', ' class="text long2"'); ?>
+							<?php print form::dropdown('incident_news[]', $newsoptions, '', ' class="text long2 incident_news"'); ?>
+							<a href="#" class="add" onClick="addFormField('divNews','incident_news','news_id','autosearch'); return false;">add</a>
 						</div>
 					<?php else: ?>
 						<?php foreach ($form['incident_news'] as $value): ?>
 						<div class="report_row" id="<?php echo $i; ?>">
-							<?php echo form::input('incident_news[]', $value, ' class="text long2"'); ?>
-							<a href="#" class="add" onClick="addFormField('divNews','incident_news','news_id','text'); return false;">add</a>
-
+							<?php echo form::dropdown('incident_news[]', $newsoptions, $value, ' class="text long2 incident_news"'); ?>
+							<?php //echo form::input('incident_news[]', $value, ' class="text long2"'); ?>
+							
 							<?php if ($i != 0): ?>
 								<?php $css_id = "#incident_news_".$i; ?>
 								<a href="#" class="rem"	onClick="removeFormField('<?php echo $css_id; ?>'); return false;">remove</a>
 							<?php endif; ?>
+							
+							<a href="#" class="add" onClick="addFormField('divNews','incident_news','news_id','autosearch'); return false;">add</a>
 
 						</div>
 						<?php $i++; ?>
 
 						<?php endforeach; ?>
-					<?php endif; ?>
-
+					<?php endif; 
+					$field_file = 'http://localhost/ushahidi-nepalmonitor/media/news_source.txt';
+					echo "<script type=\"text/javascript\">
+						$(function(){
+							$.ajax({
+								url: \"".$field_file."\",
+								dataType: 'json',
+								success: function(data) {
+									newsList = data.items;
+									$(\"#divNews select.incident_news\").select2({
+									  data: newsList,
+									  tags: true
+									});
+								}
+							});
+						
+					});
+					</script>";
+					?>
 					<?php print form::input(array('name'=>'news_id', 'type'=>'hidden', 'id'=>'news_id'), $i); ?>
 				</div>
 

@@ -1,0 +1,15 @@
+{
+	"items": [{
+		"id": "news1",
+		"text": "news1"
+	},{
+		"id": "news2",
+		"text": "news2"
+	},{
+		"id": "news3",
+		"text": "news3"
+	},{
+		"id": "news4",
+		"text": "news4"
+	}]
+}

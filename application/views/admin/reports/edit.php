@@ -13,12 +13,13 @@
  * @license    http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL) 
  */
 ?>
-// HT: start of new css and script for select2 autosearch
+
 <?php
+// HT: start of new css and script for select2 autosearch
 echo html::stylesheet(url::file_loc('css')."media/css/select2.min","",TRUE);
 echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
-?>
 // HT: End of new css and script for select2 autosearch
+?>
 			<div class="bg">
 				<h2>
 					<?php admin::reports_subtabs("edit"); ?>
@@ -285,39 +286,62 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 								$this_div = "divNews";
 								$this_field = "incident_news";
 								$this_startid = "news_id";
-								$this_field_type = "text";
-					
+								$this_field_type = "autosearch";
+								$newsoptions = array('' => '');
 								if (empty($form[$this_field]))
 								{
 									$i = 1;
 									print "<div class=\"row link-row\">";
-									print form::input($this_field . '[]', '', ' class="text long"');
+									//print form::input($this_field . '[]', '', ' class="text long"');
+									print form::dropdown($this_field.'[]', $newsoptions, '', ' class="text long2 incident_news"');
 									print "<a href=\"#\" class=\"add\" onClick=\"addFormField('$this_div','$this_field','$this_startid','$this_field_type'); return false;\">add</a>";
 									print "</div>";
 								}
 								else
 								{
 									$i = 0;
-									foreach ($form[$this_field] as $value) {									
+									foreach ($form[$this_field] as $value) {
 										print "<div ";
 										if ($i != 0) {
-											print "class=\"row link-row second\" id=\"" . $this_field . "_" . $i . "\">\n";
+											print "class=\"row link-row second $this_field_type\" id=\"" . $this_field . "_" . $i . "\">\n";
 										}
 										else
 										{
-											print "class=\"row link-row\" id=\"$i\">\n";
+											print "class=\"row link-row $this_field_type\" id=\"$i\">\n";
 										}
-										print form::input($this_field . '[]', $value, ' class="text long"');
-										print "<a href=\"#\" class=\"add\" onClick=\"addFormField('$this_div','$this_field','$this_startid','$this_field_type'); return false;\">add</a>";
+										//print form::input($this_field . '[]', $value, ' class="text long"');
+										$newsoptions = array($value => $value);
+										print form::dropdown($this_field.'[]', $newsoptions, $value, ' class="text long2 incident_news"');
 										if ($i != 0)
 										{
 											print "<a href=\"#\" class=\"rem\"  onClick='removeFormField(\"#" . $this_field . "_" . $i . "\"); return false;'>remove</a>";
 										}
+										print "<a href=\"#\" class=\"add\" onClick=\"addFormField('$this_div','$this_field','$this_startid','$this_field_type'); return false;\">add</a>";
 										print "</div>\n";
 										$i++;
 									}
 								}
 								print "<input type=\"hidden\" name=\"$this_startid\" value=\"$i\" id=\"$this_startid\">";
+								$field_file = 'http://localhost/ushahidi-nepalmonitor/media/news_source.txt';
+								echo "<script type=\"text/javascript\">
+									$(function(){
+										$.ajax({
+											url: \"".$field_file."\",
+											dataType: 'json',
+											beforeSend: function() {
+											},
+											success: function(data) {
+												newsList = data.items;
+												$(\"#divNews select.incident_news\").select2({
+												  data: newsList,
+												  tags: true
+												});
+												
+											},complete: function(data) {
+											}
+										});
+								});
+								</script>";
 								?>
 							</div>
 
