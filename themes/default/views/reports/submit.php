@@ -1,3 +1,9 @@
+// HT: Start of css and script for select2 autocomplete
+<?php
+echo html::stylesheet(url::file_loc('css')."media/css/select2.min","",TRUE);
+echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
+?>
+// HT: End of css and script for select2 autocomplete
 <div id="content">
 	<div class="content-bg">
 

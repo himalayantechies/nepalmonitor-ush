@@ -301,7 +301,48 @@
 				echo "<h4 style=\"padding-top:0px;\">-------" . Kohana::lang('ui_admin.divider_end_field') . "--------</h4>";
 			}
 		}
-
+		// HT: Start of new autocomplete field section list
+		elseif($field_property['field_type'] == 10)
+		{
+			//Auto complete select dropdown
+			 echo "<div class=\"report_row\" id=\"custom_field_row_" . $field_id ."\">";
+			$field_value = !empty($field_property['field_response'])? $field_property['field_response'] : '';
+			$field_options = customforms::get_custom_field_options($field_id);
+			$ddoptions = array('' => '');
+			$field_placeholder = '';
+			if (isset($field_options['field_autocomplete_file'])) 
+			{
+				$field_file = $field_options['field_autocomplete_file'];
+			} 
+			if (isset($field_options['field_placeholder'])) 
+			{
+				$field_placeholder = $field_options['field_placeholder'];
+			} 
+			
+			echo "<h4>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</h4>";
+			//echo form::input('custom_field['.$field_id.']', $field_value, $id_name .' class="text custom_text"');
+			echo form::dropdown("custom_field[".$field_id.']',$ddoptions, $field_value, $id_name);
+			echo "</div>";
+			
+			echo "<script type=\"text/javascript\">
+						$(function(){
+							$.ajax({
+								url: \"".$field_file."\",
+								dataType: 'json',
+								success: function(data) {
+									var items = data.items;
+									$(\"#custom_field_".$field_id."\").select2({
+										placeholder: \"".$field_placeholder."\",
+										data: items
+									});
+									$(\"#custom_field_".$field_id."\").val(\"".$field_value."\").trigger(\"change\");
+								}
+							});
+						
+					});
+					</script>";
+		}
+		// HT: End of new autocomplete field section list
 
 		if (isset($editor))
 		{

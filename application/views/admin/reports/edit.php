@@ -13,6 +13,12 @@
  * @license    http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL) 
  */
 ?>
+// HT: start of new css and script for select2 autosearch
+<?php
+echo html::stylesheet(url::file_loc('css')."media/css/select2.min","",TRUE);
+echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
+?>
+// HT: End of new css and script for select2 autosearch
 			<div class="bg">
 				<h2>
 					<?php admin::reports_subtabs("edit"); ?>

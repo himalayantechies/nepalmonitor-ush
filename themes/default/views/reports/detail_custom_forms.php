@@ -36,8 +36,21 @@
 		// Check if a value was fetched
 		if ($value == "")
 			continue;
-
-		if ($field_property['field_type'] == 1 OR $field_property['field_type'] > 3)
+// HT: Start of new autocomplete search select type display 
+		if($field_property['field_type'] == 10) {
+			
+			$field_options = customforms::get_custom_field_options($field_id);
+			if (isset($field_options['field_autocomplete_file'])) 
+			{
+				$field_file = $field_options['field_autocomplete_file'];
+				$value = customforms::get_autosearch_text($value, $field_file, true);
+			} 
+			
+			echo "<td><strong>" . html::specialchars($field_property['field_name']) . ": </strong></td>";
+			echo "<td class=\"answer\">$value</td>";
+			
+// HT: End of new autocomplete search select type display
+		} else if ($field_property['field_type'] == 1 OR $field_property['field_type'] > 3)
 		{
 			// Text Field
 			// Is this a date field?
