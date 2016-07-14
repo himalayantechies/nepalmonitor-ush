@@ -21,15 +21,13 @@ Ushahidi.baseURL = "<?php echo url::site(); ?>";
 
 // Attempt to set facebook image to map. Set in /themes/default/views/reports/view_js.php - NH
 //]]> closes cdata tag so the browser looks at the following tags. Closes the Javascript and reopens it below meta tag.
-//</script>
+</script>
 
-<!--enable for twitter cards>
-meta name="twitter:image" content="https://maps.google.com/maps/api/staticmap?markers=color:red%7C<?php echo $latitude; ?>%2C<?php echo$longitude; ?>&amp;zoom=10&amp;size=650x650&amp;language=en&amp;key=AIzaSyDADoHqkWBeeR4mYb_gkvWGBz9d3r7Ie58&amp;key=AIzaSyDdvni1bbT4CPAGo8s_5ToqY9LngWUaXFA" />
---->
 	<meta property="og:image" content="https://maps.google.com/maps/api/staticmap?markers=color:red%7C<?php echo $latitude; ?>%2C<?php echo$longitude; ?>&amp;zoom=10&amp;size=650x650&amp;language=en&amp;key=AIzaSyDADoHqkWBeeR4mYb_gkvWGBz9d3r7Ie58&amp;key=AIzaSyDdvni1bbT4CPAGo8s_5ToqY9LngWUaXFA"/>
-	<meta property="og:image:width" content="600"/>
-	<meta property="og:image:height" content="315"/>
-//<script>
+	<meta property="og:image:width" content="650"/>
+	<meta property="og:image:height" content="300"/>
+
+<script>
 //<![CDATA[ Re-opens cdata tag so the browser doesn't look at the following as html or xml
 
 jQuery(window).load(function() {

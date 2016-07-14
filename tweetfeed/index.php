@@ -15,8 +15,13 @@ foreach ($xml->xpath('//item') as $item) { # For every item in the orginal feed 
         if($category->getName() == 'category'){  # IF the tag is a category... 
             $categoryString = (string)$category; # Then $categoryString = what that category's name is 
             if($categoryHashtags[$categoryString]){ # Look in the category replacement file for a replacement hashtag, and IF it exists do the folowing 
-                if(strlen($r.' #'.$categoryHashtags[$categoryString])<=38 and strlen($categoryHashtags[$categoryString])>=3) # If the current string + the new hashag are less then 38 characters long Added by Neil-> If the replacement category hastag is as long as 3 characters
-               	$r .= ' #'.$categoryHashtags[$categoryString]; #THEN add the new hash tag to the string 
+            	if (strpos($categoryHashtags[$categoryString], '@') !== FALSE) # If the replacement tag contains an '@' (the search for it isn't false)
+    			$h = ' '; # Then a space will be put infront of it.
+		else
+    			$h = ' #'; # Otherwise, a hashtag and a space will be put infront of it.
+                if(strlen($r.$h.$categoryHashtags[$categoryString])<=38 and strlen($categoryHashtags[$categoryString])>=3) # If the current string + the new hashag are less then 38 characters long Added by Neil-> If the replacement category hastag is as long as 3 characters
+                	
+               	$r .= $h.$categoryHashtags[$categoryString]; #THEN add the new hash tag to the string 
             }else{ #If there is not a replacement hashtag found for the category name
                 $t = ' #'.(preg_split('/ |\//', $categoryString)[0]); # Then make a new string called $t and put in the first word of the full category name after a hash tag. 
                 if(strlen($r.$t)<=38) #As long as the current string + t above is under 38 characters 
@@ -27,7 +32,7 @@ foreach ($xml->xpath('//item') as $item) { # For every item in the orginal feed 
     array_push($arr, $r); # This is filling an array ($arr) with the strings created above. 
 }
 
-function str_replace_nth($search, $replace, $subject, $nth) # This is a creating a function to replace some items in the strings. Not sure what yet. 
+function str_replace_nth($search, $replace, $subject, $nth) # This is a creating a function to replace some items in the strings. 
 {
     $found = preg_match_all('/'.$search.'/u', $subject, $matches, PREG_OFFSET_CAPTURE);
     if (false !== $found && $found > $nth) {
@@ -35,16 +40,18 @@ function str_replace_nth($search, $replace, $subject, $nth) # This is a creating
     }
     return $subject;
 }
-$feedXML=htmlspecialchars($feedXML); #This is probably formating special html characters for the feed. Probably keeps everything clean while doing the replae below.
+$feedXML=htmlspecialchars($feedXML); #This is probably formating special html characters for the feed. Probably keeps everything clean while doing the replace below.
 
-$feedXML = preg_replace('/&lt;title&gt;(.{1,70})(.+)&lt;\/title&gt;/u', "&lt;title&gt;$1&lt;/title&gt;", $feedXML); # Replace the titles after the first 70 characters with the strings created above and stored in the array. The resulting title should be just under 108 charcters
+$feedXML = preg_replace('/&lt;title&gt;(.{1,70})(.+)&lt;\/title&gt;/u', "&lt;title&gt;$1&lt;/title&gt;", $feedXML); # Replace the titles after the first 70 with a number. 
+
+$feedXML = preg_replace('/nepalmonitor\.org\/feed\//u', "nepalmonitor.org/tweetfeed/feed.xml", $feedXML); #replace any instance of "nepalmonitor.org/feed" with "nepalmonitor.org/tweetfeed/feed.xml" in order to fix atom link. 
 
 foreach($arr as $m=>$s){
-    $feedXML = str_replace_nth('&lt;\/title&gt;', $arr[$m].'&lt;/title&gt;', $feedXML, $m); #Process the feed with the function above. as long as $m is greater than $s. I don't know what $s is though
+    $feedXML = str_replace_nth('&lt;\/title&gt;', $arr[$m].'&lt;/title&gt;', $feedXML, $m); #Replace the numbers put into the titles above with the strings stored in the array. 
 }
 
 $report = fopen("feed.xml", w);
-fwrite($report, htmlspecialchars_decode($feedXML)); #Overwrite feed.xml with our newly created feed while decoding special HTML characters
+fwrite($report, htmlspecialchars_decode($feedXML)); #Overwrite feed.xml with our newly created feed while decoding special HTML characters put in above
 fclose($report);
 
 header('Location: feed.xml');

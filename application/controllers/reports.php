@@ -276,7 +276,7 @@ class Reports_Controller extends Main_Controller {
 			'person_last' => '',
 			'person_email' => '',
 			'form_id'	  => '',
-			'alert_mode'  => '0',
+			'alert_mode'  => '',
 			'custom_field' => array()
 		);
 
