@@ -310,10 +310,22 @@
 			$field_options = customforms::get_custom_field_options($field_id);
 			$ddoptions = array('' => '');
 			$field_placeholder = '';
-			if (isset($field_options['field_autocomplete_file'])) 
+			$field_type = 'DB';
+			$field_file = '';
+			if (isset($field_options['field_autocomplete_type'])) 
 			{
-				$field_file = $field_options['field_autocomplete_file'];
-			} 
+				$field_type = $field_options['field_autocomplete_type'];
+			}
+			if($field_type == 'FILE') {
+				
+				if (isset($field_options['field_autocomplete_file'])) 
+				{
+					$field_file = $field_options['field_autocomplete_file'];
+				} 
+			} else {
+				$field_file = url::site().'json/autosearch/'.$field_id;
+			}
+			
 			if (isset($field_options['field_placeholder'])) 
 			{
 				$field_placeholder = $field_options['field_placeholder'];

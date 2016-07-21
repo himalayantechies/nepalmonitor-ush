@@ -236,7 +236,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 					<?php 
 						// Initialize the counter
 						$i = (empty($form['incident_news'])) ? 1 : 0;
-						$newsoptions = array();
+						$newsoptions = array('' => '- Please Select -');
 					?>
 
 					<?php if (empty($form['incident_news'])): ?>
