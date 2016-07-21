@@ -465,4 +465,30 @@ class customforms_Core {
 		}
 		return $value;
 	}
+	
+	public function autosearch($field_id) {
+		$options = array();
+		$options['items'] = array();
+		$opt = ORM::factory('form_autosearch_option')->where('form_field_id',$field_id)->where('parent', NULL)->find_all()->as_array();
+		if(!empty($opt)) {
+			foreach($opt as $key => $parent) {
+				$options['items'][$key] = $parent->as_array();
+				$opt_child = ORM::factory('form_autosearch_option')->where('form_field_id',$field_id)->where('parent', $parent->id)->find_all();
+				if(!empty($opt_child)) {
+					foreach($opt_child as $child) {
+						$options['items'][$key]['children'][] = $child->as_array();	
+					}
+				}
+			}
+		}
+		return json_encode($options);
+	}
+
+	public function get_autosearchDb_text($field_id, $value, $code = false) {
+		$opt = ORM::factory('form_autosearch_option')->where('form_field_id',$field_id)->where('id', $value)->find();
+		if($code) $value = $opt->text. ' ('.$opt->id.')';
+		else $value = $opt->text;
+		return $value;
+	}
+	
 }

@@ -40,12 +40,15 @@
 		if($field_property['field_type'] == 10) {
 			
 			$field_options = customforms::get_custom_field_options($field_id);
-			if (isset($field_options['field_autocomplete_file'])) 
-			{
-				$field_file = $field_options['field_autocomplete_file'];
-				$value = customforms::get_autosearch_text($value, $field_file, true);
-			} 
-			
+			if (isset($field_options['field_autocomplete_type']) && ($field_options['field_autocomplete_type'] == 'FILE')) {
+				if (!empty($field_options['field_autocomplete_file'])) 
+				{
+					$field_file = $field_options['field_autocomplete_file'];
+					$value = customforms::get_autosearch_text($value, $field_file, true);	
+				} 
+			} else {
+				$value = customforms::get_autosearchDb_text($field_id, $value, true);
+			}
 			echo "<td><strong>" . html::specialchars($field_property['field_name']) . ": </strong></td>";
 			echo "<td class=\"answer\">$value</td>";
 			

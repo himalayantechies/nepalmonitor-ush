@@ -875,4 +875,23 @@ class Json_Controller extends Template_Controller {
 		$item_name = str_replace(array(chr(10),chr(13)), ' ', $item_name);
 		return $item_name;
 	}
+	
+	public function autosearch($field_id) {
+		$options = array();
+		$options['items'] = array();
+		$opt = ORM::factory('form_autosearch_option')->where('form_field_id',$field_id)->where('parent', NULL)->find_all()->as_array();
+		if(!empty($opt)) {
+			foreach($opt as $key => $parent) {
+				$options['items'][$key] = $parent->as_array();
+				$opt_child = ORM::factory('form_autosearch_option')->where('form_field_id',$field_id)->where('parent', $parent->id)->find_all();
+				if(!empty($opt_child)) {
+					foreach($opt_child as $child) {
+						$options['items'][$key]['children'][] = $child->as_array();	
+					}
+				}
+			}
+		}
+		header('Content-type: application/json; charset=utf-8');
+		echo json_encode($options);
+	}
 }

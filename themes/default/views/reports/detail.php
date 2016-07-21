@@ -115,9 +115,13 @@
 					<?php
 						foreach( $incident_news as $incident_new)
 						{
+							if(valid::url($incident_new)) {
 							?>
 							<a href="<?php echo $incident_new; ?> " target="_blank"><?php
 							echo $incident_new;?></a>
+							<?php } else {
+								echo $incident_new;
+							} ?>
 							<br/>
 							<?php
 						}
