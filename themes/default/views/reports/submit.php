@@ -263,7 +263,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 
 						<?php endforeach; ?>
 					<?php endif; 
-					$field_file = 'http://localhost/ushahidi-nepalmonitor/media/news_source.txt';
+					$field_file = url::site().'/media/news_source.json';
 					echo "<script type=\"text/javascript\">
 						$(function(){
 							$.ajax({
