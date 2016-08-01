@@ -1047,9 +1047,14 @@ class Forms_Controller extends Admin_Controller {
 			//datatype options
 		$autocomplete_default = '';
 		$ac_type = 'DB';
+		$field_autocomplete_tag = false;
 		$autocomplete_type = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_autocomplete_type')->find();
 		if($autocomplete_type->loaded == TRUE)
 			$ac_type = $autocomplete_type->option_value;
+		
+		$autocomplete_tag = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_autocomplete_tag')->find();
+		if($autocomplete_tag->loaded == TRUE)
+			$field_autocomplete_tag = $autocomplete_tag->option_value;
 		
 		$html .= "<div class=\"forms_item\">" 
 			. "		<strong>".Kohana::lang('ui_admin.field_autocomplete_type').":</strong><br />"; 
@@ -1097,6 +1102,21 @@ class Forms_Controller extends Admin_Controller {
 		{
 			$html .= 	Kohana::lang('ui_admin.yes')." " . form::radio('field_required', '1', TRUE) . "&nbsp;&nbsp;";
 			$html .= 	Kohana::lang('ui_admin.no')." " . form::radio('field_required', '0', FALSE);
+		}
+		$html .="</div>";
+		
+		$html .= "<div class=\"forms_item\">" 
+			. "		<strong>".Kohana::lang('ui_admin.autocomplete_manual_entry').":</strong><br />"; 
+		
+		if ($field_autocomplete_tag != 1)
+		{
+			$html .= 	Kohana::lang('ui_admin.yes')." " . form::radio('field_autocomplete_tag', '1', FALSE) . "&nbsp;&nbsp;";
+			$html .= 	Kohana::lang('ui_admin.no')." " . form::radio('field_autocomplete_tag', '0', TRUE);
+		}
+		else
+		{
+			$html .= 	Kohana::lang('ui_admin.yes')." " . form::radio('field_autocomplete_tag', '1', TRUE) . "&nbsp;&nbsp;";
+			$html .= 	Kohana::lang('ui_admin.no')." " . form::radio('field_autocomplete_tag', '0', FALSE);
 		}
 		$html .="</div>";
 		

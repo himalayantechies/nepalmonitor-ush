@@ -150,6 +150,7 @@ class Main_Controller extends Template_Controller {
 
     public function index()
     {
+    	//kmlfilter_helper::layer_kmlfilter();
         $this->template->header->this_page = 'home';
         $this->template->content = new View('main/layout');
 
@@ -231,6 +232,24 @@ class Main_Controller extends Template_Controller {
 		}
 		$this->template->content->categories = $parent_categories;
 
+		$parent_locations = array();
+		$adm_level = Kohana::config('map.adm_level');
+		if(is_numeric($adm_level)) {
+			$locfilter_model = new Database();
+			$parent_locations[$adm_level] = $locfilter_model->query("SELECT DISTINCT pcode, id, name FROM ".$this->table_prefix.".location_filter WHERE adm_level = '".$level."' GROUP BY pcode ORDER BY name"); 
+		} else if(is_array($adm_level)) {
+			$locfilter_model = new Database();
+			foreach($adm_level as $level) {
+				$parent_locations[$level] = $locfilter_model->query("SELECT DISTINCT pcode, id, name FROM ".$this->table_prefix.".location_filter WHERE adm_level = '".$level."' GROUP BY pcode ORDER BY name");
+			}
+		} else {
+			foreach(location_filter::$admLevels as $adm_level => $admlvl) {
+				$locfilter_model = new Database();
+				$parent_locations[$adm_level] = $locfilter_model->query("SELECT DISTINCT pcode, id, name FROM ".$this->table_prefix.".location_filter WHERE adm_level = '".$adm_level."' GROUP BY pcode ORDER BY name");
+			}
+		}
+		$this->template->content->locations = $parent_locations;
+		
 		// Get all active Layers (KMZ/KML)
 		$layers = array();
 		$config_layers = Kohana::config('map.layers'); // use config/map layers if set

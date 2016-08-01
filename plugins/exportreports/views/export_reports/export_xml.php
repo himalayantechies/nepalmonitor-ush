@@ -41,7 +41,23 @@ echo "<?xml-stylesheet type=\"text/xsl\" href=\"export.xsl\" ?>"; ?>
 				echo '<customfields>';
 				foreach($custom_fields as $custom_field) {
 					$tag = exportreports_helper::_xml_tag($custom_field['field_name']);
-					echo '<'.$tag.'>'.exportreports_helper::_csv_text($custom_field['field_response']).'</'.$tag.'>';
+					if($custom_field['field_type'] == 10) {
+						$value = $custom_field['field_response'];
+						$field_options = customforms::get_custom_field_options($custom_field['field_id']);
+						if (isset($field_options['field_autocomplete_type']) && ($field_options['field_autocomplete_type'] == 'FILE')) {
+							if (!empty($field_options['field_autocomplete_file'])) 
+							{
+								$field_file = $field_options['field_autocomplete_file'];
+								$value = customforms::get_autosearch_text($value, $field_file, true);	
+							} 
+						} else {
+							$value = customforms::get_autosearchDb_text($custom_field['field_id'], $value, true);
+						}
+						echo '<'.$tag.'>'.exportreports_helper::_csv_text($value).'</'.$tag.'>';
+					} else {
+						echo '<'.$tag.'>'.exportreports_helper::_csv_text($custom_field['field_response']).'</'.$tag.'>';	
+					}
+					
 				}
 				echo '</customfields>';
 			}

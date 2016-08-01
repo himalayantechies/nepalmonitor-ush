@@ -134,6 +134,8 @@ class Reports_Controller extends Main_Controller {
 
 		// Category tree view
 		$this->template->content->category_tree_view = category::get_category_tree_view();
+		// Location tree view
+		$this->template->content->location_filter = location_filter::get_location_filter_view(3) + location_filter::get_location_filter_view(4);
 
 		// Additional view content
 		$this->template->content->custom_forms_filter = new View('reports/submit_custom_forms');
@@ -330,6 +332,8 @@ class Reports_Controller extends Main_Controller {
 
 				// STEP 2: SAVE INCIDENT
 				$incident = new Incident_Model();
+				//Location filter add before incident save
+				location_filter::save($post, $incident);
 				reports::save_report($post, $incident, $location->id);
 
 				// STEP 2b: SAVE INCIDENT GEOMETRIES
@@ -629,6 +633,8 @@ class Reports_Controller extends Main_Controller {
 			$this->template->content->incident_date = date('M j Y', strtotime($incident->incident_date));
 			$this->template->content->incident_time = date('H:i', strtotime($incident->incident_date));
 			$this->template->content->incident_category = $incident->incident_category;
+			// Adm Levels
+			$this->template->content->adm_levels = location_filter::get_adm_levels($incident->adm_level, $incident->pcode);
 
 			// Incident rating
 			$rating = ORM::factory('rating')

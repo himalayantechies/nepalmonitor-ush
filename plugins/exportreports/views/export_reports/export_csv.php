@@ -1,6 +1,9 @@
 <?php
 ob_start();
 	echo "#,INCIDENT TITLE,INCIDENT DATE,LOCATION,DESCRIPTION,CATEGORY,LATITUDE,LONGITUDE";
+	foreach(location_filter::$admLevels as $key => $admLvl) {
+		echo ",".$admLvl['label'];
+	}
 	$custom_titles = customforms::get_custom_form_fields('','',false);
 	foreach($custom_titles as $field_name) {
 		echo ",".$field_name['field_name'];
@@ -28,11 +31,32 @@ ob_start();
 		echo '"';
 		echo ',"'.exportreports_helper::_csv_text($incident->latitude).'"';
 		echo ',"'.exportreports_helper::_csv_text($incident->longitude).'"';
-		
+		$admList = location_filter::get_adm_levels($incident->adm_level, $incident->pcode);
+		foreach(location_filter::$admLevels as $key => $admLvl) {
+			if(isset($admList[$key])) echo ',"'.$admList[$key]->name.'"';
+			else echo ',""';
+		}
+				
+				
 		$custom_fields = customforms::get_custom_form_fields($incident_id,'',false);
 		if ( ! empty($custom_fields)) {
 			foreach($custom_fields as $custom_field) {
-				echo ',"'.exportreports_helper::_csv_text($custom_field['field_response']).'"';
+				if($custom_field['field_type'] == 10) {
+					$value = $custom_field['field_response'];
+					$field_options = customforms::get_custom_field_options($custom_field['field_id']);
+					if (isset($field_options['field_autocomplete_type']) && ($field_options['field_autocomplete_type'] == 'FILE')) {
+						if (!empty($field_options['field_autocomplete_file'])) 
+						{
+							$field_file = $field_options['field_autocomplete_file'];
+							$value = customforms::get_autosearch_text($value, $field_file, true);	
+						} 
+					} else {
+						$value = customforms::get_autosearchDb_text($custom_field['field_id'], $value, true);
+					}
+					echo ',"'.exportreports_helper::_csv_text($value).'"';
+				} else {
+					echo ',"'.exportreports_helper::_csv_text($custom_field['field_response']).'"';
+				}
 			}
 		} else {
 			$custom_field = customforms::get_custom_form_fields('','',false);

@@ -818,6 +818,35 @@ class reports_Core {
 		}
 		
 		//
+		// Check if the adm location has been specified
+		// 
+		if (isset($url_data['adm']) AND is_array($url_data['adm']))
+		{
+			$adm_ids = array();
+			$adm_query = '';
+			foreach ($url_data['adm'] as $adm_level)
+			{
+				if (intval($adm_level) >= 0)
+				{
+					$loc = new Location_Filter_Model($adm_level);
+					if($loc->loaded) {
+						$adm_ids[] = $loc->pcode;
+						if($adm_query != '') $adm_query .= ' OR ';
+						$adm_query .= " i.pcode LIKE '".$loc->pcode."%' ";
+					}
+				}
+			}
+			
+			if (count($adm_ids) > 0)
+			{
+				array_push(self::$params, 
+					' ('.$adm_query.') '
+				);	
+				
+			}
+		}
+
+		//
 		// Check if they're filtering over custom form fields
 		//
 		if (isset($url_data['cff']) AND is_array($url_data['cff']))

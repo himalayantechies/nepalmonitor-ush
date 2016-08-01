@@ -80,3 +80,11 @@ $config['latTo'] = "85";
 
 
 
+/**
+ * Determines which geocoding engine to use
+ * Options are google or nominatim
+ */
+
+$config['geocode'] = "nominatim";
+
+$config['adm_level'] = array(3);
