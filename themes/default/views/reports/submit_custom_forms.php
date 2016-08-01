@@ -312,14 +312,14 @@
 			$field_placeholder = '';
 			$field_type = 'DB';
 			$field_file = '';
-			$field_tag = false;
+			$tag_flag = false;
 			if (isset($field_options['field_autocomplete_type'])) 
 			{
 				$field_type = $field_options['field_autocomplete_type'];
 			}
 			if (isset($field_options['field_autocomplete_tag'])) 
 			{
-				$field_tag = ($field_options['field_autocomplete_tag']) ? true : false;
+				$tag_flag = ($field_options['field_autocomplete_tag']) ? true : false;
 			}
 			if($field_type == 'FILE') {
 				
