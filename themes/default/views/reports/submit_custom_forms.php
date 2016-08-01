@@ -351,7 +351,7 @@
 									$(\"#custom_field_".$field_id."\").select2({
 										placeholder: \"".$field_placeholder."\",
 										data: items,
-										tag: $tag_flag
+										tag: ".$tag_flag."
 									});
 									$(\"#custom_field_".$field_id."\").val(\"".$field_value."\").trigger(\"change\");
 								}
