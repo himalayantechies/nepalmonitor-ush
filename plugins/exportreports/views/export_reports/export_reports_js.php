@@ -52,7 +52,16 @@
 				urlParameters["v"] = verificationStatus;
 			}
 			
-			//
+			var admIds = [];
+			$.each($("[class^='filter-list fl-adm'] li a.selected"), function(i, item){
+				admId = item.id.substring("filter_link_adm_".length);
+				admIds.push(admId);
+			});
+			if (admIds.length > 0)
+			{
+				urlParameters["adm"] = admIds;
+			}
+						//
 			// Get the Custom Form Fields
 			//
 			var customFields = new Array();

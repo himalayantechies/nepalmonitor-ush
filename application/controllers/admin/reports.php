@@ -601,6 +601,8 @@ class Reports_Controller extends Admin_Controller {
 
 				// STEP 2: SAVE INCIDENT
 				$incident = new Incident_Model($id);
+				//Location filter add before incident save
+				location_filter::save($post, $incident);
 				reports::save_report($post, $incident, $location->id);
 
 				// STEP 2b: Record Approval/Verification Action

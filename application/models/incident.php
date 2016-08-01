@@ -260,7 +260,7 @@ class Incident_Model extends ORM {
 		if (! $count)
 		{
 			$sql = 'SELECT DISTINCT i.id incident_id, i.incident_title, i.incident_description, i.incident_date, i.incident_mode, i.incident_active, '
-				. 'i.incident_verified, i.location_id, l.country_id, l.location_name, l.latitude, l.longitude ';
+				. 'i.incident_verified, i.location_id, i.pcode, i.adm_level, l.country_id, l.location_name, l.latitude, l.longitude ';
 		}
 		// Count query
 		else
@@ -566,4 +566,16 @@ class Incident_Model extends ORM {
 		return url::site('reports/view/'.$id);
 	}
 
+	/**
+	 * Overrides the default save method for the ORM.
+	 * 
+	 */
+	public function save()
+	{
+		// Fire an event on every save
+		Event::run('ushahidi_action.report_save', $this);
+		
+		parent::save();
+	}
+	
 }

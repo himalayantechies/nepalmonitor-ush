@@ -312,9 +312,14 @@
 			$field_placeholder = '';
 			$field_type = 'DB';
 			$field_file = '';
+			$field_tag = false;
 			if (isset($field_options['field_autocomplete_type'])) 
 			{
 				$field_type = $field_options['field_autocomplete_type'];
+			}
+			if (isset($field_options['field_autocomplete_tag'])) 
+			{
+				$field_tag = ($field_options['field_autocomplete_tag']) ? true : false;
 			}
 			if($field_type == 'FILE') {
 				
@@ -345,7 +350,8 @@
 									var items = data.items;
 									$(\"#custom_field_".$field_id."\").select2({
 										placeholder: \"".$field_placeholder."\",
-										data: items
+										data: items,
+										tag: $tag_flag
 									});
 									$(\"#custom_field_".$field_id."\").val(\"".$field_value."\").trigger(\"change\");
 								}
