@@ -301,6 +301,10 @@ class Reports_Controller extends Main_Controller {
 		// Initialize custom field array
 		$form['form_id'] = 1;
 		$form_id = $form['form_id'];
+		if ($_POST)
+		{
+			$form_id = $_POST['form_id'];
+		}
 		$form['alert_mode'] = 0;
 		$form['custom_field'] = customforms::get_custom_form_fields($id,$form_id,true);
 
