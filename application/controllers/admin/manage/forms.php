@@ -1142,6 +1142,46 @@ class Forms_Controller extends Admin_Controller {
 		
 		return $html;
 	}
+
+	function autocomplete_list($field_id = null) {
+		$this->template->content = new View('admin/manage/forms/autocomplete_list');
+		$this->template->content->list = '';
+		$field = ORM::factory('form_field', $field_id);
+		$this->template->content->field = $field->field_name;
+		if(!empty($field_id)) {
+			$ac_type = 'DB';
+			$autocomplete_type = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_autocomplete_type')->find();
+			if($autocomplete_type->loaded == TRUE)
+				$ac_type = $autocomplete_type->option_value;
+			if($ac_type == 'DB') {
+				$this->template->content->list = customforms::autosearch($field_id);
+			} else {
+				$autocomplete_default = '';
+				$autocomplete_file = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_autocomplete_file')->find();
+				if($autocomplete_file->loaded == TRUE)
+					$autocomplete_default = $autocomplete_file->option_value;
+				if(!empty($autocomplete_default)) {
+					$this->template->content->list = file_get_contents($file_url);
+				}
+			}
+		}
+	}
+	
+	// HT: new recursive function for autosearch text label  
+	public function autosearch_text_filter($value, $list, $code = false) {
+		if(!empty($list)) {
+			foreach($list as $item) {
+				if(isset($item['id']) && ($value == $item['id'])) {
+					if($code) $value = $item['text']. ' ('.$value.')';
+					else $value = $item['text'];
+					break;
+				} else if(!empty($item['children'])) {
+					$value = self::autosearch_text_filter($value, $item['children']);
+				}
+			} 
+		}
+		return $value;
+	}
 }
 
 

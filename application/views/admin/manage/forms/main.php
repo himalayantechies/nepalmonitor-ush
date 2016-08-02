@@ -151,8 +151,12 @@
 									{
 										$form_fields .= "&nbsp;<a href=\"#\"><img src = \"".url::file_loc('img')."media/img/icon-calendar.gif\"  align=\"middle\" border=\"0\"></a>";
 									}
-									$form_fields .= "	<div class=\"forms_fields_edit\">
-									<a href=\"javascript:fieldAction('e','EDIT',".$field_id.",".$form_id.",".$field_type.");\">EDIT</a>&nbsp;|&nbsp;
+									$form_fields .= "	<div class=\"forms_fields_edit\">";
+									if($field_type == 10)
+									{
+										$form_fields .= "<a href=\"".url::site()."/admin/manage/forms/autocomplete_list/".$field_id."\">VIEW LIST</a>&nbsp;|&nbsp;";
+									}
+									$form_fields .= "<a href=\"javascript:fieldAction('e','EDIT',".$field_id.",".$form_id.",".$field_type.");\">EDIT</a>&nbsp;
 									<a href=\"javascript:fieldAction('d','DELETE',".$field_id.",".$form_id.",".$field_type.");\">DELETE</a>&nbsp;|&nbsp;
 									<a href=\"javascript:fieldAction('mu','MOVE',".$field_id.",".$form_id.",".$field_type.");\">MOVE UP</a>&nbsp;|&nbsp;
 									<a href=\"javascript:fieldAction('md','MOVE',".$field_id.",".$form_id.",".$field_type.");\">MOVE DOWN</a></div>";
