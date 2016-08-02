@@ -1,8 +1,8 @@
 <?php
 $response = json_decode($list, true);
-echo '<h3>'.$field.'</h3>';
+echo '<h2>'.$field.'</h2>';
 if(!empty($response['items'])) {
-	echo '<table><tr><th>Value</th><th>Text</th></tr>';
+	echo '<table class="table"><tr><th>Value</th><th>Text</th></tr>';
 	foreach($response['items'] as $item) {
 		if(!empty($item['children'])) {
 			echo '<tr><td><b>'.$item['id'].'</b></td><td><b>'.$item['text'].'</b></td></tr>';
@@ -12,7 +12,7 @@ if(!empty($response['items'])) {
 	}
 	echo '</table>';
 } else {
-	echo 'No option available';
+	echo '<h3>No option available</h3>';
 }
 
 ?>	
