@@ -338,9 +338,11 @@
 			
 			echo "<h4>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</h4>";
 			//echo form::input('custom_field['.$field_id.']', $field_value, $id_name .' class="text custom_text"');
-			echo form::dropdown("custom_field[".$field_id.']',$ddoptions, $field_value, $id_name);
+			if(!isset($editor)) {
+				echo form::dropdown("custom_field[".$field_id.']',$ddoptions, $field_value, $id_name);
+			} 
 			echo "</div>";
-			
+			if(!isset($editor)) {
 			echo "<script type=\"text/javascript\">
 						$(function(){
 							$.ajax({
@@ -359,6 +361,7 @@
 						
 					});
 					</script>";
+			}
 		}
 		// HT: End of new autocomplete field section list
 
@@ -377,8 +380,12 @@
 				? Kohana::lang('ui_admin.yes')
 				: Kohana::lang('ui_admin.no');
 
-			$form_fields .= "	<div class=\"forms_fields_edit\" style=\"clear:both\">
-			<a href=\"javascript:fieldAction('e','EDIT',".$field_id.",".$form['id'].",".$field_property['field_type'].");\">EDIT</a>&nbsp;|&nbsp;
+			$form_fields .= "	<div class=\"forms_fields_edit\" style=\"clear:both\">";
+			
+			if($field_property['field_type'] == 10) {
+				$form_fields .= "<a href=\"".url::site()."/admin/manage/forms/autocomplete_list/".$field_id."\">VIEW LIST</a>&nbsp;|&nbsp;";
+			}
+			$form_fields .= "<a href=\"javascript:fieldAction('e','EDIT',".$field_id.",".$form['id'].",".$field_property['field_type'].");\">EDIT</a>&nbsp;|&nbsp;
 			<a href=\"javascript:fieldAction('d','DELETE',".$field_id.",".$form['id'].",".$field_property['field_type'].");\">DELETE</a>&nbsp;|&nbsp;
 			<a href=\"javascript:fieldAction('mu','MOVE',".$field_id.",".$form['id'].",".$field_property['field_type'].");\">MOVE UP</a>&nbsp;|&nbsp;
 			<a href=\"javascript:fieldAction('md','MOVE',".$field_id.",".$form['id'].",".$field_property['field_type'].");\">MOVE DOWN</a>&nbsp;|&nbsp;
