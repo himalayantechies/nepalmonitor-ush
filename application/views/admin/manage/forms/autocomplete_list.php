@@ -6,6 +6,9 @@ if(!empty($response['items'])) {
 	foreach($response['items'] as $item) {
 		if(!empty($item['children'])) {
 			echo '<tr><td><b>'.$item['id'].'</b></td><td><b>'.$item['text'].'</b></td></tr>';
+			foreach($item['children'] as $child) {
+				echo '<tr><td>&nbsp;&raquo;&nbsp;'.$child['id'].'</td><td>'.$child['text'].'</td></tr>';
+			}
 		} else {
 			echo '<tr><td>'.$item['id'].'</td><td>'.$item['text'].'</td></tr>';
 		}
