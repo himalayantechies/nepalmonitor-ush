@@ -1047,7 +1047,7 @@ class Forms_Controller extends Admin_Controller {
 			//datatype options
 		$autocomplete_default = '';
 		$ac_type = 'DB';
-		$field_autocomplete_tag = false;
+		$field_autocomplete_tag = 0;
 		$autocomplete_type = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_autocomplete_type')->find();
 		if($autocomplete_type->loaded == TRUE)
 			$ac_type = $autocomplete_type->option_value;
@@ -1061,13 +1061,13 @@ class Forms_Controller extends Admin_Controller {
 		
 		if ($ac_type == "FILE")
 		{
-			$html .= 	Kohana::lang('ui_admin.DB')." " . form::radio('field_autocomplete_type', 'DB', FALSE, "onclick=\"document.getElementById('form_autocomplete_file').style.display='none';\"") . "&nbsp;&nbsp;";
-			$html .= 	Kohana::lang('ui_admin.FILE')." " . form::radio('field_autocomplete_type', 'FILE', TRUE, "onclick=\"document.getElementById('form_autocomplete_file').style.display='block';\"");
+			$html .= 	Kohana::lang('ui_admin.DB')." " . form::radio('field_options[field_autocomplete_type]', 'DB', FALSE, "onclick=\"document.getElementById('form_autocomplete_file').style.display='none';\"") . "&nbsp;&nbsp;";
+			$html .= 	Kohana::lang('ui_admin.FILE')." " . form::radio('field_options[field_autocomplete_type]', 'FILE', TRUE, "onclick=\"document.getElementById('form_autocomplete_file').style.display='block';\"");
 		}
 		else
 		{
-			$html .= 	Kohana::lang('ui_admin.DB')." " . form::radio('field_autocomplete_type', 'DB', TRUE, "onclick=\"document.getElementById('form_autocomplete_file').style.display='none';\"") . "&nbsp;&nbsp;";
-			$html .= 	Kohana::lang('ui_admin.FILE')." " . form::radio('field_autocomplete_type', 'FILE', FALSE, "onclick=\"document.getElementById('form_autocomplete_file').style.display='block';\"");
+			$html .= 	Kohana::lang('ui_admin.DB')." " . form::radio('field_options[field_autocomplete_type]', 'DB', TRUE, "onclick=\"document.getElementById('form_autocomplete_file').style.display='none';\"") . "&nbsp;&nbsp;";
+			$html .= 	Kohana::lang('ui_admin.FILE')." " . form::radio('field_options[field_autocomplete_type]', 'FILE', FALSE, "onclick=\"document.getElementById('form_autocomplete_file').style.display='block';\"");
 		}
 		$html .="</div>";
 		
@@ -1110,13 +1110,13 @@ class Forms_Controller extends Admin_Controller {
 		
 		if ($field_autocomplete_tag != 1)
 		{
-			$html .= 	Kohana::lang('ui_admin.yes')." " . form::radio('field_autocomplete_tag', '1', FALSE) . "&nbsp;&nbsp;";
-			$html .= 	Kohana::lang('ui_admin.no')." " . form::radio('field_autocomplete_tag', '0', TRUE);
+			$html .= 	Kohana::lang('ui_admin.yes')." " . form::radio('field_options[field_autocomplete_tag]', '1', FALSE) . "&nbsp;&nbsp;";
+			$html .= 	Kohana::lang('ui_admin.no')." " . form::radio('field_options[field_autocomplete_tag]', '0', TRUE);
 		}
 		else
 		{
-			$html .= 	Kohana::lang('ui_admin.yes')." " . form::radio('field_autocomplete_tag', '1', TRUE) . "&nbsp;&nbsp;";
-			$html .= 	Kohana::lang('ui_admin.no')." " . form::radio('field_autocomplete_tag', '0', FALSE);
+			$html .= 	Kohana::lang('ui_admin.yes')." " . form::radio('field_options[field_autocomplete_tag]', '1', TRUE) . "&nbsp;&nbsp;";
+			$html .= 	Kohana::lang('ui_admin.no')." " . form::radio('field_options[field_autocomplete_tag]', '0', FALSE);
 		}
 		$html .="</div>";
 		

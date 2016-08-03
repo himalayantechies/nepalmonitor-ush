@@ -312,14 +312,14 @@
 			$field_placeholder = '';
 			$field_type = 'DB';
 			$field_file = '';
-			$tag_flag = 'false';
+			$tag_flag = false;
 			if (isset($field_options['field_autocomplete_type'])) 
 			{
 				$field_type = $field_options['field_autocomplete_type'];
 			}
 			if (isset($field_options['field_autocomplete_tag'])) 
 			{
-				$tag_flag = ($field_options['field_autocomplete_tag']) ? 'true' : 'false';
+				$tag_flag = ($field_options['field_autocomplete_tag']) ? true : false;
 			}
 			if($field_type == 'FILE') {
 				
@@ -343,7 +343,8 @@
 			} 
 			echo "</div>";
 			if(!isset($editor)) {
-			echo "<script type=\"text/javascript\">
+				$script = 
+			"<script type=\"text/javascript\">
 						$(function(){
 							$.ajax({
 								url: \"".$field_file."\",
@@ -351,9 +352,9 @@
 								success: function(data) {
 									var items = data.items;
 									$(\"#custom_field_".$field_id."\").select2({
-										placeholder: \"".$field_placeholder."\",
-										data: items,
-										tags: \"".$tag_flag."\"
+										placeholder: \"".$field_placeholder."\",";
+										if($tag_flag) $script .= "tags: true,";
+										$script .= "data: items
 									});
 									$(\"#custom_field_".$field_id."\").val(\"".$field_value."\").trigger(\"change\");
 								}
@@ -361,6 +362,7 @@
 						
 					});
 					</script>";
+					echo $script;
 			}
 		}
 		// HT: End of new autocomplete field section list

@@ -5,6 +5,7 @@ class location_filter_Core {
 	protected static $table_prefix;
 	protected static $pcode = '';
 	protected static $adm_level = '';
+	protected static $loc_name = '';
 	public static $admLevels = array(0 => array('label' => 'Country', 'types' => 'country', 'pcode' => 'admin0Pcode', 'name' => 'admin0Name_en'), 1 => array('label' => 'Development Region', 'types' => 'administrative_area_level_1', 'pcode' => 'admin1Pcode', 'name' => 'admin1Name_en'), 2 => array('label' => 'Zone', 'types' => 'administrative_area_level_2', 'pcode' => 'admin2Pcode', 'name' => 'admin2Name_en'), 3 => array('label' => 'District', 'types' => 'administrative_area_level_3', 'pcode' => 'admin3Pcode', 'name' => 'admin3Name_en'), 4 => array('label' => 'Municipality/VDC', 'types' => 'locality', 'pcode' => 'admin4Pcode', 'name' => 'admin4Name_en'), 5 => array('label' => 'Ward', 'types' => '', 'pcode' => 'admin5Pcode', 'name' => 'admin5Name_en'));
 
 	static function init() {
@@ -174,6 +175,7 @@ class location_filter_Core {
 
 	}
 
+	
 	function check_child($post, $parent = null) {
 		$filter_match = false;
 		$db = new Database();
@@ -326,6 +328,69 @@ class location_filter_Core {
 			}
 		}
 		return $adm_Lvls;
+	}
+	
+	function json_pcode($lat, $lng, $pcodeLvl) {
+		$post['longitude'] = $lng;
+		$post['latitude'] = $lat;
+		$s = curl_init();
+		$loc_mapping_url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" . $lat . "," . $lng;
+		curl_setopt($s, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($s, CURLOPT_URL, $loc_mapping_url);
+		curl_setopt($s, CURLOPT_RETURNTRANSFER, true);
+
+		$_useragent = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1';
+		$_referer = url::site();
+		curl_setopt($s, CURLOPT_USERAGENT, $_useragent);
+		curl_setopt($s, CURLOPT_REFERER, $_referer);
+
+		$_webpage = curl_exec($s);
+		$_status = curl_getinfo($s, CURLINFO_HTTP_CODE);
+		curl_close($s);
+		if ($_status == 200) {
+			$response = json_decode($_webpage, true);
+			if ($response['status'] == 'OK') {
+				foreach ($response['results'] as $result) {
+					foreach (self::$admLevels as $key => $admLvl) {
+						if (!empty($admLvl['types'])) {
+							if (in_array($admLvl['types'], $result['types'])) {
+								foreach ($result['address_components'] as $location) {
+									if (in_array($admLvl['types'], $location['types'])) {
+										$admLevel[$key] = $location['long_name'];
+									}
+									break;
+								}
+								break;
+							}
+						}
+					}
+				}
+				ksort($admLevel);
+				$locfilter_model = new Database();
+				foreach ($admLevel as $lvl => $name) {
+					$filters = $locfilter_model -> query("SELECT DISTINCT pcode, id, parent_pcode, adm_level, coord FROM ".self::$table_prefix.".location_filter WHERE adm_level = '".$lvl."' AND name = '". $name ."' GROUP BY pcode");
+					if (count($filters) == 1) {
+						self::$pcode = $filters[0] -> pcode;
+						self::$adm_level = $filters[0] -> adm_level;
+						if(empty(self::$loc_name)) self::$loc_name = $name;
+						else self::$loc_name = $name.', '.self::$loc_name; 
+						/*if (self::check_child($post, $filters[0]))
+							break;*/	
+					} elseif (count($filters) > 1) {
+						/* child coord */
+					} elseif (count($filters) < 1) {
+						/*	parent
+						 child coord*/
+					}
+					if($pcodeLvl == $lvl ) {
+						break;
+					}
+				}
+				//$incident -> pcode = self::$pcode;
+				//$incident -> adm_level = self::$adm_level;
+			}
+		}
+		return json_encode(array('pcode' => self::$pcode, 'adm_level' => self::$adm_level, 'name' => self::$loc_name));
 	}
 
 }
