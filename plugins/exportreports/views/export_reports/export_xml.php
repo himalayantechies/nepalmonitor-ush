@@ -29,6 +29,7 @@ echo "<?xml-stylesheet type=\"text/xsl\" href=\"export.xsl\" ?>"; ?>
 			}
 			echo '<longitude>'.exportreports_helper::_csv_text($incident->longitude).'</longitude>';
 			echo '<latitude>'.exportreports_helper::_csv_text($incident->longitude).'</latitude>';
+			echo '<pcode>'.exportreports_helper::_csv_text($incident->pcode).'</pcode>';
 			echo '<content type="xhtml" xml:lang="en">'
 			.exportreports_helper::_csv_text($incident->incident_description)
 			.'</content>';

@@ -1,6 +1,6 @@
 <?php
 ob_start();
-	echo "#,INCIDENT TITLE,INCIDENT DATE,LOCATION,DESCRIPTION,CATEGORY,LATITUDE,LONGITUDE";
+	echo "#,INCIDENT TITLE,INCIDENT DATE,LOCATION,DESCRIPTION,CATEGORY,LATITUDE,LONGITUDE,PCODE";
 	foreach(location_filter::$admLevels as $key => $admLvl) {
 		echo ",".$admLvl['label'];
 	}
@@ -31,6 +31,7 @@ ob_start();
 		echo '"';
 		echo ',"'.exportreports_helper::_csv_text($incident->latitude).'"';
 		echo ',"'.exportreports_helper::_csv_text($incident->longitude).'"';
+		echo ',"'.exportreports_helper::_csv_text($incident->pcode).'"';
 		$admList = location_filter::get_adm_levels($incident->adm_level, $incident->pcode);
 		foreach(location_filter::$admLevels as $key => $admLvl) {
 			if(isset($admList[$key])) echo ',"'.$admList[$key]->name.'"';

@@ -135,7 +135,8 @@ class Reports_Controller extends Main_Controller {
 		// Category tree view
 		$this->template->content->category_tree_view = category::get_category_tree_view();
 		// Location tree view
-		$this->template->content->location_filter = location_filter::get_location_filter_view(3) + location_filter::get_location_filter_view(4);
+		$this->template->content->location_filter = location_filter::get_location_filter_view(2) + location_filter::get_location_filter_view(3);
+		//$this->template->content->location_filter = array();
 
 		// Additional view content
 		$this->template->content->custom_forms_filter = new View('reports/submit_custom_forms');
