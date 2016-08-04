@@ -30,10 +30,14 @@
 			<?php Event::run('ushahidi_action.report_meta_after_time', $incident_id); ?>
 		</p>
 		<p>
+			<?php if(!empty($adm_level)) { ?>
 			<span><strong><?php echo Kohana::lang('ui_main.adm_level').': ';?></strong>
 			<?php echo $adm_level.'&nbsp;&nbsp;'; ?></span>
+			<?php } ?>
+			<?php if(!empty($adm_level)) { ?>
 			<span><strong><?php echo Kohana::lang('ui_main.pcode').': ';?></strong>
 			<?php echo $pcode; ?></span>
+			<?php } ?>
 		</p>
 
 		<div class="report-category-list">
