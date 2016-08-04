@@ -100,6 +100,18 @@ class reports_Core {
 			}
 		}
 		
+		// Validate only the fields that are filled in
+		if ( ! empty($post->incident_media))
+		{
+			foreach ($post->incident_media as $key => $url)
+			{
+				if (!empty($url) AND ! valid::url($url))
+				{
+					$post->add_error('incident_media','url');
+				}
+			}
+		}
+		
 		// If deployment is a single country deployment, check that the location mapped is in the default country
 		if ( ! Kohana::config('settings.multi_country') AND isset($post->country_name))
 		{
@@ -468,7 +480,7 @@ class reports_Core {
 				}
 			}
 		}
-
+		
 		// c. Photos
 		if ( ! empty($post->incident_photo))
 		{
@@ -537,6 +549,24 @@ class reports_Core {
 				$photo->media_date = date("Y-m-d H:i:s",time());
 				$photo->save();
 				$i++;
+			}
+		}
+
+		// d. Video
+		if (isset($post->incident_media))
+		{
+			foreach ($post->incident_media as $item)
+			{
+				if ( ! empty($item))
+				{
+					$media = new Media_Model();
+					$media->location_id = $incident->location_id;
+					$media->incident_id = $incident->id;
+					$media->media_type = 6;		// Media
+					$media->media_link = $item;
+					$media->media_date = date("Y-m-d H:i:s",time());
+					$media->save();
+				}
 			}
 		}
 	}

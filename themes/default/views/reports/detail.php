@@ -129,6 +129,25 @@
 			</div>
 			<?php } ?>
 			<!-- end news source link -->
+			
+			<!-- start media link -->
+			<?php if( count($incident_medias) > 0 ) { ?>
+			<div class="credibility">
+			<h5><?php echo Kohana::lang('ui_main.reports_medias');?></h5>
+					<?php
+						foreach( $incident_medias as $incident_media)
+						{
+							if(valid::url($incident_media)) {
+							?>
+							<a href="<?php echo $incident_media; ?> " target="_blank"><?php
+							echo $incident_media;?></a>
+							<br/>
+							<?php }
+						}
+			?>
+			</div>
+			<?php } ?>
+			<!-- end news source link -->
 
 			<!-- start additional fields -->
 			<?php if(strlen($custom_forms) > 0) { ?>

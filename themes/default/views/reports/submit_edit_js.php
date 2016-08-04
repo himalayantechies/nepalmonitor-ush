@@ -960,3 +960,30 @@
 				}
 			});
 		}
+		
+		function getPcode() {
+			latVal = $('#latitude').val();
+			lonVal = $('#longitude').val();
+			adm = $('#adm_level').val();
+			$.post("<?php echo url::base() . 'reports/get_pcode/' ?>", 
+					{ latitude: latVal, longitude: lonVal, adm_level: adm},
+					function(data){
+						if ( data.adm_level == adm)
+						{
+							$('#location_name_pcode').val(data.name);
+							$('#pcode').val(data.pcode);
+						}
+						else if(data.pcode != '')
+						{
+							$('#location_name_pcode').val(data.name);
+							$('#pcode').val(data.pcode);
+							$('#adm_level').val(data.adm_level);
+							alert("Location for that accuracy could not be mapped. Returned closest location!!");
+						} else {
+							$('#location_name_pcode').val();
+							$('#pcode').val();
+							alert("Location for that accuracy could not be mapped. Please try again!!");
+						}
+					}, "json");
+		}
+		
