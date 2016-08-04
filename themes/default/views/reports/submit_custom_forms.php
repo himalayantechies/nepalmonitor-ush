@@ -56,7 +56,9 @@
 			echo "<div class=\"report_row\" id=\"custom_field_row_" . $field_id ."\">";
 
 			$field_options = customforms::get_custom_field_options($field_id);
-
+			$data_type = 'text';
+			if (isset($field_options['field_datatype']))
+			$data_type = $field_options['field_datatype'];
 			if (isset($field_options['field_hidden']) AND !isset($editor))
 			{
 				if($field_options['field_hidden'] == 1)
@@ -66,13 +68,21 @@
 				else
 				{
 					echo "<h4>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</h4>";
-					echo form::input('custom_field['.$field_id.']', $field_value, $id_name .' class="text custom_text"');
+					if($data_type == 'numeric') {
+						echo form::input(array('name' => 'custom_field['.$field_id.']', 'type' => 'number', 'id' => $id_name, 'value' => $field_value, 'class' => 'text custom_text'));
+					} else {
+						echo form::input('custom_field['.$field_id.']', $field_value, $id_name .' class="text custom_text"');	
+					}
 				}
 			}
 			else
 			{
 				echo "<h4>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</h4>";
-				echo form::input('custom_field['.$field_id.']', $field_value, $id_name .' class="text custom_text"');
+				if($data_type == 'numeric') {
+					echo form::input(array('name' => 'custom_field['.$field_id.']', 'type' => 'number', 'id' => $id_name, 'value' => $field_value, 'class' => 'text custom_text'));
+				} else {
+					echo form::input('custom_field['.$field_id.']', $field_value, $id_name .' class="text custom_text"');	
+				}
 			}
 			echo "</div>";
 		}
