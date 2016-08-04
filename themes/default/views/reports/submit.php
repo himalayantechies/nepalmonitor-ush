@@ -226,7 +226,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 						<span class="required">*</span><br />
 					</h4>
 					<?php print form::dropdown('adm_level', $adm_levels, $form['adm_level']) ?>
-					<?php print form::input(array('name'=>'pcode', 'type'=>'hidden', 'id'=>'pcode')); ?>
+					<?php print form::input(array('name'=>'pcode', 'type'=>'hidden', 'id'=>'pcode', 'value' => $form['pcode'])); ?>
 				</div>
 				<div class="report_row">
 					<h4>

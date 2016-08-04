@@ -319,6 +319,12 @@ class Reports_Controller extends Admin_Controller {
 
 		$this->template->content = new View('admin/reports/edit');
 		$this->template->content->title = Kohana::lang('ui_admin.create_report');
+		
+		$adms = array();
+		foreach(location_filter::$admLevels as $key => $lvls) {
+			$adms[$key] = $lvls['label']; 
+		}
+		$this->template->content->adm_levels = $adms;
 
 		// Setup and initialize form field names
 		$form = array(
@@ -349,7 +355,9 @@ class Reports_Controller extends Admin_Controller {
 			'incident_active' => '',
 			'incident_verified' => '',
 			'incident_zoom' => '',
-			'alert_mode' => '0'
+			'alert_mode' => '0',
+			'adm_level' => '',
+			'pcode' => ''
 		);
 
 		// Copy the form as errors, so the errors will be stored with keys
@@ -602,8 +610,10 @@ class Reports_Controller extends Admin_Controller {
 
 				// STEP 2: SAVE INCIDENT
 				$incident = new Incident_Model($id);
+				if(empty($post->pcode)) {
 				//Location filter add before incident save
 				location_filter::save($post, $incident);
+				}
 				reports::save_report($post, $incident, $location->id);
 
 				// STEP 2b: Record Approval/Verification Action
@@ -777,7 +787,9 @@ class Reports_Controller extends Admin_Controller {
 						'incident_active' => $incident->incident_active,
 						'incident_verified' => $incident->incident_verified,
 						'incident_zoom' => $incident->incident_zoom,
-						'alert_mode' => $incident->alert_mode
+						'alert_mode' => $incident->alert_mode,
+						'adm_level' => $incident->adm_level,
+						'pcode' => $incident->pcode
 					);
 
 					// Merge To Form Array For Display

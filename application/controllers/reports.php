@@ -345,8 +345,10 @@ class Reports_Controller extends Main_Controller {
 
 				// STEP 2: SAVE INCIDENT
 				$incident = new Incident_Model();
+				if(empty($post->pcode)) {
 				//Location filter add before incident save
 				location_filter::save($post, $incident);
+				}
 				reports::save_report($post, $incident, $location->id);
 
 				// STEP 2b: SAVE INCIDENT GEOMETRIES
@@ -649,6 +651,8 @@ class Reports_Controller extends Main_Controller {
 			$this->template->content->incident_category = $incident->incident_category;
 			// Adm Levels
 			$this->template->content->adm_levels = location_filter::get_adm_levels($incident->adm_level, $incident->pcode);
+			$this->template->content->pcode = $incident->pcode;
+			$this->template->content->adm_level = location_filter::$admLevels[$incident->adm_level]['label'];
 
 			// Incident rating
 			$rating = ORM::factory('rating')

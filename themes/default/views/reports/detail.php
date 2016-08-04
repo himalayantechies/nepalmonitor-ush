@@ -29,6 +29,12 @@
 			<span class="r_location"><?php echo html::specialchars($incident_location); ?></span>
 			<?php Event::run('ushahidi_action.report_meta_after_time', $incident_id); ?>
 		</p>
+		<p>
+			<span><strong><?php echo Kohana::lang('ui_main.adm_level').': ';?></strong>
+			<?php echo $adm_level.'&nbsp;&nbsp;'; ?></span>
+			<span><strong><?php echo Kohana::lang('ui_main.pcode').': ';?></strong>
+			<?php echo $pcode; ?></span>
+		</p>
 
 		<div class="report-category-list">
 		<p>
@@ -105,9 +111,8 @@
 		<div class="report-description-text">
 			<h5><?php echo Kohana::lang('ui_main.reports_description');?></h5>
 			<?php echo nl2br($incident_description); ?>
-			<br/>
-
-
+			<br/><br/>
+			
 			<!-- start news source link -->
 			<?php if( count($incident_news) > 0 ) { ?>
 			<div class="credibility">

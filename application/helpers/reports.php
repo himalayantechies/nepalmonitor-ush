@@ -159,6 +159,8 @@ class reports_Core {
 		$post->add_rules('incident_verified', 'between[0,1]');
 		$post->add_rules('incident_zoom', 'numeric');
 		$post->add_rules('alert_mode', 'between[0,3]');
+		$post->add_rules('pcode','required', 'length[3,200]');
+		$post->add_rules('adm_level','required', 'numeric');
 		
 		// Custom form fields validation
 		$errors = customforms::validate_custom_form_fields($post);
@@ -267,6 +269,8 @@ class reports_Core {
 		$incident->incident_date = date( "Y-m-d H:i:s", strtotime($incident_date . " " . $incident_time) );
 				
 		$incident->alert_mode = $post->alert_mode;
+		$incident->pcode = $post->pcode;
+		$incident->adm_level = $post->adm_level;
 		
 		// Is this an Email, SMS, Twitter submitted report?
 		if ( ! empty($post->service_id))
