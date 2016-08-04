@@ -854,23 +854,35 @@ class reports_Core {
 		//
 		// Check if the adm location has been specified
 		// 
-		if (isset($url_data['adm']) AND is_array($url_data['adm']))
+		if (isset($url_data['adm']))
 		{
 			$adm_ids = array();
 			$adm_query = '';
-			foreach ($url_data['adm'] as $adm_level)
-			{
-				if (intval($adm_level) >= 0)
+			if( is_array($url_data['adm'])) {
+				foreach ($url_data['adm'] as $adm_level)
 				{
-					$loc = new Location_Filter_Model($adm_level);
-					if($loc->loaded) {
-						$adm_ids[] = $loc->pcode;
-						if($adm_query != '') $adm_query .= ' OR ';
-						$adm_query .= " i.pcode LIKE '".$loc->pcode."%' ";
+					if (intval($adm_level) >= 0)
+					{
+						$loc = new Location_Filter_Model($adm_level);
+						if($loc->loaded) {
+							$adm_ids[] = $loc->pcode;
+							if($adm_query != '') $adm_query .= ' OR ';
+							$adm_query .= " i.pcode LIKE '".$loc->pcode."%' ";
+						}
 					}
 				}
+			} else {
+				$adm_level = $url_data['adm'];
+				if (intval($adm_level) >= 0)
+					{
+						$loc = new Location_Filter_Model($adm_level);
+						if($loc->loaded) {
+							$adm_ids[] = $loc->pcode;
+							if($adm_query != '') $adm_query .= ' OR ';
+							$adm_query .= " i.pcode LIKE '".$loc->pcode."%' ";
+						}
+					}
 			}
-			
 			if (count($adm_ids) > 0)
 			{
 				array_push(self::$params, 
@@ -879,7 +891,6 @@ class reports_Core {
 				
 			}
 		}
-
 		//
 		// Check if they're filtering over custom form fields
 		//
