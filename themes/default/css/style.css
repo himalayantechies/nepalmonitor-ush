@@ -1316,7 +1316,7 @@ td.w-03 { border-bottom:1px dotted #E8E4DB; text-transform:capitalize; }
 .report_row .date-box img{ padding:0 5px 0 5px; }
 .report_row .time{ float:left; }
 .report_row .optional-info{ float:left; margin-right:10px; }
-.report_row .select2-container {width: 100% !important;}
+.report_row .select2-container {width: 95% !important;}
 
 .report_category { clear:both; overflow:hidden; font-size:90%; }
 .report_category ul{ width:50%; float:left; margin:0; padding:0 0 11px; }
