@@ -320,7 +320,10 @@ class location_filter_Core {
 		$adm_Lvls = array();
 		if(isset($adm_level) && !empty($pcode)) {
 			$loc_model = new Location_Filter_Model();
-			$adm_Lvls[$adm_level] = $loc_model -> where('pcode', $pcode) -> where('adm_level', $adm_level) -> find();
+			$adm = $loc_model -> where('pcode', $pcode) -> find();
+			$adm_level = $adm->adm_level;
+			$adm_Lvls[$adm_level] = $adm;
+			//$adm_Lvls[$adm_level] = $loc_model -> where('pcode', $pcode) -> where('adm_level', $adm_level) -> find();
 			for($i = $adm_level-1; $i >= 0; $i--) {
 				$lvl_model = new Location_Filter_Model();
 				 
