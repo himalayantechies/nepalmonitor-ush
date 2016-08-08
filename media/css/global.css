@@ -183,3 +183,5 @@ body {
 form#header_nav_userforgot_form {
 	display:none;
 }
+
+.report_row .select2-container {width: 95% !important;}
