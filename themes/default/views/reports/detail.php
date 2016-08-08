@@ -32,12 +32,18 @@
 		<p>
 			<?php if(!empty($adm_level)) { ?>
 			<span><strong><?php echo Kohana::lang('ui_main.adm_level').': ';?></strong>
-			<?php echo $adm_level.'&nbsp;&nbsp;'; ?></span>
-			<?php } ?>
-			<?php if(!empty($adm_level)) { ?>
+			<?php echo location_filter::$admLevels[$adm_level]['label'].'&nbsp;&nbsp;'; ?></span>
 			<span><strong><?php echo Kohana::lang('ui_main.pcode').': ';?></strong>
-			<?php echo $pcode; ?></span>
-			<?php } ?>
+			<?php echo $pcode; ?></span><br/>
+			<?php 
+			$admList = location_filter::get_adm_levels($adm_level, $pcode);
+			foreach(location_filter::$admLevels as $key => $admLvl) {
+				if(isset($admList[$key])) {
+					echo '<span style="display:inline-block"><strong>'.$admLvl['label'].': </strong>'.$admList[$key]->name.'&nbsp;&nbsp;</span>';
+				}
+			}
+			}
+			?>
 		</p>
 
 		<div class="report-category-list">

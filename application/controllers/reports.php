@@ -654,8 +654,10 @@ class Reports_Controller extends Main_Controller {
 			$this->template->content->adm_levels = location_filter::get_adm_levels($incident->adm_level, $incident->pcode);
 			$this->template->content->pcode = $incident->pcode;
 			$this->template->content->adm_level = '';
-			if(!empty(location_filter::$admLevels[$incident->adm_level]))
-				$this->template->content->adm_level = location_filter::$admLevels[$incident->adm_level]['label'];
+			if(!empty(location_filter::$admLevels[$incident->adm_level])) {
+				$this->template->content->adm_level = $incident->adm_level;
+			} 
+				
 
 			// Incident rating
 			$rating = ORM::factory('rating')
