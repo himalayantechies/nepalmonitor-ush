@@ -277,8 +277,8 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 							<div class="row">
 								<div class="town">
 									<h4><?php echo Kohana::lang('ui_main.reports_location_name');?>  <span class="required">*</span> <small><a href="#" onclick="getPcode()">Get Location Name</a></small><br /><span><?php echo Kohana::lang('ui_main.detailed_location_example');?></span></h4>
-									<?php //print form::input('location_name', $form['location_name'], ' class="text long"'); ?>
-									<?php print form::input(array('name'=>'location_name','id'=>'location_name_pcode', 'value' => $form['location_name'], 'class' => 'text long', 'readonly' => 'readonly')); ?>
+									<?php print form::input('location_name', $form['location_name'], ' class="text long"'); ?>
+									<?php //print form::input(array('name'=>'location_name','id'=>'location_name_pcode', 'value' => $form['location_name'], 'class' => 'text long', 'readonly' => 'readonly')); ?>
 								</div>
 							</div>
 				

@@ -393,6 +393,41 @@ class location_filter_Core {
 		return json_encode(array('pcode' => self::$pcode, 'adm_level' => self::$adm_level, 'name' => self::$loc_name));
 	}
 
+	function json_get_pcode($lat, $lng, $pcodeLvl) {
+		$locfilter_model = new Database();		
+		$siblings = $locfilter_model -> query("SELECT DISTINCT pcode, id, parent_pcode, adm_level, coord FROM ".self::$table_prefix.".location_filter 
+		WHERE coord IS NOT NULL AND adm_level = '5' AND min_lat <= ".$lat." AND max_lat >= ".$lat."  AND min_lon <= ".$lng." AND max_lon >= ".$lng." GROUP BY pcode");
+		//$loc_model = new Location_Filter_Model();
+		//$siblings = $loc_model -> where('pcode', $parent->pcode) -> find_all();
+		$filter_match = false;
+		foreach($siblings as $pnt) {
+			if(!$filter_match) {
+				if(!empty($pnt -> coord)) {
+					$sql = 'SELECT myWithin(PointFromText(CONCAT( "POINT(", ' . $lat . ', " ", ' . $lng . ', ")" )), PolyFromText("POLYGON((' . $pnt -> coord . '))")) AS inPolygon';
+					foreach ($db->query($sql) as $item) {
+						if ($item -> inPolygon) {
+							$filter_match = true;
+							self::$pcode = $pnt -> pcode;
+							self::$adm_level = $pnt -> adm_level;
+							break;
+						}
+		
+					}
+				}
+			}
+		}
+		while(self::$adm_level > $pcodeLvl) {
+			$loc_model = new Location_Filter_Model();
+			$child = $loc_model -> where('pcode', $pcode) -> where('adm_level', self::$adm_level) -> find();
+			$lvl_model = new Location_Filter_Model();
+			$parent = $lvl_model -> where('pcode', $child->parent_pcode) -> where('adm_level', self::$adm_level-1) -> find();
+			self::$adm_level = $parent->adm_level;
+			self::$pcode = $parent->pcode;
+			self::$loc_name = $parent->name;
+		}
+		return json_encode(array('pcode' => self::$pcode, 'adm_level' => self::$adm_level, 'name' => self::$loc_name));
+	}
+
 }
 
 location_filter_Core::init();

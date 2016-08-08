@@ -965,7 +965,7 @@
 			latVal = $('#latitude').val();
 			lonVal = $('#longitude').val();
 			adm = $('#adm_level').val();
-			$.post("<?php echo url::base() . 'reports/get_pcode/' ?>", 
+			$.post("<?php echo url::base() . 'reports/json_get_pcode/' ?>", 
 					{ latitude: latVal, longitude: lonVal, adm_level: adm},
 					function(data){
 						if ( data.adm_level == adm)
