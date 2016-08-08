@@ -46,7 +46,7 @@
 		$id_name = 'id="custom_field_'.$field_id.'"';
 
 		// Get the field value
-		$field_value = ( ! empty($form['custom_field'][$field_id]) || ($form['custom_field'][$field_id] == '0'))
+		$field_value = ( isset($form['custom_field'][$field_id]) && (!empty($form['custom_field'][$field_id]) || ($form['custom_field'][$field_id] == '0')))
 			? $form['custom_field'][$field_id]
 			: $field_property['field_default'];
 			
