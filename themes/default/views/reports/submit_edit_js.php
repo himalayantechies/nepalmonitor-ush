@@ -970,17 +970,14 @@
 					function(data){
 						if ( data.adm_level == adm)
 						{
-							$('#location_name_pcode').val(data.name);
 							$('#pcode').val(data.pcode);
 						}
 						else if(data.pcode != '')
 						{
-							$('#location_name_pcode').val(data.name);
 							$('#pcode').val(data.pcode);
 							//$('#adm_level').val(data.adm_level);
 							alert("Location for that accuracy could not be mapped. Returned closest location!!");
 						} else {
-							$('#location_name_pcode').val();
 							$('#pcode').val();
 							alert("Location for that accuracy could not be mapped. Please try again!!");
 						}

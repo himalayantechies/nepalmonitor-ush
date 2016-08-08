@@ -46,10 +46,10 @@
 		$id_name = 'id="custom_field_'.$field_id.'"';
 
 		// Get the field value
-		$field_value = ( ! empty($form['custom_field'][$field_id]))
+		$field_value = ( ! empty($form['custom_field'][$field_id]) || ($form['custom_field'][$field_id] == '0'))
 			? $form['custom_field'][$field_id]
 			: $field_property['field_default'];
-
+			
 		if ($field_property['field_type'] == 1)
 		{
 			// Text Field
@@ -69,9 +69,9 @@
 				{
 					echo "<h4>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</h4>";
 					if($data_type == 'numeric') {
-						echo form::input(array('name' => 'custom_field['.$field_id.']', 'type' => 'number', 'id' => $id_name, 'value' => $field_value, 'class' => 'text custom_text'));
+						echo form::input(array('name' => 'custom_field['.$field_id.']', 'type' => 'number', 'id' => 'custom_field_'.$field_id, 'value' => $field_value, 'class' => 'text custom_text'));
 					} else {
-						echo form::input('custom_field['.$field_id.']', $field_value, $id_name .' class="text custom_text"');	
+						echo form::input('custom_field['.$field_id.']', $field_value, 'custom_field_'.$field_id .' class="text custom_text"');	
 					}
 				}
 			}

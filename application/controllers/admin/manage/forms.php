@@ -1161,7 +1161,7 @@ class Forms_Controller extends Admin_Controller {
 				if($autocomplete_file->loaded == TRUE)
 					$autocomplete_default = $autocomplete_file->option_value;
 				if(!empty($autocomplete_default)) {
-					$this->template->content->list = file_get_contents($file_url);
+					$this->template->content->list = file_get_contents($autocomplete_default);
 				}
 			}
 		}
