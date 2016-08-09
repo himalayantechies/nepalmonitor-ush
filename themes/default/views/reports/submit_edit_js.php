@@ -915,8 +915,8 @@
 			centroid = geoCollection.getCentroid(true);
 			$("#latitude").val(centroid.y);
 			$("#longitude").val(centroid.x);
-			$("#pcode").val('');
-			$('#adm_location').html('');
+			//$("#pcode").val('');
+			//$('#adm_location').html('');
 		}
 		
 		function incidentZoom(event) {
