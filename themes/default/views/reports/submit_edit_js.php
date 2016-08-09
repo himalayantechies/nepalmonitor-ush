@@ -966,21 +966,20 @@
 			lonVal = $('#longitude').val();
 			adm = $('#adm_level').val();
 			$.post("<?php echo url::base() . 'reports/json_get_pcode/' ?>", 
-					{ latitude: latVal, longitude: lonVal, adm_level: adm},
-					function(data){
-						if ( data.adm_level == adm)
-						{
-							$('#pcode').val(data.pcode);
-						}
-						else if(data.pcode != '')
-						{
-							$('#pcode').val(data.pcode);
-							//$('#adm_level').val(data.adm_level);
-							alert("Location for that accuracy could not be mapped. Returned closest location!!");
-						} else {
-							$('#pcode').val();
-							alert("Location for that accuracy could not be mapped. Please try again!!");
-						}
-					}, "json");
+				{ latitude: latVal, longitude: lonVal, adm_level: adm},
+				function(data){
+					if ( data.adm_level == adm)
+					{
+						$('#pcode').val(data.pcode);
+					}
+					else if(data.pcode != '')
+					{
+						$('#pcode').val(data.pcode);
+						alert("Location for that accuracy could not be mapped. Returned closest location!!");
+					} else {
+						$('#pcode').val();
+						alert("Location for that accuracy could not be mapped. Please try again!!");
+					}
+				}, "json");
 		}
 		
