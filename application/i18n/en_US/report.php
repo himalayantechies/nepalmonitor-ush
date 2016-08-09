@@ -117,7 +117,6 @@ $lang = array(
 		'required' => 'The longitude field is required. Please click on the map to pinpoint a location.',
 	) ,
 	'pcode' => array(
-		'length' => 'The pcode must be valid.',
 		'required' => 'The pcode field is required.',
 	) ,
 	'person_email' => array(
