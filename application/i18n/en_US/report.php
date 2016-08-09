@@ -116,6 +116,10 @@ $lang = array(
 		'between' => 'The longitude field does not appear to contain a valid longitude.',
 		'required' => 'The longitude field is required. Please click on the map to pinpoint a location.',
 	) ,
+	'pcode' => array(
+		'length' => 'The pcode must be valid.',
+		'required' => 'The pcode field is required.',
+	) ,
 	'person_email' => array(
 		'email' => 'The email field does not appear to contain a valid email address.',
 		'length' => 'The email field must be at least 4 and no more 64 characters long.',
