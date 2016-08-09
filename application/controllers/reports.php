@@ -1057,4 +1057,9 @@ class Reports_Controller extends Main_Controller {
 		$this->auto_render = FALSE;
 		echo location_filter::json_pcode($_POST['latitude'], $_POST['longitude'], $_POST['adm_level']);
 	}
+	public function get_json_pcode() {
+		$this->template = "";
+		$this->auto_render = FALSE;
+		echo location_filter::get_json_pcode($_POST['latitude'], $_POST['longitude'], $_POST['adm_level']);
+	}
 }
