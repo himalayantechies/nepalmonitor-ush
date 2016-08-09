@@ -293,6 +293,8 @@
 				$('input[name="geometry[]"]').remove();
 				$("#latitude").val("");
 				$("#longitude").val("");
+				$("#pcode").val("");
+				$('#adm_location').html('');
 				$('#geometry_label').val("");
 				$('#geometry_comment').val("");
 				$('#geometry_color').val("");
@@ -320,6 +322,8 @@
 			$('#latitude, #longitude').bind("focusout keyup", function() {
 				var newlat = $("#latitude").val();
 				var newlon = $("#longitude").val();
+				$("#pcode").val("");
+				$('#adm_location').html('');
 				if (!isNaN(newlat) && !isNaN(newlon))
 				{
 					// Clear the map first
@@ -646,6 +650,8 @@
 
 					$("#latitude").attr("value", lonlat[1]);
 					$("#longitude").attr("value", lonlat[0]);
+					$("#pcode").attr("value", '');
+					$('#adm_location').html('');
 				}
 			});
 
@@ -738,6 +744,8 @@
 						$("#latitude").val(data.latitude);
 						$("#longitude").val(data.longitude);
 						$("#location_name").val(data.location_name);
+						//$("#pcode").val('');
+						//$('#adm_location').html('');
 					} else {
 						// Alert message to be displayed
 						var alertMessage = address + " not found!\n\n***************************\n" + 
@@ -907,6 +915,8 @@
 			centroid = geoCollection.getCentroid(true);
 			$("#latitude").val(centroid.y);
 			$("#longitude").val(centroid.x);
+			$("#pcode").val('');
+			$('#adm_location').html('');
 		}
 		
 		function incidentZoom(event) {
@@ -971,13 +981,16 @@
 					if ( data.adm_level == adm)
 					{
 						$('#pcode').val(data.pcode);
+						$('#adm_location').html(data.location);
 					}
 					else if(data.pcode != '')
 					{
 						$('#pcode').val(data.pcode);
+						$('#adm_location').html(data.location);
 						alert("Location for that accuracy could not be mapped. Returned closest location!!");
 					} else {
 						$('#pcode').val();
+						$('#adm_location').html('');
 						alert("Location for that accuracy could not be mapped. Please try again!!");
 					}
 				}, "json");

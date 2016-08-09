@@ -320,7 +320,7 @@ class Reports_Controller extends Admin_Controller {
 		$this->template->content = new View('admin/reports/edit');
 		$this->template->content->title = Kohana::lang('ui_admin.create_report');
 		
-		$adms = array();
+		$adms = array('' => '');
 		foreach(location_filter::$admLevels as $key => $lvls) {
 			$adms[$key] = $lvls['label']; 
 		}
@@ -809,6 +809,9 @@ class Reports_Controller extends Admin_Controller {
 		$this->template->content->errors = $errors;
 		$this->template->content->form_error = $form_error;
 		$this->template->content->form_saved = $form_saved;
+		
+		
+		$this->template->content->adm_location = location_filter::get_adm_levels($form['adm_level'], $form['pcode']);
 
 		// Retrieve Custom Form Fields Structure
 		$this->template->content->custom_forms = new View('reports/submit_custom_forms');
@@ -851,7 +854,7 @@ class Reports_Controller extends Admin_Controller {
 			$this->template->js->latitude = $form['latitude'];
 			$this->template->js->longitude = $form['longitude'];
 		}
-
+		
 		$this->template->js->incident_zoom = $form['incident_zoom'];
 		$this->template->js->geometries = $form['geometry'];
 

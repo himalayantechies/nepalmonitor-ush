@@ -270,13 +270,22 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 							</div>
 							<?php Event::run('ushahidi_action.report_form_admin_location', $id); ?>
 							<div class="row">
-								<h4><?php echo Kohana::lang('ui_main.reports_adm_level'); ?><span class="required">*</span><br /></h4>
+								<h4><?php echo Kohana::lang('ui_main.reports_adm_level'); ?><span class="required">*</span> <small><a href="#" onclick="getPcode()">Get Location Name</a></small><br />
+									<span id="adm_location" class="example">
+										<?php
+										foreach(location_filter::$admLevels as $key => $lvl) {
+											if(!empty($adm_location[$key]->name))
+											echo '<span style="display:inline-block;"><i>'.$lvl['label'].':</i> '.$adm_location[$key]->name.'<span>&nbsp;&nbsp;';
+										}
+										?>
+									</span>
+								</h4>
 								<?php print form::dropdown('adm_level', $adm_levels, $form['adm_level']) ?>
 								<?php print form::input(array('name'=>'pcode', 'type'=>'hidden', 'id'=>'pcode', 'value' => $form['pcode'])); ?>
 							</div>
 							<div class="row">
 								<div class="town">
-									<h4><?php echo Kohana::lang('ui_main.reports_location_name');?>  <span class="required">*</span> <small><a href="#" onclick="getPcode()">Get Location Name</a></small><br /><span><?php echo Kohana::lang('ui_main.detailed_location_example');?></span></h4>
+									<h4><?php echo Kohana::lang('ui_main.reports_location_name');?>  <span class="required">*</span> <br/><span><?php echo Kohana::lang('ui_main.detailed_location_example');?></span></h4>
 									<?php print form::input('location_name', $form['location_name'], ' class="text long"'); ?>
 									<?php //print form::input(array('name'=>'location_name','id'=>'location_name_pcode', 'value' => $form['location_name'], 'class' => 'text long', 'readonly' => 'readonly')); ?>
 								</div>
