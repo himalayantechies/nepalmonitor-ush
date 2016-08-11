@@ -225,7 +225,7 @@
 					$html .= form::hidden("custom_field[".$field_id."-BLANKHACK]",'',$id_name);
 					break;
 				case 7:
-					$ddoptions = array();
+					$ddoptions = array('' => '');
 					// Semi-hack to deal with dropdown boxes receiving a range like 0-100
 					if (preg_match("/[0-9]+-[0-9]+/",$defaults[0]) AND count($options == 1))
 					{

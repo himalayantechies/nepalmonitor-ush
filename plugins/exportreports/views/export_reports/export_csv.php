@@ -1,6 +1,6 @@
 <?php
 ob_start();
-	echo "#,INCIDENT TITLE,INCIDENT DATE,LOCATION,DESCRIPTION,CATEGORY,LATITUDE,LONGITUDE,PCODE";
+	echo "#,INCIDENT TITLE,INCIDENT DATE,LOCATION,DESCRIPTION,CATEGORY,LATITUDE,LONGITUDE,".strtoupper(Kohana::lang('ui_main.pcode'));
 	foreach(location_filter::$admLevels as $key => $admLvl) {
 		echo ",".$admLvl['label'];
 	}
