@@ -226,7 +226,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 						<span class="required">*</span> <small><a href="javascript:void();" onclick="getPcode()">Get HLCIT Code</a></small><br />
 						<span id="adm_location" class="example"></span>
 					</h4>
-					<?php print form::dropdown('adm_level', $adm_levels, $form['adm_level']) ?>
+					<?php print form::dropdown(array('name' => 'adm_level', 'id' => 'adm_level', 'required' => 'required'), $adm_levels, $form['adm_level']); ?>
 					<?php print form::input(array('name'=>'pcode', 'type'=>'hidden', 'id'=>'pcode', 'value' => $form['pcode'])); ?>
 
 				</div>
