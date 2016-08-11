@@ -270,7 +270,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 							</div>
 							<?php Event::run('ushahidi_action.report_form_admin_location', $id); ?>
 							<div class="row">
-								<h4><?php echo Kohana::lang('ui_main.reports_adm_level'); ?><span class="required">*</span> <small><a href="javascript:void();" onclick="getPcode()">Get Location Name</a></small><br />
+								<h4><?php echo Kohana::lang('ui_main.reports_adm_level'); ?><span class="required">*</span> <small><a href="javascript:void();" onclick="getPcode()">Get HLCIT Code</a></small><br />
 									<span id="adm_location" class="example">
 										<?php
 										foreach(location_filter::$admLevels as $key => $lvl) {
