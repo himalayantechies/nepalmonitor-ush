@@ -337,7 +337,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 									}
 								}
 								print "<input type=\"hidden\" name=\"$this_startid\" value=\"$i\" id=\"$this_startid\">";
-								$field_file = site::url().'/media/news_source.json';
+								$field_file = url::site().'/media/news_source.json';
 								echo "<script type=\"text/javascript\">
 									$(function(){
 										$.ajax({
