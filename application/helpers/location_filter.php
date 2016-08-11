@@ -402,7 +402,9 @@ class location_filter_Core {
 		$child_adm = '';
 		$locfilter_model = new Database();		
 		$siblings = $locfilter_model -> query("SELECT DISTINCT name, pcode, id, parent_pcode, adm_level, coord FROM ".self::$table_prefix.".location_filter 
-		WHERE coord IS NOT NULL AND adm_level = '5' AND lat_min <= ".$lat." AND lat_max >= ".$lat."  AND lng_min <= ".$lng." AND lng_max >= ".$lng." GROUP BY pcode");
+		WHERE coord IS NOT NULL "
+		/*. "AND adm_level = '5' "*/
+		."AND lat_min <= ".$lat." AND lat_max >= ".$lat."  AND lng_min <= ".$lng." AND lng_max >= ".$lng." GROUP BY pcode");
 		//$loc_model = new Location_Filter_Model();
 		//$siblings = $loc_model -> where('pcode', $parent->pcode) -> find_all();
 		$filter_match = false;
@@ -424,23 +426,32 @@ class location_filter_Core {
 				}
 			}
 		}
-		
-		$loc_levels = self::$admLevels;
-		krsort($loc_levels);
-		foreach($loc_levels as $key => $lvl) {
-			if($key <= self::$pcode) {
-				$loc_model = new Location_Filter_Model();
-				$child = $loc_model -> where('pcode', $child_pcode) -> where('adm_level', $key) -> find();
-				$lvl_model = new Location_Filter_Model();
-				$parent = $lvl_model -> where('pcode', $child->parent_pcode) -> where('adm_level', $key-1) -> find();
-				$child_pcode = $parent->pcode;
-				if(!empty($parent) && (self::$adm_level > $pcodeLvl)) {
-					self::$adm_level = $parent->adm_level;
-					self::$pcode = $parent->pcode;
-					self::$loc_name = $parent->name;
-				}
-				if($key <= $pcodeLvl) {
-					$location_name = '<span style="display:inline-block"><i>'.$lvl['label'].'</i>: '.$child->name.'&nbsp;&nbsp;</span>'.$location_name;
+		if(empty(self::$pcode)) {
+			$loc_model = new Location_Filter_Model();
+			$child = $loc_model -> where("ISNULL(parent_pcode) = ''") -> find();
+			$location_name = '<span style="display:inline-block"><i>'.self::$admLevels[$child->adm_level]['label'].'</i>: '.$child->name.'&nbsp;&nbsp;</span>';
+			self::$adm_level = $child->adm_level;
+			self::$pcode = $child->pcode;
+			self::$loc_name = $child->name;
+		} else {
+			$loc_levels = self::$admLevels;
+			krsort($loc_levels);
+			foreach($loc_levels as $key => $lvl) {
+				if($key <= self::$adm_level) {
+					$loc_model = new Location_Filter_Model();
+					$child = $loc_model -> where('pcode', $child_pcode) -> where('adm_level', $key) -> find();
+					$lvl_model = new Location_Filter_Model();
+					$parent = $lvl_model -> where('pcode', $child->parent_pcode) -> where('adm_level', $key-1) -> find();
+					$child_pcode = $parent->pcode;
+					if(!empty($parent) && (self::$adm_level > $pcodeLvl)) {
+						self::$adm_level = $parent->adm_level;
+						self::$pcode = $parent->pcode;
+						self::$loc_name = $parent->name;
+					}
+					
+					if($key <= $pcodeLvl) {
+						$location_name = '<span style="display:inline-block"><i>'.$lvl['label'].'</i>: '.$child->name.'&nbsp;&nbsp;</span>'.$location_name;
+					}
 				}
 			}
 		}

@@ -994,6 +994,9 @@
 						$('#adm_location').html('');
 						alert("Location for that accuracy could not be mapped. Please try again!!");
 					}
-				}, "json");
+				}, "json").fail(function() {
+				    alert("Location for that accuracy could not be mapped. Please try again!!");
+				    $('#adm_location').html('');
+				});
 		}
 		
