@@ -223,7 +223,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 				<div class="report_row">
 					<h4>
 						<?php echo Kohana::lang('ui_main.reports_adm_level'); ?> 
-						<span class="required">*</span> <small><a href="javascript:void();" onclick="getPcode()">Get HLCIT Code</a></small><br />
+						<span class="required">*</span> <small><a href="javascript:void();" onclick="getPcode()" id="getPcode" style="display: none;">Get HLCIT Code</a></small><br />
 						<span id="adm_location" class="example"></span>
 					</h4>
 					<?php print form::dropdown(array('name' => 'adm_level', 'id' => 'adm_level', 'required' => 'required'), $adm_levels, $form['adm_level']); ?>

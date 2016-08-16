@@ -253,7 +253,7 @@ class Reports_Controller extends Main_Controller {
 		$this->template->header->page_title .= Kohana::lang('ui_main.reports_submit_new')
 											   .Kohana::config('settings.title_delimiter');
 						
-		$adms = array('' => '');
+		$adms = array();
 		foreach(location_filter::$admLevels as $key => $lvls) {
 			$adms[$key] = $lvls['label']; 
 		}

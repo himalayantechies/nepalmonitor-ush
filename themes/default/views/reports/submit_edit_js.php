@@ -999,4 +999,7 @@
 				    $('#adm_location').html('');
 				});
 		}
+		$('#adm_level').change(function() {
+		$('#getPcode').show();
+		});
 		
