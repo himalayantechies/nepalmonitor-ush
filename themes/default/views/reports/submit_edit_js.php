@@ -655,6 +655,9 @@
 				}
 			});
 
+			$('#adm_level').change(function() {
+				$('#getPcode').show();
+			});
 		});
 		
 		function addFormField(div, field, hidden_id, field_type) {
@@ -999,7 +1002,5 @@
 				    $('#adm_location').html('');
 				});
 		}
-		$('#adm_level').change(function() {
-		$('#getPcode').show();
-		});
+		
 		
