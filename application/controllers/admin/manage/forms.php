@@ -1046,6 +1046,7 @@ class Forms_Controller extends Admin_Controller {
 			
 			//datatype options
 		$autocomplete_default = '';
+		$ac_field_id = '';
 		$ac_type = 'DB';
 		$field_autocomplete_tag = 0;
 		$autocomplete_type = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_autocomplete_type')->find();
@@ -1061,28 +1062,40 @@ class Forms_Controller extends Admin_Controller {
 		
 		if ($ac_type == "FILE")
 		{
-			$html .= 	Kohana::lang('ui_admin.DB')." " . form::radio('field_options[field_autocomplete_type]', 'DB', FALSE, "onclick=\"document.getElementById('form_autocomplete_file').style.display='none';\"") . "&nbsp;&nbsp;";
-			$html .= 	Kohana::lang('ui_admin.FILE')." " . form::radio('field_options[field_autocomplete_type]', 'FILE', TRUE, "onclick=\"document.getElementById('form_autocomplete_file').style.display='block';\"");
+			$html .= 	Kohana::lang('ui_admin.DB')." " . form::radio('field_options[field_autocomplete_type]', 'DB', FALSE, "onclick=\"document.getElementById('form_autocomplete_file').style.display='none';document.getElementById('field_autocomplete_id').style.display='block';\"") . "&nbsp;&nbsp;";
+			$html .= 	Kohana::lang('ui_admin.FILE')." " . form::radio('field_options[field_autocomplete_type]', 'FILE', TRUE, "onclick=\"document.getElementById('form_autocomplete_file').style.display='block';document.getElementById('field_autocomplete_id').style.display='none';\"");
 		}
 		else
 		{
-			$html .= 	Kohana::lang('ui_admin.DB')." " . form::radio('field_options[field_autocomplete_type]', 'DB', TRUE, "onclick=\"document.getElementById('form_autocomplete_file').style.display='none';\"") . "&nbsp;&nbsp;";
-			$html .= 	Kohana::lang('ui_admin.FILE')." " . form::radio('field_options[field_autocomplete_type]', 'FILE', FALSE, "onclick=\"document.getElementById('form_autocomplete_file').style.display='block';\"");
+			$html .= 	Kohana::lang('ui_admin.DB')." " . form::radio('field_options[field_autocomplete_type]', 'DB', TRUE, "onclick=\"document.getElementById('form_autocomplete_file').style.display='none';document.getElementById('field_autocomplete_id').style.display='block';\"") . "&nbsp;&nbsp;";
+			$html .= 	Kohana::lang('ui_admin.FILE')." " . form::radio('field_options[field_autocomplete_type]', 'FILE', FALSE, "onclick=\"document.getElementById('form_autocomplete_file').style.display='block';document.getElementById('field_autocomplete_id').style.display='none';\"");
 		}
 		$html .="</div>";
-		
-		$displayStyle = "display:none;";
+				
 		if($ac_type == 'FILE') {
-			$displayStyle = "display:block;";
+			$displayStyleFile = "display:block;";
+			$displayStyleFieldID = "display:none;";
 			$autocomplete_file = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_autocomplete_file')->find();
 			if($autocomplete_file->loaded == TRUE)
 				$autocomplete_default = $autocomplete_file->option_value;
-		} 
-		$html .="<div class=\"forms_item\" id=\"form_autocomplete_file\" style=\"".$displayStyle."\">"; 
+		} else {
+			$ac_field_id = $field_id;
+			$displayStyleFile  = "display:none;";
+			$displayStyleFieldID = "display:block;";
+			$autocomplete_field_id = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_autocomplete_id')->find();
+			if($autocomplete_field_id->loaded == TRUE)
+				$ac_field_id = $autocomplete_field_id->option_value;
+		}
+		$html .="<div class=\"forms_item\" id=\"form_autocomplete_file\" style=\"".$displayStyleFile."\">"; 
 		$html .="<strong>" . Kohana::lang('ui_admin.field_autocomplete_file') . ":<a href=\"#\" class=\"tooltip\""
 			. "		title=\"".$tooltip."\"></a><br /></strong>";
 		$html .= form::textarea('field_options[field_autocomplete_file]', $autocomplete_default, ' class="text" style="width:438px; height:100px;"');
 		$html .="</div>";	
+		$html .="<div class=\"forms_item\" id=\"field_autocomplete_id\" style=\"".$displayStyleFieldID."\">"; 
+		$html .="<strong>" . Kohana::lang('ui_admin.field_autocomplete_id') . ":<a href=\"#\" class=\"tooltip\""
+			. "		title=\"".$tooltip."\"></a><br /></strong>";
+		$html .= form::input('field_options[field_autocomplete_id]', $ac_field_id, ' class="text"');
+		$html .="</div>";
 		
 		
 			/*. "<div class=\"forms_item\">" 

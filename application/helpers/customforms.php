@@ -467,6 +467,8 @@ class customforms_Core {
 	}
 	
 	public function autosearch($field_id) {
+		$autocomplete_field_id = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_autocomplete_id')->find();
+		if($autocomplete_field_id->loaded == TRUE) $field_id = $autocomplete_field_id->option_value;
 		$options = array();
 		$options['items'] = array();
 		$opt = ORM::factory('form_autosearch_option')->where('form_field_id',$field_id)->where('parent', NULL)->find_all()->as_array();
@@ -485,6 +487,8 @@ class customforms_Core {
 	}
 
 	public function get_autosearchDb_text($field_id, $value, $code = false) {
+		$autocomplete_field_id = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_autocomplete_id')->find();
+		if($autocomplete_field_id->loaded == TRUE) $field_id = $autocomplete_field_id->option_value;
 		$opt = ORM::factory('form_autosearch_option')->where('form_field_id',$field_id)->where('id', $value)->find();
 		if($code) $value = $opt->text. ' ('.$opt->id.')';
 		else $value = $opt->text;
