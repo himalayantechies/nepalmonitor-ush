@@ -1033,6 +1033,7 @@ class Forms_Controller extends Admin_Controller {
 		
 		// Tooltip display value
 		$tooltip = Kohana::lang('tooltips.autocomplete_file');
+		$tooltipDB = Kohana::lang('tooltips.autocomplete_db');
 		
 		$html = "<input type=\"hidden\" name=\"form_id\" id=\"form_id\" value=\"".$form_id."\">"
 			. "<input type=\"hidden\" name=\"field_id\" id=\"field_id\" value=\"".$field_id."\">"
