@@ -438,4 +438,61 @@ class customforms_Core {
 
 		return $field_options;
 	}
+	
+	// HT: new function for autosearch text label 
+	public function get_autosearch_text($value, $file_url, $code = false)
+	{
+		$responseStr = file_get_contents($file_url);
+		$response = json_decode($responseStr, true);
+		if(!empty($response['items'])) {
+			$value = self::autosearch_text_filter($value, $response['items'], $code);
+		}
+		return $value;
+	}
+	
+	// HT: new recursive function for autosearch text label  
+	public function autosearch_text_filter($value, $list, $code = false) {
+		if(!empty($list)) {
+			foreach($list as $item) {
+				if(isset($item['id']) && ($value == $item['id'])) {
+					if($code) $value = $item['text']. ' ('.$value.')';
+					else $value = $item['text'];
+					break;
+				} else if(!empty($item['children'])) {
+					$value = self::autosearch_text_filter($value, $item['children']);
+				}
+			} 
+		}
+		return $value;
+	}
+	
+	public function autosearch($field_id) {
+		$autocomplete_field_id = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_autocomplete_id')->find();
+		if($autocomplete_field_id->loaded == TRUE) $field_id = $autocomplete_field_id->option_value;
+		$options = array();
+		$options['items'] = array();
+		$opt = ORM::factory('form_autosearch_option')->where('form_field_id',$field_id)->where('parent', NULL)->find_all()->as_array();
+		if(!empty($opt)) {
+			foreach($opt as $key => $parent) {
+				$options['items'][$key] = $parent->as_array();
+				$opt_child = ORM::factory('form_autosearch_option')->where('form_field_id',$field_id)->where('parent', $parent->id)->find_all();
+				if(!empty($opt_child)) {
+					foreach($opt_child as $child) {
+						$options['items'][$key]['children'][] = $child->as_array();	
+					}
+				}
+			}
+		}
+		return json_encode($options);
+	}
+
+	public function get_autosearchDb_text($field_id, $value, $code = false) {
+		$autocomplete_field_id = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_autocomplete_id')->find();
+		if($autocomplete_field_id->loaded == TRUE) $field_id = $autocomplete_field_id->option_value;
+		$opt = ORM::factory('form_autosearch_option')->where('form_field_id',$field_id)->where('id', $value)->find();
+		if($code) $value = $opt->text. ' ('.$opt->id.')';
+		else $value = $opt->text;
+		return $value;
+	}
+	
 }

@@ -149,6 +149,7 @@ class Forms_Controller extends Admin_Controller {
 			7 => Kohana::lang('ui_admin.dropdown_field'),
 			8 => Kohana::lang('ui_admin.divider_start_field'),
 			9 => Kohana::lang('ui_admin.divider_end_field'),
+			10 => Kohana::lang('ui_admin.autosearch_select_field'), // HT: New custom field
 			// 4 => 'Add Attachments'
 		);
 		
@@ -220,6 +221,9 @@ class Forms_Controller extends Admin_Controller {
 		        	break;
 				case 9:
 		        	$selector_content = $this->_get_selector_div($form_id, $field_id, "end");
+		        	break;
+				case 10: // HT: new case for select autocomplete
+		        	$selector_content = $this->_get_selector_autocomplete($form_id, $field_id);
 		        	break;
 			}
 		}
@@ -993,4 +997,205 @@ class Forms_Controller extends Admin_Controller {
 		
 		return $html;
 	}
+
+	/**
+	 * HT: New function for autcomplete type selector
+	* Generate Auto-complete Selector Field Entry Form
+    * @param int $form_id The id no. of the form
+    * @param int $field_id The id no. of the field
+    */
+	private function _get_selector_autocomplete($form_id = 0, $field_id = 0)
+	{
+		if (intval($field_id) > 0)
+		{
+			$field = ORM::factory('form_field', $field_id);
+			if ($field->loaded == true)
+			{
+				$field_name = $field->field_name;
+				$field_default = $field->field_default;
+				$field_required = $field->field_required;
+				$field_ispublic_visible = $field->field_ispublic_visible;
+				$field_ispublic_submit = $field->field_ispublic_submit;
+			}
+		}
+		else
+		{
+			$field_id = "";
+			$field_name = "";
+			$field_default = "";
+			$field_required = "0";
+			$field_ispublic_visible = "0";
+			$field_ispublic_submit = "0";
+		}
+		
+		// Prompt/label for the values
+		//$values_prompt = (intval($type) == 7)? Kohana::lang('ui_admin.dropdown_choices') : Kohana::lang('ui_admin.field_choices');
+		
+		// Tooltip display value
+		$tooltip = Kohana::lang('tooltips.autocomplete_file');
+		$tooltipDB = Kohana::lang('tooltips.autocomplete_db');
+		
+		$html = "<input type=\"hidden\" name=\"form_id\" id=\"form_id\" value=\"".$form_id."\">"
+			. "<input type=\"hidden\" name=\"field_id\" id=\"field_id\" value=\"".$field_id."\">"
+			. "<input type=\"hidden\" name=\"field_ispublic_visible\" id=\"field_id\" value=\"0\">"
+			. "<input type=\"hidden\" name=\"field_ispublic_submit\" id=\"field_id\" value=\"0\">"
+			. "<div id=\"form_result_".$form_id."\" class=\"forms_fields_result\"></div>"
+			. "<div class=\"forms_item\">"
+			. "		<strong>".Kohana::lang('ui_admin.field_name').":</strong><br />" 
+			.		form::input('field_name', $field_name, ' class="text"')
+			. "</div>" ;
+			
+			//datatype options
+		$autocomplete_default = '';
+		$ac_field_id = '';
+		$ac_type = 'DB';
+		$field_autocomplete_tag = 0;
+		$autocomplete_type = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_autocomplete_type')->find();
+		if($autocomplete_type->loaded == TRUE)
+			$ac_type = $autocomplete_type->option_value;
+		
+		$autocomplete_tag = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_autocomplete_tag')->find();
+		if($autocomplete_tag->loaded == TRUE)
+			$field_autocomplete_tag = $autocomplete_tag->option_value;
+		
+		$html .= "<div class=\"forms_item\">" 
+			. "		<strong>".Kohana::lang('ui_admin.field_autocomplete_type').":</strong><br />"; 
+		
+		if ($ac_type == "FILE")
+		{
+			$html .= 	Kohana::lang('ui_admin.DB')." " . form::radio('field_options[field_autocomplete_type]', 'DB', FALSE, "onclick=\"document.getElementById('form_autocomplete_file').style.display='none';document.getElementById('field_autocomplete_id').style.display='block';\"") . "&nbsp;&nbsp;";
+			$html .= 	Kohana::lang('ui_admin.FILE')." " . form::radio('field_options[field_autocomplete_type]', 'FILE', TRUE, "onclick=\"document.getElementById('form_autocomplete_file').style.display='block';document.getElementById('field_autocomplete_id').style.display='none';\"");
+		}
+		else
+		{
+			$html .= 	Kohana::lang('ui_admin.DB')." " . form::radio('field_options[field_autocomplete_type]', 'DB', TRUE, "onclick=\"document.getElementById('form_autocomplete_file').style.display='none';document.getElementById('field_autocomplete_id').style.display='block';\"") . "&nbsp;&nbsp;";
+			$html .= 	Kohana::lang('ui_admin.FILE')." " . form::radio('field_options[field_autocomplete_type]', 'FILE', FALSE, "onclick=\"document.getElementById('form_autocomplete_file').style.display='block';document.getElementById('field_autocomplete_id').style.display='none';\"");
+		}
+		$html .="</div>";
+				
+		if($ac_type == 'FILE') {
+			$displayStyleFile = "display:block;";
+			$displayStyleFieldID = "display:none;";
+			$autocomplete_file = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_autocomplete_file')->find();
+			if($autocomplete_file->loaded == TRUE)
+				$autocomplete_default = $autocomplete_file->option_value;
+		} else {
+			$ac_field_id = $field_id;
+			$displayStyleFile  = "display:none;";
+			$displayStyleFieldID = "display:block;";
+			$autocomplete_field_id = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_autocomplete_id')->find();
+			if($autocomplete_field_id->loaded == TRUE)
+				$ac_field_id = $autocomplete_field_id->option_value;
+		}
+		$html .="<div class=\"forms_item\" id=\"form_autocomplete_file\" style=\"".$displayStyleFile."\">"; 
+		$html .="<strong>" . Kohana::lang('ui_admin.field_autocomplete_file') . ":<a href=\"#\" class=\"tooltip\""
+			. "		title=\"".$tooltip."\"></a><br /></strong>";
+		$html .= form::textarea('field_options[field_autocomplete_file]', $autocomplete_default, ' class="text" style="width:438px; height:100px;"');
+		$html .="</div>";	
+		$html .="<div class=\"forms_item\" id=\"field_autocomplete_id\" style=\"".$displayStyleFieldID."\">"; 
+		$html .="<strong>" . Kohana::lang('ui_admin.field_autocomplete_id') . ":<a href=\"#\" class=\"tooltip\""
+			. "		title=\"".$tooltip."\"></a><br /></strong>";
+		$html .= form::input('field_options[field_autocomplete_id]', $ac_field_id, ' class="text"');
+		$html .="</div>";
+		
+		
+			/*. "<div class=\"forms_item\">" 
+			. "		<strong>".$values_prompt.":<a href=\"#\" class=\"tooltip\""
+			. "		title=\"".$tooltip."\"></a><br />" 
+			.		form::textarea('field_default', $field_default, ' class="text"')
+			. "</div>"*/ 
+		$html .= "<div class=\"forms_item\">" 
+			. "		<strong>".Kohana::lang('ui_admin.required').":</strong><br />"; 
+		
+		if ($field_required != 1)
+		{
+			$html .= 	Kohana::lang('ui_admin.yes')." " . form::radio('field_required', '1', FALSE) . "&nbsp;&nbsp;";
+			$html .= 	Kohana::lang('ui_admin.no')." " . form::radio('field_required', '0', TRUE);
+		}
+		else
+		{
+			$html .= 	Kohana::lang('ui_admin.yes')." " . form::radio('field_required', '1', TRUE) . "&nbsp;&nbsp;";
+			$html .= 	Kohana::lang('ui_admin.no')." " . form::radio('field_required', '0', FALSE);
+		}
+		$html .="</div>";
+		
+		$html .= "<div class=\"forms_item\">" 
+			. "		<strong>".Kohana::lang('ui_admin.autocomplete_manual_entry').":</strong><br />"; 
+		
+		if ($field_autocomplete_tag != 1)
+		{
+			$html .= 	Kohana::lang('ui_admin.yes')." " . form::radio('field_options[field_autocomplete_tag]', '1', FALSE) . "&nbsp;&nbsp;";
+			$html .= 	Kohana::lang('ui_admin.no')." " . form::radio('field_options[field_autocomplete_tag]', '0', TRUE);
+		}
+		else
+		{
+			$html .= 	Kohana::lang('ui_admin.yes')." " . form::radio('field_options[field_autocomplete_tag]', '1', TRUE) . "&nbsp;&nbsp;";
+			$html .= 	Kohana::lang('ui_admin.no')." " . form::radio('field_options[field_autocomplete_tag]', '0', FALSE);
+		}
+		$html .="</div>";
+		
+		$field_placeholder = '';
+		$placeholder_value = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_placeholder')->find();
+		if($placeholder_value->loaded == TRUE)
+			$field_placeholder = $placeholder_value->option_value;
+		$html .= "<div class=\"forms_item\">"
+			. "		<strong>".Kohana::lang('ui_admin.field_placeholder').":</strong><br />" 
+			.		form::input('field_options[field_placeholder]', $field_placeholder, ' class="text"')
+			. "</div>" ;
+		$html .= $this->_get_public_state($field_ispublic_submit, $field_ispublic_visible);
+		
+		
+		
+		$html .="<div style=\"clear:both;\"></div>";
+		$html .="<div class=\"forms_item\">";
+		$html .="	<div id=\"form_loading_".$form_id."\" class=\"forms_fields_loading\"></div>";
+		$html .="<input type=\"submit\" class=\"save-rep-btn\" value=\"".Kohana::lang('ui_main.save')."\" />";
+		$html .="</div>";
+		$html .="<div style=\"clear:both;\"></div>";
+		$html .=$this->_get_selector_js($form_id);
+		
+		return $html;
+	}
+
+	function autocomplete_list($field_id = null) {
+		$this->template->content = new View('admin/manage/forms/autocomplete_list');
+		$this->template->content->list = '';
+		$field = ORM::factory('form_field', $field_id);
+		$this->template->content->field = $field->field_name;
+		if(!empty($field_id)) {
+			$ac_type = 'DB';
+			$autocomplete_type = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_autocomplete_type')->find();
+			if($autocomplete_type->loaded == TRUE)
+				$ac_type = $autocomplete_type->option_value;
+			if($ac_type == 'DB') {
+				$this->template->content->list = customforms::autosearch($field_id);
+			} else {
+				$autocomplete_default = '';
+				$autocomplete_file = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_autocomplete_file')->find();
+				if($autocomplete_file->loaded == TRUE)
+					$autocomplete_default = $autocomplete_file->option_value;
+				if(!empty($autocomplete_default)) {
+					$this->template->content->list = file_get_contents($autocomplete_default);
+				}
+			}
+		}
+	}
+	
+	// HT: new recursive function for autosearch text label  
+	public function autosearch_text_filter($value, $list, $code = false) {
+		if(!empty($list)) {
+			foreach($list as $item) {
+				if(isset($item['id']) && ($value == $item['id'])) {
+					if($code) $value = $item['text']. ' ('.$value.')';
+					else $value = $item['text'];
+					break;
+				} else if(!empty($item['children'])) {
+					$value = self::autosearch_text_filter($value, $item['children']);
+				}
+			} 
+		}
+		return $value;
+	}
 }
+
+

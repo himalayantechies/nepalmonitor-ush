@@ -55,7 +55,7 @@ class kmlfilter_helper_Core {
 		// Return
 // 		return $tree_html;
 	}
-	
+	/*
 	public function addkmlfilter($params = array()) {
 		
 		// Fetch the URL data into a local variable
@@ -88,12 +88,75 @@ class kmlfilter_helper_Core {
 		}
 		return $params;
 	}
-
+	*/
+	
+	public function addkmlfilter($params = array()) {
+		// Fetch the URL data into a local variable
+		$url_data = $_GET;
+		
+		// Split selected parameters on ","
+		// For simplicity, always turn them into arrays even theres just one value
+		if(isset($url_data['filterParams'])) {
+			$url_data = json_decode($url_data['filterParams'], true);
+			
+		}
+		$exclude_params = array('lkey');
+		foreach ($url_data as $key => $value)
+		{
+			//print_r($url_data); exit;
+			if (in_array($key, $exclude_params) AND ! is_array($value))
+			{
+				$url_data[$key] = explode(",", $value);
+			}
+		}
+		//print_r($url_data); exit;
+		
+		
+		if (isset($url_data['lkey']) AND is_array($url_data['lkey'])) {
+					
+			foreach($url_data['lkey'] as $lkey) {
+				//print_r($lkey); exit;
+				if(intval($lkey) > 0) {
+					$lid[] = $lkey;
+				}
+			}
+			//print_r($lid); exit;
+			if(isset($lid)) {
+				$locSQL = self::layer_polygon($lid, 'i.location_id');
+				
+				if ($locSQL !== false) {
+					array_push($params, $locSQL);
+				}
+			}
+		}
+		
+					
+		return $params;
+	}
 	
 	public function layer_polygon($layers, $table = false) {
 		if(!$table) $table = 'location_id';
 		$locSQL = $query = false;
-		if (is_object($layers) AND ($layers instanceof ORM_Iterator)) {
+		if ($locSQL !== false) {
+			array_push($params, $locSQL);
+		}
+		$locSQL .= ' ('.$table.' IN (';
+		$layerKey = '';
+		foreach($layers as $i => $lkey) {
+			if(!empty($layerKey)) $layerKey .= ','; 
+			$layerKey .= "'".$lkey."'";
+		}
+		$locSQL .= 'SELECT DISTINCT v.location_id FROM '.self::$table_prefix.'vw_placemark v WHERE v.lkey IN (';
+		$locSQL .= $layerKey;
+		$locSQL .= ')';
+		$locSQL .= ')) ';
+		if($locSQL !== false) return '('.$locSQL.')';
+		return $locSQL;
+	}
+	/*public function layer_polygon($layers, $table = false) {
+		if(!$table) $table = 'location_id';
+		$locSQL = $query = false;
+ 		if (is_object($layers) AND ($layers instanceof ORM_Iterator)) {
 			foreach($layers as $layer) {
 				$poly_query = self::_layer_polygon($layer, $table);
 				if($poly_query !== false) {
@@ -106,7 +169,7 @@ class kmlfilter_helper_Core {
 		}
 		if($locSQL !== false) return '('.$locSQL.')';
 		return $locSQL;
-	}
+	}*/
 	
 	protected function _layer_polygon($layer, $table) {
 		$locSQL = false;
@@ -173,6 +236,110 @@ class kmlfilter_helper_Core {
 		}
 		return $params['content'];
 	}
+
+	public static function layer_kmlfilter($layer_id = null) {
+		$layer_file = 'doc.kml';
+		/*if(empty($layer_id)) {
+			$layers = ORM::factory('layer')->where('layer_visible', 1)->find_all();
+		} else {
+			$layers[] = ORM::factory('layer')->where('id', $layer_id)->where('layer_visible', 1)->find();
+		}
+		foreach($layers as $layer) {
+			if($layer->id != 0) {
+			
+				ORM::factory('kml_placemark')->where('layer_id', $layer->id)->delete_all();
+				
+				$layer_url = $layer->layer_url;
+				$layer_file = $layer->layer_file;
+			
+				if ($layer_url != '') {
+					// Pull from a URL
+					$layer_link = $layer_url;
+				} else {*/
+					// Pull from an uploaded file
+					$layer_link = Kohana::config('upload.directory').'/'.$layer_file;
+				//}
+				if(!empty($layer_link)) {
+					$content = file_get_contents($layer_link);
+					if ($content !== false) {
+						$xml = simplexml_load_string($content);
+						print_r($xml); exit;
+						foreach($xml->Document->Placemark as $placemark) {
+							$kml_placemark = new Kml_Placemark_Model();
+							$kml_placemark->layer_id = $layer->id;
+							$kml_placemark->placemark = $placemark->ID;
+							$cord = strval($placemark->MultiGeometry->Polygon->outerBoundaryIs->LinearRing->coordinates);
+							$cord = str_replace(" ", "\n", $cord);
+							$cords = explode("\n", $cord);
+							$poly_cor = false;
+							foreach($cords as $key => $cordinate) {
+								$cor = explode(',', $cordinate);
+								if(is_array($cor) && intval($cor[0]) != 0) {
+									if($poly_cor !== false) $poly_cor .= ', ';
+									$poly_cor .= $cor[1].' '.$cor[0];
+								}
+							}
+							$kml_placemark->coord = $poly_cor;
+							$kml_placemark->save();
+						}
+					}
+				}
+			/*}
+							
+		}*/
+	}
+
+	public static function layer_placemark($layer_id = null) {
+
+		if(empty($layer_id)) {
+			$layers = ORM::factory('layer')->where('layer_visible', 1)->find_all();
+		} else {
+			$layers[] = ORM::factory('layer')->where('id', $layer_id)->where('layer_visible', 1)->find();
+		}
+		foreach($layers as $layer) {
+			if($layer->id != 0) {
+			
+				ORM::factory('kml_placemark')->where('layer_id', $layer->id)->delete_all();
+				
+				$layer_url = $layer->layer_url;
+				$layer_file = $layer->layer_file;
+			
+				if ($layer_url != '') {
+					// Pull from a URL
+					$layer_link = $layer_url;
+				} else {
+					// Pull from an uploaded file
+					$layer_link = Kohana::config('upload.directory').'/'.$layer_file;
+				}
+				if(!empty($layer_link)) {
+					$content = file_get_contents($layer_link);
+					if ($content !== false) {
+						$xml = simplexml_load_string($content);
+						foreach($xml->Document->Placemark as $placemark) {
+							$kml_placemark = new Kml_Placemark_Model();
+							$kml_placemark->layer_id = $layer->id;
+							$kml_placemark->placemark = $placemark->ID;
+							$cord = strval($placemark->MultiGeometry->Polygon->outerBoundaryIs->LinearRing->coordinates);
+							$cord = str_replace(" ", "\n", $cord);
+							$cords = explode("\n", $cord);
+							$poly_cor = false;
+							foreach($cords as $key => $cordinate) {
+								$cor = explode(',', $cordinate);
+								if(is_array($cor) && intval($cor[0]) != 0) {
+									if($poly_cor !== false) $poly_cor .= ', ';
+									$poly_cor .= $cor[1].' '.$cor[0];
+								}
+							}
+							$kml_placemark->coord = $poly_cor;
+							$kml_placemark->save();
+						}
+					}
+				}
+			}
+							
+		}
+	}
+
 	
 }
 kmlfilter_helper_Core::init();

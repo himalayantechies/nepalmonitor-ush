@@ -46,17 +46,19 @@
 		$id_name = 'id="custom_field_'.$field_id.'"';
 
 		// Get the field value
-		$field_value = ( ! empty($form['custom_field'][$field_id]))
+		$field_value = ( isset($form['custom_field'][$field_id]) && (!empty($form['custom_field'][$field_id]) || ($form['custom_field'][$field_id] == '0')))
 			? $form['custom_field'][$field_id]
 			: $field_property['field_default'];
-
+			
 		if ($field_property['field_type'] == 1)
 		{
 			// Text Field
 			echo "<div class=\"report_row\" id=\"custom_field_row_" . $field_id ."\">";
 
 			$field_options = customforms::get_custom_field_options($field_id);
-
+			$data_type = 'text';
+			if (isset($field_options['field_datatype']))
+			$data_type = $field_options['field_datatype'];
 			if (isset($field_options['field_hidden']) AND !isset($editor))
 			{
 				if($field_options['field_hidden'] == 1)
@@ -66,13 +68,21 @@
 				else
 				{
 					echo "<h4>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</h4>";
-					echo form::input('custom_field['.$field_id.']', $field_value, $id_name .' class="text custom_text"');
+					if($data_type == 'numeric') {
+						echo form::input(array('name' => 'custom_field['.$field_id.']', 'type' => 'text', 'id' => 'custom_field_'.$field_id, 'value' => $field_value, 'class' => 'text custom_text', 'pattern' => '(NA)|(na)|(N/A)|(n/a)|[0-9]{0,}'));
+					} else {
+						echo form::input('custom_field['.$field_id.']', $field_value, 'custom_field_'.$field_id .' class="text custom_text"');	
+					}
 				}
 			}
 			else
 			{
 				echo "<h4>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</h4>";
-				echo form::input('custom_field['.$field_id.']', $field_value, $id_name .' class="text custom_text"');
+				if($data_type == 'numeric') {
+					echo form::input(array('name' => 'custom_field['.$field_id.']', 'type' => 'number', 'id' => $id_name, 'value' => $field_value, 'class' => 'text custom_text', 'pattern' => '(NA)|(na)|(N/A)|(n/a)|[0-9]{0,}'));
+				} else {
+					echo form::input('custom_field['.$field_id.']', $field_value, $id_name .' class="text custom_text"');	
+				}
 			}
 			echo "</div>";
 		}
@@ -215,7 +225,7 @@
 					$html .= form::hidden("custom_field[".$field_id."-BLANKHACK]",'',$id_name);
 					break;
 				case 7:
-					$ddoptions = array();
+					$ddoptions = array('' => '');
 					// Semi-hack to deal with dropdown boxes receiving a range like 0-100
 					if (preg_match("/[0-9]+-[0-9]+/",$defaults[0]) AND count($options == 1))
 					{
@@ -301,7 +311,71 @@
 				echo "<h4 style=\"padding-top:0px;\">-------" . Kohana::lang('ui_admin.divider_end_field') . "--------</h4>";
 			}
 		}
-
+		// HT: Start of new autocomplete field section list
+		elseif($field_property['field_type'] == 10)
+		{
+			//Auto complete select dropdown
+			 echo "<div class=\"report_row\" id=\"custom_field_row_" . $field_id ."\">";
+			$field_value = !empty($field_property['field_response'])? $field_property['field_response'] : '';
+			$field_options = customforms::get_custom_field_options($field_id);
+			$ddoptions = array('' => '');
+			$field_placeholder = '';
+			$field_type = 'DB';
+			$field_file = '';
+			$tag_flag = false;
+			if (isset($field_options['field_autocomplete_type'])) 
+			{
+				$field_type = $field_options['field_autocomplete_type'];
+			}
+			if (isset($field_options['field_autocomplete_tag'])) 
+			{
+				$tag_flag = ($field_options['field_autocomplete_tag']) ? true : false;
+			}
+			if($field_type == 'FILE') {
+				
+				if (isset($field_options['field_autocomplete_file'])) 
+				{
+					$field_file = $field_options['field_autocomplete_file'];
+				} 
+			} else {
+				$field_file = url::site().'json/autosearch/'.$field_id;
+			}
+			
+			if (isset($field_options['field_placeholder'])) 
+			{
+				$field_placeholder = $field_options['field_placeholder'];
+			} 
+			
+			echo "<h4>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</h4>";
+			//echo form::input('custom_field['.$field_id.']', $field_value, $id_name .' class="text custom_text"');
+			if(!isset($editor)) {
+				echo form::dropdown("custom_field[".$field_id.']',$ddoptions, $field_value, $id_name);
+			} 
+			echo "</div>";
+			if(!isset($editor)) {
+				$script = 
+			"<script type=\"text/javascript\">
+						$(function(){
+							$.ajax({
+								url: \"".$field_file."\",
+								dataType: 'json',
+								success: function(data) {
+									var items = data.items;
+									$(\"#custom_field_".$field_id."\").select2({
+										placeholder: \"".$field_placeholder."\",";
+										if($tag_flag) $script .= "tags: true,";
+										$script .= "data: items
+									});
+									$(\"#custom_field_".$field_id."\").val(\"".$field_value."\").trigger(\"change\");
+								}
+							});
+						
+					});
+					</script>";
+					echo $script;
+			}
+		}
+		// HT: End of new autocomplete field section list
 
 		if (isset($editor))
 		{
@@ -318,8 +392,12 @@
 				? Kohana::lang('ui_admin.yes')
 				: Kohana::lang('ui_admin.no');
 
-			$form_fields .= "	<div class=\"forms_fields_edit\" style=\"clear:both\">
-			<a href=\"javascript:fieldAction('e','EDIT',".$field_id.",".$form['id'].",".$field_property['field_type'].");\">EDIT</a>&nbsp;|&nbsp;
+			$form_fields .= "	<div class=\"forms_fields_edit\" style=\"clear:both\">";
+			
+			if($field_property['field_type'] == 10) {
+				$form_fields .= "<a href=\"".url::site()."/admin/manage/forms/autocomplete_list/".$field_id."\">VIEW LIST</a>&nbsp;|&nbsp;";
+			}
+			$form_fields .= "<a href=\"javascript:fieldAction('e','EDIT',".$field_id.",".$form['id'].",".$field_property['field_type'].");\">EDIT</a>&nbsp;|&nbsp;
 			<a href=\"javascript:fieldAction('d','DELETE',".$field_id.",".$form['id'].",".$field_property['field_type'].");\">DELETE</a>&nbsp;|&nbsp;
 			<a href=\"javascript:fieldAction('mu','MOVE',".$field_id.",".$form['id'].",".$field_property['field_type'].");\">MOVE UP</a>&nbsp;|&nbsp;
 			<a href=\"javascript:fieldAction('md','MOVE',".$field_id.",".$form['id'].",".$field_property['field_type'].");\">MOVE DOWN</a>&nbsp;|&nbsp;

@@ -285,6 +285,25 @@ jQuery(function() {
 		return false;
 	});
 
+	// Adm location Switch Action
+	$("ul[id^='adm_switch'] li > a").click(function(e) {
+		
+		var admId = this.id.substring(4);
+		var admSet = 'loc_' + this.id.substring(4);
+
+		// Remove All active
+		$("a[id^='loc_']").removeClass("active");
+		
+		// Add Highlight
+		$("#loc_" + admId).addClass("active"); 
+
+		// Update report filters
+		map.updateReportFilters({adm: admId});
+
+		e.stopPropagation();
+		return false;
+	});
+	
 	// Layer selection
 	$("ul#kml_switch li > a").click(function(e) {
 		// Get the layer id

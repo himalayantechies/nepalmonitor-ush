@@ -401,6 +401,8 @@ div.filters ul li a:hover, div.filters ul li a.active{
     text-decoration: none;
 }
 
+div.filters .media-filters {float:left; width: 100%;}
+
 a.share{
     float: left;
     border-right: 1px solid #999;
@@ -416,7 +418,12 @@ a.share{
 div.map {
     border: #999 1px solid;
     width: 573px;
-    height: 366px;
+    height: 480px;
+    position:relative;
+}
+/* Change map height when timeline is enabled */
+div.map.timeline-enabled {
+	height: 366px;
     position:relative;
 }
 
@@ -462,6 +469,26 @@ div.slider-holder label{
     color: #666666;
 }
 
+/* Slider play button - no longer used */
+.slider-holder .play{
+    float:right;
+    border:1px solid #ccc;
+    background-color:#eee;
+    padding:3px 6px 3px 15px;
+    color:#666;
+    font-weight:bold;
+    background-image:url(../../../media/img/arrow-play.gif);
+    background-position:5px 50%;
+    background-repeat:no-repeat;
+    font-size:1.2em;
+}
+
+.slider-holder .pause { background-image:url(../images/pause.gif); }
+.slider-holder .play a { color:#666; text-decoration:none; }
+.slider-holder .play:hover{ background-color:#ffffcc; }
+.slider-holder .play a:hover{ text-decoration:underline; }
+
+
 /* category filters */
 div.cat-filters{
     font-size: 85%;
@@ -486,6 +513,8 @@ div.cat-filters span{
 div.cat-filters span a{
     color:#666;
 }
+
+ul.category-filters, ul.category-filters ul { margin-left: 0; }
 
 ul.category-filters{
     background: #E7E3DA;
@@ -527,6 +556,47 @@ ul.category-filters li a:hover, ul.category-filters li a.active {
 ul.category-filters li.child{
     display:none;
 }
+div.location-filters{
+    font-size: 85%;
+    text-transform: uppercase;
+    margin: 5px 0 15px;
+}
+
+div.location-filters strong{
+    float: left;
+    margin: 0 10px 0 0;
+    background: url(../images/filters-bg.jpg) 100% 3px no-repeat;
+    padding: 0 15px 0 0;
+}
+
+div.location-filters ul{
+    list-style: none;
+}
+
+div.location-filters li{
+    float: left;
+    display: block;
+    margin-right: 10px;
+}
+
+div.location-filters ul li a{
+    color: #999966;
+    padding: 0px 5px;
+    text-decoration: none;
+}
+
+div.location-filters ul li a:hover, div.location-filters ul li a.active{
+    color: #FFFFFF;
+    padding: 0px 5px;
+    background: #3399CC;
+    text-decoration: none;
+}
+
+div.layers-filters{
+    font-size: 85%;
+    text-transform: uppercase;
+    margin: 20px 0 15px 0;
+}
 
 /* additional content */
 div.additional-content{
@@ -536,6 +606,10 @@ div.additional-content{
 
 div.additional-content ol {
     margin-left: 2em;
+}
+
+div.how-to-report-methods div{
+	margin-bottom: 10px;
 }
 
 /* content blocks */
@@ -1172,6 +1246,9 @@ label.error {
 .select{
     overflow:hidden;
 }
+.autosearch{
+margin-bottom: 10px;	
+}
 .long{
     width:90%;
 }
@@ -1215,6 +1292,8 @@ label.error {
 .report_right table { width: 100%; }
 .report_right table tr th { text-align: left; }
 
+#form_loader { float:left; }
+
 .report-description table { width: 100%; }
 .report-description table tr th { text-align: left; padding:5px; background:#E8E4DB; border-collapse:collapse; }
 .report-description table tr td { padding:0 5px; }
@@ -1237,11 +1316,14 @@ td.w-03 { border-bottom:1px dotted #E8E4DB; text-transform:capitalize; }
 .report_row .date-box img{ padding:0 5px 0 5px; }
 .report_row .time{ float:left; }
 .report_row .optional-info{ float:left; margin-right:10px; }
+.report_row .select2-container {width: 95% !important;}
 
 .report_category { clear:both; overflow:hidden; font-size:90%; }
 .report_category ul{ width:50%; float:left; margin:0; padding:0 0 11px; }
 .report_category ul li{ overflow:hidden; list-style:none; }
 .report_category ul li label{ color:#555; }
+
+.report_row .custom-field-option { margin-right: 15px; }
 
 /*Categories Tree*/
 .report_category ul ul { width: auto; float: none; }
@@ -1302,7 +1384,7 @@ a.add, a.rem{
     overflow:hidden;
     width:13px;
     height:13px;
-    float:left;
+    float:right;
     background:url(../images/icon-plus.gif) no-repeat;
 }
 a.rem { background:url(../images/icon-minus.gif) no-repeat;}
@@ -1323,6 +1405,9 @@ a.rem { background:url(../images/icon-minus.gif) no-repeat;}
     font-size:90%;
     color:#666;
 }
+.report-find-location .btns { float:left; }
+.report-find-location .btns ul { padding: 4px; }
+.report-find-location .btn_find { float:left; margin:10px 0 0 5px; }
 .report-find-location input.findtext {
     margin-top:9px;
     padding:5px 3px 0 3px;
@@ -1445,6 +1530,7 @@ a.show-more {
     width:407px;
     padding:10px;
     margin:10px 0 0 0;
+    border: #999 1px solid;
 }
 .step-1 .map p {
     margin:0;
@@ -1532,6 +1618,11 @@ a.show-more {
     float:left;
     padding:0 0 0 10px;
 }
+.find-location{
+	float:left;
+	margin:9px 0 0 5px;
+}
+
 /*-- pager --*/
 ul.pager {
     margin:0;
@@ -1818,6 +1909,10 @@ div.green-box ul, div.red-box ul{
     padding-left:2em;
 }
 
+.page-reports-submit div.green-box {
+	margin: 25px 25px 0px 25px;
+}
+
 /*--Alerts Messages--*/
 .alert_response, .thanks_msg {
     margin:10px 15px 10px 15px;
@@ -1838,6 +1933,9 @@ div.green-box ul, div.red-box ul{
 
 span.required {
   color: #CC1830;
+}
+span.private {
+	color:gray;font-size:70%
 }
 
 /* Rounded Corners */

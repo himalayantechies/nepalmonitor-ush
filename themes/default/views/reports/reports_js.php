@@ -158,6 +158,7 @@
 			
 			// Hide the box
 			$("#tooltip-box").hide();
+			$("#tooltip-box a.filter-button").click();
 			
 			return false;
 		});
@@ -613,6 +614,11 @@
 				verification = elementId.substring('filter_link_verification_'.length);
 				removeParameterItem("v", verification);
 				
+			} else if (elementId.indexOf('filter_link_adm_') != -1)
+			{
+				admFilter = elementId.substring('filter_link_adm_'.length);
+				removeParameterItem("adm", admFilter);
+				
 			}
 			
 			<?php
@@ -682,6 +688,16 @@
 			if (verificationStatus.length > 0)
 			{
 				urlParameters["v"] = verificationStatus;
+			}
+			
+			var admIds = [];
+			$.each($("[class^='filter-list fl-adm'] li a.selected"), function(i, item){
+				admId = item.id.substring("filter_link_adm_".length);
+				admIds.push(admId);
+			});
+			if (admIds.length > 0)
+			{
+				urlParameters["adm"] = admIds;
 			}
 			
 			//

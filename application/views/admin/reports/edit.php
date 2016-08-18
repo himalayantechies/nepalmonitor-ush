@@ -13,6 +13,13 @@
  * @license    http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL) 
  */
 ?>
+
+<?php
+// HT: start of new css and script for select2 autosearch
+echo html::stylesheet(url::file_loc('css')."media/css/select2.min","",TRUE);
+echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
+// HT: End of new css and script for select2 autosearch
+?>
 			<div class="bg">
 				<h2>
 					<?php admin::reports_subtabs("edit"); ?>
@@ -263,9 +270,24 @@
 							</div>
 							<?php Event::run('ushahidi_action.report_form_admin_location', $id); ?>
 							<div class="row">
+								<h4><?php echo Kohana::lang('ui_main.reports_adm_level'); ?><span class="required">*</span> <small><a href="javascript:void();" onclick="getPcode()">Get HLCIT Code</a></small><br />
+									<span id="adm_location" class="example">
+										<?php
+										foreach(location_filter::$admLevels as $key => $lvl) {
+											if(!empty($adm_location[$key]->name))
+											echo '<span style="display:inline-block;"><i>'.$lvl['label'].':</i> '.$adm_location[$key]->name.'<span>&nbsp;&nbsp;';
+										}
+										?>
+									</span>
+								</h4>
+								<?php print form::dropdown(array('name' => 'adm_level', 'id' => 'adm_level', 'required' => 'required'), $adm_levels, $form['adm_level']); ?>
+								<?php print form::input(array('name'=>'pcode', 'type'=>'hidden', 'id'=>'pcode', 'value' => $form['pcode'])); ?>
+							</div>
+							<div class="row">
 								<div class="town">
-									<h4><?php echo Kohana::lang('ui_main.reports_location_name');?>  <span class="required">*</span><br /><span><?php echo Kohana::lang('ui_main.detailed_location_example');?></span></h4>
+									<h4><?php echo Kohana::lang('ui_main.reports_location_name');?>  <span class="required">*</span> <br/><span><?php echo Kohana::lang('ui_main.detailed_location_example');?></span></h4>
 									<?php print form::input('location_name', $form['location_name'], ' class="text long"'); ?>
+									<?php //print form::input(array('name'=>'location_name','id'=>'location_name_pcode', 'value' => $form['location_name'], 'class' => 'text long', 'readonly' => 'readonly')); ?>
 								</div>
 							</div>
 				
@@ -279,39 +301,62 @@
 								$this_div = "divNews";
 								$this_field = "incident_news";
 								$this_startid = "news_id";
-								$this_field_type = "text";
-					
+								$this_field_type = "autosearch";
+								$newsoptions = array('' => '');
 								if (empty($form[$this_field]))
 								{
 									$i = 1;
 									print "<div class=\"row link-row\">";
-									print form::input($this_field . '[]', '', ' class="text long"');
+									//print form::input($this_field . '[]', '', ' class="text long"');
+									print form::dropdown($this_field.'[]', $newsoptions, '', ' class="text long2 incident_news"');
 									print "<a href=\"#\" class=\"add\" onClick=\"addFormField('$this_div','$this_field','$this_startid','$this_field_type'); return false;\">add</a>";
 									print "</div>";
 								}
 								else
 								{
 									$i = 0;
-									foreach ($form[$this_field] as $value) {									
+									foreach ($form[$this_field] as $value) {
 										print "<div ";
 										if ($i != 0) {
-											print "class=\"row link-row second\" id=\"" . $this_field . "_" . $i . "\">\n";
+											print "class=\"row link-row second $this_field_type\" id=\"" . $this_field . "_" . $i . "\">\n";
 										}
 										else
 										{
-											print "class=\"row link-row\" id=\"$i\">\n";
+											print "class=\"row link-row $this_field_type\" id=\"$i\">\n";
 										}
-										print form::input($this_field . '[]', $value, ' class="text long"');
-										print "<a href=\"#\" class=\"add\" onClick=\"addFormField('$this_div','$this_field','$this_startid','$this_field_type'); return false;\">add</a>";
+										//print form::input($this_field . '[]', $value, ' class="text long"');
+										$newsoptions = array($value => $value);
+										print form::dropdown($this_field.'[]', $newsoptions, $value, ' class="text long2 incident_news"');
 										if ($i != 0)
 										{
 											print "<a href=\"#\" class=\"rem\"  onClick='removeFormField(\"#" . $this_field . "_" . $i . "\"); return false;'>remove</a>";
 										}
+										print "<a href=\"#\" class=\"add\" onClick=\"addFormField('$this_div','$this_field','$this_startid','$this_field_type'); return false;\">add</a>";
 										print "</div>\n";
 										$i++;
 									}
 								}
 								print "<input type=\"hidden\" name=\"$this_startid\" value=\"$i\" id=\"$this_startid\">";
+								$field_file = url::site().'/media/news_source.json';
+								echo "<script type=\"text/javascript\">
+									$(function(){
+										$.ajax({
+											url: \"".$field_file."\",
+											dataType: 'json',
+											beforeSend: function() {
+											},
+											success: function(data) {
+												newsList = data.items;
+												$(\"#divNews select.incident_news\").select2({
+												  data: newsList,
+												  tags: true
+												});
+												
+											},complete: function(data) {
+											}
+										});
+								});
+								</script>";
 								?>
 							</div>
 
@@ -363,6 +408,100 @@
 							
 							<?php Event::run('ushahidi_action.report_form_admin_after_video_link', $id); ?>
 
+							<!-- Media Fields -->
+							<div class="row link-row">
+								<h4><?php echo Kohana::lang('ui_main.external_media_link');?></h4>
+							</div>
+							<div id="divMedia">
+								<?php
+								$this_div = "divMedia";
+								$this_field = "incident_media";
+								$this_startid = "media_id";
+								$this_field_type = "text";
+					
+								if (empty($form[$this_field]))
+								{
+									$i = 1;
+									print "<div class=\"row link-row\">";
+									print form::input($this_field . '[]', '', ' class="text long"');
+									print "<a href=\"#\" class=\"add\" onClick=\"addFormField('$this_div','$this_field','$this_startid','$this_field_type'); return false;\">add</a>";
+									print "</div>";
+								}
+								else
+								{
+									$i = 0;
+									foreach ($form[$this_field] as $value) {									
+										print "<div ";
+										if ($i != 0) {
+											print "class=\"row link-row second\" id=\"" . $this_field . "_" . $i . "\">\n";
+										}
+										else
+										{
+											print "class=\"row link-row\" id=\"$i\">\n";
+										}
+										print form::input($this_field . '[]', $value, ' class="text long"');
+										print "<a href=\"#\" class=\"add\" onClick=\"addFormField('$this_div','$this_field','$this_startid','$this_field_type'); return false;\">add</a>";
+										if ($i != 0)
+										{
+											print "<a href=\"#\" class=\"rem\"  onClick='removeFormField(\"#" . $this_field . "_" . $i . "\"); return false;'>remove</a>";
+										}
+										print "</div>\n";
+										$i++;
+									}
+								}
+								print "<input type=\"hidden\" name=\"$this_startid\" value=\"$i\" id=\"$this_startid\">";
+								?>
+							</div>
+							
+							<?php Event::run('ushahidi_action.report_form_admin_after_media_link', $id); ?>
+							
+							<!-- Related incident Fields -->
+							<div class="row link-row">
+								<h4><?php echo Kohana::lang('ui_main.related_incident_link');?></h4>
+							</div>
+							<div id="divRelatedIncident">
+								<?php
+								$this_div = "divRelatedIncident";
+								$this_field = "incident_related";
+								$this_startid = "related_id";
+								$this_field_type = "text";
+					
+								if (empty($form[$this_field]))
+								{
+									$i = 1;
+									print "<div class=\"row link-row\">";
+									print form::input($this_field . '[]', '', ' class="text long"');
+									print "<a href=\"#\" class=\"add\" onClick=\"addFormField('$this_div','$this_field','$this_startid','$this_field_type'); return false;\">add</a>";
+									print "</div>";
+								}
+								else
+								{
+									$i = 0;
+									foreach ($form[$this_field] as $value) {									
+										print "<div ";
+										if ($i != 0) {
+											print "class=\"row link-row second\" id=\"" . $this_field . "_" . $i . "\">\n";
+										}
+										else
+										{
+											print "class=\"row link-row\" id=\"$i\">\n";
+										}
+										print form::input($this_field . '[]', $value, ' class="text long"');
+										print "<a href=\"#\" class=\"add\" onClick=\"addFormField('$this_div','$this_field','$this_startid','$this_field_type'); return false;\">add</a>";
+										if ($i != 0)
+										{
+											print "<a href=\"#\" class=\"rem\"  onClick='removeFormField(\"#" . $this_field . "_" . $i . "\"); return false;'>remove</a>";
+										}
+										print "</div>\n";
+										$i++;
+									}
+								}
+								print "<input type=\"hidden\" name=\"$this_startid\" value=\"$i\" id=\"$this_startid\">";
+								?>
+							</div>
+							
+							<?php Event::run('ushahidi_action.report_form_admin_after_related_incident_link', $id); ?>
+							
 							<!-- Photo Fields -->
 							<div class="row link-row">
 								<h4><?php echo Kohana::lang('ui_main.reports_photos');?></h4>
@@ -390,6 +529,7 @@
                         			}
 			                    ?>
 							</div>
+							
 							<div id="divPhoto">
 								<?php
 								$this_div = "divPhoto";

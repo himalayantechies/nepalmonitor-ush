@@ -76,7 +76,8 @@ class reports_Core {
 		}
 
 		// Validate only the fields that are filled in
-		if ( ! empty($post->incident_news))
+		// HT: remove validation in news source as it can be text as well
+		/*if ( ! empty($post->incident_news))
 		{
 			foreach ($post->incident_news as $key => $url)
 			{
@@ -85,7 +86,7 @@ class reports_Core {
 					$post->add_error('incident_news','url');
 				}
 			}
-		}
+		}*/
 
 		// Validate only the fields that are filled in
 		if ( ! empty($post->incident_video))
@@ -95,6 +96,30 @@ class reports_Core {
 				if (!empty($url) AND ! valid::url($url))
 				{
 					$post->add_error('incident_video','url');
+				}
+			}
+		}
+		
+		// Validate only the fields that are filled in
+		if ( ! empty($post->incident_media))
+		{
+			foreach ($post->incident_media as $key => $url)
+			{
+				if (!empty($url) AND ! valid::url($url))
+				{
+					$post->add_error('incident_media','url');
+				}
+			}
+		}
+		
+		// Validate only the fields that are filled in
+		if ( ! empty($post->incident_related))
+		{
+			foreach ($post->incident_related as $key => $url)
+			{
+				if (!empty($url) AND ! valid::url($url))
+				{
+					$post->add_error('incident_related','url');
 				}
 			}
 		}
@@ -146,6 +171,8 @@ class reports_Core {
 		$post->add_rules('incident_verified', 'between[0,1]');
 		$post->add_rules('incident_zoom', 'numeric');
 		$post->add_rules('alert_mode', 'between[0,3]');
+		$post->add_rules('pcode','required');
+		$post->add_rules('adm_level','required', 'numeric');
 		
 		// Custom form fields validation
 		$errors = customforms::validate_custom_form_fields($post);
@@ -254,6 +281,8 @@ class reports_Core {
 		$incident->incident_date = date( "Y-m-d H:i:s", strtotime($incident_date . " " . $incident_time) );
 				
 		$incident->alert_mode = $post->alert_mode;
+		$incident->pcode = $post->pcode;
+		$incident->adm_level = $post->adm_level;
 		
 		// Is this an Email, SMS, Twitter submitted report?
 		if ( ! empty($post->service_id))
@@ -467,7 +496,7 @@ class reports_Core {
 				}
 			}
 		}
-
+		
 		// c. Photos
 		if ( ! empty($post->incident_photo))
 		{
@@ -536,6 +565,42 @@ class reports_Core {
 				$photo->media_date = date("Y-m-d H:i:s",time());
 				$photo->save();
 				$i++;
+			}
+		}
+
+		// d. Media
+		if (isset($post->incident_media))
+		{
+			foreach ($post->incident_media as $item)
+			{
+				if ( ! empty($item))
+				{
+					$media = new Media_Model();
+					$media->location_id = $incident->location_id;
+					$media->incident_id = $incident->id;
+					$media->media_type = 6;		// Media
+					$media->media_link = $item;
+					$media->media_date = date("Y-m-d H:i:s",time());
+					$media->save();
+				}
+			}
+		}
+		
+		// e. Related incident
+		if (isset($post->incident_related))
+		{
+			foreach ($post->incident_related as $item)
+			{
+				if ( ! empty($item))
+				{
+					$video = new Media_Model();
+					$video->location_id = $incident->location_id;
+					$video->incident_id = $incident->id;
+					$video->media_type = 7;		// Related incident
+					$video->media_link = $item;
+					$video->media_date = date("Y-m-d H:i:s",time());
+					$video->save();
+				}
 			}
 		}
 	}
@@ -816,6 +881,46 @@ class reports_Core {
 			}
 		}
 		
+		//
+		// Check if the adm location has been specified
+		// 
+		if (isset($url_data['adm']))
+		{
+			$adm_ids = array();
+			$adm_query = '';
+			if( is_array($url_data['adm'])) {
+				foreach ($url_data['adm'] as $adm_level)
+				{
+					if (intval($adm_level) >= 0)
+					{
+						$loc = new Location_Filter_Model($adm_level);
+						if($loc->loaded) {
+							$adm_ids[] = $loc->pcode;
+							if($adm_query != '') $adm_query .= ' OR ';
+							$adm_query .= " i.pcode LIKE '".$loc->pcode."%' ";
+						}
+					}
+				}
+			} else {
+				$adm_level = $url_data['adm'];
+				if (intval($adm_level) >= 0)
+					{
+						$loc = new Location_Filter_Model($adm_level);
+						if($loc->loaded) {
+							$adm_ids[] = $loc->pcode;
+							if($adm_query != '') $adm_query .= ' OR ';
+							$adm_query .= " i.pcode LIKE '".$loc->pcode."%' ";
+						}
+					}
+			}
+			if (count($adm_ids) > 0)
+			{
+				array_push(self::$params, 
+					' ('.$adm_query.') '
+				);	
+				
+			}
+		}
 		//
 		// Check if they're filtering over custom form fields
 		//

@@ -29,6 +29,22 @@
 			<span class="r_location"><?php echo html::specialchars($incident_location); ?></span>
 			<?php Event::run('ushahidi_action.report_meta_after_time', $incident_id); ?>
 		</p>
+		<p>
+			<?php if(!empty($adm_level)) { ?>
+			<span><strong><?php echo Kohana::lang('ui_main.adm_level').': ';?></strong>
+			<?php echo location_filter::$admLevels[$adm_level]['label'].'&nbsp;&nbsp;'; ?></span>
+			<span><strong><?php echo Kohana::lang('ui_main.pcode').': ';?></strong>
+			<?php echo $pcode; ?></span><br/>
+			<?php 
+			$admList = location_filter::get_adm_levels($adm_level, $pcode);
+			foreach(location_filter::$admLevels as $key => $admLvl) {
+				if(isset($admList[$key])) {
+					echo '<span style="display:inline-block"><strong>'.$admLvl['label'].': </strong>'.$admList[$key]->name.'&nbsp;&nbsp;</span>';
+				}
+			}
+			}
+			?>
+		</p>
 
 		<div class="report-category-list">
 		<p>
@@ -105,9 +121,8 @@
 		<div class="report-description-text">
 			<h5><?php echo Kohana::lang('ui_main.reports_description');?></h5>
 			<?php echo nl2br($incident_description); ?>
-			<br/>
-
-
+			<br/><br/>
+			
 			<!-- start news source link -->
 			<?php if( count($incident_news) > 0 ) { ?>
 			<div class="credibility">
@@ -115,9 +130,13 @@
 					<?php
 						foreach( $incident_news as $incident_new)
 						{
+							if(valid::url($incident_new)) {
 							?>
 							<a href="<?php echo $incident_new; ?> " target="_blank"><?php
 							echo $incident_new;?></a>
+							<?php } else {
+								echo $incident_new;
+							} ?>
 							<br/>
 							<?php
 						}
@@ -125,6 +144,44 @@
 			</div>
 			<?php } ?>
 			<!-- end news source link -->
+			
+			<!-- start media link -->
+			<?php if( count($incident_medias) > 0 ) { ?>
+			<div class="credibility">
+			<h5><?php echo Kohana::lang('ui_main.reports_medias');?></h5>
+					<?php
+						foreach( $incident_medias as $incident_media)
+						{
+							if(valid::url($incident_media)) {
+							?>
+							<a href="<?php echo $incident_media; ?> " target="_blank"><?php
+							echo $incident_media;?></a>
+							<br/>
+							<?php }
+						}
+			?>
+			</div>
+			<?php } ?>
+			<!-- end media link -->
+			
+			<!-- start related incident link -->
+			<?php if( count($incident_relateds) > 0 ) { ?>
+			<div class="credibility">
+			<h5><?php echo Kohana::lang('ui_main.related_incident_link');?></h5>
+					<?php
+						foreach( $incident_relateds as $incident_related)
+						{
+							if(valid::url($incident_related)) {
+							?>
+							<a href="<?php echo $incident_related; ?> " target="_blank"><?php
+							echo $incident_related;?></a>
+							<br/>
+							<?php }
+						}
+			?>
+			</div>
+			<?php } ?>
+			<!-- end related incident link -->
 
 			<!-- start additional fields -->
 			<?php if(strlen($custom_forms) > 0) { ?>

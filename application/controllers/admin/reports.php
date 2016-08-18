@@ -319,6 +319,12 @@ class Reports_Controller extends Admin_Controller {
 
 		$this->template->content = new View('admin/reports/edit');
 		$this->template->content->title = Kohana::lang('ui_admin.create_report');
+		
+		$adms = array();
+		foreach(location_filter::$admLevels as $key => $lvls) {
+			$adms[$key] = $lvls['label']; 
+		}
+		$this->template->content->adm_levels = $adms;
 
 		// Setup and initialize form field names
 		$form = array(
@@ -340,6 +346,8 @@ class Reports_Controller extends Admin_Controller {
 			'incident_category' => array(),
 			'incident_news' => array(),
 			'incident_video' => array(),
+			'incident_media' => array(),
+			'incident_related' => array(),
 			'incident_photo' => array(),
 			'person_first' => '',
 			'person_last' => '',
@@ -348,7 +356,9 @@ class Reports_Controller extends Admin_Controller {
 			'incident_active' => '',
 			'incident_verified' => '',
 			'incident_zoom' => '',
-			'alert_mode' => ''
+			'alert_mode' => '0',
+			'adm_level' => '',
+			'pcode' => ''
 		);
 
 		// Copy the form as errors, so the errors will be stored with keys
@@ -601,6 +611,10 @@ class Reports_Controller extends Admin_Controller {
 
 				// STEP 2: SAVE INCIDENT
 				$incident = new Incident_Model($id);
+				if(empty($post->pcode)) {
+				//Location filter add before incident save
+				location_filter::save($post, $incident);
+				}
 				reports::save_report($post, $incident, $location->id);
 
 				// STEP 2b: Record Approval/Verification Action
@@ -707,6 +721,8 @@ class Reports_Controller extends Admin_Controller {
 					// Retrieve Media
 					$incident_news = array();
 					$incident_video = array();
+					$incident_media = array();
+					$incident_related = array();
 					$incident_photo = array();
 					foreach($incident->media as $media)
 					{
@@ -717,6 +733,14 @@ class Reports_Controller extends Admin_Controller {
 						elseif ($media->media_type == 2)
 						{
 							$incident_video[] = $media->media_link;
+						}
+						elseif ($media->media_type == 6)
+						{
+							$incident_media[] = $media->media_link;
+						}
+						elseif ($media->media_type == 7)
+						{
+							$incident_related[] = $media->media_link;
 						}
 						elseif ($media->media_type == 1)
 						{
@@ -760,6 +784,8 @@ class Reports_Controller extends Admin_Controller {
 						'incident_category' => $incident_category,
 						'incident_news' => $incident_news,
 						'incident_video' => $incident_video,
+						'incident_media' => $incident_media,
+						'incident_related' => $incident_related,
 						'incident_photo' => $incident_photo,
 						'person_first' => $incident->incident_person->person_first,
 						'person_last' => $incident->incident_person->person_last,
@@ -768,7 +794,9 @@ class Reports_Controller extends Admin_Controller {
 						'incident_active' => $incident->incident_active,
 						'incident_verified' => $incident->incident_verified,
 						'incident_zoom' => $incident->incident_zoom,
-						'alert_mode' => $incident->alert_mode
+						'alert_mode' => $incident->alert_mode,
+						'adm_level' => $incident->adm_level,
+						'pcode' => $incident->pcode
 					);
 
 					// Merge To Form Array For Display
@@ -788,6 +816,9 @@ class Reports_Controller extends Admin_Controller {
 		$this->template->content->errors = $errors;
 		$this->template->content->form_error = $form_error;
 		$this->template->content->form_saved = $form_saved;
+		
+		
+		$this->template->content->adm_location = location_filter::get_adm_levels($form['adm_level'], $form['pcode']);
 
 		// Retrieve Custom Form Fields Structure
 		$this->template->content->custom_forms = new View('reports/submit_custom_forms');
@@ -830,7 +861,7 @@ class Reports_Controller extends Admin_Controller {
 			$this->template->js->latitude = $form['latitude'];
 			$this->template->js->longitude = $form['longitude'];
 		}
-
+		
 		$this->template->js->incident_zoom = $form['incident_zoom'];
 		$this->template->js->geometries = $form['geometry'];
 

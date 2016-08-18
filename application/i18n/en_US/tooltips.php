@@ -22,6 +22,8 @@ $lang = array(
 		'user' => 'The user can be anyone or a specific user. If you would only like specific users to activate a trigger, you will want to select them here. Otherwise, you will want to leave this as "anyone" since most triggers are set up for all users interacting with the system',
 		'verify' => 'Marks a report as verified or not.',
 	) ,
+	'autocomplete_file' => 'Name of json file for autocomplete search purpose.',
+	'autocomplete_db' => 'Key of options to show from database.',
 	'change_picture' => 'Profile pages on this site use Gravatar. By clicking on your image, you will be taken to the Gravatar website where you can change your profile picture.',
 	'default_value' => 'Separate each value with a comma, e.g. value1, value2.',
 	'radio_choices' => 'Separate each value with a comma, e.g. value1, value2. In case you want to set a default value, end your list of options with :: e.g If you want to make value3 the default, it will be value1, value2, value3::value3',

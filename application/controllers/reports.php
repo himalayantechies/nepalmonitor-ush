@@ -134,6 +134,9 @@ class Reports_Controller extends Main_Controller {
 
 		// Category tree view
 		$this->template->content->category_tree_view = category::get_category_tree_view();
+		// Location tree view
+		$this->template->content->location_filter = location_filter::get_location_filter_view(2) + location_filter::get_location_filter_view(3);
+		//$this->template->content->location_filter = array();
 
 		// Additional view content
 		$this->template->content->custom_forms_filter = new View('reports/submit_custom_forms');
@@ -249,6 +252,12 @@ class Reports_Controller extends Main_Controller {
 
 		$this->template->header->page_title .= Kohana::lang('ui_main.reports_submit_new')
 											   .Kohana::config('settings.title_delimiter');
+						
+		$adms = array('' => '');
+		foreach(location_filter::$admLevels as $key => $lvls) {
+			$adms[$key] = $lvls['label']; 
+		}
+		$this->template->content->adm_levels = $adms;
 
 		//Retrieve API URL
 		$this->template->api_url = Kohana::config('settings.api_url');
@@ -270,14 +279,18 @@ class Reports_Controller extends Main_Controller {
 			'incident_category' => array(),
 			'incident_news' => array(),
 			'incident_video' => array(),
+			'incident_media' => array(),
+			'incident_related' => array(),
 			'incident_photo' => array(),
 			'incident_zoom' => '',
 			'person_first' => '',
 			'person_last' => '',
 			'person_email' => '',
 			'form_id'	  => '',
-			'alert_mode'  => '',
-			'custom_field' => array()
+			'alert_mode'  => '0',
+			'custom_field' => array(),
+			'adm_level' => '',
+			'pcode' => ''
 		);
 
 		// Copy the form as errors, so the errors will be stored with keys corresponding to the form field names
@@ -299,6 +312,10 @@ class Reports_Controller extends Main_Controller {
 		// Initialize custom field array
 		$form['form_id'] = 1;
 		$form_id = $form['form_id'];
+		if ($_POST)
+		{
+			$form_id = $_POST['form_id'];
+		}
 		$form['alert_mode'] = 0;
 		$form['custom_field'] = customforms::get_custom_form_fields($id,$form_id,true);
 
@@ -330,6 +347,10 @@ class Reports_Controller extends Main_Controller {
 
 				// STEP 2: SAVE INCIDENT
 				$incident = new Incident_Model();
+				if(empty($post->pcode)) {
+				//Location filter add before incident save
+				location_filter::save($post, $incident);
+				}
 				reports::save_report($post, $incident, $location->id);
 
 				// STEP 2b: SAVE INCIDENT GEOMETRIES
@@ -415,7 +436,8 @@ class Reports_Controller extends Main_Controller {
 			$this->themes->js->longitude = $form['longitude'];
 		}
 		$this->themes->js->geometries = $form['geometry'];
-
+		
+		
 
 		// Rebuild Header Block
 		$this->template->header->header_block = $this->themes->header_block();
@@ -629,6 +651,14 @@ class Reports_Controller extends Main_Controller {
 			$this->template->content->incident_date = date('M j Y', strtotime($incident->incident_date));
 			$this->template->content->incident_time = date('H:i', strtotime($incident->incident_date));
 			$this->template->content->incident_category = $incident->incident_category;
+			// Adm Levels
+			$this->template->content->adm_levels = location_filter::get_adm_levels($incident->adm_level, $incident->pcode);
+			$this->template->content->pcode = $incident->pcode;
+			$this->template->content->adm_level = '';
+			if(!empty(location_filter::$admLevels[$incident->adm_level])) {
+				$this->template->content->adm_level = $incident->adm_level;
+			} 
+				
 
 			// Incident rating
 			$rating = ORM::factory('rating')
@@ -643,6 +673,8 @@ class Reports_Controller extends Main_Controller {
 			// Retrieve Media
 			$incident_news = array();
 			$incident_video = array();
+			$incident_media = array();
+			$incident_related = array();
 			$incident_photo = array();
 
 			foreach ($incident->media as $media)
@@ -654,6 +686,14 @@ class Reports_Controller extends Main_Controller {
 				elseif ($media->media_type == 2)
 				{
 					$incident_video[] = $media->media_link;
+				}
+				elseif ($media->media_type == 6)
+				{
+					$incident_media[] = $media->media_link;
+				}
+				elseif ($media->media_type == 7)
+				{
+					$incident_related[] = $media->media_link;
 				}
 				elseif ($media->media_type == 1)
 				{
@@ -693,7 +733,13 @@ class Reports_Controller extends Main_Controller {
 
 		// Video links
 		$this->template->content->incident_videos = $incident_video;
-
+		
+		// Media links
+		$this->template->content->incident_medias = $incident_media;
+		
+		// Related links
+		$this->template->content->incident_relateds = $incident_related;
+		
 		// Images
 		$this->template->content->incident_photos = $incident_photo;
 
@@ -1015,4 +1061,14 @@ class Reports_Controller extends Main_Controller {
 		echo json_encode(array("status"=>"success", "response"=>$form_fields));
 	}
 
+	public function get_pcode() {
+		$this->template = "";
+		$this->auto_render = FALSE;
+		echo location_filter::json_pcode($_POST['latitude'], $_POST['longitude'], $_POST['adm_level']);
+	}
+	public function json_get_pcode() {
+		$this->template = "";
+		$this->auto_render = FALSE;
+		echo location_filter::json_get_pcode($_POST['latitude'], $_POST['longitude'], $_POST['adm_level']);
+	}
 }

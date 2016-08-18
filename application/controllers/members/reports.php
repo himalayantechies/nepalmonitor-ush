@@ -266,6 +266,8 @@ class Reports_Controller extends Members_Controller {
 			'incident_category' => array(),
 			'incident_news' => array(),
 			'incident_video' => array(),
+			'incident_media' => array(),
+			'incident_related' => array(),
 			'incident_photo' => array(),
 			'person_first' => '',
 			'person_last' => '',
@@ -472,6 +474,8 @@ class Reports_Controller extends Members_Controller {
 					// Retrieve Media
 					$incident_news = array();
 					$incident_video = array();
+					$incident_media = array();
+					$incident_related = array();
 					$incident_photo = array();
 					foreach($incident->media as $media)
 					{
@@ -482,6 +486,14 @@ class Reports_Controller extends Members_Controller {
 						elseif ($media->media_type == 2)
 						{
 							$incident_video[] = $media->media_link;
+						}
+						elseif ($media->media_type == 6)
+						{
+							$incident_media[] = $media->media_link;
+						}
+						elseif ($media->media_type == 7)
+						{
+							$incident_related[] = $media->media_link;
 						}
 						elseif ($media->media_type == 1)
 						{
@@ -525,6 +537,8 @@ class Reports_Controller extends Members_Controller {
 						'incident_category' => $incident_category,
 						'incident_news' => $incident_news,
 						'incident_video' => $incident_video,
+						'incident_media' => $incident_media,
+						'incident_related' => $incident_related,
 						'incident_photo' => $incident_photo,
 						'person_first' => $incident->incident_person->person_first,
 						'person_last' => $incident->incident_person->person_last,

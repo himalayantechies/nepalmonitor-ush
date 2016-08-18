@@ -71,7 +71,8 @@ $(document).ready(function() {
 		$("#latitude").attr("value", lat);
 		$("#longitude").attr("value", lon);
 		$("#location_name").attr("value", name);
-
+		$("#pcode").attr("value", '');
+		$('#adm_location').html('');
 		return false;
 	}
 

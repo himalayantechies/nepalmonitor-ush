@@ -14,6 +14,7 @@
  * @license    http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL) 
  */
 ?>
+		var newsList;
 		var map;
 		var thisLayer;
 		var proj_4326 = new OpenLayers.Projection('EPSG:4326');
@@ -292,6 +293,8 @@
 				$('input[name="geometry[]"]').remove();
 				$("#latitude").val("");
 				$("#longitude").val("");
+				$("#pcode").val("");
+				$('#adm_location').html('');
 				$('#geometry_label').val("");
 				$('#geometry_comment').val("");
 				$('#geometry_color').val("");
@@ -319,6 +322,8 @@
 			$('#latitude, #longitude').bind("focusout keyup", function() {
 				var newlat = $("#latitude").val();
 				var newlon = $("#longitude").val();
+				$("#pcode").val("");
+				$('#adm_location').html('');
 				if (!isNaN(newlat) && !isNaN(newlon))
 				{
 					// Clear the map first
@@ -645,24 +650,42 @@
 
 					$("#latitude").attr("value", lonlat[1]);
 					$("#longitude").attr("value", lonlat[0]);
+					$("#pcode").attr("value", '');
+					$('#adm_location').html('');
 				}
 			});
 
+			$('#adm_level').change(function() {
+				$('#getPcode').show();
+			});
 		});
 		
 		function addFormField(div, field, hidden_id, field_type) {
 			var id = document.getElementById(hidden_id).value;
-			
-			// HTML for the form field to be added
+			if(field_type == 'autosearch') {
+				var formFieldHTML = "<div class=\"row link-row second "+field_type+"\" id=\"" + field + "_" + id + "\">" +
+			    "<select name=\"" + field + "[]\" class=\"" + field_type + " " + field + " long2\" ><option value=\"\"></option></select>" +
+			    "<a href=\"#\" class=\"add\" "+
+			    "    onClick=\"addFormField('" + div + "','" + field + "','" + hidden_id + "','" + field_type + "'); return false;\">"+
+			    "    add</a>" +
+			    "<a href=\"#\" class=\"rem\"  onClick='removeFormField(\"#" + field + "_" + id + "\"); return false;'>remove</a></div>";
+			} 
+			else {
+				// HTML for the form field to be added
 			var formFieldHTML = "<div class=\"row link-row second\" id=\"" + field + "_" + id + "\">" +
 			    "<input type=\"" + field_type + "\" name=\"" + field + "[]\" class=\"" + field_type + " long2\" />" +
 			    "<a href=\"#\" class=\"add\" "+
 			    "    onClick=\"addFormField('" + div + "','" + field + "','" + hidden_id + "','" + field_type + "'); return false;\">"+
 			    "    add</a>" +
 			    "<a href=\"#\" class=\"rem\"  onClick='removeFormField(\"#" + field + "_" + id + "\"); return false;'>remove</a></div>";
-
+			}
 			$("#" + div).append(formFieldHTML);
-
+			if(field_type == 'autosearch') {
+				$("#" + field + "_" + id + " select.incident_news").select2({
+					data: newsList,
+					tags: true
+				});
+			}
 			$("#" + field + "_" + id).effect("highlight", {}, 800);
 
 			id = (id - 1) + 2;
@@ -724,6 +747,8 @@
 						$("#latitude").val(data.latitude);
 						$("#longitude").val(data.longitude);
 						$("#location_name").val(data.location_name);
+						//$("#pcode").val('');
+						//$('#adm_location').html('');
 					} else {
 						// Alert message to be displayed
 						var alertMessage = address + " not found!\n\n***************************\n" + 
@@ -893,6 +918,8 @@
 			centroid = geoCollection.getCentroid(true);
 			$("#latitude").val(centroid.y);
 			$("#longitude").val(centroid.x);
+			//$("#pcode").val('');
+			//$('#adm_location').html('');
 		}
 		
 		function incidentZoom(event) {
@@ -946,3 +973,34 @@
 				}
 			});
 		}
+		
+		function getPcode() {
+			latVal = $('#latitude').val();
+			lonVal = $('#longitude').val();
+			adm = $('#adm_level').val();
+			$('#adm_location').html('<img src=" <?php echo url::file_loc('img') .'media/img/loading_g.gif'; ?> ">');
+			$.post("<?php echo url::base() . 'reports/json_get_pcode/' ?>", 
+				{ latitude: latVal, longitude: lonVal, adm_level: adm},
+				function(data){
+					if ( data.adm_level == adm)
+					{
+						$('#pcode').val(data.pcode);
+						$('#adm_location').html(data.location);
+					}
+					else if(data.pcode != '')
+					{
+						$('#pcode').val(data.pcode);
+						$('#adm_location').html(data.location);
+						alert("Location for that accuracy could not be mapped. Returned closest location!!");
+					} else {
+						$('#pcode').val();
+						$('#adm_location').html('');
+						alert("Location for that accuracy could not be mapped. Please try again!!");
+					}
+				}, "json").fail(function() {
+				    alert("Location for that accuracy could not be mapped. Please try again!!");
+				    $('#adm_location').html('');
+				});
+		}
+		
+		
