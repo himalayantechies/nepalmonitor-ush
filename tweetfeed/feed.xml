@@ -1,418 +1,247 @@
 <?xml version="1.0"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss">
 	<channel>
 		<title>Nepal Monito </title>		<link>https://www.nepalmonitor.org/</link>
-		<pubDate>Tue, 17 May 2016 11:19:36 GMT</pubDate>
+		<pubDate>Thu, 18 Aug 2016 08:00:01 GMT</pubDate>
 		<description>Incident feed for Nepal Monitor</description>
 		<generator>Ushahidi Platform</generator>
 		<atom:link href="https://www.nepalmonitor.org/tweetfeed/feed.xml" rel="self" type="application/rss+xml" />
 		
 				
 					<item>
-			<title>Police and Federal Alliance cadres clash at Baluwatar | बालुवाटारमा झड...#Nepal #NepalPolice #CLASH #INJURED</title>			<link>https://nepalmonitor.org/reports/view/10207</link>
-			<description><![CDATA[Alert: Kathmandu/May 17, Dharna ko kram ma Baluwatar ma andolankari ra prahari bich saamanya jhadap.
+			<title>INSEC: Accused on caste discrimination arrested | उच्च जातको केटी विवा...#Nepal #CasteDiscrimination #ARREST</title>			<link>https://nepalmonitor.org/reports/view/11132</link>
+			<description><![CDATA[Alert: Sankhuwasabha/Aug 16, Bana ga-bi-sa 8 ka ek dalit yuwak le uchcha jaat ki bhanaudo yuwati lai bihe gareko bhandai yuwak lai kutpit garne prahari dwara pakrau.
 
-Federal Alliance, a group of political parties that  has been protesting against the constitution, has centered its protest at the Prime Minister's residence in Baluwatar on Tuesday. The alliance had picketed Singha Durbar as part of its protest programs on Sunday and Monday.
+Lila Bahadur B.K, 29 of Bana VDC-8 was beaten by relatives of Sapana Tamang, 29 of same VDC on charge of marrying with her on August 9. The accused were arrested by the police on August 13.
 
-It is reported that the clashes took place between the security personnel and the Federal Alliance cadres while the former tried to prevent the latter from moving toward Baluwar.
+The accused Singha Man Tamang,26 of Bana VDC-8, Sal Bahadur Tamang, Bhala Man Tamang,28 and Rahar Man Tamang,30 had severely beaten B.K on charge of marrying woman from higher caste on August 11. The victim had lodged a complaint at police on August 12.
 
-आन्दोलनकारी र प्रहरीबीच बालुवाटारमा झडप भएको छ। निषेधित क्षेत्र तोड्न खोज्दा आन्दोलनकारी र प्रहरीबीच झडप भएको हो। झडपको पूर्ण विवरण आइसकेको छैन। नयाँ संविधानप्रति विमति जनाउँदै अाएका असन्तुष्ट दलसम्बद्ध संघीय गठबन्धनले राजधानीमा सुरु गरेको आन्दोलनको तेस्रो मंगलबार प्रधानमन्त्रीको सरकारी निवास बालुवाटारमा केन्द्रित गरेको छ। यस अगाडि आइतबार र सोमबार सिंहदरबार प्रवेश क्षेत्र अवरुद्ध गरेको गठबन्धनले बालुवाटारमा धर्ना र प्रदर्शन गरिरहेका छन्।]]></description>
-			<pubDate>Tue, 17 May 2016 07:16:00 GMT</pubDate>
-			<guid>https://nepalmonitor.org/reports/view/10207</guid>
+The victim is undergoing treatment at Khandbari Hospital.  The victim said that they married with mutual understanding even though he was beaten by the accused.
 
-							<georss:point>27.725443 85.328483</georss:point>
+वाना गाविस-८ का २९ वर्षीय लिलाबहादुर विकलाई सोही गाउँकी २९ वर्षीया सपना तामाङसँग साउन २५ गते विवाह गरेको भन्दै सपनाका आफन्तले कुटपिट गरेको आरोपमा प्रहरीले आरोपितहरूलाई साउन २९ गते गिरफ्तार गरेको छ ।
+
+आरोपितहरू वाना गाविस-८ का २६ वर्षीय सिंहमान तामाङ, २३ वर्षीय मनबहादुर तामाङ, २५ वर्षीय सलबहादुर तामाङ, २८ वर्षीय भलामान तामाङ र ३० वर्षीय रहरमान तामाङले उच्च जातीको केटी विवाह गरेको भन्दै साउन २७ गते मराणसन्न हुने गरी कुटपिट गरेको भन्दै पीडितले प्रहरीमा साउन २८ गते उजुरी दिएका थिए ।
+
+‘हामी माथिल्लो जातिको हौँ । हाम्रो चेली विवाह गर्न कसरी आँट गरिस? भन्दै कुटे ।’-पीडितले भने । पीडित लिलाबहादुरको खाँदबारी अस्पतालमा उपचार भइरहेको छ । पीडित सपनाले पनि आफू खुसी विवाह गरेको बताउँदै परिवारले जबरजस्ती लिला र आफूलाई कुटपिट गरेको भन्दै उजुरी दिएकी छिन् ।]]></description>
+			<pubDate>Wed, 17 Aug 2016 05:52:00 GMT</pubDate>
+			<guid>https://nepalmonitor.org/reports/view/11132</guid>
+
+							<georss:point>27.32 87.236</georss:point>
 			
-							<category>Nepal Police</category>
-							<category>CLASH</category>
-							<category>INJURED</category>
-							<category>Protest / Demonstration</category>
+							<category>Caste Discrimination</category>
+							<category>Trusted Reports</category>
+							<category>INSEC</category>
+							<category>Nepal Police (responding)</category>
+							<category>ARREST</category>
+							<category>Incident</category>
+							<category>Investigation / Prosecution</category>
+			
+									</item>
+					<item>
+			<title>News: Bhojpur teacher held for torturing girl student | यातना दिएको आर...#Nepal #ChildRights #Assault</title>			<link>https://nepalmonitor.org/reports/view/11130</link>
+			<description><![CDATA[Alert: Bhojpur/Aug 17, Chhaatraa lai yatana diyeko arop ma Panchakanya ni-ma-bi Sideshwor ka ek sikchhyak pakrau.
+
+A teacher here  on Tuesday was arrested on the charge of inflicting torture on a girl student.
+
+Teacher Indrabir Pradhan of Dawa-based Panchakanya Lower Secondary School, Siddheshwar-1 in Bhojpur district was taken into police custody for investigations after a 13-year-old girl student of grade 6 consumed poison.
+ 
+He was arrested on Tuesday on the charge of physically assaulting the girl.
+
+Pradhan allegedly teased the girl and mercilessly beat her after she reached the school principal with a complaint against him.
+
+Meanwhile, the girl has been admitted to District Hospital, Bhojpur where her health condition is gradually improving, DSP of Bhojpur District Police Office Raj Kumar Lamsal said.
+
+शिक्षकले मानसिक तथा शारीरिक यातना दिएको भन्दै विद्यार्थीले विष सेवन गरेको आरोपमा शिक्षकलाई प्रहरीले पक्राउ गरेकोे छ । 
+
+पञ्चकन्या निमावि सिद्धेश्वर–१, दाँवा, भोजपुरका शिक्षक इन्द्रवीर प्रधानलाई बालिकालाई मानसिक र शारीरिक यातना दिएको आरोपमा प्रहरीले मंगलबार अनुसन्धानका लागि नियन्त्रणमा लिएको हो । 
+
+कक्षा ६ मा अध्ययन गर्ने १३ वर्षीया बालिकालाई बिहे गर्ने भनेर पटकपटक जिस्काएको शिक्षक प्रधानलाई आरोप लागेको छ । सो कुरा बालिकाले प्रधानाध्यापक गङ्गाप्रसाद राईलाई जानकारी गराएपछि शिक्षक इन्द्रवीर प्रधानले बालिकालाई पिटेर शारीरिक यातना दिएपछि बालिकाले विद्यालयबाट घर फर्केर विष सेवन गरेको आरोप बालिकाको परिवारले लगाएको छ । 
+
+विष सेवनपछि बालिकालाई मङ्गलबार जिल्ला अस्पताल भोजपुरमा भर्ना गरिएको छ । हाल बालिकाको स्वास्थ्यमा सुधार हुँदै आएको र पूर्णरुपमा सुधार आएपछि अनुसन्धानले निष्कर्ष पाउने जिल्ला प्रहरी कार्यालय भोजपुरका प्रहरी नायब उपरीक्षक राजकुमार लम्सालले बताए।]]></description>
+			<pubDate>Wed, 17 Aug 2016 04:54:00 GMT</pubDate>
+			<guid>https://nepalmonitor.org/reports/view/11130</guid>
+
+							<georss:point>27.214 87.022</georss:point>
+			
+							<category>Children's rights</category>
+							<category>Assault / Violent Acts</category>
+							<category>Nepal Police (responding)</category>
+							<category>ARREST</category>
+							<category>News Media</category>
+							<category>Incident</category>
+							<category>Investigation / Prosecution</category>
+			
+									</item>
+					<item>
+			<title>Republica: Schools, campuses remain closed on second day of strike | व...#Nepal #CPNMaoist #BANDHA #Strike</title>			<link>https://nepalmonitor.org/reports/view/11126</link>
+			<description><![CDATA[Alert: Kathmandu/Aug 16, Biplab maaowadi ko saichhik hadtaal ko karan aaja doshro din pani desh bhar ka saichhik sansthaan haru banda.
+
+The educational institutions across the country remained closed on the second day of the 'educational strike' called by CPN (Maoist) aligned All Nepal National Independent Students' Union (Revolutionary).
+
+The Union has posed a host of demands which include slashing the current fees in private schools and increment of scholarship percentage from the existing 10 per cent. With the strike continuing, educational activities in community schools, private schools and majority of the campuses with affiliation to universities have come to a halt.
+
+Union's Vice Chairman, Lal Bahadur Tamang, shared that although the Education Ministry had set August 11 as the date for dialogue to discuss the demands, it could not materialize as the new government is yet to appoint an Education Minister. 
+
+&quot;As per our announcement of the educational strike we have enforced the closure of the educational institutes to last until today, but if our demands are not addressed we will start phase-wise agitation,&quot; he warned.
+
+Meanwhile, Children as Zone of Peace (CZP), National Campaign for Education (NCE-Nepal), Private and Boarding Schools'
+
+Organization Nepal (PABSON) among other educational associations have appealed to the government and the strike enforces to create an environment conducive to opening the schools reasoning that such strikes would infringe upon the concept of schools as zone of peace and curtail students' right to education. RSS]]></description>
+			<pubDate>Tue, 16 Aug 2016 09:35:00 GMT</pubDate>
+			<guid>https://nepalmonitor.org/reports/view/11126</guid>
+
+							<georss:point>27.7 85.333333</georss:point>
+			
+							<category>CPN M</category>
+							<category>BANDHA</category>
+							<category>News Media</category>
+							<category>Strike</category>
+							<category>Incident</category>
+			
+									</item>
+					<item>
+			<title>Nagariknews: Two found dead in Rukum | रुकुममा दुई जनाको शव भेटियो...#Nepal #DEATHS #Investigation</title>			<link>https://nepalmonitor.org/reports/view/11128</link>
+			<description><![CDATA[Alert: Rukum/Aug 16, Kakri ga-bi-sa ra Rugha ga-bi-sa ka chuttachuttai sthan ma 2 purush ko shab fela, ghatana ko anusandhan hudai.
+
+Two persons have been found dead in different places of Rukum. The dead bodies have been identified to be those of Til Bahadur Pun, 59 from Kakri VDC-1 and Lal Bahadur Oli, 37 from Rungha VDC-8.
+
+Both the bodies have been sent to District Hospital for postmortem. Police said that they are further investigating into the incident.
+
+छट्टाछुट्टै स्थानमा दुई जना मृत फेला परेका छन्। काँक्री गाविस– १ का ५९ वर्षीय तीलबहादुर पुन र रुँघा गाविस–८ का ३७ वर्षीय लालबहादुर वली मृत फेला परेका हुन्।
+
+उनीहरु दुबै जनाको शव पोष्टमार्टमका लागि जिल्ला अस्पताल ल्याइएको जिल्ला प्रहरी कार्यालयले जनाएको छ। घटना बारे अनुसन्धान भइरहेको प्रहरीले जानकारी दिएको छ। स्थानीयहरुले मृत अवस्थामा दुवै जनालाई भेटेका थिए।]]></description>
+			<pubDate>Tue, 16 Aug 2016 04:40:00 GMT</pubDate>
+			<guid>https://nepalmonitor.org/reports/view/11128</guid>
+
+							<georss:point>28.54 82.761</georss:point>
+			
+							<category>DEATHS</category>
 							<category>Nepal Police (responding)</category>
 							<category>News Media</category>
-							<category>CA-related</category>
 							<category>Incident</category>
-							<category>United Democratic Madhesi Front</category>
+							<category>Investigation / Prosecution</category>
 			
 									</item>
 					<item>
-			<title>INSEC: Youth charged with raping 15-year-old girl arrested | बलात्कार ...#Nepal #ChildAbuse #Rape #GBV</title>			<link>https://nepalmonitor.org/reports/view/10206</link>
-			<description><![CDATA[Alert: Gulmi/May 16, 15 barsiya balika lai balaatkar gareko arop ma Amarpur ka ek janaa yuwak prahari dwara pakrau.
+			<title>INSEC: Sentence for one year three months on charge of attempted rape ...#Nepal #Rape #GBV</title>			<link>https://nepalmonitor.org/reports/view/11127</link>
+			<description><![CDATA[Alert: Udayapur/Aug 16, 18 barshiya yuwati lai balatkaar prayas gareko thahar ma 14 barshiya balak lai 1 barsha 3 mahina kaid sajaya.
 
-Police has arrested Bal Krishna Lamsal,21, resident of Amarpur VDC-3 on charge of raping 15 year-old girl on May 14. 
+The District Court of Udayapur has ordered to sentence 14-year-old boy for one year and three months on charge of attempting to rape an 18 years old girl however his sentence has been postponed as the accused is under aged.
 
-According to Sub-Inspector Purnaram Giri, the accused was arrested on the basis of complaint filed by the victim's family on May 15. The victim went under medical examination at district hospital of Tamghas on same day.
+The verdict was given by a single bench of judge Mahendra Bahadur Karki. Along with court verdict, his sentence will be added if he is found guilty in future said Shretedar Rit Bahadur Magar of district court. He also said that if he do not repeat such crime, he do not have to do a jail term.
 
+The accused had attempted to rape a girl on March 29 and he was arrested by the police on April 4 after the victim lodged a complaint at police against him.
 
-१५ वर्षीया एक बालिकालाई जेठ १ गते बलात्कार गरेको आरोपमा अम्मरपुर गाविस-३ का २१ वर्षीय बालकृष्ण लम्साललाई जेठ २ गते प्रहरीले गिरफ्तार गरेको छ ।
+The boy who was under police supervision was handed over to his parents on April 19 as per court decision. The victim underwent a health check up a on April 4 at district hospital.
 
-पीडितका आफन्तले जेठ २ गते बलात्कारको आरोपमा जिल्ला प्रहरी कार्यालयमा उजुरी दिएपछि उजुरीको आधारमा आरोपितलाई गिरफ्तार गरी अनुसन्धान सुरु गरेको सई पुर्नराम गिरीले जानकारी दिए ।
+एक १८ वर्षीया युवतीलाई बलात्कार प्रयास गरेको ठहर गर्दै जिल्ला अदालतले १४ वर्षीय बालकलाई साउन ३१ गते हालका लागि सजाय स्थगित रहने गरी १ वर्ष ३ महिना कैद सजायको फैसला गरेको छ ।
 
-पीडित बालिकाको स्वास्थ्य परीक्षण जिल्ला अस्पताल तम्घासमा जेठ २ गते गरिएको प्रहरीले जनाएको छ ।
+न्यायाधीश महेन्द्रबहादुर कार्कीको इजालासले कसुरदार नाबालक भएकाले हालका लागि कैद सजाय स्थगित गर्ने गरी फैसला सुनाएको हो ।
 
-टोपलाल अर्याल]]></description>
-			<pubDate>Tue, 17 May 2016 06:27:00 GMT</pubDate>
-			<guid>https://nepalmonitor.org/reports/view/10206</guid>
+फैसलासँगै बालकले आगामी दिनमा पुनः अपराध गरेको प्रमाणित भए साउन ३१ गतेको फैसलासमेत जोडी थप सजाय तोकिने अदालतका श्रेस्तेदार रितबहादुर मगरले जानकारी दिए । तर, बालक पुनः अपराधका घटनामा कसुरदार नभए फैसला अनुसारको सजाय भुक्तान गर्नु नपर्नेसमेत मगरले जानकारी दिए ।
 
-							<georss:point>28.149 83.179</georss:point>
+बालकले ०७२ चैत १६ गते पीडित युवतीमाथि बलात्कारको प्रयास गरेको भन्दै पीडित पक्षले उजुरी गरेपछि चैत २२ गते प्रहरीले गिरफ्तार गरेको थियो ।
+
+प्रहरी निगरानीमा रहेका बालकलाई अदालतले ०७३ वैशाख १७ गते अभिभावकको जिम्मामा रहने गरी छाडिदिएको थियो । पीडित युवतीको स्वास्थ्य परीक्षण ०७२ चैत २२ गते जिल्ला अस्पतालमा गरिएको थियो ।]]></description>
+			<pubDate>Tue, 16 Aug 2016 04:16:00 GMT</pubDate>
+			<guid>https://nepalmonitor.org/reports/view/11127</guid>
+
+							<georss:point>26.899792 86.701389</georss:point>
 			
 							<category>Trusted Reports</category>
 							<category>INSEC</category>
-							<category>Nepal Police (responding)</category>
-							<category>Child Abuse</category>
 							<category>Rape / Attempted Rape</category>
-							<category>Incident</category>
-							<category>Investigation / Prosecution</category>
-							<category>Arrest in GBV cases</category>
-			
-									</item>
-					<item>
-			<title>INSEC: Two men slapped 20-year of jail term for human trafficking |मान...#Nepal #Trafficking #Investigation</title>			<link>https://nepalmonitor.org/reports/view/10205</link>
-			<description><![CDATA[Alert: Chitwan/May 16, Manab taskari ghatana ma doshi thahariyeka 2 janaa lai Chitwan jilla adaalat dwara 20-20 barsha kaid faisala.
-
-Chitwan District Court handed a jail term of 20 years each to two men convicted of human trafficking on Monday.
-
-A verdict issued by a single bench of District Court justice Basudev Paudel handed down the sentence to the convicts Panparne Tamang, 26 of Rautebasi-1, Nuwakot and Binod BK, 19, of Amarpuri-5, Nawalparasi. The court also ordered them to pay a fine of rupees 2 lakh each on the same case. They were being held in custody of the police after being arrested on February 8, 2014 . 
-
-मानव बेचबिखन गरेको ठहर गर्दै नुवाकोट राउतवेसी-१ वस्ने वर्ष २६ का मनपर्ने तामाङ र नवलपरासी अमरापुरी-५ वस्ने वर्ष १९ का विनोद विकलाई चितवन जिल्ला अदालतको जेठ ३ गतेको इजलासले २० वर्षकैद र २ लाख जरिबाना फैसला गरेको छ ।
-
-न्यायाधीश बासुदेव पौडेलको इजलासले यस्तो फैसला गरेको अदालतका सूचना अधिकारी कृष्ण बरालले जानकारी दिए ।
-
-०७० साल माघ २५ गते १७ वर्षीया एक युवतीलाई बेच्ने प्रयोजनका लागि भारततर्फलाने क्रममा गिरफ्तारीमा परेका उनीहरूलाई यस्तो फैसला सुनाइएको हो ।
-
-दिपेन्द्र अधिकारी]]></description>
-			<pubDate>Tue, 17 May 2016 06:20:00 GMT</pubDate>
-			<guid>https://nepalmonitor.org/reports/view/10205</guid>
-
-							<georss:point>27.683333 84.433333</georss:point>
-			
-							<category>Trusted Reports</category>
-							<category>Human Trafficking</category>
-							<category>INSEC</category>
 							<category>Courts (responding)</category>
-							<category>Investigation / Prosecution</category>
+							<category>Incident</category>
 							<category>Judicial Process</category>
 							<category>Arrest in GBV cases</category>
 			
 									</item>
 					<item>
-			<title>News: Sanghiya Gathabandhan cadres batter students | प्रदर्शनकारीको कु...#Nepal #Attack #INJURED #Protest</title>			<link>https://nepalmonitor.org/reports/view/10204</link>
-			<description><![CDATA[Alert: Kathmandu/May 17, Vigilante bhandai Sanghiya Gathabandhan ka kaaryakarta haru dwara Sombar 2 janaa bidyarthi mathi kutpit.
+			<title>News: Khukuri attack on film producer Roj Rana | रोज राणामाथि खुकुरी प...#Nepal #Attack #INJURED #ARREST</title>			<link>https://nepalmonitor.org/reports/view/11122</link>
+			<description><![CDATA[Alert: Kathmandu/Aug 16, Motorcycle ma aayeka 2 janaa byakti dwara Sombar beluka film nirmata Roj Rana mathi khukuri prahar. 
 
-As the protest staged by Sanghiya Gathabandha, an alliance of Madhesi and Janajati parties, enters third day in the Capital on Monday, the cadres affiliated to the alliance have beaten up two students accusing them of being vigilantes.
+Two motorcycle-borne persons attacked film producer Roj Rana with khukuri at Mid Baneshwar of the Capital on Monday evening.
 
-Prakash Adhikari and Ram Prasad Poudel, both from Argakhanchi district, were attacked and seriously injured. Poudel has sustained severe eye injury while his friend Adhikari received beatings. Poudel was taken to Annapurna Neuro Hospital for immediate treatment from where he was referred to Tilganga Hospital for having severe eye damage.
+SSP Bikram Singh Thapa said police arrested one of the two assailants. The other, however, succeeded in fleeing the scene.
 
-Adhikari and Poudel live in a rented apartment in Maitidevi. Adhikari is studying Bachelor in Science in Tri Chandra Campus while Poudel is a master’s level student at Shankar Dev Campus.
+The incident took place in front of the Central Cafe near the Ratnarajya School.
 
-According to Adhikari, they were moving past the protesters looking for a hostel. “All of a sudden the protesters pounced upon us and rained batons, blows and helmet while we were walking on footpath,” said Adhikari.
+Rana was taken to the Grande Hospital for treatment.
 
-But media reports have quoted the demonstrators claim that the duo was policemen. The alliance’s leaders claimed that vigilantes infiltrated into the protesters and hurled stones at security personnel to incite violence.
+He has sustained injury on his right hand and his condition is normal, according to SSP Thapa.
 
-The alliance is staging demonstration at Maitighar Mandala in the Capital demanding constitution amendment to reflect their aspirations. The move comes after around three months of the end of border-centric protests with an aim to build pressure without creating undue public hardship.
+फिल्म निर्माता रोज राणामाथि सोमबार साँझ काठमाडौंमा खुकुरी प्रहार भएको छ ।
 
+मध्यबानेश्वरस्थित रत्न राज्य स्कुल अगाडि अपरिचित समूहले खुकुरी हानेको महानगरीय प्रहरी परिसर काठमाडौंका प्रमुख एसएसपी विक्रमसिंह थापाले जानकारी दिए । उनका अनुसार दुई जना दुई जनाले राणामाथि हात ताकेर हानेका थिए । घटनामा संलग्न रहेको आरोपमा एकजना पक्राउ परेका छन् ।
 
+खुकुरी प्रहारबाट दाहिने हातमा चोट लागेका राणाको सिभिल अस्पताल मीनभवनमा उपचार भइरहेको छ ।
 
-सिंहदरवार घेर्न पुगेका सङ्घीय गठबन्धनमा आबद्ध प्रदर्शनकारीहरूको कुटाइबाट दुई विद्यार्थी घाइते भएका छन् ।
+आपराधिक पृष्ठभूमिका राणा कांग्रेस प्युठानका क्षेत्रीय सभापति हुन् ।
 
-गठबन्धनले जेठ ३ गते गरेको घेराउ कार्यक्रममा भिजिलान्ते घुसपैठ भएको भन्दै अर्घाखाँची जिल्ला पाली गाविस-८ का २३ वर्षीय रामप्रसाद पौडेल र सोही जिल्लाका १८ वर्षीय प्रकाश अधिकारीलाई प्रदर्शनकारीहरूले कुटपिट गरी घाइते बनाएका हुन् ।
+Update
+---------
 
-लाठी, मुक्का र लात्तीको कुटपिटका कारण पौडेलको आखाँमाथिको भागमा चोट लागेको छ भने अधिकारीलाई मुख, छाती, टाउको, ढाडलगायतको भागमा चोट लागेको छ । 
+रोज राणामाथि खुकुरी हान्ने पक्राउ
 
-घाइते पौडेलको थापाथालीस्थित नेपाल आँखा अस्पतालमा उपचार भइरहेको छ भने घाइते अधिकारीलाई इन्सेक प्रतिनिधि विवेक ढुङ्गानालगायतको रोहबरमा प्रहरीलाई बुझाइएको छ ।
+चलचित्र निर्माता रोज राणामाथि आक्रमण गर्ने दुई जनालाई प्रहरीले पक्राउ गरेको छ । माहानगरीय प्रहरी कार्यललयले उक्त आक्रमणमा संलग्न भएका भक्तपुर सिद्धपोखरी घर भइ हाल काठमाडौं नयाँबजारमा बस्ने  २८ वर्षीय मोटे भनिने विवेचन प्रजापति र धादिङ कटुन्जे घर भइ काठमाडौं नयाँबजारमा बस्ने १८ वर्षीय सुर्य लामालाई पक्राउ गरेको जनाएको छ ।
 
-घाइते अधिकारीले आफूहरूले प्रहरीमाथि ढुङ्गा प्रहार नगरेको तर प्रदर्शनकारीले भिजिलान्ते भएको र प्रहरीमाथि ढुङ्गा प्रहार गरेको आरोप लगाउँदै कुटपिट गरेको बताए ।
+उनीहरुका साथबाट एउटा पल्सर मोटरसाइकल पनि नियन्त्रणमा लिएको प्रहरीले जनाएको छ । प्रहरीका अनुसार उनीहरुलाई मंगलबार नयाँबजारबाट पक्राउ गरिएको हो। उनीहरुले जोधा भनिने गुण्डा नाइके रतनबाहादुर लामाले आफूहरुलाई  राणामाथि आक्रमण गर्न ५० हजार रुपैयाँ दिएको बताएको प्रहरीले जनाएको छ ।
 
-यसैगरी प्रदर्शनकारीहरूले प्रहरीमाथि ढुङ्गा प्रहार गरेपछि स्थिति नियन्त्रणमा लिने क्रममा दुई प्रदर्शनकारी सामान्य घाइते भएको बताएका छन् ।
+हाल उनीहरुलाई थप अनुसन्धानका लागि नयाँ बानेश्वर प्रहरी वृत्त पठाइएको प्रहरीले जनाएको छ। राणामाथि गत आइतबार बेलुका पुरानो बानेश्वरस्थित सेन्ट क्याफे अगाडि खुकुरी प्रहार भएको थियो।]]></description>
+			<pubDate>Tue, 16 Aug 2016 03:53:00 GMT</pubDate>
+			<guid>https://nepalmonitor.org/reports/view/11122</guid>
 
-प्रहरीमाथि ढुङ्गा प्रहार गरेको आरोपमा नुवाकोट जिल्ला तारूका गाविस-८ का अनिल ढुङ्गानालाई प्रहरीले नियन्त्रणमा लिएको थियो ।
+							<georss:point>27.700166 85.338986</georss:point>
+			
+							<category>Attack</category>
+							<category>INJURED</category>
+							<category>Nepal Police (responding)</category>
+							<category>ARREST</category>
+							<category>News Media</category>
+							<category>Incident</category>
+							<category>Investigation / Prosecution</category>
+			
+									</item>
+					<item>
+			<title>THT:  Maoist students shut schools across Nepal | चन्द माअोवादीको शैक्...#Nepal #CPNMaoist #BANDHA #Strike</title>			<link>https://nepalmonitor.org/reports/view/11121</link>
+			<description><![CDATA[Alert: Kathmandu/Aug 15, Netra Bikram Chand netrito ko maobadi party le aaja saichhik hadaal gardai desh bhar ka bidyalaya banda garaaye.
+ 
+A student union affiliated to the Netra Bikram Chand-led CPN Maoist on Monday imposed an educational strike across the nation, affecting millions of students.
 
-गठबन्धनको राजधानी केन्द्रीत आन्दोलन अन्तर्गतको सिंहदरवार घेराउ कार्यक्रमको दोश्रो दिन जेठ ३ गते राष्ट्रिय मानव अधिकार आयोग, इन्सेक, सिविन नेपाल, प्रदर्शन अनुगमन सञ्जाल, थर्ड एलाइन्स, हृयुरोन, हुर्फनलगायतका मानव अधिकार संघसंस्थाहरूले अनुगमन गरेका थिए ।
+Most of the schools, colleges and academic institutions in major cities of the nation could not carry out teaching learning activities due to the strike.
 
-आन्दोलनको कारण सडक अबरूद्ध हुँदा आमनागरिकले सास्ती भागेका थिए भने एम्बुलेन्स आवातजावत गर्न समेत कठिनाई भएको थियो ।
+The union has decided to impose the strike against high fees charged by private institutions. Likewise, it demanded discount to students in facilities of health, transportation and entertainment sectors.
 
-त्यस्तै आन्दोलनको स्थानलाई परिवर्तन गर्दै गठबन्धनले जेठ ४ गते बिहान १० बजे बालुवाटारस्थित प्रधानमन्त्री निवास घेर्ने जनाएको छ । 
-
-विवेक ढुङ्गाना]]></description>
-			<pubDate>Tue, 17 May 2016 05:41:00 GMT</pubDate>
-			<guid>https://nepalmonitor.org/reports/view/10204</guid>
+Meanwhile, the union vandalised at least three institutions of Kathmandu Valley accusing them of breaching the call of strike.]]></description>
+			<pubDate>Mon, 15 Aug 2016 09:25:00 GMT</pubDate>
+			<guid>https://nepalmonitor.org/reports/view/11121</guid>
 
 							<georss:point>27.7 85.333333</georss:point>
 			
-							<category>Attack</category>
-							<category>INJURED</category>
-							<category>Protest / Demonstration</category>
-							<category>Nepal Police (responding)</category>
+							<category>CPN M</category>
+							<category>BANDHA</category>
 							<category>News Media</category>
-							<category>Incident</category>
-							<category>Investigation / Prosecution</category>
-			
-									</item>
-					<item>
-			<title>eKantipur: Man found dead | कंचनपुरमा एक जना मृत अवस्थामा फेला...#Nepal #DEATHS #Investigation</title>			<link>https://nepalmonitor.org/reports/view/10202</link>
-			<description><![CDATA[Alert: Kanchanpur/May 17, Jhalari Papaladi ga-bi-sa 5 ma ek janaa 40 barsiya purush mrita awastha ma fela, anusandhan jaari.
-
-A man in his early forties was found dead on the roadside at Jhalari Papaladi VDC-5 in Kanchanpur on Monday. Police said they were trying to identify the body. (PR)]]></description>
-			<pubDate>Tue, 17 May 2016 05:30:00 GMT</pubDate>
-			<guid>https://nepalmonitor.org/reports/view/10202</guid>
-
-							<georss:point>28.918 80.374</georss:point>
-			
-							<category>DEATHS</category>
-							<category>Nepal Police (responding)</category>
-							<category>News Media</category>
-							<category>Incident</category>
-							<category>Investigation / Prosecution</category>
-			
-									</item>
-					<item>
-			<title>eKantipur: Man held for attempted rape | बलात्कार गरेको आरोपमा एक जना ...#Nepal #ChildAbuse #Rape #GBV</title>			<link>https://nepalmonitor.org/reports/view/10201</link>
-			<description><![CDATA[Alert: Salyan/May 17, 13 barsiya balika lai balaatkar gareko arop ma Tribeni ka 63 barsiya ek janaa prahari dwara pakrau. 
-
-Police on Monday arrested 63-year-old Tara Prasad Kabar of Tribeni in Salyan on attempted rape charge. Kabar allegedly attempted to rape a 13-year-old girl. He was arrested after the girl’s family reported the incident. (PR)]]></description>
-			<pubDate>Tue, 17 May 2016 05:27:00 GMT</pubDate>
-			<guid>https://nepalmonitor.org/reports/view/10201</guid>
-
-							<georss:point>28.305 82.295</georss:point>
-			
-							<category>Nepal Police (responding)</category>
-							<category>Child Abuse</category>
-							<category>Rape / Attempted Rape</category>
-							<category>News Media</category>
-							<category>Incident</category>
-							<category>Investigation / Prosecution</category>
-							<category>Arrest in GBV cases</category>
-			
-									</item>
-					<item>
-			<title>News: Phidim school tense over replacement row | पाँचथरको एक विद्यालयम...#Nepal #ChildRights #CLASH #INJURED</title>			<link>https://nepalmonitor.org/reports/view/10199</link>
-			<description><![CDATA[Alert: Panchthar/May 16, Sikchhyak ferne bisaya lai liyera bibad huda Phidim sthit Mechi Boarding School ka sikchhyak-bidyarthi bich kutaakut.
-
-The Mechi Boarding School in Phidim, district headquarters of Panchthar, remained tense throughout the day today as disgruntled teens and a science teacher clashed in the school premises.
-
-The tension ensued after the regular Nepali teacher Balaram Koirala was replaced by the science teacher Jimi Yakhkha’s wife Maya Rai by the school Management.
-
-The 10th graders expressed their dissatisfaction over Koirala’s replacement as such a move would disturb their studies at the mid of the academic session.
-
-During a meeting called by the school management to discuss the situation today, the students had stressed the difficulties they would face replacing teacher.
-
-The students’ concerns instantly infuriated Yakhkha and he subsequently chased away and kicked three students including Denis Bista.
-
-The victims’ classmates had retaliated and shouted against the teachers and the school.
-
-Some guardians also reached the school and protested the management decision.
-
-Meanwhile, Vice-Principal Kul Raj Limbu said the school management had expressed its apology with the guardians.
-
-He, however, maintained that the situation was yet to be resolved.
-
-The guardians have demanded action against Yakhkha for his violent behaviors with his students.
-
-पाँचथर सदरमुकाम फिदिमस्थित मेची बोर्डिङ स्कुलमा सोमबार शिक्षक र बिद्यार्थीविच कुटाकुट भएको छ। विद्यालय प्रशासनले त्यहाँ कार्यरत नेपाली शिक्षक बलराम कोइरालालाई हटाएर बिज्ञान शिक्षक जिमी याख्खाकी श्रीमती माया राईलाई भर्ना गरेको विषयमा विद्यार्थीले असन्तुष्टि पोखेपछि चुलिएको बिबाद साम्य नहुँदा कुटा–कुटसम्मको स्थिति सिर्जना भएको हो।
-
-केही दिनअघि विद्यालय प्रशासनले नेपाली शिक्षक कोइरालालाई हटाएर बिज्ञान शिक्षक याख्खाकी श्रीमती माया राईलाई नियुक्ती गरेको थियो। सोही विषयमा कक्षा १० का छात्र–छात्राले पुराना शिक्षक हटाउँदा पठन पाठनमा समस्या हुने भन्दै  हटाउन नमिल्ने भनेपछि बिवाद मिलाउन सोमवार बिहान विद्यालय प्रशासन र शिक्षक स्टाफहरूको बैठक बोलाइएको थियो।
-
-बैठक चलिरहेकै बेला बिद्यार्थीहरुले शैक्षिक सत्र चलिरहेका अवस्थामा शिक्षक परिवर्तत गर्दा समस्या हुने विषयमा जोड दिएपछि बिज्ञान शिक्षक जिमी याक्खाले कक्षा १० का बिद्यार्थी डेनिस विष्टलाई लखेटेर कुटपीट गरेको प्रत्यक्षदर्शीको भनाई छ। उता विद्यालय प्रशासनले भने विष्ट सहितका केही विद्यार्थीहरुले याख्खा सरलाई ट्वाइलेट गएको मौका पारी हातपात गर्न खोजेपछि समस्या भएको बताएको छ।
-
-ती शिक्षकले डेनिससहित थप २ जना विद्यार्थीलाई कुटपिट गर्नुका साथै लात्तीले हानेपछि अन्य विद्यार्थीहरु समेत भई शिक्षक याख्खाबिरुद्ध प्रतिकार गर्दा विद्यालय क्षेत्र तनावग्रस्त भएको थियो। तनाव बढेपछि बिद्यालय प्रशासनले स्कुल नै बिदा गरेर मिलाउन कोशिश गरेको थियो। घट्नापछि विद्यालय पुगेका अभिभावक समक्ष शिक्षक याख्खासहित विद्यालय प्रशासनले गल्ती भएको स्वीकार्दै माफी मागेको थियो।
-
-विवाद टुंगोमा भने नपुगेको बिद्यालयका सहायक प्रिन्सिपल कुलराज लिम्बूले जानकारी दिए। शिक्षककै गल्तीका कारण यस्तो घट्ना भएको उनको भनाई छ । विद्यालयकी प्रिन्सिपल सीता सेलिङ भने पूर्ण समय माग्दा शिक्षक कोइरालाले समय दिन नसकेपछि विद्यार्थीको हितमा अर्को दक्ष एम.एस.सी. शिक्षकको व्यवस्था गरिएको बताइन्। कोइराला पाँचथर क्याम्पसका सहप्रध्यापक समेत हुन्।]]></description>
-			<pubDate>Tue, 17 May 2016 05:24:00 GMT</pubDate>
-			<guid>https://nepalmonitor.org/reports/view/10199</guid>
-
-							<georss:point>27.13 87.77</georss:point>
-			
-							<category>Children's rights</category>
-							<category>CLASH</category>
-							<category>INJURED</category>
-							<category>Nepal Police (responding)</category>
-							<category>News Media</category>
-							<category>Incident</category>
-							<category>Investigation / Prosecution</category>
-			
-									</item>
-					<item>
-			<title>News: Irate quake victims threaten social mobilisers | सुरक्षाको मागगर...#Nepal #NepalEarthquake #Threat</title>			<link>https://nepalmonitor.org/reports/view/10198</link>
-			<description><![CDATA[Alert: Sindhuli/May 17, Bhukampa pidit ga-bi-sa ma kriyashil samajik parichalak haru surakchhya ko maag gardai jilla sadarmukam ma.
-
-Victims of the earthquake in Sindhuli district are unhappy about the list of quake victims who will receive state-provided grants for housing reconstruction.
-
-They say the list does not include many ‘genuine’ victims of the area.
-
-Data for this project was collected by National Reconstruction Authority for the government’s housing reconstruction programme, and the list was made public a few days ago.
-
-Social mobilisers, who were responsible for ushering engineers deployed to study the damage details in houses in the area, have been blamed for ‘compromising’ the data collection method and now fear for their security following the locals’ ire against them.
-
-As per the NRA records, there are a total of 21,114 households in the 38 VDCs of the district. After the data collection phase was completed, the authority began preparations to start reconstruction programmes in all 38 VDCs.
-
-The authority, however, has only signed agreements with 1,021 households of Jhara VDC so far. Locals of various VDCs who claim to have been left out of the list have submitted a memorandum to the District Administration Office and the District Development Committee and halted the process of signing reconstruction agreements.
-
-Meanwhile, social mobilisers came to district headquarters Sindhulimadi demanding security yesterday.
-
-The Social Mobilisers’ Welfare Protection Committee submitted a four-point memorandum explaining their problems to the Chief District Officer, the Local Development Officer, and leaders of different political parties.
-
-Chairperson to the Social Mobiliser’s Welfare Protection Committee Raju Upreti rued the threat to their safety and said, “We were trying to do good for society; we played the role of facilitator at the local level.
-
-We don’t really have a say on how data is collected, or what data is collected.” Upreti also demanded that the government create a conducive environment for them to work by taking initiatives to resolve the dispute as soon as possible.
-
-Chief District Officer Tara Bahadur Karki, on his part, clarified that social mobilisers don’t have any role in the final preparation of data and vowed to provide security to them.
-
-
-जिल्लाका भूकम्भ प्रभावित गाविसमा क्रियाशील सामाजिक परिचालकहरू सुरक्षाको माग गर्दै जिल्ला सदरमुकाम आएका छन् ।
-
-भूकम्पबाट भएको क्षतिको पुनःनिर्माणका लागि पछिल्लो पटक राष्ट्रिय पुनःनिर्माण प्राधिकरणले गरेको तथ्याङ्क संकलनमा त्रुटि भई पीडितहरूले राहत नपाएको भनी गाउँगाउँमा खटिएका सामाजिक परिचालकहरूलाई अपमान गर्ने, गाली गलौज गर्ने, पुत्ला दहन गर्ने तथा धम्की दिनेसम्मको काम भएको भन्दै उनीहरू सुरक्षाको माग गर्दै सदरमुकाम आएका हुन् ।
-
-उनीहरूले जेठ २ गते जिल्ला प्रशासन कार्यालय सिन्धुली र जिल्ला विकास समितिमा सुरक्षाको माग गर्दै भूकम्पको तथ्याङ्क सङ्कलनको सम्पूर्ण जवाफदेहिता सामाजिक परिचालकहरूले लिनुपर्ने भन्ने आशयबाट पीडितहरूले स्थानीयस्तरमा काम गर्न अप्ठ्यारो पारेको कारण काम गर्ने वातावरण सृजना गरिदिन ज्ञापन पत्रसमेत बुझाएका छन् ।
-
-उनीहरूले इन्जिनियरहरूलाई तथ्याङ्क सङ्कलनमा सहयोग गरेबापत सामाजिक परिचालकले भोग्नु परेको समस्यालाई समाधान गर्न स्थानीय राजनीतिक संयन्त्रलाईसमेत सहयोगका लागि आग्रह गरेका छन ।
-
-सामाजिक परिचालकहरूको संगठन स्थानीय सामाजिक परिचालक हकहित संरक्षण समिति सिन्धुलीको नेतृत्वको टोलीले प्रेस विज्ञप्तिसमेत जारी गरी सुरक्षाको लागि अपिल गरेका छन् ।
-
-उनीहरूले सामाजिक परिचालकलाई अपमान गर्ने र पुत्ला दहन गर्ने व्यक्तिलाई कारबाहीको दायरामा ल्याउनसमेत माग गरेका छन् । वैशाखको तेस्रो साता स्थानीयले महेन्द्रझाडी गाविसका सामाजिक परिचालक दुर्गाप्रसाद खनालको पुत्ला दहन गरेको उनीहरूले बताएका छन् ।
-
-स्थानीय सामाजिक परिचालक हकहित संरक्षण समिति सिन्धुलीले सामाजिक परिचालकहरू असुरक्षित भएका कारण सुरक्षाको अनुभूतिको वातावरण निर्माण नभएसम्म पुनर्निर्माणको काममा सहयोग नगर्ने निर्णय गरेको समितिका अध्यक्ष राजु उप्रेतिले बताए ।
-
-सामाजिक परिचालकहरू स्थानीय तहमा असुरक्षित भएको विषय आफूले गम्भीर रूपमा लिएको र सुरक्षाको वातावरण मिलाउने सिन्धुलीका प्रमुख जिल्ला अधिकारी ताराबहादुर कार्कीले बताए ।
-
-बिमला पाण्डे]]></description>
-			<pubDate>Tue, 17 May 2016 05:20:00 GMT</pubDate>
-			<guid>https://nepalmonitor.org/reports/view/10198</guid>
-
-							<georss:point>27.212 85.908</georss:point>
-			
-							<category>Earthquake 2015</category>
-							<category>Threat</category>
-							<category>Trusted Reports</category>
-							<category>INSEC</category>
-							<category>News Media</category>
-							<category>CDO / DAO</category>
+							<category>Strike</category>
 							<category>Incident</category>
 			
 									</item>
 					<item>
-			<title>Nagariknews: Ex-UCPN (M) lawmaker thrashed in Siraha  | पूर्व महिला सभ...#Nepal #Unidentified #Attack</title>			<link>https://nepalmonitor.org/reports/view/10200</link>
-			<description><![CDATA[Alert: Mahottari/May 17, Agyat samuha le gaye raati aakraman garda Ekakrit Maobadi ka purba-sabhasad Budhani devi Mahato gambhir ghaite.
+			<title>News: Wife murdered her husband in Kapilvastu | कपिलवस्तुमा श्रीमतीले ...#Nepal #Killings #DEATHS #VAW</title>			<link>https://nepalmonitor.org/reports/view/11115</link>
+			<description><![CDATA[Alert: Kapilvastu/Aug 15, Banganga nagarpalika-1 Bairiya ma ek janaa mahila dwara dharilo hatiyar prahar gari aafnai shriman ko hatya.
 
-Former lawmaker Budhani Devi Mahato was severely beaten up by an unidentified group on Monday night.
+A wife murdered her husband following at Banganga-1 on Saturday night. Durga Neupane murdered her husband Shankar using a sharp-edge weapon, police said.
 
-An unidentified group of 8-10 individuals possessing homemade arms and wooden clubs attacked her at her home, leaving her seriously injured.
+कपिलवस्तुको बाणगंगा नगरपालिका–१ बैरियाकी दुर्गा न्यौपानेले श्रीमान २९ वर्षका शंकर न्यौपानको हत्या गरेकी छिन् ।
 
-A former lawmaker representing from the UCPN (Maoist) is in serious condition, according to local UCPN (Maoist) leader Pikaru Paswan.
+शनिबार राति घरमा सुतिरहेका धारिलो हतियार र ढुंगाले हानेर दुर्गाले श्रीमानको हत्या गरेको प्रहरीले जनाएको छ । विवादका कारण दुर्गाले शंकरको हत्या गरेको हुन सक्ने प्रहरीको भनाई छ ।]]></description>
+			<pubDate>Mon, 15 Aug 2016 06:01:00 GMT</pubDate>
+			<guid>https://nepalmonitor.org/reports/view/11115</guid>
 
-She is undergoing treatment in Janakpur Zonal Hospital.
-
-When contacted, the District Police Office Mahottari said that it was yet to be informed about incident.RSS
-
-
-महोत्तरी जिल्लाबाट एनेकपा (माओवादी)का पूर्व सभासद् रहेकी बुधनीदेवी महतोलाई गएराति अज्ञात समूहले मरणाशन्न हुनेगरी कुटपिट गरेको छ। कुटाइबाट घाइते भएकी उनको अवस्था चिन्ताजनक छ।
-
-जिल्लाको लक्ष्मिनियाँ गाविस–८ घर भएकी पूर्व सभासद् महतो गएराति आफ्नै घरमा बसिरहेको बेला ८-१० जनाको समूहमा आएको व्यक्तिले मरणाशन्न हुनेगरी कुटेको माओवादी नेता महादेव यादवले बताए। घरेलु हातहतियार र लठ्ठी भाटा लिएर आएका व्यक्तिहरुको कुटाइबाट सभासद् महतो गम्भीर घाइते भएकी छिन्। उनको अवस्था चिन्ताजनक रहेको छ।
-
-गएराति करिब १० बजेको समयमा अज्ञात व्यक्तिहरुले आफ्नै सुत्ने कोठामा बसिरहेकी उनलाई शरीरभरि अन्धाधुन्द लठ्ठी र भाटा प्रहार गरी घाइते बनाएको थिए। अहिले उनको उपचार जनकपुर अञ्चल अस्पतालमा भइरहेको माओवादी नेता पिकरु पासवानले बताए।
-
-उनी हिँडडुल गर्न र बोल्न नसक्ने अवस्थामा छिन्। उपचारमा संलग्न चिकित्सकले उनको अवस्था चिन्ताजनक रहेको नेता पासवानले बताए। सभासद् महतोलाई कसले के कारण कुटपिट गरेको भन्नेबारे केही खुलेको छैन। जिल्ला प्रहरी कार्यालय महोत्तरीलाई यस घटनाबारे केही जानकारी नभएको जनाइएको छ।]]></description>
-			<pubDate>Tue, 17 May 2016 05:18:00 GMT</pubDate>
-			<guid>https://nepalmonitor.org/reports/view/10200</guid>
-
-							<georss:point>26.961 85.756</georss:point>
-			
-							<category>Unidentified</category>
-							<category>Attack</category>
-							<category>INJURED</category>
-							<category>Nepal Police (responding)</category>
-							<category>News Media</category>
-							<category>Incident</category>
-							<category>Investigation / Prosecution</category>
-			
-									</item>
-					<item>
-			<title>Republica: Kin of road mishap victim block road demanding compensation...#Nepal #Road #Announcements</title>			<link>https://nepalmonitor.org/reports/view/10197</link>
-			<description><![CDATA[Alert: Bajura/May 17, 2 hapta aghi tractor le kichera mrityu bhayeka ek balak ka aafanta haru dwara chhyatipurti maag gardai sadak abaruddha.
-
-Relatives and family members of a child who was killed by a tractor nearly two weeks ago have been obstructing Martadi-Kolti road section in Bajura district since the last four days.
-
-On May 1, a tractor owned by one Dharma Bahadur Kunwar ran over seven-year-old Bhishma Thapa, of Pandusain VDC-5, killing him on the spot.
-The boy's family members and relatives have been blocking the road at Pandusain demanding proper compensation.
-
-They said that they would continue to halt vehicular movement along the route until the family is provided proper compensation.
-
-According to the family members, the child was playing on the road when the tractor hit him.
-
-Narendra Thapa, the father of the boy, claimed that the driver reversed his tractor to kill his son.
-
-&quot;The driver, who did not have a driving license, killed my son. The state should properly investigate the incident and give us justice,&quot; Thapa said.
-
-Before handing over the body of the child after post mortem, an agreement was reached between the local administration and the family members to provide proper compensation to the latter.
-
-However, the tractor's owner has not been in contact since signing the agreement, Janak Thapa Bhote, a victim's relative, said. The families also accused the local administration of ignoring their.
-
-The obstruction of traffic due to the protests has affected businesses in the area and left passengers stranded.
-
-Meanwhile, Deputy Superintendent of Police Dil Bahadur Boti said that there was no obstruction of vehicles on the road section.
-
-Meanwhile, the vehicle owner claimed that the child tried to climb the tractor from behind and died after falling down.
-
-He also claimed that most tractor drivers in the area do not possess driving license either.]]></description>
-			<pubDate>Tue, 17 May 2016 05:17:00 GMT</pubDate>
-			<guid>https://nepalmonitor.org/reports/view/10197</guid>
-
-							<georss:point>29.489 81.609</georss:point>
-			
-							<category>Nepal Police (responding)</category>
-							<category>Road Blocks</category>
-							<category>News Media</category>
-							<category>Incident</category>
-							<category>Announcements / Demands</category>
-			
-									</item>
-					<item>
-			<title>News: Federal Alliance stages sit-in in Baluwatar | गठबन्धनले थाल्यो ब...#Nepal #Protest #NepalConstitution</title>			<link>https://nepalmonitor.org/reports/view/10196</link>
-			<description><![CDATA[Alert: Kathmandu/May 17, Purba-nirdharit kaaryakram anurup Sanghiya Gathabandhan dwara aaja Baluwatar ma dharna.
-
-The Federal Alliance has started sit-in around the prime minister's official residence at Baluwatar today as planned. The Alliance which staged demonstration around Singha Durbar on Sunday and Monday have targeted the Prime minister's residence for sit-in on Tuesday. Keshab Jha, Spokesperson of Rastriya Madhes Samajwadi Party, affiliated to the Alliance informed that cadres of the Alliance were preparing to proceed towards Baluwatar by gathering at Bhatbhateni. He also informed the sit-in would continue until 5:00pm in the evening. Traffic along Baluwatar road have been disrupted due to the program.
-
-मधेसी मोर्चा सहितको संघीय गठबन्धनले मंगलबार प्रधानमन्त्री निवास बालुवाटारलाई लक्षित गर्दै धर्ना थालेको छ । आईतबार र सोमबार सिंहदरवार घेराउ कार्यक्रम गरेको गठबन्धनले तेस्रो दिनको निशाना बालुवाटारलाई बनाएको छ । गठबन्धनमा आवद्ध राष्ट्रिय मधेस समाजवादी पार्टीका प्रवक्ता केशव झाका अनुसार भाटभटेनीमा जम्मा भएर गठबन्धनको जुलुस बालुवाटार तर्फ बढेको छ ।
-
-साँझ ५ बजेसम्म बालुवाटारमा धर्ना गरिने उनले बताए । गठबन्धनले गरेको दुई दिनको सिंहदरवार घेराउ कार्यक्रमबाट माइतीघरदेखि पुतली सडक हुँदैको क्षेत्र ललितपुर र भक्तपुरसम्मको ट्राफिक व्यवस्था अस्तव्यस्त बन्न पुगेको थियो । आज त्यसको प्रभाव बालुवाटार क्षेत्रमा देखिएको छ ।
-
-स्थानीय प्रशासनले बालुवाटारमा कायम निषेधित क्षेत्रलाई बढाएर प्रदर्शनकारीलाई प्रधानमन्त्री, सभामुख, प्रधानन्यायाधीशको निवास क्षेत्र भन्दा परै रोकेको छ ।]]></description>
-			<pubDate>Tue, 17 May 2016 05:12:00 GMT</pubDate>
-			<guid>https://nepalmonitor.org/reports/view/10196</guid>
-
-							<georss:point>27.725443 85.328483</georss:point>
-			
-							<category>Protest / Demonstration</category>
-							<category>Nepal Police (responding)</category>
-							<category>News Media</category>
-							<category>CA-related</category>
-							<category>Incident</category>
-			
-									</item>
-					<item>
-			<title>News:  Man strangulates wife to death | घाँटी थिचेर श्रीमतीको हत्या ...#Nepal #Killings #DEATHS #ARREST</title>			<link>https://nepalmonitor.org/reports/view/10194</link>
-			<description><![CDATA[Alert: Jhapa/May 17, Birtamod nagarpalika-6 ma gaye raati ek janaa 33 barsiya purush dwara ghaati thichera shrimati ko hatya.
-
-A person here allegedly killed his wife through strangulation last night. Deepak Agrawal, 33, of Birtamod-6 killed his wife Jyoti by squeezing her throat, the District Police Office Jhapa confirmed.
-
-The Agarwal couple was living at a rented room at Birtamod-5 and motive behind the killing is yet to be known, Superintendent of Police Thakur Prasad Gyawali said. Police have arrested the accused killer and are investigating the case, he added.
-
-Meanwhile, Sita Shrestha, 25, of Dhulabari-2, Jhapa has died from a snake bite.
-
-She was bitten by a venomous cobra snake on Sunday evening as she was on the way to kitchen for preparing night meal. Though she was rushed to the Charali-based Snakebite Treatment Center, was deprived of timely treatment for lack of a ventilator and was taken to Birtamod-based Birta City Hospital. She died last night. RSS
-
-झापाको बिर्तामोडमा गएराति एक व्यक्तिले श्रीमतीको हत्या गरेका छन् ।
-
-बिर्तामोड–६ निवासी ३३ वर्षीय दीपक अग्रवालले २५ वर्षीया श्रीमती ज्योति अग्रवालको घाँटी थिचेर हत्या गरेको जिल्ला प्रहरी कार्यालय झापाका प्रहरी उपरीक्षक ठाकुरप्रसाद ज्ञवालीले जानकारी दिए ।
-
-बिर्तामोड–५ स्थित हरि राजवंशीको घरमा डेरा गरी बस्दै आएका उनले के कारणले श्रीमतीको हत्या गरे सो भने खुल्न नसकेको प्रहरीले जनाएको छ ।
-
-श्रीमतीको हत्यामा संलग्न अग्रवाललाई इलाका प्रहरी कार्यालय बिर्तामोडले नियन्त्रणमा लिएको बताइएको छ ।]]></description>
-			<pubDate>Tue, 17 May 2016 04:50:00 GMT</pubDate>
-			<guid>https://nepalmonitor.org/reports/view/10194</guid>
-
-							<georss:point>26.635485 87.984631</georss:point>
+							<georss:point>27.698 83.207</georss:point>
 			
 							<category>Killings</category>
 							<category>DEATHS</category>
 							<category>Nepal Police (responding)</category>
-							<category>ARREST</category>
 							<category>Domestic Violence</category>
 							<category>News Media</category>
 							<category>Incident</category>
@@ -420,72 +249,317 @@ She was bitten by a venomous cobra snake on Sunday evening as she was on the way
 			
 									</item>
 					<item>
-			<title>Nagariknews: Briton arrested while participating in Singha Durbar pick...#Nepal #Protest #ARREST</title>			<link>https://nepalmonitor.org/reports/view/10191</link>
-			<description><![CDATA[Alert: Kathmandu/May 17, Sanghiya gathabandhan ko andolan ma sahabhagi bhayeko bhandai ek belayeti nagarik prahari dwara pakrau.
+			<title>eKantipur: Man hacked wife to death before commiting suicide | पत्नीको...#Nepal #Killings #DEATHS</title>			<link>https://nepalmonitor.org/reports/view/11114</link>
+			<description><![CDATA[Alert: Baitadi/Aug 15, Patan nagarpalika-9 ma gharayesi bibad ma shriman le shrimati ko hatya gari aafu le pani aatma hatya gare.
 
-Nepal Police on Monday arrested a British tourist on the charge of illegally participating in the sit-in launched by the Federal Alliance while picketing Singha Durbar on Monday.
+A person committed suicide after killing his wife in Baitadi district Sunday afternoon.
 
-The arrested has been identified as Martin Benjamin Travers, a man in his early forties, holding passport number 512793532. An artist by profession, Travers had arrived in Nepal on March 9 this year on a three-month tourist visa.
-According to SP Pradhumna Karki, spokesperson at the Metropolitan Police Range Office, Kathmandu, who is also the commander-in-charge of the police forces looking after the security of Singha Durbar during the picketing, Travers was involved in sit-in protest with placard that read Magrat Autonomous Region.
+Kamal Bohara, 26, of Patan Municipality-9 killed self after murdering wife Indu Bohara at 3:30 pm, according to Police Inspector Surendra Bam.
 
-Kathmandu's chief district officer (CDO) Ram Krishna Subedi said that the activities of the British tourist were against Nepal's constitution and against the laws related to immigration.
+Police suspect that the incident took place over a household dispute. A team led by a police Inspector has now headed towards the incident site to carry out investigation, according to the District Police Office, Baitadi.
 
-&quot;As per the Immigration Act, no foreigner holding tourist visa shall be entitled to participate in any political programs,&quot; CDO Subedi told Republica. He received the visa as a tourist and acted like a political activist that contradicts the prevailing laws, he added.
+बैतडीका एक युवकले पत्नीको हत्या गरेर आत्महत्या गरेका छन । आइतबार पाटन नगरपालिका–९ कुलडाका २६ बर्षीय कमल बोहराले पत्नी बिन्दुको हत्या गरेर आफूले आत्महत्या गरेको जिल्ला प्रहरी कार्यालयका प्रहरी निरीक्षक सुरेन्द्र बमले जानकारी दिए ।
 
-During preliminary investigation, Travers has reportedly claimed that he participated in the protest program without any political motives.
+पती पत्नीबीचको घरायसी बिबादपछि हत्या भएको हुनसक्ने प्रहरीले अनुमान गरेको छ ।घटनाको बिषयमा अनुसन्धान गर्न  प्रहरीको टोली घटनास्थल गएर अनुसन्धान गरिरहेको बताइएको छ ।]]></description>
+			<pubDate>Mon, 15 Aug 2016 05:57:00 GMT</pubDate>
+			<guid>https://nepalmonitor.org/reports/view/11114</guid>
 
-The Ministry of Home Affairs has informed that it is also investigating on other tourists participating in the protest programs with the support of visuals and still photos recorded by the security forces.
-
-After Sunday's picketing, there was a massive buzz on social media with photos of foreigners participating in the protest with the locals urging action against such tourists.
-
-Home ministry spokesperson Yadav Koirala said, &quot;We will take stern action against such activities by foreigners if they are found guilty.&quot;
-
-Federal alliance to shift protest epicenter to Baluwatar
-
-The agitating Federal Alliance, an alliance of ethnic and Madhesi parties, has decided to shift the protest programs to Baluwatar, near the prime minister's official residence, starting from Tuesday.
-
-A meeting of the alliance, comprising 29 political parties, took the decision to this effect on Monday, according to Sadhbhawana Party's General Secretary Manish Suman. &quot;It's a slight change in the structure and venue of the Kathmandu-centric protest,&quot; he said.
-
-The alliance, issuing a press statement, said that it is now ready to exert pressure directly on the executive head of the government -- Prime Minister KP Sharma Oli.
-
-Meanwhile, PM Oli addressing a program in the capital said that the government would not tolerate obstruction of transportation as a part of the protest programs.
-
-&quot;The government is ready to address all the demands through talks under legal and constitutional frames but we are not going to allow vehicular or transportation obstruction,&quot; said the prime minister.
-
-Similarly, two protestors were injured and a man was arrested during the picketing of Singha Durbar on Monday. Police also said they seized 35 batons hidden near Thapathali area.
-
-According to the police, 23-year-old Ram Prasad Paudel of Arghakhachi was manhandled by the protestors alleging him of being a vigilante. Paudel sustained injuries in his eyes.
-
-The alliance has urged the government to fulfill the 26-point demand that includes redrawing provincial boundaries and amending some provisions of the new constitution.
-
-
-संविधानका केही धारामा असन्तुष्टि जनाउँदै संघीय गठबन्धनले आयोजना गरेको सिंहदरबार घेराउ कार्यक्रमबाट प्रहरीले सोमबार एक बेलायती नागरिकलाई पक्राउ गरेको छ। टाउकामा 'मगरात' लेखिएको फेटा र हातमा गठबन्धनका कार्यकर्ताले झैं झन्डा बोकेर घेराउमा संलग्न बेलायती नागरिक मार्टिन बेन्जामिन ट्रेभर्स पक्राउ परेका हुन्।
-
-नियन्त्रणमा लिइएका ट्रेभर्स तीनमहिने पर्यटक भिसामा गत मार्च ९ मा नेपाल आएको पाइएको छ। राहदानी नम्बर ५१२७९३५३२ रहेका बेलायतीमाथि अनुसन्धान भइरहेको महानगरीय प्रहरी परिसरका प्रवक्ता एसपी प्रद्युम्न कार्कीले जानकारी दिए।
-
-'कानुनविपरीत आन्दोलनमा नै सहभागी भएको पाइएपछि उनलाई नियन्त्रणमा लिइएको हो,' उनले भने, 'उनले आफू पाटनमा बस्ने गरेको मात्र बताएका छन्, थप अनुसन्धान हुँदै छ।'
-
-काठमाडौंका प्रमुख जिल्ला अधिकारी रामकृष्ण सुवेदी पनि बेलायती नागरिक ट्रेभर्सले अध्यागमन ऐनविपरीत काम गरेको बताउँछन्। सिंहदरबार घेराउक्रममा आइतबार सार्वजनिक भएका विदेशी नागरिकको फोटोका आधारमा खोजी गरिएको उनले जानकारी दिए।
-
-'ती बेलायती अरू कार्यकर्ताझैं आन्दोलनमै सहभागी भएको भेटिएको छ,' उनले भने, 'विदेशमा आउँदा के गर्न हुने, के नहुने भन्ने पनि जानकारी नराखी कानुनविपरीत काम गरेका कारण उनलाई पक्राउ गरिएको हो।'
-
-सुवेदीले ती विदेशी कुन प्रयोजनले नेपाल आएका हुन् भन्ने विषयमा अनुसन्धान अगाडि बढाइएको जानकारी दिए। 'उनीसँगै आइतबारको आन्दोलनमा सहभागी अन्य विदेशीका विषयमा पनि अध्यागमन र प्रहरीको सहयोगमा खोजी जारी छ,' उनले भने।
-
-गृह मन्त्रालयका प्रवक्ता यादव कोइरालाले पनि भ्रमण भिसामा आएका व्यक्ति आन्दोलनमा सहभागी हुनु अध्यागमन कानुनविपरीत रहेको बताए। 'यस विषयमा गहन अनुसन्धान गर्नेछौँ। दोषी देखिए अध्यागमन कानुनअनुसार कारबाही हुनेछ,' उनले भने, 'एक किसिमको प्रवेशाज्ञा लिएर आउने अनि अर्कै प्रयोजनको काम गर्नु गम्भीर विषय हो।' उनका अनुसार यस्ता व्यक्तिको प्रवेशाज्ञा खारेजसम्मको कारबाही हुने व्यवस्था छ।
-
-प्रवक्ता कोइरालाले ती व्यक्तिसहित अन्य संघसंस्थाका विषयमा पनि अनुसन्धान अघि बढाइएको जानकारी दिए। 'एक किसिमको प्रयोजनका लागि आएका व्यक्ति मात्र होइन, संस्थाका विषयमा पनि अनुसन्धान अगाडि बढाएका छौँ,' उनले भने, 'धेरै स्थानबाट उजुरी आइरहेकाले व्यक्तिसँगै संस्थाले पनि प्रयोजनअनुसार काम गरे–नगरेको हेर्न सुरु गरिएको हो।' गठबन्धनको आइतबारको कार्यक्रममा तीन विदेशी नागरिकले टाउकोमा फेटा बाँधेर सहभागिता जनाएका तस्बिर सार्वजनिक भएका थिए।
-
-गत साता अध्यागमन कानुनविपरीत नेपालका सम्बन्धमा अनावश्यक टिप्पणी गरेका क्यानाडेली नागरिक रोबर्ट पेनरलाई अध्यागमन विभागले प्रवेशाज्ञा खारेज गर्दै दुई दिनभित्र देश छोड्न निर्देशन दिएको थियो। निर्देशनलगत्तै उनी गइसकेका छन्।
-
-यसैबीच, संघीय गठबन्धनको सिंहदरबार घेराउ क्रममा माइतीघर मण्डलामा झडप हुँदा दुई प्रदर्शनकारी घाइते भएका छन्। प्रदर्शनकारीले प्रहरीमाथि ढुंगा प्रहार गरेपछि स्थिति तनावग्रस्त बन्न पुगेको थियो। प्रदर्शनक्रममा घुसपैठ भएको भनी अर्घाखाँची, पाली–८ का २३ वर्षीय रामप्रसाद पौडेललाई प्रदर्शनकारीले हातपात गर्दा आँखामा सामान्य चोट लागेको थियो। उनलाई तत्कालै उपचारका लागि त्रिपुरेश्वरस्थित आँखा अस्पताल लगिएको थियो। यस्तै, त्रिचन्› कलेजमा बिएस्सी प्रथम वर्ष अध्ययनरत प्रकाश अधिकारी पनि सामान्य घाइते छन्।
-
-प्रदर्शनक्रममा ढुंगा प्रहार गर्ने नुवाकोट, तारुका–८ का ३० वर्षीय अनिल ढुंगानालाई प्रहरीले नियन्त्रणमा लिइएको जनाएको छ। घेराउमा सहभागी कार्यकर्ताले ल्याएका ३५ थान लाठीसमेत प्रहरीले थापाथली चोकबाट बरामद गरेको छ।]]></description>
-			<pubDate>Tue, 17 May 2016 04:14:00 GMT</pubDate>
-			<guid>https://nepalmonitor.org/reports/view/10191</guid>
-
-							<georss:point>27.708297 85.323022</georss:point>
+							<georss:point>29.463 80.551</georss:point>
 			
+							<category>Killings</category>
+							<category>DEATHS</category>
+							<category>Trusted Reports</category>
+							<category>INSEC</category>
+							<category>Nepal Police (responding)</category>
+							<category>News Media</category>
+							<category>Incident</category>
+							<category>Investigation / Prosecution</category>
+			
+									</item>
+					<item>
+			<title>INSEC: Seven policemen injured in a clash | सवारी दुर्घटनामा परेकाका आ...#Nepal #TRAFFIC #CLASH #INJURED</title>			<link>https://nepalmonitor.org/reports/view/11124</link>
+			<description><![CDATA[Alert: Kaski/Aug 15, Sawari durghatana ma pareka ka aafanta haru le rajmarga abaruddha garna khojda prahari sanga jhadap, 7 prahari ghaite.
+
+At least seven policemen were injured in a clash with a victim’s relatives who were trying to obstruct the highway on August 15. The relative of a victim Bijaya Gurung, 35 of Lekhnath Municipality-13 who died in an accident on August 12 were in a protest demanding compensation. They have attacked and injured seven policemen in a clash.
+
+Police constable Ramu Paudel,38, Policemenn Dev bahadur Thapa,40, Sushma Pariyar,28, Suraj Nepali,30, Chabi Lal Gaire,32, armed policemen Ishwor Datta Joshi,25, Chitra bahadur Thapa,23 were injured in a clash according to DSP Gajusiddhi Bajracharya of District Police Office .]]></description>
+			<pubDate>Mon, 15 Aug 2016 05:12:00 GMT</pubDate>
+			<guid>https://nepalmonitor.org/reports/view/11124</guid>
+
+							<georss:point>28.164 84.079</georss:point>
+			
+							<category>TRAFFIC ACCIDENT</category>
+							<category>CLASH</category>
+							<category>INJURED</category>
+							<category>Trusted Reports</category>
+							<category>INSEC</category>
+							<category>Nepal Police (responding)</category>
 							<category>Protest / Demonstration</category>
+							<category>Incident</category>
+							<category>Announcements / Demands</category>
+			
+									</item>
+					<item>
+			<title>INSEC: Court orders to sentence husband for 24 days on charge of domes...#Nepal #VAW #GBV</title>			<link>https://nepalmonitor.org/reports/view/11129</link>
+			<description><![CDATA[Alert: Arghakhanchi/Aug 16, Gharelu himsa gareko thahar ma Kerunga ga-bi-sa 2 ka ek janaa lai 24 din jail sajaya ko faisala.
+
+The District Court of Arghakhanchi has ordered to sentence Puna Ram Bhusal,33 for 24 days on charge of committing a domestic violence on August 15 against his wife Srijana Bhusal,29 of Kerunga VDC-2. The court has also ordered a penalty of Rs 10,000 from the accused.
+
+A single bench of district court judge Keshav Prasad Bastola has given a verdict on the case.
+
+The victim had lodged a complaint at Police office on June 21 demanding for justice.
+
+केरुङ्गा गाविस-२ कि २९ वर्षीया सिर्जना भुसालाई घरेलु हिंसा गरेको ठहर गर्दै जिल्ला अदालतले सिर्जनाका ३३ वर्षीय पति पुनाराम भुसाललाई साउन ३१ गते २४ दिन कैद र १० हजार रुपियाँ जरिबानाको फैसला सुनाएको छ ।
+
+न्यायाधीश केशवप्रसाद बास्तोलाको इजलासले प्रमाण र वयानको आधारमा अरोपितले पत्नीलाई घरेलु हिंसा गरेको ठहर गर्दै कैद र जरिानाको फैसला गरेको जिल्ला अदालत मुद्दा फाँटका नासु नारायण भट्टराईले जानकारी दिए ।
+
+पतिले बारम्बार कुटपिट तथा मानसिक यातना दिएको भन्दै सिर्जनाले असार ७ गते न्यायको माग गर्दै प्रहरी कार्यालयमा उजुरी दिएकी थिइन् ।]]></description>
+			<pubDate>Mon, 15 Aug 2016 04:37:00 GMT</pubDate>
+			<guid>https://nepalmonitor.org/reports/view/11129</guid>
+
+							<georss:point>27.972 83.24</georss:point>
+			
+							<category>Trusted Reports</category>
+							<category>INSEC</category>
+							<category>Domestic Violence</category>
+							<category>Courts (responding)</category>
+							<category>Incident</category>
+							<category>Judicial Process</category>
+							<category>Arrest in GBV cases</category>
+			
+									</item>
+					<item>
+			<title>News: NSU cadres clash with police in NC Central Office, Sanepa | प्रत...#Nepal #StudentUnion #CLASH</title>			<link>https://nepalmonitor.org/reports/view/11109</link>
+			<description><![CDATA[Alert: Lalitpur/Aug 14, Chunab baare bibad badhdai gaye pachhi Sanepa ma prahari ra Ne-Bi Sangh ka kaaryakarta bich jhadap.
+
+Cadres of Nepali Congress aligned students wing, Nepal Students Union clashed with Police in Nepali Congress headquarter Sanepa today as the dispute over the ongoing election reached it's height.
+
+A police man sustained injury on his head during a clash with the cadres of the student union. The dispute has reached it's climax as student leaders close to Ram Chandra Poudel demanded that the election process be scrapped, claiming rigging of voters list.
+
+नेविसंघ महाधिवेशन प्रतिनिधि विवाद चर्किएपछि कांग्रेस केन्द्रीय कार्यालय सानेपामा झडप भएको छ । झडपमा प्रहरी र नेविसंघ कार्यकर्ताहरु घाइते भएका छन् ।
+
+सुरक्षामा खटिएका एक प्रहरीको टाउकोमा चोट लागेको छ । स्थिति नियन्त्रणमा लिन प्रहरीले लाठीचार्ज गरेको थियो ।
+
+नक्कली प्रतिनिधिहरु समावेश गरिएको भन्दै रामचन्द्र पौडेल पक्षले महाधिवेशनको निर्वाचन प्रक्रिया खारेज गर्न माग गरेपछि विवाद चर्किएको हो ।
+
+कांग्रेस केन्द्रीय कार्यालय सानेपामा सुरक्षाकर्मीको तैनाथी बढाइएको छ । त्यहाँको सुरक्षा व्यवस्था कडा पारिएको छ ।
+
+नेविसंघ नेता दीपक भट्टराईले भने, ‘हाम्रो पार्टीको कार्यालय हो की प्रहरी कार्यालय हो छुट्याउनै गाह्रो छ ।’ उनले आफूहरुलाई पनि पार्टी कार्यालयभित्र प्रवेशमा रोक लगाइएको गुनासो गरे ।
+
+नौ वर्षपछि आयोजित नेविसंघको एघारौं महाधिवेशन यही साउन २३ गते भृकुटीमण्डपमा भएको थियो । तर, प्रतिनिधि विवादले बन्दसत्र अझै सुरु हुन सकेको छैन । बन्दसत्रमा ढिलाइ भएपछि नेतृत्व चयन प्रक्रियालगायतका बाँकी काम कांग्रेस केन्द्रीय कार्यालयबाट अघि बढेको थियो ।]]></description>
+			<pubDate>Sun, 14 Aug 2016 10:33:00 GMT</pubDate>
+			<guid>https://nepalmonitor.org/reports/view/11109</guid>
+
+							<georss:point>27.68445 85.305866</georss:point>
+			
+							<category>Nepali Congress</category>
+							<category>STUDENT UNIONS AFFILIATED TO POLITICAL PARTY</category>
+							<category>CLASH</category>
+							<category>Nepal Police (responding)</category>
+							<category>News Media</category>
+							<category>Incident</category>
+			
+									</item>
+					<item>
+			<title>Nagariknews: 11 justice seekers for Gangamaya arrested | बालुवाटारमा ध...#Nepal #TransitionalJustice #ARREST</title>			<link>https://nepalmonitor.org/reports/view/11108</link>
+			<description><![CDATA[Alert: Kathmandu/Aug 14, Gangamaya Adhikari ko samarthan ma Baluwatar ma pradarshan garne 11 janaa prahari niyantran ma.
+
+Police have arrested 11 demonstrators while they were staging a sit-in, seeking justice for Gangamaya, in front of Prime Minister’s residence in Baluwatar on Sudnay morning.
+
+The protesters including humanrights activist Charan Prasain who reached Baluwatar to take part in a campaign called ‘Save Gangamaya’ were arrested by the police.
+
+Ganga Maya Adhikari has been staging indefinite hunger strike demanding action against the murderers of her son Krishna Prasad Adhikari.  
+
+Nanda Prasad, Gangamaya's husband, died on September 22, 2014, in the course of fast-unto-death. His last rites have not yet been performed.
+
+Ganga Maya, who is still on hunger strike, says the family will not perform the last rites until they get justice.
+
+The Maoists had killed Krishna Prasad Adhikari of Phujel village, Gorkha, at the height of their insurgency in 2004.
+
+छोराको हत्यारालाई कानुनी कारवाहीको माग राख्दै दोस्रो पटक आमरण अनसन थालेकी गोरखा फुजेलकी गंगामाया अधिकारको सर्मथनमा बालुवाटार पुगेका अधिकारकर्मी र पीडितहरुलाई पहरीले पक्राउ गरेको छ। करिव ३० जनाको समूहमा रहेको उनीहरुलाई निषेधित क्षेत्रमा धर्ना दिन, प्लेकार्ड र नारा लगाउन नमिल्ने भन्दै पक्राउ गरेर महानगरीय पहरी वृत्त कमलपोखरी राखिएको छ।
+
+विहान नौ वजे पधानमन्त्री निवास अगाडि गंगामाया बचाउ अभियान भन्दै उनीहरुले पर्दशन गरेका थिए। गंगामायालाई न्याय देउ भन्दै उनीहरुले केही वेर नारा लगाएका थिए। लगत्तै प्रहरीले हस्तक्षेप गरेर आफूहरुलाई लगेको मानवअधिकारकर्मी चरण प्रसाईँले बताए। प्रर्दशनमा प्रसार्इँ रसना ढकाल, सुमन अधिकारी,सावीत्री श्रेष्ठ ,भवानी खरेल र अन्य द्वन्द्वपीडितका धर्ना दिन वालुवाटार पुगेका  थिए ।  आफूहरुले शान्तिपूर्ण पर्दशन नगर्दै प्रहरीले हस्तक्षेप गरेको उनीहरुले बताएका छन्।  पीडितहरुको संस्था द्वन्द्वपीडित साझा चौतारीका अध्यक्ष सुमन अधिकारीले बताए।
+द्वन्द्वकालमा मारिएको आफ्नो छोराका हत्यारालाई कारवाही गर्ने भनी यसअघि सरकारले गरेको पतिवद्धता पूरा नभएको भन्दै बुधबारदेखि वीर अस्पतालमा गंगामायाले अनसन थालेकी हुन्।
+
+ उनका पति नन्दपसाद अधिकारीको छोराको हत्यारालाई कारवाहीको माग गर्दै अनसन बसेकै समयमा मृत्यु भएको थियो।
+पूर्वी चितवनको रत्ननगरमा रहेका आफ्ना हजुरबुबालाई भेट गर्न गएका बेला कृष्णप्रसाद अधिकारीको २०६१ जेठ २४ गते रत्ननगर १ बकुलहर चोकमा तत्कालीन विद्रोही माओवादी कार्यकर्ताले अपहरणपछि हत्या गरेका थिए। कृष्णप्रसाद हत्यामा परिवारले रामप्रसाद अधिकारीसहित परशुराम पौडेल, जानुका पौडेल, मेघनाथ पौडेल, कालिप्रसाद अधिकारी, हेमलाल अधिकारी, सीता अधिकारी, बिष्णु तिवारी, शुभद्रा तिवारी, अर्का रामप्रसाद अधिकारी र रुद्र आचार्य विरुद्ध किटानी जाहेरी दिएका थिए ।
+
+मृतकका बाबु नन्दप्रसादले २०६१ जेठ २५ गते तीन जना बिरुद्ध किटानी जाहेरी र पछि २०६२ जेठ २६ मा ११ जना बिरुद्ध दाजु नुरप्रसादले किटानी जाहेरी दिएका थिए । छोराका हत्यारालाई कारवाहीको माग गर्दै ३३० दिनदेखि आमरण अनशनमा बसेका नन्दप्रसादको २०७१ असोज ७ गते  निधन भएको थियो। पतिको मृत्यु भएपनि गंगामायालाई सरकारले अनसन तोडाउँदै अस्पतालमा राखेको थियो । नन्दप्रसादको शव हाल शिक्षण अस्पतालमा राखिएको छ । अन्तिम संस्कारसमेत नभएको अवस्थामा सरकारले न्याय नदिएको भन्दै गंगामायाले पून अनसन थालेका थिइन।]]></description>
+			<pubDate>Sun, 14 Aug 2016 09:24:00 GMT</pubDate>
+			<guid>https://nepalmonitor.org/reports/view/11108</guid>
+
+							<georss:point>27.725443 85.328483</georss:point>
+			
+							<category>Conflict Victims / Transitional Justice</category>
+							<category>Nepal Police (responding)</category>
+							<category>Protest / Demonstration</category>
+							<category>ARREST</category>
+							<category>News Media</category>
+							<category>Incident</category>
+			
+									</item>
+					<item>
+			<title>News: Man held for ‘raping’ mentally ill girl | अपाङ्गता भएकी बालिका ब...#Nepal #ChildAbuse #Rape #GBV</title>			<link>https://nepalmonitor.org/reports/view/11118</link>
+			<description><![CDATA[Alert: Khotang/Aug 14, Apaangata bhayeki balika lai balaatkar gareko arop ma Temma ga-bi-sa 4 bata ek yuwak pakrau.
+
+ Police have arrested a person on the charge of raping a mentally ill teenage girl.
+
+The arrested is identified as Singha Bahadur Rai of Temma VDC-4.
+
+According to police, Rai allegedly raped a 16-year-old mentally ill girl while she was alone in her house on Thursday, DSP Bidyananda Majhi of District Police Office, Khotang told Republica Online.
+
+ Acting on a complaint filed at the police staton, a squad of police deployed from the Area Police Office, Mattim nabbed Rai.
+
+A case has been forwarded against Rai following a site report.
+
+ सुस्तमनस्थितिकी बालिकालाई बलात्कार गरेको आरोपमा खोटाङको टेम्म – ४ का सिंहबहादुर राईलाई प्रहरीले पक्राउ गरेको छ । १६ वर्षकी सुस्तमस्थितिकी बालिकालाई गत बिहीबार जबरजस्ती करणी गरेको आरोपमा राईलाई प्रहरीले पक्राउ गरेको हो । 
+
+घरमा एक्लै भएको बेला बालिकालाई बलात्कार गरेको उजुरीका आधारमा राईलाई पक्राउ गरेर अनुसन्धान थालिएको जिल्ला प्रहरी कार्यालय खोटाङका डिएसपी बिद्यानन्द माझीले बताउनुभयो ।]]></description>
+			<pubDate>Sun, 14 Aug 2016 06:22:00 GMT</pubDate>
+			<guid>https://nepalmonitor.org/reports/view/11118</guid>
+
+							<georss:point>27.134 86.816</georss:point>
+			
+							<category>Nepal Police (responding)</category>
+							<category>Child Abuse</category>
+							<category>Rape / Attempted Rape</category>
+							<category>News Media</category>
+							<category>Incident</category>
+							<category>Investigation / Prosecution</category>
+							<category>Arrest in GBV cases</category>
+			
+									</item>
+					<item>
+			<title>News: Gang attacks teenager with sharp weapons in Damauli | खुकुरी प्र...#Nepal #Attack #INJURED</title>			<link>https://nepalmonitor.org/reports/view/11091</link>
+			<description><![CDATA[Alert: Tanahu/Aug 15, Shanibar Byas-1 Highschooltar ka yuwa haru ko samhu le khukuri prahar garda ek yuwak ko mrityu. 
+
+A gang attacked a teenage boy with sharp weapons and inflicted serious injuries on him in Damauli on Saturday.
+
+Police identified the victim as Akash Thapa, a resident of Bisghare, Byas Municipality-10. He has sustained injuries on his chest, lower back and right hand.
+
+The gang of six to seven persons first took Thapa to the covered hall at BP Van Vatika, in front of the Tanahun District Administration Office, and hit him with the weapons at around 3:45 pm, according to police.
+
+He was first taken to the Damauli Hospital for treatment. He has not been sent to Pokhara and is admitted to the Gandaki Medical College, according to SP Krishna Kumar Mahat.
+
+Police have detained eight persons in suspicion of their involvement in the attack.
+
+Today’s incident occurred after two rival gangs clashed in Galbubesi in Byas Municipality-1 on Friday night. Khukuris were also used in the fight yesterday night.
+
+खुकुरीको प्रहारबाट शनिबार बेलुका तनहुँमा एक जनाको ज्यान गएको छ । व्यास–१ हाईस्कूलटारका युवाको समूहले प्रहार गरेको खुकुरी लागेर घाइते भएका व्यास–१० देउरालीनगरका १८ वर्षका आकाश थापाको उपचारको क्रममा ज्यान गएको प्रहरीले जनाएको छ ।
+
+दमौली अस्पतालमा उपचार पश्चात थप उपचारका लागि पोखरा पठाइएका थापाको उपचारको क्रममा मणिपाल शिक्षण अस्पतालमा ज्यान गएको जिल्ला प्रहरी कार्यालय तनहुँका प्रहरी उपरीक्षण कृष्णकुमार महतले जानकारी दिनुभयो । घटनामा संलग्न भएको अभियोगमा शनिबारनै प्रहरीले व्यास–१ हाईस्कूलटारका १२ जना युवालाई पक्राउ गरेको छ ।
+
+दमौलीमा जारी फुटबल प्रतियोगिता हेर्न आएका थापा पिसाब फेर्न व्यास–१० विपि वन वाटीकाको सार्वजनिक शौचालय गएको मौका छोपी युवाको समूहले पछाडीबाट धारिलो खुकुरी प्रहार गरेका थिए । घटनामा प्रयोग भएको हतियार बरामद भइसकेको र घटनाको थप अनुसन्धान भइरहेको जिल्ला प्रहरी कार्यालय तनहुँले जनाएको छ ।
+
+Update
+--------
+
+हत्यामा संलग्न रहेको आरोपमा ९ पक्राउ
+
+ शनिबार दिउँसो भएको एक युवकको हत्यामा संलग्न रहेको आरोपमा नौ युवकलाई जिल्ला प्रहरी कार्यालय तनहुँले पक्राउ गरेको छ ।
+
+ब्यास नगरपालिका–१० बिसघरे निवासी १८ वर्षीय आकाश थापालाई धारिलो हतियार प्रहार गरी सख्त घाइते बनाएकामा थापाको उपचारका क्रममा पोखरास्थित मणिपाल अस्पतालमा मृत्यु भएको थियो । 
+
+मृतक थापालाई जिल्ला प्रशासन कार्यालय अगाडि सात/आठ जनाको समूहले धारिलो हतियार प्रहार गर्दा ढाडमा गहिरो चोट लागेको थियो । घटनामा संलग्न युवामा ब्यास नगरपालिका–१ भादगाउँ र हाइस्कुलटार क्षेत्रका सुरेश थापामगर, कुमार थापा, मनिष चन्द, श्रीविलास चन्द, पृथ्वीवंशी ठकुरी, ऋषि थापा, पदम चन्द, जोनसन थापा र बाबुराम ठकुरी रहेको तनहुँका प्रहरी नायब उपरीक्षक सुरेन्द्रबहादुर गुरुङले जानकारी दिनुभयो । 
+
+उहाँका अनुसार पक्राउ परेका नौ जना १५÷१६ वर्षका रहेका र उनीहरुका साथबाट दुई वटा खुकुरी र एक थान चक्कुसमेत बरामद गरिएको छ । उनीहरुलाई शनिबारदेखि नै लागू हुनेगरी तनहुँ जिल्ला अदालतबाट कर्तव्य ज्यान मुद्दामा पहिलो पटक सातदिनको म्याद थप गरी आवश्यक अनुसन्धान कार्य भइरहेको प्रहरीले जनाएको छ । मृतकका परिवारले दोषीलाई कडा कारबाही गरिनुपर्ने माग राखेका छन् ।]]></description>
+			<pubDate>Sun, 14 Aug 2016 04:52:00 GMT</pubDate>
+			<guid>https://nepalmonitor.org/reports/view/11091</guid>
+
+							<georss:point>27.978 84.265</georss:point>
+			
+							<category>Attack</category>
+							<category>INJURED</category>
+							<category>Nepal Police (responding)</category>
+							<category>News Media</category>
+							<category>Incident</category>
+							<category>Investigation / Prosecution</category>
+			
+									</item>
+					<item>
+			<title>INSEC: Accused bigamous arrested | बहुविवाह घटनाका आरोपित गिरफ्तार ...#Nepal #Investigation #GBV</title>			<link>https://nepalmonitor.org/reports/view/11113</link>
+			<description><![CDATA[Alert: Makwanpur/Aug 14, Bahubibaha gareko arop ma Chattiwan ga-bi-sa 4 ka ek dampati pakrau.
+
+Police have arrested Sargam Rai,24 of Chattiwan VDC-4 and Sabina Rai, 20 on August 14 on charge of polygamy.
+
+A complaint against the accused was lodged at Chattiwan Police Post by his first wife Rita Maharjan on August 13 on charge of marrying Sabina on August 6.
+
+They were arrested for further investigation according to the police.
+
+छतिवन गाविस-४ का २४ वर्षीय सरगम राई र हेटौंडा उमनपा-२१ की २० वर्षीया सविना राईलाई बहुविवाह गरेको आरोपमा प्रहरीले साउन ३० गते गिरफ्तार गरेको छ ।
+
+आरोपित सरगम र सविनाले साउन २२ गते विवाह गरेको आरोपमा सरगमकी पत्नी रीता महर्जनले साउन २९ गते छतिवन प्रहरी चौकीमा उजुरी दिएकी थिइन् ।
+
+विवाह गरेर घर गएको दुई दिनपछि रीताको उजुरीको आधारमा उनीहरूलाई अनुसन्धानका लागि गिरफ्तार गरिएको प्रहरीले जनाएको छ ।]]></description>
+			<pubDate>Sat, 13 Aug 2016 05:46:00 GMT</pubDate>
+			<guid>https://nepalmonitor.org/reports/view/11113</guid>
+
+							<georss:point>28.229838 84.378197</georss:point>
+			
+							<category>Trusted Reports</category>
+							<category>INSEC</category>
+							<category>Nepal Police (responding)</category>
+							<category>Marriage Related</category>
+							<category>Incident</category>
+							<category>Investigation / Prosecution</category>
+							<category>Arrest in GBV cases</category>
+			
+									</item>
+					<item>
+			<title>INSEC: Victim complain police of not registering FIR | प्रहरीले किटानी...#Nepal #RoL #Trafficking</title>			<link>https://nepalmonitor.org/reports/view/11095</link>
+			<description><![CDATA[Alert: Surkhet/Aug 13, Aafu lai Bharat puryaai bepatta banaune biruddha prahari le jaheri naliyeko Birendranagar-24 ki ek pidit ko gunaso.
+
+A victim Indra Kumari Khadka’s father Tek Bahadur Khadka complained that police have denied registering FIR lodged by him against Prem Bahadur,21 of Awalching VDC-8  who was involved on disappearance of her daughter in India, three years ago.  Prem Bahadur had lured of marrying his daughter Indra Kumari Khadka of Birendra Nagar Municipality-24 before she was disappeared in India.
+
+Khadka said that he do not have any contact with her daughter after she was taken to India by an accused. He further said that recently on August 11 he attempted to lodge an FIR at District Police Office however police denied of registering his complaint.
+
+Prior to this, he lodged an application at District Police Office of Surkhet in 2014 May 15 to know her whereabouts.
+
+DSP Bahadur Jung Malla of DPO Surkhet said that FIR was not accepted because it is not lawful. He further said that only woman herself need to be presented to lodge FIR. He said that the victim’s family has been requested to come with a proper procedure for registration of complaint.
+
+वीरेन्द्रनगर नपा-२४ की १७ वर्षीया इन्द्राकुमारी खड्कालाई अवलचिङ् गाविस-८ का २१ वर्षीय प्रेमबहादुर रानाले विवाह गरेको बाहानामा तीन वर्षअघि भारतमा पुर्‍याई बेपत्ता बनाएको भन्दै पटकपटक रानाविरूद्ध किटानी जाहेरी दिन जाँदा प्रहरीले दर्ता गर्न नमानेको इन्द्राकुमारीका बुबा टेकबहादुर खड्काले गुनासो गरेका छन् ।
+
+विवाहको बाहानामा भारत लगेको केही दिनसम्म छोरीसँग सम्पर्क भएपनि अहिले कहाँ छन् ? भन्ने कुनै अत्तोपत्तो नभएकाले खोजतलास गर्न प्रहरीलाई पछिल्लोपटक साउन २७ गते जिल्ला प्रहरी कार्यालयमा जाहेरी दर्ता गर्न जाँदा प्रहरीले दर्ता गर्न नमानेको खड्काले गुनासो गरेका हुन् ।
+
+घरबाट भगाएर भारतको गुजरात पुर्‍याइएकी छोरीले गुजरातबाट एकपटक फोन गरेपछि हालसम्म कुनै सम्पर्क हुन नसकेको खड्काले जानकारी दिए ।
+
+लामो समयसम्म छोरीको खबर नआएपछि खड्काले ०७१ जेठ १ गते जिल्ला प्रहरी कार्यालय सुर्खेतमा छोरीको खोजी गरीपाउँ भनी निवेदन दिएपछि रानाका आफन्तले उनीहरू गुजरातमा विवाह गरी बसेका र यसबारेमा चिन्ता नलिन भनेपछि आफूहरू चुप लागेको खड्काले बताए ।
+
+सो निवेदनपछि प्रेमबहादुर रानाले नै प्रहरी कार्यालयमा आई आफूले भारतमा लगेको स्वीकार गर्दै उनलाई घरमा ल्याउने कागज गरेपनि राना सोही दिनदेखि सम्पर्कविहीन छन् । त्यसयता रानाविरूद्ध मानवबेचविखनमा पटकपटक किटानी जाहेरी दिन जाँदा प्रहरीले दर्ता गर्न नमानेको खड्काले जानकारी दिए ।
+
+जिल्ला प्रहरी कार्यालय सुर्खेतका डीएसपी बहादुरजङ्ग मल्लले पीडित पक्षले दिएको किटानी जाहेरी कानुनसम्मत नभएकाले दर्ता गर्न नसकिएको बताए । महिला आफै आएपछि मात्र मानव बेचबिखनको उजुरी लिन मिल्ने भन्दै उनले सबै प्रक्रिया पुरा गरेर जाहेरी दर्ताका लागि आउन आफूले पटकपटक आग्रह गरेपनि प्रक्रिया पुर्‍याउन नसकेको कारण जाहेरी दर्ता नगरिएको मल्लको भनाइ छ ।
+
+मानव बेचविखनको मुद्दा चलाउन स्वयम् पीडितले अदालतसक्षम प्रमाणित गराएर मात्र दर्ता हुने प्रावधान रहेको डीएसपी मल्लको भनाइ छ ।]]></description>
+			<pubDate>Sat, 13 Aug 2016 05:08:00 GMT</pubDate>
+			<guid>https://nepalmonitor.org/reports/view/11095</guid>
+
+							<georss:point>28.644 81.793</georss:point>
+			
+							<category>Rule of Law</category>
+							<category>Trusted Reports</category>
+							<category>Human Trafficking</category>
+							<category>INSEC</category>
+							<category>Incident</category>
+			
+									</item>
+					<item>
+			<title>News: Married woman succumbs to stab wound | मोरङमा चक्कु प्रहारबाट एक...#Nepal #Attack #INJURED #ARREST</title>			<link>https://nepalmonitor.org/reports/view/11093</link>
+			<description><![CDATA[Alert: Morang/Aug 14, Pathari Sanischare ga-bi-sa 10 ki ek mahila ko chakku prahar bata mrityu, chakku prahar garne pakrau.
+
+A married woman has died following a knife attack at Pathari Sanischare in Morang on Saturday. 
+
+Mukunda Karki's 21-year-old wife, Samichya Karki, of Pathari Sanischare – 10 was attacked by Dillip Ghatani, 31, of Pathari Sanischare – 11. Ghatani stabbed Karki at her home at 2 pm. 
+
+Karki succumbed to fatal injuries in course of treatment at night in BP Koirala Institute of Health Sciences of Dharan, said Inspector, Ramesh Basnet, of Area Police Office, Pathari. 
+
+Basnet added that the reason for the attack has not been revealed. The Area Police Office, Pathari has taken the attacker into custody.]]></description>
+			<pubDate>Sat, 13 Aug 2016 04:59:00 GMT</pubDate>
+			<guid>https://nepalmonitor.org/reports/view/11093</guid>
+
+							<georss:point>26.640805 87.584069</georss:point>
+			
+							<category>Attack</category>
+							<category>INJURED</category>
 							<category>Nepal Police (responding)</category>
 							<category>ARREST</category>
 							<category>News Media</category>
@@ -494,88 +568,29 @@ The alliance has urged the government to fulfill the 26-point demand that includ
 			
 									</item>
 					<item>
-			<title>Republica: Police, protesters clash at Maitighar | माइतीघर मण्डलामा झड...#Nepal #NepalPolice #CLASH #INJURED</title>			<link>https://nepalmonitor.org/reports/view/10189</link>
-			<description><![CDATA[Alert: Kathmandu/May 16, Prahari ra Andolankari bich Maitighar ma feri jhadap, 2 janaa andolankari saamanya ghaite.
+			<title>News: Woman found dead under mysterious circumstances | महिलाको हत्या ...#Nepal #Killings #DEATHS</title>			<link>https://nepalmonitor.org/reports/view/11089</link>
+			<description><![CDATA[Alert: Rupandehi/Aug 12, Kalikanagar basne dhukuti khelaune ek mahila Bihibaar raati aafnai kotha ma rahasyamaya awastha ma mrita fela.
 
-A clash occurred between police and protesters at Maitighar Mandala on the second day of the Singha Durbar-centric protest by the Federal Alliance on Monday.
+A woman was found dead under mysterious circumstances at Kalikanagar of Butwal on Thursday night.
 
-Two protesters were injured after police resorted to baton charge as the demonstrators tried to enter the restricted zone. They have been taken to hospital for treatment.
+Kamala Neupane of Tilottama municipality-13, who has been living with her family in a rented house in Butwal, was killed last night. Neuapne's family has been living in the rented house of Thamman Bahadur Chhetri of Butwal-13 for the past seven years for business purpose.
 
-संघीय गठबन्धनको सिंहदरबार घेराउको दोस्रो दिन सोमबार माइतीघर मण्डलामा आन्दोलनकारी र सुरक्षाकर्मीबीच झडप भएको छ। सडक कब्जा गरेर बसेका आन्दोलनकारी र सिंहदरबार तर्फको सडक प्रबेश रोकेर बसेका सुरक्षाकर्मीबीच ठेलाठेल हुँदा झडप भएको हो।
+Her husband runs a shoes store at Jaycees Chowk in Butwal while she has been operating Dhikuti (small self-help financial transaction), according to Police Inspector of Ward Police Office, Butwal, Pradeep DC.
 
-साे क्रममा प्रहरीले लाठीचार्ज गर्दा दुईजना आन्दोलनकारी घाइते झएका छन्। उनीहरूको उपचारको लागि अस्पताल भर्ना गरिएको आन्दोलनकारीले जनाएका छन्।]]></description>
-			<pubDate>Mon, 16 May 2016 07:41:00 GMT</pubDate>
-			<guid>https://nepalmonitor.org/reports/view/10189</guid>
+The murder took place at a time when Neupane's husband was in Kathmandu for business, police shared. RSS
+वुटबल कालिकानगरमा बिहीबार राति एक महिलाको हत्या भएको छ ।
 
-							<georss:point>27.691977 85.322991</georss:point>
-			
-							<category>Nepal Police</category>
-							<category>CLASH</category>
-							<category>INJURED</category>
-							<category>Protest / Demonstration</category>
-							<category>Nepal Police (responding)</category>
-							<category>News Media</category>
-							<category>CA-related</category>
-							<category>Incident</category>
-							<category>United Democratic Madhesi Front</category>
-			
-									</item>
-					<item>
-			<title>Federal Alliance continues to picket Singha Durbar | संघीय गठबन्धनको स...#Nepal #Strike #Protest #UDMF</title>			<link>https://nepalmonitor.org/reports/view/10187</link>
-			<description><![CDATA[Alert: Kathmandu/May 16, Sanghiya gathabandhan ko Singha Durbar gherau kaaryakram aaja doshro din pani jaari.
+रुपन्देहीको तिलोत्तमा घर भइ कालिकानगरमा डेरा गरी बस्ने ४० वर्षीया कमला न्यौपानेको आफ्नै डेरामा हत्या भएको हो । न्यौपानेको शव कोठाको लो बेडभित्र घाँटीमा मल्टीप्लकको तार बेरिएको अवस्थामा बिहान भेटिएको प्रहरीले जनाएको छ ।
 
-The Federal Alliance comprising Madhesi and ethnic groups has continued their Kathmandu-centric protests with the picketing of' Singha Durbar on Monday as well.
+न्यौपाने विगत केही वर्ष यता ढिकुटी खेलाउने काम गरेकी थिइन् । बिहीबारसमेत दिनभर बजारमा ढिकुटी संकलन गरी साँझ घर फर्केकी थिइन् । जुत्ताको होलसेल व्यापारी उनका पति नित्यानन्द न्यौपाने हिजो बिहान जुत्ता खरिदका लागि भन्दै काठमाडौं गएका थिए ।
 
-Protestors from 29 Madhesi and Janjati parties have gathered in the Singh Durbar area, the center of the country's administration.
+फूपुलाई राति साथी दिन गएका दाजुका छोरा रेविकले कोठामा नदेखेपछि उनको खोजविन थालिएको थियो । मृतकको शव अहिले पोष्टमार्टमका लागि लुम्बिनी अञ्चल अस्पतालमा राखिएको छ । हत्या भएकी कमलाले लगाएका औठी बाला, सिक्री टक लगायतका गरगहनासमेत लुटिएका छन् । दराजभित्र रहेको धनमाल भने सुरक्षित छ ।
 
-Leaders from the alliance have held sit-ins at various places including Hanumansthan, Maitighar mandala and Babrmahal around Singha Durbar.
+लुटपाट वा के कारणले हत्या भएको हो भन्ने एकीन हुन सकेको छैन । यद्यपि हत्याको कारण र संलग्न अभियुक्तको खोजबिन भैरहेको इलाका प्रहरी कार्यालय बुटवलका प्रहरी निरीक्षक राजु कार्कीले बताए ।]]></description>
+			<pubDate>Fri, 12 Aug 2016 10:39:00 GMT</pubDate>
+			<guid>https://nepalmonitor.org/reports/view/11089</guid>
 
-Tarai Madhes Democratic Party (TMDP), Sadbhawana Party and Tarai Madhes Sadbhawana Party leaders are holding a sit-in at Hanumansthan while Federal Socialist Forum Nepal and other ethnic parties are holding a sit-in at Maitighar Mandala.
-
-Citing security threat,  the government has mobilized a huge number of security personnel.
-
-Earlier this morning, the protesters held rallies with placards, banners and flags that began from various locations in Kathmandu.
-
-Earlier, the agitating Madhesi forces had held six months of protests along different Nepal-India border points and participated in a protracted economic blockade against Nepal.]]></description>
-			<pubDate>Mon, 16 May 2016 06:03:00 GMT</pubDate>
-			<guid>https://nepalmonitor.org/reports/view/10187</guid>
-
-							<georss:point>27.691977 85.322991</georss:point>
-			
-							<category>Strike</category>
-							<category>Protest / Demonstration</category>
-							<category>Nepal Police (responding)</category>
-							<category>News Media</category>
-							<category>CA-related</category>
-							<category>Incident</category>
-							<category>United Democratic Madhesi Front</category>
-			
-									</item>
-					<item>
-			<title>News: Unidentified body recovered from Lamosanghu | बेवारिसे शव फेला  ...#Nepal #Killings #DEATHS</title>			<link>https://nepalmonitor.org/reports/view/10183</link>
-			<description><![CDATA[Alert: Sindhupalchok/May 16, Pangretar-6 ko Lamosanghu chhetra ma andaji 30 barsiya aparichit byakti ko shab fela.
-
-A body of an unidentified man in his early 30s was found at Lamosanghu area of Pangretar–6 of Sindhpalchok district this morning.
-
-The body with deep injuries on the head was found lying 100 metres below the Araniko Highway, said Inspector Raju Pandey of Area Police Office, Bahrabise.
-
-A wood plank with blood stains has been recovered from the site, prompting police to launch an investigation into a possible murder case.
-
-A woman has been taken under control in suspicion of her involvement in the incident.
-
- सिन्धुपाल्चोक जिल्लाको पाङ्ग्रेटार गाविस–६ लामोसाँघुमा आज बिहान एक पुरुषको बेवारिसे शव फेला परेको छ । 
- 
-अरनिको राजमार्गबाट १०० मिटर तल कच्ची सडकमा सो शव फेला परेको हो । 
- 
-अन्दाजी ३०-३५ वर्ष जतिको देखिने पुरुषको टाउकोमा गहिरो चोट लागेको देखिएको इलाका प्रहरी कार्यालय बाह्रबिसेका प्रहरी निरीक्षक राजु पाण्डेले बताए । 
- 
-उहाँका अनुसार घटनास्थलमा रगत लागेको दाउराको चिर्पट फेला परेकाले हत्या भएको हुनसक्ने अनुमान गरिएको छ । 
- 
-घटनामा संलग्न हुनसक्ने अनुमानमा एक महिलालाई नियन्त्रणमा लिई अनुसन्धान भइरहेको प्रहरीले जनाएको छ । रासस]]></description>
-			<pubDate>Mon, 16 May 2016 05:48:00 GMT</pubDate>
-			<guid>https://nepalmonitor.org/reports/view/10183</guid>
-
-							<georss:point>27.746 85.844</georss:point>
+							<georss:point>27.701 83.448</georss:point>
 			
 							<category>Killings</category>
 							<category>DEATHS</category>
@@ -586,166 +601,31 @@ A woman has been taken under control in suspicion of her involvement in the inci
 			
 									</item>
 					<item>
-			<title>eKantipur: 9-pt deal sees sharp drop in cases - Dewan Rai's Op-ed on T...#Nepal #TransitionalJustice</title>			<link>https://nepalmonitor.org/reports/view/10182</link>
-			<description><![CDATA[Alert: Kathmandu/May 16, 9-pt deal sees sharp drop in cases - Dewan Rai's Op-ed in Kathmandupost on Transitional Justice.
+			<title>News: Arrested on charge of injuring using sharp weapon | खुकुरी प्रहा...#Nepal #Attack #INJURED #VAW #GBV</title>			<link>https://nepalmonitor.org/reports/view/11088</link>
+			<description><![CDATA[Alert: Rolpa/Aug 12, Aafnai shrimati lai khukuri prahar gari gambhir ghaite banayeko abhiyog ma Liwang-7 ka ek 75 barshiya purush pakrau.
 
-TRC had registered 350 cases on Friday, which came down to 177 on Sunday
+Police have arrested Man Singh Mahara,75 on August 12 on charge of injuring his wife Man Kumari Mahara,65 of Liwang Municipality-7, Dharapani by attacking her with a sharp weapon.
 
-May 16, 2016- Since the nine-point agreement between the ruling CPN-UML and UCPN (Maoist) on May 5, the number of cases registered daily with the two transitional justice commissions has seen dramatic drop.
+Police said that Man Singh attacked his wife with a Khukuri over a normal dispute between them. He was arrested after a victim lodged a complaint at District police office of Liwang on August 12.
 
-The deal, which seeks to provide amnesty for war-era crimes, has undermined the credibility of the transitional justice bodies and their ongoing processes—contributing to reluctance and fear among the victims and their families to register their cases, activists and officials say.
+The victim sustained serious injuries on her head and backbone. She is undergoing treatment at Kohalpur medical college of Banke according to Inspector Keshav Basnet.
 
-The pact comes at a time when the Truth and Reconciliation Commission (TRC) and the Commission of Investigation on Enforced Disappeared Persons (CIEDP) had started collecting complaints from conflict victims through the Local Peace Committees.
+आफ्नै ६५ वर्षीया श्रीमती मनकुमारी महरालाई टाउको र ढाडमा खुकुरी प्रहार गरी गम्भीर घाईते बनाएको अभियोगमा लिवाङ नगरपालिका–७ धारापानी बस्ने ७५ वर्षीय मानसिंह महरालाई शुक्रबार प्रहरीले पक्राउ गरेको छ । 
+    
+घाइते मनकुमारीलाई जिल्ला अस्पताल रोल्पा हुँदै थप उपचारको लागि नेपालगंज पठाइएको छ । यस सम्बन्धमा प्रहरीले थप अनुसन्धान गरिरहेको छ ।]]></description>
+			<pubDate>Fri, 12 Aug 2016 10:25:00 GMT</pubDate>
+			<guid>https://nepalmonitor.org/reports/view/11088</guid>
 
-As Sunday marks a month since the registration of cases began, the TRC has registered 6,287 cases and the CIEDP 1,092. The TRC, which had been receiving more than 200 cases on a daily basis, registered 350 cases on Friday, which came down to 177 on Sunday. The commission had received 125 cases on the first day, which had steadily increased up to 539.
-
-“The agreement has created confusion among the conflict victims that all the perpetrators would be pardoned,” said Surya Kiran Gurung, the TRC chairperson. “It has created additional burden on us to educate people on the transitional justice process.”
-
-With the registration of 1,092 out of 1,522 documented cases of disappearance at the Peace Ministry, the CIEDP is upbeat about registering all the cases in the remaining one month. “The reason we received around 70 percent of the reported cases in a month signals the trust the victims have on us,” said Lokendra Mallick, the CIEDP chair. “We listened to their stories and concerns before we called for registration of cases.”
-
-Observers, however, pointed out at the commissions’ failure to reach down to the ground. “Victims are not informed about the transitional justice process,” said Santosh Sigdel, the rights lawyer monitoring the registration at various districts. “They seem to register their complaints in the hope for reparations.”
-
-“The ill-timed pact has reinforced fears the transitional justice process was meant to whitewash war crimes,” said Suman Adhikari, chairperson of Conflict Victims’ Common Platform. “The agreement proposes amnesty and clemency for conflict-era cases while the commissions have no concrete plans to complete their works.”
-
-The agreement has drawn criticism from advocacy groups, civil society and victims’ groups who been seeking its annulment, arguing that it promotes impunity.
-
-Villagers fear renewed conflict
-
-Thakur Singh Tharu (Banke)
-Despite assurance from the government to keep all complaints against insurgency-era crimes confidential, local residents fear that fresh conflict may arise as cases have been registered against fellow villagers.
-
-“Although the commissions formed to probe conflict-era crimes say our complaints will be kept secret, many of the perpetrators have stepped up their vigilance against us fearing that their names may come up,” said Ramratan Chaudhary, a conflict victim. “Our complaints might anger people who have remained silent. It will be okay if they are punished. But if they are let go, they may come after us.”
-
-Chaudhary lost his leg due to the torture meted out by the insurgents on February 14, 2001 while they also looted his property and made him homeless.
-
-Except for the incidents involving the state security forces, local Maoist cadres are named in most of the cases related to the decade-long “People’s War”. After the peace process began, the perpetrators and victims started living in the same village. But victims fear that this relative peace might be disturbed if they register complaints against fellow villagers. “As both the sides have started filing cases, people have become sceptical of each other,” said Dilli Wali of Baijapur, who was victimised by the state side. “If the perpetrators start getting punished, they may not leave us alone and a new conflict may arise.”
-
-The victims, “being watched by the perpetrators”, are staying away from the Local Peace Committee that registers complaints for the Commission on Investigation of Enforced Disappeared Persons and the Truth and Reconciliation Commission.
-
-“I had requested the captors of my husband to send him to jail but he was killed. I don’t know what will happen to me if I register my complaint,” said Jaysara Chanda of Fattepur, whose husband was killed by the state. Bhim Bahadur Chanda was captured by the Army on January 5, 2004 but the state later announced that he died in crossfire on January 24.
-
-Rajrani Godiya, who lost his son and daughter, however, said he has nothing to fear anymore. “My children are already dead so there is nothing I fear now. Their killers should be punished at any cost,” he said.
-
-Rights activists have also stepped up their vigil in the district after villagers complained of being watched. “Even though there is no direct threat from any side, victims are in a state of fright,” said Murari Kharel  of the National Human Rights Commission. “In many cases, victims have refrained from registering their complaints due to societal pressure.”]]></description>
-			<pubDate>Mon, 16 May 2016 05:44:00 GMT</pubDate>
-			<guid>https://nepalmonitor.org/reports/view/10182</guid>
-
-							<georss:point>27.7 85.333333</georss:point>
+							<georss:point>28.286 82.657</georss:point>
 			
-							<category>Conflict Victims / Transitional Justice</category>
-							<category>News Media</category>
-							<category>External Analysis</category>
-			
-									</item>
-					<item>
-			<title>THT: CIAA files graft case against 9 | अख्तियारद्वारा ९ जना विरुद्ध वि...#Nepal #Corruption #CIAA</title>			<link>https://nepalmonitor.org/reports/view/10179</link>
-			<description><![CDATA[Alert: Kathmandu/May 15, Akhtiyar dwara Aaitabar 9 janaa biruddha bishesh adaalat ma bhrastachar mudda daayar.
-
-The Commission for the Investigation of Abuse of Authority (CIAA) on Sunday filed a corruption case at the Special Court against nine persons.
-
-Of those booked, seven are former officials of the Darchula District Sports Development Committee and two are engineers from the District Technical Office.
-
-The CIAA said the seven officials presented fake bills claiming that the Sports Development Committee constructed a covered hall while the hall was not constructed.
-
-Likewise, the engineers prepared a report about the construction without monitoring its status, the anti-corruption constitutional body said in a statement today.
-
-Those booked include former coordinators of the Sports Development Committee Manju Bam and Kalyan Singh Dhami; its former members Bhupendra Raj Awasthi, Man Singh BK, Shyam Raj Awasthi, Dan Singh Niraula and Harish Chandra Bhatta. Likewise, the engineer duo Shekhar Chandra Badu and Madan Raj Joshi were also booked.
-
-The Commission said they embezzled various amounts from the fiscal year 2010/11 to 2012/13 from the National Sports Council.
-
-The CIAA has sought action against seven former officials as per Section 8(1) of the Prevention of Corruption Act, 2002 and against two engineers as per Section 19(2) of the same Act.]]></description>
-			<pubDate>Mon, 16 May 2016 05:33:00 GMT</pubDate>
-			<guid>https://nepalmonitor.org/reports/view/10179</guid>
-
-							<georss:point>27.7 85.333333</georss:point>
-			
-							<category>Corruption / Fraud</category>
-							<category>News Media</category>
-							<category>Courts (responding)</category>
-							<category>CIAA</category>
-							<category>Investigation / Prosecution</category>
-							<category>Judicial Process</category>
-			
-									</item>
-					<item>
-			<title>News: Police arrests two human traffickers from Kohalpur | जन्म दिने आ...#Nepal #Trafficking #Investigation</title>			<link>https://nepalmonitor.org/reports/view/10176</link>
-			<description><![CDATA[Alert: Banke/May 16, Kohalpur prahari dwara mahila haru lai Delhi hudai Khaadi muluk puryaaune 2 janaa manab taskar pakrau.
-
-Area Police Office Kohalpur arrested two persons long engaged in human trafficking from Kohalpur on Saturday while they were attempting to traffic two girls to Delhi via Kohalpur in order to send them to Kuwait.  
-
-The arrested have been identified as Dindu Tamang of Juwachaur-4 in Sindhupalchowk and Lhakpa Sonam Tamang of Palchowk-9 in Sindhupalchowk. Police rescued the two girls who were being trafficked by the arrested. Both the girls are teenagers and are related to Dindu. 
-
-According to DSP Suresh Kafle of APO Kohalpur, Dindu had helped in trafficking his own mother to Kuwait. Upon each successful trafficking Dindu used to get a commission of rupees twenty thousand. The main trafficker Lhakpa Sonam Tamang meanwhile confessed to the police that he gets rupees one lakh and fifty thousand rupees for each trafficking. The Tamang duo reportedly trafficked 24 girls to Delhi in the past one and half year. Police are preparing to charge them under Human Trafficking Act.
-
-
-जन्म दिने आमालाई समेत बेच्ने सिन्धुपाल्चोकका डिण्डु तामाङसहित मानव तस्करीमा संलग्न दुईजना इलाका प्रहरी कार्यालय कोहलपुरको फन्दामा परेका छन् ।
- 
-आमालाई  वैदेशिक रोजगारको नाममा भारतको दिल्ली  हुदै कुवेत पठाउने सिन्धुपाल्चोक जुवाचौर–४ का २७ डिण्डुसहित दुईजनालाई प्रहरीले बहिनी र फूपुकी छोरीलाई दिल्ली लाँदै गर्दा कोहलपुरबाट पक्राउ गरिएको इलाका प्रहरी कार्यालयका कोहलपुरका इन्चार्ज प्रहरी नायव उपरीक्षक सुरेश काफ्लेले बताए ।   
- 
-नायव उपरीक्षक  काफ्लेका अनुसार डिण्डुले आमालाई कुवेत पठाउँदा दलालबाट २० हजार कमिसन खाएको प्रहरीसँग स्वीकार गरेका छन । 
- 
-इलाका प्रहरी कार्यालय कोहलपुरले  कोहलपुर बसपार्कस्थित एक होटलबाट डिण्डु, सिन्धुपाल्चोक पाल्चोक–९ का ३६ लाक्पा सोनामा तामाङसहित डिण्डुकी बहिनी र  फूपुकी छोरीसहित नियन्त्रणमा लिएको छ ।  
- 
-शनिबार प्रक्राउ गरिएका उनीहरुलाई  कोहलपुर प्रहरीले आइतबार पत्रकार सम्मेलन गरेर सार्वजनिक गरेको छ । 
- 
-पक्राउ परेका किशोरीहरु १८ वर्ष भन्दा कम उमेरका रहेको प्रहरीले जनाएको छ । कोहलपर बसपार्कबाट दुई किशोरीलाई सीमा (जमुनाहा) कटाएवापत २०÷२० हजारका दरले पैसा दिने भन्ने व्यक्ति होटलमा बसेको भन्ने सूचनाका आधारमा छापा मारी नियन्त्रणमा लिइएको प्रहरी नायब उपरीक्षक काफ्लेले बताए । 
- 
-मानवबेचविखनका मूख्य नाइके लाक्पाले एक किशोरी काठमाडौंबाट दिल्ली हुँदै खाडी मुलुकमा उडाएपछि एक लाख ५० हजार कमिसन लिने गरेको स्वीकारेको प्रहरीले जनाएको छ । 
- 
-जसमा आमासमेत बेच्ने डिण्डुले एक युवती बापत २० हजार पाउने गरेको स्वीकारेका छन् । 
- 
-अघिल्लो वर्ष मात्रै डिण्डुले आफ्नै आमालाई दिल्ली पु¥याएर २० हजार कमिसन लिएको प्रहरीसामू स्वीकारेको प्रहरी नायव उपरीक्षक काफ्लेले बताए । 
- 
-हाल डिण्डुकी आमा कुवेत रहेको बताइए पनि उनको अवस्था खुल्न नसकेको प्रहरीले जनाएको छ ।  
- 
-प्रहरीका अनुसार वैदेशिक रोजगारका लागि भन्दै दिल्ली पु¥याएपछि पहिले सिन्धुपाल्चोक घर भई हाल दिल्ली र दुबई बस्दै आएकी रेणु तामाङमार्फत  लाक्पाले एक लाख ५० हजार र डिण्डुले २० हजार प्रत्येक पटक लिने गरेको  सकारेका छन् । 
- 
-प्रहरीका अनुसार तामाङद्वयले पछिल्लो डेढ वर्षमा २४ किशोरी तथा युवतीलाई वैदेशिक रोजगारका लागि भन्दै दिल्ली पु¥याएका छन् । 
- 
-भूकम्पप्रभावित जिल्ला सिन्धुपाल्चोक र आसपासका जिल्लाबाट काठमाडाँै–नेपालगन्ज नाका हुँदै दिल्ली पु¥याउने गरेको अनुसन्धानबाट खुलेको प्रहरी नायब उपरीक्षक काफ्ले बताए ।  
- 
-उनले  पक्राउ परेका मानव तस्करहरु मानव बेचविखन तथा आसोरपसार सम्बन्धी मुद्दा चलाएको बताए । 
- 
-केही समययता देशका विभिन्न ठाउँबाट कोहलपुर ल्याइ केही दिन राखेर नाका कटाउने गरेको पाइएको उनले बताए । 
- 
-पछिल्लो समय नेपालगन्ज लगायत बर्दियाको जमुनी नाका हुँदै किशोरी र महिलालाई सीमाना कटाउने गरेको अनुसन्धानका क्रममा खुलेको प्रहरीले बताएको छ ।]]></description>
-			<pubDate>Mon, 16 May 2016 04:52:00 GMT</pubDate>
-			<guid>https://nepalmonitor.org/reports/view/10176</guid>
-
-							<georss:point>28.188692 81.693413</georss:point>
-			
-							<category>Human Trafficking</category>
+							<category>Attack</category>
+							<category>INJURED</category>
 							<category>Nepal Police (responding)</category>
-							<category>News Media</category>
+							<category>Domestic Violence</category>
 							<category>Incident</category>
 							<category>Investigation / Prosecution</category>
 							<category>Arrest in GBV cases</category>
-			
-									</item>
-					<item>
-			<title>News: Youth arrested from Kanchanpur on charge of rape | जबर्जस्ती करण...#Nepal #Rape #Investigation #GBV</title>			<link>https://nepalmonitor.org/reports/view/10174</link>
-			<description><![CDATA[Alert: Bardiya/May 16, 17 barsiya ek yuwati lai balaatkar gareko arop ma Rajapur nagarpalika-17 ka ek yuwak pakrau.
-
-Police has arrested Bimal Chaudhary, 36, resident of Tapara in Rajapur municipality-17 on charge of raping a 17-year-old girl two days ago at Attariya of Kailali district. Chaudhary was arrested from Jhalaripipaladi municipality-10 of Kanchanpur district on Sunday.
-
-Chaudhary who reportedly raped the girl by promising marriage with her had gone on the run following the incident. He was arrested by Area Police Office Jhalari from his sister's house at Asaina in Jhalaripipalida municipality-10 following complaint by the victim at police.
-
-जबर्जस्ती करणी गरेको आरोपमा बर्दियाको राजापुर नगरपालिका-१७ टपराका ३६ वर्षीय विमल चौधरीलाई प्रहरीले आइतबार कञ्चनपुरको झलारी पिपलाडी नगरपालिका-१० बाट पक्राउ गरेको छ। 
-
-दुई दिनअघि टपरा बस्ने १७ वर्षीय युवतीलाई विवाह गर्ने प्रलोभनमा पारी चौधरीले कैलालीको अत्तरियामा जबर्जस्ती करणी गरी फरार भएका थिए। 
-
-पीडित युवतीले प्रहरीमा उजुरी गरेपछि कञ्चनपुरको झलारी पिपलाडी नगरपालिका-१० असैनामा दिदीको घरमा लुकेर बसेको अवस्थामा चौधरीलाई पक्राउ गरेको इलाका प्रहरी कार्यालय झलारीका प्रहरी निरीक्षक सुदाम रावलले बताए।]]></description>
-			<pubDate>Mon, 16 May 2016 04:27:00 GMT</pubDate>
-			<guid>https://nepalmonitor.org/reports/view/10174</guid>
-
-							<georss:point>28.412686 81.129334</georss:point>
-			
-							<category>Nepal Police (responding)</category>
-							<category>Rape / Attempted Rape</category>
-							<category>News Media</category>
-							<category>Incident</category>
-							<category>Investigation / Prosecution</category>
-							<category>Arrest in GBV cases</category>
+							<category>Nepal Police Website</category>
 			
 									</item>
 				
