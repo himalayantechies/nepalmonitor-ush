@@ -176,18 +176,15 @@ class reports_Core {
 		
 		// Custom form fields validation
 		$errors = customforms::validate_custom_form_fields($post);
-
 		// Check if any errors have been returned
 		if (count($errors) > 0)
 		{
 			foreach ($errors as $field_name => $error)
 			{
-				$post->add_error($field_name, $error);
+				$post->add_error($field_name, $error, false, true);
 			}
 		}
-
 		//> END custom form fields validation
-
 		// Return
 		return $post->validate();
 	}

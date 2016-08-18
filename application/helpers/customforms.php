@@ -216,9 +216,9 @@ class customforms_Core {
 
 		$post->custom_field = $custom_fields;
 		// Kohana::log('debug', Kohana::debug($custom_fields));
-
 		foreach ($post->custom_field  as $field_id => $field_response)
 		{
+			
 
 			$field_param = ORM::factory('form_field',$field_id);
 			$custom_name = $field_param->field_name;
@@ -228,7 +228,8 @@ class customforms_Core {
 			{
 				// Populate the error field
 				$errors[$custom_name] = "The $custom_name field does not exist";
-				return $errors;
+				continue;
+				//return $errors;
 			}
 
 			$max_auth = self::get_user_max_auth();
@@ -236,16 +237,18 @@ class customforms_Core {
 			{
 				// Populate the error field
 				$errors[$custom_name] = "The $custom_name field cannot be edited by your account";
-				return $errors;
+				continue;
+				//return $errors;
 			}
-
+			
 			// Validate that the field is required
 			if ( $field_param->field_required == 1 AND $field_response == "")
 			{
 				$errors[$custom_name] = "The $custom_name field is required";
-				return $errors;
+				continue;
+				//return $errors;
 			}
-
+			
 			// Grab the custom field options for this field
 			$field_options = self::get_custom_field_options($field_id);
 
@@ -266,7 +269,7 @@ class customforms_Core {
 							$errors[$custom_name] = "The $custom_name field requires a valid email address";
 						}
 
-						if ($value == 'numeric' AND !valid::numeric($field_response))
+						if ($value == 'numeric' AND (!valid::numeric($field_response) AND strtolower($field_response) != 'na' AND strtolower($field_response) != 'n/a'))
 						{
 							$errors[$custom_name] = "The $custom_name field must be numeric";
 						}

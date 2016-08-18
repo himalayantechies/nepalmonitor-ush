@@ -665,9 +665,9 @@ class Validation_Core extends ArrayObject {
 	 * @param   array   extra vars to pass to kohana::lang()
 	 * @return  object
 	 */
-	public function add_error($field, $name, $lang_vars = FALSE)
+	public function add_error($field, $name, $lang_vars = FALSE, $force = FALSE)
 	{
-		if (isset($this[$field]) OR $field == 'custom')
+		if (isset($this[$field]) OR $field == 'custom' OR $force)
 		{
 			$this->errors[$field] = $name;
 			// Save error message vars

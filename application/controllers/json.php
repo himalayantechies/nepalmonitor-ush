@@ -882,17 +882,23 @@ class Json_Controller extends Template_Controller {
 		$options = array();
 		$options['items'] = array();
 		$opt = ORM::factory('form_autosearch_option')->where('form_field_id',$field_id)->where('parent', NULL)->find_all()->as_array();
+		$emptyOpt = ORM::factory('form_autosearch_option');
+		$emptyOpt->form_field_id = $field_id;
+		$emptyOpt->id = ' ';
+		$emptyOpt->text = '- None -';
+		$emptyOpt->disabled = 0;
 		if(!empty($opt)) {
+			$options['items'][] = $emptyOpt->as_array();
 			foreach($opt as $key => $parent) {
-				$options['items'][$key] = $parent->as_array();
-				$opt_child = ORM::factory('form_autosearch_option')->where('form_field_id',$field_id)->where('parent', $parent->id)->find_all();
+				$options['items'][$key+1] = $parent->as_array();
+				$opt_child = ORM::factory('form_autosearch_option')->where('form_field_id', $field_id)->where('parent', $parent->id)->find_all();
 				if(!empty($opt_child)) {
 					foreach($opt_child as $child) {
-						$options['items'][$key]['children'][] = $child->as_array();	
+						$options['items'][$key+1]['children'][] = $child->as_array();	
 					}
 				}
 			}
-		}
+		}		
 		header('Content-type: application/json; charset=utf-8');
 		echo json_encode($options);
 	}
