@@ -393,6 +393,51 @@
 								?>
 							</div>
 							
+							<!-- Related Incident Fields -->
+							<div class="row link-row">
+								<h4><?php echo Kohana::lang('ui_main.reports_related');?></h4>
+							</div>
+							<div id="divRelatedIncident">
+								<?php
+								$this_div = "divRelatedIncident";
+								$this_field = "incident_related";
+								$this_startid = "related_id";
+								$this_field_type = "text";
+					
+								if (empty($form[$this_field]))
+								{
+									$i = 1;
+									print "<div class=\"row link-row\">";
+									print form::input($this_field . '[]', '', ' class="text long"');
+									print "<a href=\"#\" class=\"add\" onClick=\"addFormField('$this_div','$this_field','$this_startid','$this_field_type'); return false;\">add</a>";
+									print "</div>";
+								}
+								else
+								{
+									$i = 0;
+									foreach ($form[$this_field] as $value) {									
+										print "<div ";
+										if ($i != 0) {
+											print "class=\"row link-row second\" id=\"" . $this_field . "_" . $i . "\">\n";
+										}
+										else
+										{
+											print "class=\"row link-row\" id=\"$i\">\n";
+										}
+										print form::input($this_field . '[]', $value, ' class="text long"');
+										print "<a href=\"#\" class=\"add\" onClick=\"addFormField('$this_div','$this_field','$this_startid','$this_field_type'); return false;\">add</a>";
+										if ($i != 0)
+										{
+											print "<a href=\"#\" class=\"rem\"  onClick='removeFormField(\"#" . $this_field . "_" . $i . "\"); return false;'>remove</a>";
+										}
+										print "</div>\n";
+										$i++;
+									}
+								}
+								print "<input type=\"hidden\" name=\"$this_startid\" value=\"$i\" id=\"$this_startid\">";
+								?>
+							</div>
+							
 							<!-- Photo Fields -->
 							<div class="row link-row">
 								<h4><?php echo Kohana::lang('ui_main.reports_photos');?></h4>

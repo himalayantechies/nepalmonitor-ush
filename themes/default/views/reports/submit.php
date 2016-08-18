@@ -334,7 +334,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 				<?php Event::run('ushahidi_action.report_form_after_video_link'); ?>
 				
 				<!-- Media Fields -->
-				<div id="divVideo" class="report_row">
+				<div id="divMedia" class="report_row">
 					<h4><?php print Kohana::lang('ui_main.external_media_link'); ?></h4>
 					<?php 
 						// Initialize the counter
@@ -368,6 +368,42 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 				</div>
 				
 				<?php Event::run('ushahidi_action.report_form_after_media_link'); ?>
+				
+				<!-- Related Incident Fields -->
+				<div id="divRelatedIncident" class="report_row">
+					<h4><?php print Kohana::lang('ui_main.related_incident_link'); ?></h4>
+					<?php 
+						// Initialize the counter
+						$i = (empty($form['incident_related'])) ? 1 : 0;
+					?>
+
+					<?php if (empty($form['incident_related'])): ?>
+						<div class="report_row">
+							<?php print form::input('incident_related[]', '', ' class="text long2"'); ?>
+							<a href="#" class="add" onClick="addFormField('divRelatedIncident','incident_related','related_id','text'); return false;">add</a>
+						</div>
+					<?php else: ?>
+						<?php foreach ($form['incident_related'] as $value): ?>
+							<div class="report_row" id="<?php  echo $i; ?>">
+
+							<?php print form::input('incident_related[]', $value, ' class="text long2"'); ?>
+							<a href="#" class="add" onClick="addFormField('divRelatedIncident','incident_related','related_id','text'); return false;">add</a>
+
+							<?php if ($i != 0): ?>
+								<?php $css_id = "#incident_related_".$i; ?>
+								<a href="#" class="rem"	onClick="removeFormField('<?php echo $css_id; ?>'); return false;">remove</a>
+							<?php endif; ?>
+
+							</div>
+							<?php $i++; ?>
+						
+						<?php endforeach; ?>
+					<?php endif; ?>
+
+					<?php print form::input(array('name'=>'related_id','type'=>'hidden','id'=>'related_id'), $i); ?>
+				</div>
+				
+				<?php Event::run('ushahidi_action.report_form_after_related_link'); ?>
 				
 				<!-- Photo Fields -->
 				<div id="divPhoto" class="report_row">

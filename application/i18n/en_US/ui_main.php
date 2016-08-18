@@ -412,6 +412,7 @@ $lang = array(
 	'recent_reports' => 'Recent Reports',
 	'refresh_news_feeds' => 'Refresh News Feeds',
 	'registered_email' => 'Registered Email',
+	'related_incident_link' => 'Related Report Link',
 	'remove' => 'Remove',
 	'reply' => 'Reply',
 	'report' => 'Report',

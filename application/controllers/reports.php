@@ -280,6 +280,7 @@ class Reports_Controller extends Main_Controller {
 			'incident_news' => array(),
 			'incident_video' => array(),
 			'incident_media' => array(),
+			'incident_related' => array(),
 			'incident_photo' => array(),
 			'incident_zoom' => '',
 			'person_first' => '',
@@ -673,6 +674,7 @@ class Reports_Controller extends Main_Controller {
 			$incident_news = array();
 			$incident_video = array();
 			$incident_media = array();
+			$incident_related = array();
 			$incident_photo = array();
 
 			foreach ($incident->media as $media)
@@ -688,6 +690,10 @@ class Reports_Controller extends Main_Controller {
 				elseif ($media->media_type == 6)
 				{
 					$incident_media[] = $media->media_link;
+				}
+				elseif ($media->media_type == 7)
+				{
+					$incident_related[] = $media->media_link;
 				}
 				elseif ($media->media_type == 1)
 				{
@@ -730,7 +736,10 @@ class Reports_Controller extends Main_Controller {
 		
 		// Media links
 		$this->template->content->incident_medias = $incident_media;
-
+		
+		// Related links
+		$this->template->content->incident_relateds = $incident_related;
+		
 		// Images
 		$this->template->content->incident_photos = $incident_photo;
 

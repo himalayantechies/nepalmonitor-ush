@@ -162,7 +162,26 @@
 			?>
 			</div>
 			<?php } ?>
-			<!-- end news source link -->
+			<!-- end media link -->
+			
+			<!-- start related incident link -->
+			<?php if( count($incident_relateds) > 0 ) { ?>
+			<div class="credibility">
+			<h5><?php echo Kohana::lang('ui_main.related_incident_link');?></h5>
+					<?php
+						foreach( $incident_relateds as $incident_related)
+						{
+							if(valid::url($incident_related)) {
+							?>
+							<a href="<?php echo $incident_related; ?> " target="_blank"><?php
+							echo $incident_related;?></a>
+							<br/>
+							<?php }
+						}
+			?>
+			</div>
+			<?php } ?>
+			<!-- end related incident link -->
 
 			<!-- start additional fields -->
 			<?php if(strlen($custom_forms) > 0) { ?>
