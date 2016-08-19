@@ -175,6 +175,7 @@
 					{
 						$option = trim($option);
 						$set_default = ($option == trim($default));
+						if(!empty($field_value)) $set_default = ($option == trim($field_value));
 
 						$html .= "<span style=\"margin-right: 15px\">";
 						$html .= form::label('custom_field['.$field_id.']'," ".$option." ");
@@ -202,6 +203,7 @@
 							foreach($multi_defaults as $key => $def)
 							{
 								$set_default = (trim($option) == trim($def));
+								if(!empty($field_value)) $set_default = ($option == trim($field_value));
 								if ($set_default)
 									break;
 							}
@@ -245,7 +247,7 @@
 							$ddoptions[$op] = $op;
 						}
 					}
-
+					if(!empty($field_value)) $default = $field_value;
 					$html .= form::dropdown("custom_field[".$field_id.']',$ddoptions,$default,$id_name);
 					break;
 
