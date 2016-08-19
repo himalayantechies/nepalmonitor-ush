@@ -174,8 +174,9 @@
 					foreach($options as $option)
 					{
 						$option = trim($option);
-						$set_default = ($option == trim($default));
 						if(!empty($field_value)) $set_default = ($option == trim($field_value));
+						if(empty($set_default)) $set_default = ($option == trim($default));
+						
 
 						$html .= "<span style=\"margin-right: 15px\">";
 						$html .= form::label('custom_field['.$field_id.']'," ".$option." ");
@@ -184,8 +185,10 @@
 					}
 					break;
 				case 6:
+					$multi_defaults = !empty($field_value)? explode(',',$field_value) : NULL;
+					if(empty($multi_defaults))
 					$multi_defaults = !empty($field_property['field_response'])? explode(',', $field_property['field_response']) : NULL;
-
+					
 					$cnt = 0;
 					$html .= "<table border=\"0\">";
 					foreach($options as $option)
