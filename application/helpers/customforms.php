@@ -288,6 +288,7 @@ class customforms_Core {
 			}
 
 			// Validate multi-value boxes only have acceptable values
+			/*
 			if ($field_param->field_type >= 5 AND $field_param->field_type <=7)
 			{
 				$defaults = explode('::',$field_param->field_default);
@@ -315,7 +316,7 @@ class customforms_Core {
 						$errors[$custom_name] = "The $custom_name field does not include $response as an option";
 					}
 				}
-			}
+			} */
 
 			// Validate that a required checkbox is checked
 			if ($field_param->field_type == 6 AND $field_response == 'BLANKHACK' AND $field_param->field_required == 1)
