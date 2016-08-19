@@ -316,7 +316,7 @@
 		{
 			//Auto complete select dropdown
 			 echo "<div class=\"report_row\" id=\"custom_field_row_" . $field_id ."\">";
-			$field_value = !empty($field_property['field_response'])? $field_property['field_response'] : '';
+			$field_value = !empty($field_property['field_response'])? $field_property['field_response'] : $field_value;
 			$field_options = customforms::get_custom_field_options($field_id);
 			$ddoptions = array('' => '');
 			$field_placeholder = '';
