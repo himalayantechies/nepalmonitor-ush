@@ -185,9 +185,10 @@
 					}
 					break;
 				case 6:
-					$multi_defaults = !empty($field_value)? explode(',',$field_value) : NULL;
-					if(empty($multi_defaults))
-					$multi_defaults = !empty($field_property['field_response'])? explode(',', $field_property['field_response']) : NULL;
+					$multi_defaults = !empty($field_value)? explode(',', $field_value) : NULL;
+					if(empty($multi_defaults)) {
+						$multi_defaults = !empty($field_property['field_response'])? explode(',', $field_property['field_response']) : NULL;
+					}
 					
 					$cnt = 0;
 					$html .= "<table border=\"0\">";
@@ -206,7 +207,6 @@
 							foreach($multi_defaults as $key => $def)
 							{
 								$set_default = (trim($option) == trim($def));
-								if(!empty($field_value)) $set_default = ($option == trim($field_value));
 								if ($set_default)
 									break;
 							}
