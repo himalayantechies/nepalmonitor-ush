@@ -446,6 +446,7 @@ class customforms_Core {
 	// HT: new function for autosearch text label 
 	public function get_autosearch_text($value, $file_url, $code = false)
 	{
+		if(substr($file_url, 0, 1) == '/') $file_url = str_replace('\\', '/', realpath(substr($file_url, 1)));
 		$responseStr = file_get_contents($file_url);
 		$response = json_decode($responseStr, true);
 		if(!empty($response['items'])) {

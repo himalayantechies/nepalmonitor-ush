@@ -978,8 +978,9 @@
 			latVal = $('#latitude').val();
 			lonVal = $('#longitude').val();
 			adm = $('#adm_level').val();
-			$('#adm_location').html('<img src=" <?php echo url::file_loc('img') .'media/img/loading_g.gif'; ?> ">');
-			$.post("<?php echo url::base() . 'reports/json_get_pcode/' ?>", 
+			if($.isNumeric(adm)) {
+				$('#adm_location').html('<img src=" <?php echo url::file_loc('img') .'media/img/loading_g.gif'; ?> ">');
+				$.post("<?php echo url::base() . 'reports/json_get_pcode/' ?>", 
 				{ latitude: latVal, longitude: lonVal, adm_level: adm},
 				function(data){
 					if ( data.adm_level == adm)
@@ -1001,6 +1002,10 @@
 				    alert("Location for that accuracy could not be mapped. Please try again!!");
 				    $('#adm_location').html('');
 				});
+			} else {
+				$('#pcode').val();
+				$('#adm_location').html('');
+			}
 		}
 		
 		

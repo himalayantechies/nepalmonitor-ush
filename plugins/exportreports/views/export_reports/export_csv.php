@@ -2,7 +2,7 @@
 ob_start();
 	echo "#,INCIDENT TITLE,INCIDENT DATE,LOCATION,DESCRIPTION,CATEGORY,LATITUDE,LONGITUDE,".strtoupper(Kohana::lang('ui_main.pcode'));
 	foreach(location_filter::$admLevels as $key => $admLvl) {
-		echo ",".$admLvl['label'];
+		if(!$admLvl['dummy']) echo ",".$admLvl['label'];
 	}
 	$custom_titles = customforms::get_custom_form_fields('','',false);
 	foreach($custom_titles as $field_name) {
@@ -34,8 +34,10 @@ ob_start();
 		echo ',"'.exportreports_helper::_csv_text($incident->pcode).'"';
 		$admList = location_filter::get_adm_levels($incident->adm_level, $incident->pcode);
 		foreach(location_filter::$admLevels as $key => $admLvl) {
-			if(isset($admList[$key])) echo ',"'.$admList[$key]->name.'"';
-			else echo ',""';
+			if(!$admLvl['dummy']) {
+				if(isset($admList[$key])) echo ',"'.$admList[$key]->name.'"';
+				else echo ',""';
+			}
 		}
 				
 				
