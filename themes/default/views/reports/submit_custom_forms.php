@@ -46,9 +46,16 @@
 		$id_name = 'id="custom_field_'.$field_id.'"';
 
 		// Get the field value
-		$field_value = ( isset($form['custom_field'][$field_id]) && (!empty($form['custom_field'][$field_id]) || ($form['custom_field'][$field_id] == '0')))
-			? $form['custom_field'][$field_id]
-			: $field_property['field_default'];
+		if($field_property['field_type'] == 6) { 
+			$field_value = ( isset($form['custom_field'][$field_id]) && (!empty($form['custom_field'][$field_id]) || ($form['custom_field'][$field_id] == '0')))
+			? $form['custom_field'][$field_id] : null;
+		}
+		else {
+			$field_value = ( isset($form['custom_field'][$field_id]) && (!empty($form['custom_field'][$field_id]) || ($form['custom_field'][$field_id] == '0')))
+				? $form['custom_field'][$field_id]
+				: $field_property['field_default'];
+		}
+		
 			
 		if ($field_property['field_type'] == 1)
 		{
