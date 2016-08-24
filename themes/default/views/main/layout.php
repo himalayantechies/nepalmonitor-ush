@@ -108,7 +108,40 @@
 				?>
 			</ul>
 			<!-- / category filters -->
+			
+			<!-- / report adm filters -->
+			<div id="report-location-filter">
+				<?php 
+				foreach ($locations as $location => $location_info) { 
+				echo '<div class="location-filters clearingfix">'; ?>
+				<strong>
+					<?php echo location_filter::$admLevels[$location]['label'];
+					echo '<span>';
+						echo "[<a href=\"javascript:toggleLayer('adm_switch".$location."_link', 'adm_switch".$location."')\" id=\"adm_switch".$location."_link\">";
+							echo Kohana::lang('ui_main.hide'); 
+						echo '</a>]';
+					echo '</span>';
+					?>
+				</strong>
+				<?php
+				echo '</div>';
+					echo '<ul id="adm_switch'.$location.'" class="location-filters" >';
+					foreach ($location_info as $loc)
+					{
+						$title = html::escape($loc->name);
+						echo '<li>'
+						    . '<a href="#" id="loc_'. $loc->id .'" title="'.$title.'">'
+						    . '<span class="location-title">'.$title.'</span>'
+						    . '</a>';
 
+						echo '</li>';
+					}
+					echo '</ul><br/>';
+				?>
+				<!-- / adm filters -->
+			<?php } ?>
+			</div>
+				
 			<?php if ($layers): // HT Code: making this false always. the funtion in json.php has been commented out.?>
 				<!-- Layers (KML/KMZ) -->
 				<div class="cat-filters clearingfix" style="margin-top:20px;">

@@ -87,3 +87,9 @@ ul.category-filters li a:hover, ul.category-filters li a.active {
     background-color: #036564;
     border-color: #036564;
 }
+
+ul.location-filters li a:hover, ul.location-filters li a.active {
+    color: #FFFFFF;
+    background-color: #036564;
+    border-color: #036564;
+}

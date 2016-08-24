@@ -556,40 +556,69 @@ ul.category-filters li a:hover, ul.category-filters li a.active {
 ul.category-filters li.child{
     display:none;
 }
+
 div.location-filters{
     font-size: 85%;
     text-transform: uppercase;
-    margin: 5px 0 15px;
+    margin: 0 0 15px 0;
 }
 
 div.location-filters strong{
     float: left;
     margin: 0 10px 0 0;
-    background: url(../images/filters-bg.jpg) 100% 3px no-repeat;
-    padding: 0 15px 0 0;
+    background: url(../images/cat-filters-bg.jpg) 0 3px no-repeat;
+    padding: 0 0 0 10px;
 }
 
-div.location-filters ul{
+div.location-filters span{
+    font-weight:normal;
+    font-size:90%;
+    margin-left:5px;
+    color:#666;
+    letter-spacing:2px;
+}
+
+div.location-filters span a{
+    color:#666;
+}
+
+ul.location-filters, ul.location-filters ul { margin-left: 0; }
+
+ul.location-filters{
+    background: #E7E3DA;
+    border-top: #C7C2BC 7px solid;
+    border-bottom: #C7C2BC 7px solid;
     list-style: none;
+    padding: 12px 15px;
 }
 
-div.location-filters li{
-    float: left;
+ul.location-filters li{
+    padding: 0;
+    margin-bottom: 2px;
+    list-style-type:none;
+}
+
+ul.location-filters li a{
     display: block;
-    margin-right: 10px;
-}
-
-div.location-filters ul li a{
-    color: #999966;
-    padding: 0px 5px;
+    padding: 8px 10px 8px 5px;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
     text-decoration: none;
+    color: #3F3F3F;
+    border: #E7E3DA 1px solid;
+    position: relative;
+    line-height: 17px;
+    overflow: hidden;
+    /* HT : new */
+    font-size: 11px;
+    line-height: 1.3;
 }
 
-div.location-filters ul li a:hover, div.location-filters ul li a.active{
+ul.location-filters li a:hover, ul.location-filters li a.active {
     color: #FFFFFF;
-    padding: 0px 5px;
-    background: #3399CC;
-    text-decoration: none;
+    background-color: #3484AC;
+    border: #3484AC 1px solid;
 }
 
 div.layers-filters{

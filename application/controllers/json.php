@@ -562,6 +562,16 @@ class Json_Controller extends Template_Controller {
 		}
 		
 		// Apply start and end date filters
+		if (isset($_GET['adm']) AND isset($_GET['adm']))
+		{
+			$adm_model = new Location_Filter_Model($_GET['adm']);
+			if($adm_model->loaded)  {
+				$incident_id_in .= " AND pcode LIKE '".$adm_model->pcode."%' ";
+			}
+				
+		}
+		
+		// Apply start and end date filters
 		if (isset($_GET['s']) AND isset($_GET['e']))
 		{
 			$query = 'SELECT id FROM '.$this->table_prefix.'incident '

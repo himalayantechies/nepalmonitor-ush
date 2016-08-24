@@ -55,7 +55,7 @@ class kmlfilter_helper_Core {
 		// Return
 // 		return $tree_html;
 	}
-	/*
+	/* non pcode */
 	public function addkmlfilter($params = array()) {
 		
 		// Fetch the URL data into a local variable
@@ -88,8 +88,8 @@ class kmlfilter_helper_Core {
 		}
 		return $params;
 	}
-	*/
 	
+	/* pcode
 	public function addkmlfilter($params = array()) {
 		// Fetch the URL data into a local variable
 		$url_data = $_GET;
@@ -133,7 +133,8 @@ class kmlfilter_helper_Core {
 					
 		return $params;
 	}
-	
+	*/
+	/* pcode
 	public function layer_polygon($layers, $table = false) {
 		if(!$table) $table = 'location_id';
 		$locSQL = $query = false;
@@ -153,7 +154,9 @@ class kmlfilter_helper_Core {
 		if($locSQL !== false) return '('.$locSQL.')';
 		return $locSQL;
 	}
-	/*public function layer_polygon($layers, $table = false) {
+	*/
+	/* non pcode */
+	 public function layer_polygon($layers, $table = false) {
 		if(!$table) $table = 'location_id';
 		$locSQL = $query = false;
  		if (is_object($layers) AND ($layers instanceof ORM_Iterator)) {
@@ -169,7 +172,7 @@ class kmlfilter_helper_Core {
 		}
 		if($locSQL !== false) return '('.$locSQL.')';
 		return $locSQL;
-	}*/
+	}
 	
 	protected function _layer_polygon($layer, $table) {
 		$locSQL = false;
