@@ -135,7 +135,22 @@ class Reports_Controller extends Main_Controller {
 		// Category tree view
 		$this->template->content->category_tree_view = category::get_category_tree_view();
 		// Location tree view
-		$this->template->content->location_filter = location_filter::get_location_filter_view(2) + location_filter::get_location_filter_view(3);
+		$adm_level = Kohana::config('map.adm_level');
+		$this->template->content->location_filter = array();
+		if(is_numeric($adm_level)) {
+			$this->template->content->location_filter = location_filter::get_location_filter_view($adm_level);
+		} else if(is_array($adm_level)) {
+			foreach($adm_level as $level) {
+				$this->template->content->location_filter += location_filter::get_location_filter_view($adm_level);
+			}
+		} else {
+			
+			foreach(location_filter::$admLevels as $adm_level => $admlvl) {
+				if($admlvl->dummy) {
+					$this->template->content->location_filter += location_filter::get_location_filter_view($adm_level);
+				}
+			}
+		}
 		//$this->template->content->location_filter = array();
 
 		// Additional view content

@@ -125,7 +125,7 @@
 				</strong>
 				<?php
 				echo '</div>';
-					echo '<ul id="adm_switch'.$location.'" class="location-filters" >';
+					echo '<ul id="adm_switch'.$location.'" class="location-filters" style="display:none;">';
 					foreach ($location_info as $loc)
 					{
 						$title = html::escape($loc->name);

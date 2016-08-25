@@ -244,8 +244,11 @@ class Main_Controller extends Template_Controller {
 			}
 		} else {
 			foreach(location_filter::$admLevels as $adm_level => $admlvl) {
-				$locfilter_model = new Database();
-				$parent_locations[$adm_level] = $locfilter_model->query("SELECT DISTINCT pcode, id, name FROM ".$this->table_prefix.".location_filter WHERE adm_level = '".$adm_level."' GROUP BY pcode ORDER BY name");
+				if(!$admlvl->dummy) {
+					$locfilter_model = new Database();
+					$parent_locations[$adm_level] = $locfilter_model->query("SELECT DISTINCT pcode, id, name FROM ".$this->table_prefix.".location_filter WHERE adm_level = '".$adm_level."' GROUP BY pcode ORDER BY name");
+				}
+				
 			}
 		}
 		$this->template->content->locations = $parent_locations;

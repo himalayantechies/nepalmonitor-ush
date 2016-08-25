@@ -87,4 +87,4 @@ $config['latTo'] = "85";
 
 $config['geocode'] = "nominatim";
 
-$config['adm_level'] = array(3);
+$config['adm_level'] = array(2,3);
