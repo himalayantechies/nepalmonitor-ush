@@ -145,7 +145,7 @@ class Reports_Controller extends Main_Controller {
 			}
 		} else {
 			foreach(location_filter::$admLevels as $adm_level => $admlvl) {
-				if(!$admlvl->dummy) {
+				if(!$admlvl['dummy']) {
 					$this->template->content->location_filter += location_filter::get_location_filter_view($adm_level);
 				}
 			}
