@@ -118,7 +118,7 @@
 					<?php echo location_filter::$admLevels[$location]['label'];
 					echo '<span>';
 						echo "[<a href=\"javascript:toggleLayer('adm_switch".$location."_link', 'adm_switch".$location."')\" id=\"adm_switch".$location."_link\">";
-							echo Kohana::lang('ui_main.hide'); 
+							echo Kohana::lang('ui_main.show'); 
 						echo '</a>]';
 					echo '</span>';
 					?>
