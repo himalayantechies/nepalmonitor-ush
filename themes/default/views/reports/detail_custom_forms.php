@@ -6,7 +6,7 @@
 	{
 		if ($field_property['field_type'] == 8)
 		{
-			echo "</table>";
+			echo "</table></div>";
 
 			if (isset($field_propeerty['field_default']))
 			{
