@@ -1,9 +1,11 @@
 <?php
 ob_start();
 	echo "#,INCIDENT TITLE,INCIDENT DATE,LOCATION,DESCRIPTION,CATEGORY,LATITUDE,LONGITUDE,".strtoupper(Kohana::lang('ui_main.pcode'));
+	echo ",".strtoupper(Kohana::lang('ui_main.adm_level'));
 	foreach(location_filter::$admLevels as $key => $admLvl) {
 		if(!$admLvl['dummy']) echo ",".$admLvl['label'];
 	}
+	echo ",SOURCE";
 	$custom_titles = customforms::get_custom_form_fields('','',false);
 	foreach($custom_titles as $field_name) {
 		echo ",".$field_name['field_name'];
@@ -32,6 +34,9 @@ ob_start();
 		echo ',"'.exportreports_helper::_csv_text($incident->latitude).'"';
 		echo ',"'.exportreports_helper::_csv_text($incident->longitude).'"';
 		echo ',"'.exportreports_helper::_csv_text($incident->pcode).'"';
+		if(isset(location_filter::$admLevels[$incident->adm_level]))
+		echo ',"'.exportreports_helper::_csv_text(location_filter::$admLevels[$incident->adm_level]['label']).'"';
+		else echo ',';
 		$admList = location_filter::get_adm_levels($incident->adm_level, $incident->pcode);
 		foreach(location_filter::$admLevels as $key => $admLvl) {
 			if(!$admLvl['dummy']) {
@@ -39,7 +44,16 @@ ob_start();
 				else echo ',""';
 			}
 		}
-				
+		$media = reports::get_media($incident->incident_id, 4);
+		if(!empty($media)) {
+			echo ',';
+			foreach($media as $m) {
+				echo '"'.exportreports_helper::_csv_text($m->media_link).'" ';
+			}
+		} else {
+			echo ',';
+		}
+		
 				
 		$custom_fields = customforms::get_custom_form_fields($incident_id,'',false);
 		if ( ! empty($custom_fields)) {

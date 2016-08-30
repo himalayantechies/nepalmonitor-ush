@@ -1030,9 +1030,16 @@ class reports_Core {
 		else
 		{
 			// Return
-			return Incident_Model::get_incidents(self::$params, false, $order_field, $sort);;
+			return Incident_Model::get_incidents(self::$params, false, $order_field, $sort);
 		}
 	}
 	
+	public static function get_media($incident_id, $media_type) {
+		$media = ORM::factory('media');
+		$media->where('incident_id',$incident_id);
+		if(!empty($media_type)) $media->where('media_type',  $media_type);
+		else $media->where('media_type <> 1');
+		return $media->find_all();
+	}
 }
 ?>

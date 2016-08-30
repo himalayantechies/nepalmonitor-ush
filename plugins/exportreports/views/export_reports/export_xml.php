@@ -30,6 +30,14 @@ echo "<?xml-stylesheet type=\"text/xsl\" href=\"export.xsl\" ?>"; ?>
 			echo '<longitude>'.exportreports_helper::_csv_text($incident->longitude).'</longitude>';
 			echo '<latitude>'.exportreports_helper::_csv_text($incident->longitude).'</latitude>';
 			echo '<pcode>'.exportreports_helper::_csv_text($incident->pcode).'</pcode>';
+			if(isset(location_filter::$admLevels[$incident->adm_level]['label']))
+			echo '<adm_level>'.exportreports_helper::_csv_text(location_filter::$admLevels[$incident->adm_level]['label']).'</adm_level>';
+			$media = reports::get_media($incident->incident_id, 4);
+			if(!empty($media)) {
+				foreach($media as $m) {
+					echo '<source>'.exportreports_helper::_csv_text($m->media_link).'</source>';
+				}
+			}
 			echo '<content type="xhtml" xml:lang="en">'
 			.exportreports_helper::_csv_text($incident->incident_description)
 			.'</content>';
