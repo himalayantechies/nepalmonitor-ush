@@ -141,14 +141,18 @@ class Reports_Controller extends Main_Controller {
 			$this->template->content->location_filter = location_filter::get_location_filter_view($adm_level);
 		} else if(is_array($adm_level)) {
 			foreach($adm_level as $level) {
-				if(empty($this->template->content->location_filter)) $this->template->content->location_filter = location_filter::get_location_filter_view($adm_level);
-				else $this->template->content->location_filter += location_filter::get_location_filter_view($adm_level);
+				$location_views = location_filter::get_location_filter_view($adm_level);
+				foreach($location_views as $key => $list) {
+					$this->template->content->location_filter[$key] = $list;
+				}
 			}
 		} else {
 			foreach(location_filter::$admLevels as $adm_level => $admlvl) {
 				if(!$admlvl['dummy']) {
-					if(empty($this->template->content->location_filter)) $this->template->content->location_filter = location_filter::get_location_filter_view($adm_level);
-					else $this->template->content->location_filter += location_filter::get_location_filter_view($adm_level);
+					$location_views = location_filter::get_location_filter_view($adm_level);
+					foreach($location_views as $key => $list) {
+						$this->template->content->location_filter[$key] = $list;
+					}
 				}
 			}
 		}
