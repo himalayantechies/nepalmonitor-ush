@@ -320,7 +320,7 @@ class Reports_Controller extends Admin_Controller {
 		$this->template->content = new View('admin/reports/edit');
 		$this->template->content->title = Kohana::lang('ui_admin.create_report');
 		
-		$adms = array();
+		$adms = array('' => '');
 		foreach(location_filter::$admLevels as $key => $lvls) {
 			$adms[$key] = $lvls['label']; 
 		}

@@ -230,8 +230,7 @@ class location_filter_Core {
 	 * @return string
 	 */
 	public static function get_location_filter_view($adm_level = null) {
-		//$location_data = self::get_location_filter_data(TRUE, $adm_level); disabled for now as its using file filter
-		$location_data = self::get_location_filter_data(FALSE, $adm_level);
+		$location_data = self::get_location_filter_data(TRUE, $adm_level);
 		// Generate and return the HTML
 		return self::_generate_filterview_html($location_data);
 	}
@@ -316,7 +315,6 @@ class location_filter_Core {
 	}
 	
 	public static function get_adm_levels($adm_level, $pcode) {
-
 		// To hold the location data
 		$adm_Lvls = array();
 		if(isset($adm_level) && !empty($pcode)) {
