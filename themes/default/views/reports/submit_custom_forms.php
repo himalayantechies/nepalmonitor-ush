@@ -189,6 +189,7 @@
 						$html .= form::label('custom_field['.$field_id.']'," ".$option." ");
 						$html .= form::radio('custom_field['.$field_id.']',$option, $set_default, $id_name);
 						$html .= "</span>";
+						$html .= form::hidden("custom_field[".$field_id."-BLANKHACK]",'',$id_name);
 					}
 					break;
 				case 6:

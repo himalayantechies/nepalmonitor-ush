@@ -323,6 +323,10 @@ class customforms_Core {
 			{
 				$errors[$custom_name] = "The $custom_name field is required";
 			}
+			if ($field_param->field_type == 5 AND $field_response == 'BLANKHACK' AND $field_param->field_required == 1)
+			{
+				$errors[$custom_name] = "The $custom_name field is required";
+			}
 		}
 
 		return $errors;
