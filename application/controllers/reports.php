@@ -135,7 +135,9 @@ class Reports_Controller extends Main_Controller {
 		// Category tree view
 		$this->template->content->category_tree_view = category::get_category_tree_view();
 		// Location tree view
-		$adm_level = Kohana::config('map.adm_level');
+		/*
+		 * TODO: uncomment once dev done
+		 $adm_level = Kohana::config('map.adm_level');
 		$this->template->content->location_filter = array();
 		if(is_numeric($adm_level)) {
 			$this->template->content->location_filter = location_filter::get_location_filter_view($adm_level);
@@ -156,7 +158,8 @@ class Reports_Controller extends Main_Controller {
 				}
 			}
 		}
-		//$this->template->content->location_filter = array();
+		*/
+		$this->template->content->location_filter = array();
 
 		// Additional view content
 		$this->template->content->custom_forms_filter = new View('reports/submit_custom_forms');
