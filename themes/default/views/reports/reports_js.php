@@ -604,6 +604,11 @@
 				modeId = elementId.substring('filter_link_mode_'.length);
 				removeParameterItem("mode", modeId);
 			}
+			else if (elementId.indexOf('filter_link_form_') != -1)
+			{
+				formId = elementId.substring('filter_link_form_'.length);
+				removeParameterItem("fm", formId);
+			}
 			else if (elementId.indexOf('filter_link_media_') != -1)
 			{
 				mediaType = elementId.substring('filter_link_media_'.length);
@@ -663,6 +668,17 @@
 			if (incidentModes.length > 0)
 			{
 				urlParameters["mode"] = incidentModes;
+			}
+			
+			var incidentForms = [];
+			$.each($(".fl-form li a.selected"), function(i, item){
+				formId = item.id.substring("filter_link_form_".length);
+				incidentForms.push(formId);
+			});
+			
+			if (incidentForms.length > 0)
+			{
+				urlParameters["fm"] = incidentForms;
 			}
 			
 			//
@@ -751,7 +767,7 @@
 			$.each($("select[id^='custom_field_']"), function(i, item) {
 				var cffId = item.id.substring("custom_field_".length);
 				var value = $(item).val();
-				if(value != "---NOT_SELECTED---")
+				if(value != "---NOT_SELECTED---" && value != "")
 				{
 					customFields.push([cffId, value]);
 				}

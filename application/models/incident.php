@@ -259,7 +259,7 @@ class Incident_Model extends ORM {
 		// Normal query
 		if (! $count)
 		{
-			$sql = 'SELECT DISTINCT i.id incident_id, i.incident_title, i.incident_description, i.incident_date, i.incident_mode, i.incident_active, '
+			$sql = 'SELECT DISTINCT i.id incident_id, i.form_id, i.incident_title, i.incident_description, i.incident_date, i.incident_mode, i.incident_active, '
 				. 'i.incident_verified, i.location_id, i.pcode, i.adm_level, l.country_id, l.location_name, l.latitude, l.longitude ';
 		}
 		// Count query
@@ -331,7 +331,6 @@ class Incident_Model extends ORM {
 		{
 			$sql .= 'LIMIT '.$limit->sql_offset.', '.$limit->items_per_page;
 		}
-		
 		// Event to alter SQL
 		Event::run('ushahidi_filter.get_incidents_sql', $sql);
 

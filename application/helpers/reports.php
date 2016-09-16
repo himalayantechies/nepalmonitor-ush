@@ -688,7 +688,7 @@ class reports_Core {
 		
 		// Split selected parameters on ","
 		// For simplicity, always turn them into arrays even theres just one value
-		$exclude_params = array('c', 'v', 'm', 'mode', 'sw', 'ne', 'start_loc');
+		$exclude_params = array('c', 'v', 'm', 'mode', 'sw', 'ne', 'start_loc', 'fm');
 		//$exclude_params = array('c', 'v', 'm', 'mode', 'sw', 'ne', 'start_loc', 'ly', 'lkey');
 		foreach ($url_data as $key => $value)
 		{
@@ -748,6 +748,28 @@ class reports_Core {
 				array_push(self::$params,
 					'i.incident_mode IN ('.implode(",", $incident_modes).')'
 				);
+			}
+		}
+		
+		if (isset($url_data['fm']) AND is_array($url_data['fm']))
+		{
+			$incident_fm = array();
+				
+			// Sanitize the modes
+			foreach ($url_data['fm'] as $fm)
+			{
+				if (intval($fm) > 0)
+				{
+					$incident_fm[] = intval($fm);
+				}
+			}
+				
+			// Check if any modes exist and add them to the parameter list
+			if (count($incident_fm) > 0)
+			{
+				array_push(self::$params,
+						'i.form_id IN ('.implode(",", $incident_fm).')'
+						);
 			}
 		}
 		

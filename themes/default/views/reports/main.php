@@ -67,7 +67,24 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 				<div id="filters-box">
 					<h2><?php echo Kohana::lang('ui_main.filter_reports_by'); ?></h2>
 					<div id="accordion">
-						
+						<h3>
+							<a href="#" class="small-link-button f-clear reset" onclick="removeParameterKey('fm', 'fl-form');">
+								<?php echo Kohana::lang('ui_main.clear')?>
+							</a>
+							<a class="f-title" href="#"><?php echo Kohana::lang('ui_main.form')?></a>
+						</h3>
+						<div class="f-type-box">
+							<ul class="filter-list fl-form">
+							<?php foreach ($forms as $id => $name): ?>
+								<li>
+									<a href="#" id="filter_link_form_<?php echo ($id); ?>">
+										<span><?php echo $name; ?></span>
+									</a>
+								</li>
+							<?php endforeach; ?>
+
+							</ul>
+						</div>
 						<h3>
 							<a href="#" class="small-link-button f-clear reset" onclick="removeParameterKey('c', 'fl-categories');"><?php echo Kohana::lang('ui_main.clear')?></a>
 							<a class="f-title" href="#"><?php echo Kohana::lang('ui_main.category')?></a>

@@ -135,9 +135,7 @@ class Reports_Controller extends Main_Controller {
 		// Category tree view
 		$this->template->content->category_tree_view = category::get_category_tree_view();
 		// Location tree view
-		/*
-		 * TODO: uncomment once dev done
-		 $adm_level = Kohana::config('map.adm_level');
+		$adm_level = Kohana::config('map.adm_level');
 		$this->template->content->location_filter = array();
 		if(is_numeric($adm_level)) {
 			$this->template->content->location_filter = location_filter::get_location_filter_view($adm_level);
@@ -158,8 +156,7 @@ class Reports_Controller extends Main_Controller {
 				}
 			}
 		}
-		*/
-		$this->template->content->location_filter = array();
+		//$this->template->content->location_filter = array();
 
 		// Additional view content
 		$this->template->content->custom_forms_filter = new View('reports/submit_custom_forms');
@@ -171,6 +168,12 @@ class Reports_Controller extends Main_Controller {
 		$this->template->content->report_stats->avg_reports_per_day = $avg_reports_per_day;
 		$this->template->content->report_stats->percent_verified = $percent_verified;
 		$this->template->content->services = Service_Model::get_array();
+		$forms = array();
+		foreach (customforms::get_custom_forms() as $custom_forms)
+		{
+			$forms[$custom_forms->id] = $custom_forms->form_title;
+		}
+		$this->template->content->forms = $forms;
 
 		$this->template->header->header_block = $this->themes->header_block();
 		$this->template->footer->footer_block = $this->themes->footer_block();
