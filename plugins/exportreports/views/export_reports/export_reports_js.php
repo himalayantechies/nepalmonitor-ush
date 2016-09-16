@@ -111,14 +111,12 @@
 			} else {
 				delete urlParameters["cff"];
 			}
-			
 			<?php
 				// Action, allows plugins to add custom filters
 				Event::run('ushahidi_action.report_js_filterReportsAction');
 			?>
 			// Export the reports
 			exportReports($(this).attr('exptype'));
-			
 		});
 	});
 
@@ -127,11 +125,20 @@
 		if ($.isEmptyObject(urlParameters)) {
 			urlParameters = {show: "all"}
 		}
-		var out = new Array();
-		for (key in urlParameters) {
-			out.push(key + '=' + urlParameters[key]);
-		}
-		outparam = out.join('&');
+		outparam = serializeExport(urlParameters);
 		window.location.href = '<?php echo url::site().'export_reports/index/'?>'+exp+'?'+outparam;
 	}
+
+	serializeExport = function(obj, prefix) {
+		  var str = [];
+		  for(var p in obj) {
+		    if (obj.hasOwnProperty(p)) {
+		      var k = prefix ? prefix + "[" + p + "]" : p, v = obj[p];
+		      str.push(typeof v == "object" ?
+		    		  serializeExport(v, k) :
+		        encodeURIComponent(k) + "=" + encodeURIComponent(v));
+		    }
+		  }
+		  return str.join("&");
+		}
 </script>
