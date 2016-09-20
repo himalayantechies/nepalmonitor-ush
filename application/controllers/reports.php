@@ -1098,7 +1098,7 @@ class Reports_Controller extends Main_Controller {
 		echo location_filter::json_get_pcode($_POST['latitude'], $_POST['longitude'], $_POST['adm_level']);
 	}
 	
-	public function location() {
+	public function location($id = null) {
 		$table_prefix = Kohana::config('database.default.table_prefix');
 		$this->auto_render = FALSE;
 		$db = new Database();
@@ -1143,6 +1143,6 @@ class Reports_Controller extends Main_Controller {
 				}
 			}
 		}
-		url::redirect(url::site().'reports/location');
+		url::redirect(url::site().'reports/location/'.$incident->id);
 	}
 }
