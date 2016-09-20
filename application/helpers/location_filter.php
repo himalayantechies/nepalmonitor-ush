@@ -152,6 +152,7 @@ class location_filter_Core {
 					}
 				}
 				krsort($admLevel);
+
 				$locfilter_model = new Database();
 				foreach ($admLevel as $lvl => $name) {
 					$filters = $locfilter_model -> query("SELECT DISTINCT pcode, id, parent_pcode, adm_level, coord FROM ".self::$table_prefix.".location_filter WHERE adm_level = '".$lvl."' AND name = '". $name ."' GROUP BY pcode");

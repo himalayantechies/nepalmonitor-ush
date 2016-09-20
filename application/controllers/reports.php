@@ -137,7 +137,7 @@ class Reports_Controller extends Main_Controller {
 		// Location tree view
 		$adm_level = Kohana::config('map.adm_level');
 		$this->template->content->location_filter = array();
-		if(is_numeric($adm_level)) {
+		/*if(is_numeric($adm_level)) {
 			$this->template->content->location_filter = location_filter::get_location_filter_view($adm_level);
 		} else if(is_array($adm_level)) {
 			foreach($adm_level as $level) {
@@ -155,7 +155,7 @@ class Reports_Controller extends Main_Controller {
 					}
 				}
 			}
-		}
+		}*/
 		//$this->template->content->location_filter = array();
 
 		// Additional view content
@@ -1104,25 +1104,42 @@ class Reports_Controller extends Main_Controller {
 		$db = new Database();
 		$loc = ORM::factory('form_field')->where('field_name', 'Location Accuracy')->find();
 		// Fetch the other locations
-		$sql = "SELECT DISTINCT i.id, r.form_response, l.latitude, l.longitude "
-					. "FROM " . $table_prefix . "incident i "
-							. "LEFT JOIN " . $table_prefix . "location l ON (i.location_id = l.id) "
-							. "LEFT JOIN " . $table_prefix . "form_response r ON (i.id = r.incident_id AND r.form_field_id = ".$loc->id.") "
-									. "WHERE i.pcode IS NULL OR i.pcode = ''"
-													. "ORDER BY i.id ASC LIMIT 1";
+		$sql = "SELECT DISTINCT i.id, i.location_id, r.form_response, l.latitude, l.longitude "
+					. " FROM " . $table_prefix . "incident i "
+							. " LEFT JOIN " . $table_prefix . "location l ON (i.location_id = l.id) "
+							. " LEFT JOIN " . $table_prefix . "form_response r ON (i.id = r.incident_id AND r.form_field_id = ".$loc->id.") "
+									. " WHERE i.pcode IS NULL OR i.pcode = '' "
+													. " ORDER BY i.id ASC LIMIT 1";
 		$oldRec = $db->query($sql);
 		foreach($oldRec as $rec) {
 			if ($rec->id)
 			{
+				switch($rec->form_response) {
+					case 'Ward':
+						$pcodeLvl = 5; break;
+					case 'VDC':
+						$pcodeLvl = 4; break;
+					case 'Municipality':
+						$pcodeLvl = 4; break;
+					case 'City/village':
+						$pcodeLvl = 4; break;
+					case 'District':
+						$pcodeLvl = 3; break;
+					case 'Region':
+						$pcodeLvl = 2; break;
+					case 'Exact location':
+						$pcodeLvl = 7; break;
+					default:	
+						$pcodeLvl = 6; break;
+				}
 				$incident = ORM::factory('incident', $rec->id);
 				$post = ORM::factory('incident', $rec->id)->as_array();
-				$post['longitude'] = $rec->longitude;
-				$post['latitude'] = $rec->latitude;
-				//$post['adm_level'] = 
-				if ($incident->loaded == true)
 				{
-					location_filter::save($post, $incident);
-					reports::save_report($post, $incident);
+					$return = location_filter::json_pcode($rec->latitude, $rec->longitude, $pcodeLvl);
+					$data = json_decode($return, true);
+					$post['pcode'] = $data['pcode'];
+					$post['adm_level'] = $data['adm_level'];
+					reports::save_report($post, $incident. $rec->location_id);
 				}
 			}
 		}
