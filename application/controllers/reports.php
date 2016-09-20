@@ -1139,7 +1139,7 @@ class Reports_Controller extends Main_Controller {
 					$data = json_decode($return, true);
 					$post['pcode'] = $data['pcode'];
 					$post['adm_level'] = $data['adm_level'];
-					reports::save_report($post, $incident. $rec->location_id);
+					reports::save_report($post, $incident, $rec->location_id);
 				}
 			}
 		}
