@@ -1099,6 +1099,7 @@ class Reports_Controller extends Main_Controller {
 	}
 	
 	public function location($id = null) {
+		set_time_limit(60);
 		$table_prefix = Kohana::config('database.default.table_prefix');
 		$this->auto_render = FALSE;
 		$db = new Database();
@@ -1133,16 +1134,15 @@ class Reports_Controller extends Main_Controller {
 						$pcodeLvl = 6; break;
 				}
 				$incident = ORM::factory('incident', $rec->id);
-				$post = ORM::factory('incident', $rec->id)->as_array();
 				{
 					$return = location_filter::json_pcode($rec->latitude, $rec->longitude, $pcodeLvl);
 					$data = json_decode($return, true);
 					$incident->pcode = $data['pcode'];
 					$incident->adm_level = $data['adm_level'];
 					$incident->save();
+					url::redirect(url::site().'reports/location/'.$incident->id);
 				}
 			}
 		}
-		url::redirect(url::site().'reports/location/'.$incident->id);
 	}
 }
