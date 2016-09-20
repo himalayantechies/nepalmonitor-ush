@@ -1097,4 +1097,35 @@ class Reports_Controller extends Main_Controller {
 		$this->auto_render = FALSE;
 		echo location_filter::json_get_pcode($_POST['latitude'], $_POST['longitude'], $_POST['adm_level']);
 	}
+	
+	public function location() {
+		$table_prefix = Kohana::config('database.default.table_prefix');
+		$this->auto_render = FALSE;
+		$db = new Database();
+		$loc = ORM::factory('form_field')->where('field_name', 'Location Accuracy')->find();
+		// Fetch the other locations
+		$sql = "SELECT DISTINCT i.id, r.form_response, l.latitude, l.longitude "
+					. "FROM " . $table_prefix . "incident i "
+							. "LEFT JOIN " . $table_prefix . "location l ON (i.location_id = l.id) "
+							. "LEFT JOIN " . $table_prefix . "form_response r ON (i.id = r.incident_id AND r.form_field_id = ".$loc->id.") "
+									. "WHERE i.pcode IS NULL OR i.pcode = ''"
+													. "ORDER BY i.id ASC LIMIT 1";
+		$oldRec = $db->query($sql);
+		foreach($oldRec as $rec) {
+			if ($rec->id)
+			{
+				$incident = ORM::factory('incident', $rec->id);
+				$post = ORM::factory('incident', $rec->id)->as_array();
+				$post['longitude'] = $rec->longitude;
+				$post['latitude'] = $rec->latitude;
+				//$post['adm_level'] = 
+				if ($incident->loaded == true)
+				{
+					location_filter::save($post, $incident);
+					reports::save_report($post, $incident);
+				}
+			}
+		}
+		url::redirect(url::site().'reports/location');
+	}
 }
