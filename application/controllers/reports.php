@@ -1137,9 +1137,9 @@ class Reports_Controller extends Main_Controller {
 				{
 					$return = location_filter::json_pcode($rec->latitude, $rec->longitude, $pcodeLvl);
 					$data = json_decode($return, true);
-					$post['pcode'] = $data['pcode'];
-					$post['adm_level'] = $data['adm_level'];
-					reports::save_report($post, $incident, $rec->location_id);
+					$incident->pcode = $data['pcode'];
+					$incident->adm_leve = $data['adm_level'];
+					$incident->save();
 				}
 			}
 		}
