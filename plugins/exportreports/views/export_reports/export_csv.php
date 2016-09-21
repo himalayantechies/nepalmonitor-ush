@@ -5,7 +5,7 @@ ob_start();
 	foreach(location_filter::$admLevels as $key => $admLvl) {
 		if(!$admLvl['dummy']) echo ",".$admLvl['label'];
 	}
-	echo ",SOURCE";
+	echo ",SOURCE,SOURCE TYPE";
 	$custom_titles = customforms::get_custom_form_fields('','',false);
 	foreach($custom_titles as $field_name) {
 		echo ",".$field_name['field_name'];
@@ -44,10 +44,20 @@ ob_start();
 				else echo ',""';
 			}
 		}
-		$media = reports::get_media($incident->incident_id, 4);
-		if(!empty($media)) {
+		$media_news = reports::get_media($incident->incident_id, 4);
+		if(!empty($media_news)) {
 			echo ',';
-			foreach($media as $m) {
+			foreach($media_news as $m) {
+				echo '"'.exportreports_helper::_csv_text($m->media_link).'" ';
+			}
+		} else {
+			echo ',';
+		}
+		
+		$media_news_type = reports::get_media($incident->incident_id, 8);
+		if(!empty($media_news_type)) {
+			echo ',';
+			foreach($media_news_type as $m) {
 				echo '"'.exportreports_helper::_csv_text($m->media_link).'" ';
 			}
 		} else {
