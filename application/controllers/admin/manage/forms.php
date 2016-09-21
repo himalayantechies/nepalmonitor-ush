@@ -1176,7 +1176,9 @@ class Forms_Controller extends Admin_Controller {
 					$autocomplete_default = $autocomplete_file->option_value;
 				if(!empty($autocomplete_default)) {
 					if(!valid::url($autocomplete_default)) {
-						if(substr($autocomplete_default, 0, 1) == '/') $autocomplete_default = str_replace('\\', '/', realpath(substr($autocomplete_default, 1)));
+						$autocomplete_default = url::site().$autocomplete_default;
+					//	if(substr($autocomplete_default, 0, 1) == '/') $autocomplete_default = str_replace('\\', '/', realpath(substr($autocomplete_default, 1)));
+//print_r($autocomplete_default); exit;
 					}
 					$this->template->content->list = file_get_contents($autocomplete_default);
 				}

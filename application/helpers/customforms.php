@@ -451,7 +451,8 @@ class customforms_Core {
 	public function get_autosearch_text($value, $file_url, $code = false)
 	{
 		if(!valid::url($file_url)) {
-		if(substr($file_url, 0, 1) == '/') $file_url = str_replace('\\', '/', realpath(substr($file_url, 1)));
+		//if(substr($file_url, 0, 1) == '/') $file_url = str_replace('\\', '/', realpath(substr($file_url, 1)));
+		$file_url = url::site().$file_url;
 		}
 		$responseStr = file_get_contents($file_url);
 		$response = json_decode($responseStr, true);
