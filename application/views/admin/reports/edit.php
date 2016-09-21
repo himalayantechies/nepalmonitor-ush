@@ -359,7 +359,74 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 								</script>";
 								?>
 							</div>
-
+							
+							<!-- News Type Fields -->
+							<div class="row link-row">
+								<h4><?php echo Kohana::lang('ui_main.reports_news_type');?></h4>
+							</div>
+							<div id="divNewsType">
+								<?php
+								$this_div = "divNewsType";
+								$this_field = "incident_news_type";
+								$this_startid = "news_type_id";
+								$this_field_type = "autosearch";
+								$newstypeoptions = array('' => '');
+								if (empty($form[$this_field]))
+								{
+									$i = 1;
+									print "<div class=\"row link-row\">";
+									//print form::input($this_field . '[]', '', ' class="text long"');
+									print form::dropdown($this_field.'[]', $newstypeoptions, '', ' class="text long2 incident_news_type"');
+									print "<a href=\"#\" class=\"add\" onClick=\"addFormField('$this_div','$this_field','$this_startid','$this_field_type'); return false;\">add</a>";
+									print "</div>";
+								}
+								else
+								{
+									$i = 0;
+									foreach ($form[$this_field] as $value) {
+										print "<div ";
+										if ($i != 0) {
+											print "class=\"row link-row second $this_field_type\" id=\"" . $this_field . "_" . $i . "\">\n";
+										}
+										else
+										{
+											print "class=\"row link-row $this_field_type\" id=\"$i\">\n";
+										}
+										//print form::input($this_field . '[]', $value, ' class="text long"');
+										$newstypeoptions = array($value => $value);
+										print form::dropdown($this_field.'[]', $newstypeoptions, $value, ' class="text long2 incident_news_type"');
+										if ($i != 0)
+										{
+											print "<a href=\"#\" class=\"rem\"  onClick='removeFormField(\"#" . $this_field . "_" . $i . "\"); return false;'>remove</a>";
+										}
+										print "<a href=\"#\" class=\"add\" onClick=\"addFormField('$this_div','$this_field','$this_startid','$this_field_type'); return false;\">add</a>";
+										print "</div>\n";
+										$i++;
+									}
+								}
+								print "<input type=\"hidden\" name=\"$this_startid\" value=\"$i\" id=\"$this_startid\">";
+								$field_file = url::site().'/media/news_source_type.json';
+								echo "<script type=\"text/javascript\">
+									$(function(){
+										$.ajax({
+											url: \"".$field_file."\",
+											dataType: 'json',
+											beforeSend: function() {
+											},
+											success: function(data) {
+												newsTypeList = data.items;
+												$(\"#divNewsType select.incident_news_type\").select2({
+												  data: newsTypeList,
+												  tags: false
+												});
+												
+											},complete: function(data) {
+											}
+										});
+								});
+								</script>";
+								?>
+							</div>
 
 							<!-- Video Fields -->
 							<div class="row link-row">

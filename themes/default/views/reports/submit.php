@@ -296,6 +296,60 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 					<?php print form::input(array('name'=>'news_id', 'type'=>'hidden', 'id'=>'news_id'), $i); ?>
 				</div>
 
+				<!-- News Type Fields -->
+				<div id="divNewsType" class="report_row">
+					<h4><?php echo Kohana::lang('ui_main.reports_news_type'); ?></h4>
+					
+					<?php 
+						// Initialize the counter
+						$i = (empty($form['incident_news_type'])) ? 1 : 0;
+						$newstypeoptions = array('' => '- Please Select -');
+					?>
+
+					<?php if (empty($form['incident_news_type'])): ?>
+						<div class="report_row">
+							<?php //print form::input('incident_news_type[]', '', ' class="text long2"'); ?>
+							<?php print form::dropdown('incident_news_type[]', $newstypeoptions, '', ' class="text long2 incident_news_type"'); ?>
+							<a href="#" class="add" onClick="addFormField('divNewsType','incident_news_type','news_type_id','autosearch'); return false;">add</a>
+						</div>
+					<?php else: ?>
+						<?php foreach ($form['incident_news_type'] as $value): ?>
+						<div class="report_row" id="<?php echo $i; ?>">
+							<?php echo form::dropdown('incident_news_type[]', $newstypeoptions, $value, ' class="text long2 incident_news_type"'); ?>
+							<?php //echo form::input('incident_news_type[]', $value, ' class="text long2"'); ?>
+							
+							<?php if ($i != 0): ?>
+								<?php $css_id = "#incident_news_type_".$i; ?>
+								<a href="#" class="rem"	onClick="removeFormField('<?php echo $css_id; ?>'); return false;">remove</a>
+							<?php endif; ?>
+							
+							<a href="#" class="add" onClick="addFormField('divNewsType','incident_news_type','news_type_id','autosearch'); return false;">add</a>
+
+						</div>
+						<?php $i++; ?>
+
+						<?php endforeach; ?>
+					<?php endif; 
+					$field_file = url::site().'/media/news_source_type.json';
+					echo "<script type=\"text/javascript\">
+						$(function(){
+							$.ajax({
+								url: \"".$field_file."\",
+								dataType: 'json',
+								success: function(data) {
+									newsTypeList = data.items;
+									$(\"#divNewsType select.incident_news_type\").select2({
+									  data: newsTypeList,
+									  tags: false
+									});
+								}
+							});
+						
+					});
+					</script>";
+					?>
+					<?php print form::input(array('name'=>'news_id', 'type'=>'hidden', 'id'=>'news_id'), $i); ?>
+				</div>
 
 				<!-- Video Fields -->
 				<div id="divVideo" class="report_row">

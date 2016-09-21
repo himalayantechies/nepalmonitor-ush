@@ -307,6 +307,7 @@ class Reports_Controller extends Main_Controller {
 			'country_name'=>'',
 			'incident_category' => array(),
 			'incident_news' => array(),
+			'incident_news_type' => array(),
 			'incident_video' => array(),
 			'incident_media' => array(),
 			'incident_related' => array(),
@@ -701,6 +702,7 @@ class Reports_Controller extends Main_Controller {
 
 			// Retrieve Media
 			$incident_news = array();
+			$incident_news_type = array();
 			$incident_video = array();
 			$incident_media = array();
 			$incident_related = array();
@@ -723,6 +725,10 @@ class Reports_Controller extends Main_Controller {
 				elseif ($media->media_type == 7)
 				{
 					$incident_related[] = $media->media_link;
+				}
+				elseif ($media->media_type == 8)
+				{
+					$incident_news_type[] = $media->media_link;
 				}
 				elseif ($media->media_type == 1)
 				{
@@ -758,7 +764,9 @@ class Reports_Controller extends Main_Controller {
 
 		// News Source links
 		$this->template->content->incident_news = $incident_news;
-
+		
+		// News Source type
+		$this->template->content->incident_news_types = $incident_news_type;
 
 		// Video links
 		$this->template->content->incident_videos = $incident_video;
@@ -1090,18 +1098,13 @@ class Reports_Controller extends Main_Controller {
 		echo json_encode(array("status"=>"success", "response"=>$form_fields));
 	}
 
-	public function get_pcode() {
-		$this->template = "";
-		$this->auto_render = FALSE;
-		echo location_filter::json_pcode($_POST['latitude'], $_POST['longitude'], $_POST['adm_level']);
-	}
 	public function json_get_pcode() {
 		$this->template = "";
 		$this->auto_render = FALSE;
 		echo location_filter::json_get_pcode($_POST['latitude'], $_POST['longitude'], $_POST['adm_level']);
 	}
 	
-	public function location($id = 0) {
+	public function location($id = 0, $force = FALSE) {
 		set_time_limit(60);
 		$table_prefix = Kohana::config('database.default.table_prefix');
 		$this->auto_render = FALSE;
@@ -1112,8 +1115,10 @@ class Reports_Controller extends Main_Controller {
 				. " FROM " . $table_prefix . "incident i "
 				. " LEFT JOIN " . $table_prefix . "location l ON (i.location_id = l.id) "
 				. " LEFT JOIN " . $table_prefix . "form_response r ON (i.id = r.incident_id AND r.form_field_id = ".$loc->id.") "
-				. " WHERE (i.pcode IS NULL OR i.pcode = '') AND i.id > ".$id
-				. " ORDER BY i.id ASC LIMIT 1";
+				. " WHERE ";
+		if($force) $sql .= " i.id = ".$id;				
+		else $sql .= "(i.pcode IS NULL OR i.pcode = '') AND i.id > ".$id;
+		$sql .= " ORDER BY i.id ASC LIMIT 1";
 		$oldRec = $db->query($sql);
 		foreach($oldRec as $rec) {
 			if ($rec->id)
@@ -1144,10 +1149,13 @@ class Reports_Controller extends Main_Controller {
 					$incident->pcode = $data['pcode'];
 					$incident->adm_level = $data['adm_level'];
 					$incident->save();
-					echo 'Location updated for report ID: '.$rec->id;
-					echo '<hr/><b>Data:</b><br/>'.$return;
-					echo '<hr/><b>Incident record:</b><br/>'.json_encode($incident->as_array());
-					echo '<script>window.location.replace("'.url::site().'/reports/location/'.$rec->id.'");</script>';
+					if($force) { url::redirect(request::referrer());
+					} else {
+						echo 'Location updated for report ID: '.$rec->id;
+						echo '<hr/><b>Data:</b><br/>'.$return;
+						echo '<hr/><b>Incident record:</b><br/>'.json_encode($incident->as_array());
+						echo '<script>window.location.replace("'.url::site().'/reports/location/'.$rec->id.'");</script>';
+					}
 				}
 			}
 		}

@@ -15,6 +15,7 @@
  */
 ?>
 		var newsList;
+		var newsTypeList;
 		var map;
 		var thisLayer;
 		var proj_4326 = new OpenLayers.Projection('EPSG:4326');
@@ -684,6 +685,10 @@
 				$("#" + field + "_" + id + " select.incident_news").select2({
 					data: newsList,
 					tags: true
+				});
+				$("#" + field + "_" + id + " select.incident_news_type").select2({
+					data: newsTypeList,
+					tags: false
 				});
 			}
 			$("#" + field + "_" + id).effect("highlight", {}, 800);

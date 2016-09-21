@@ -345,6 +345,7 @@ class Reports_Controller extends Admin_Controller {
 			'country_name' =>'',
 			'incident_category' => array(),
 			'incident_news' => array(),
+			'incident_news_type' => array(),
 			'incident_video' => array(),
 			'incident_media' => array(),
 			'incident_related' => array(),
@@ -720,6 +721,7 @@ class Reports_Controller extends Admin_Controller {
 
 					// Retrieve Media
 					$incident_news = array();
+					$incident_news_type = array();
 					$incident_video = array();
 					$incident_media = array();
 					$incident_related = array();
@@ -741,6 +743,10 @@ class Reports_Controller extends Admin_Controller {
 						elseif ($media->media_type == 7)
 						{
 							$incident_related[] = $media->media_link;
+						}
+						elseif ($media->media_type == 8)
+						{
+							$incident_news_type[] = $media->media_link;
 						}
 						elseif ($media->media_type == 1)
 						{
@@ -783,6 +789,7 @@ class Reports_Controller extends Admin_Controller {
 						'country_id' => $incident->location->country_id,
 						'incident_category' => $incident_category,
 						'incident_news' => $incident_news,
+						'incident_news_type' => $incident_news_type,
 						'incident_video' => $incident_video,
 						'incident_media' => $incident_media,
 						'incident_related' => $incident_related,

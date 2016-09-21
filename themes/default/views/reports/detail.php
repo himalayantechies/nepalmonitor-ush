@@ -145,6 +145,28 @@
 			<?php } ?>
 			<!-- end news source link -->
 			
+			<!-- start news source type link -->
+			<?php if( count($incident_news_types) > 0 ) { ?>
+			<div class="credibility">
+			<h5><?php echo Kohana::lang('ui_main.reports_news_type');?></h5>
+					<?php
+						foreach( $incident_news_types as $incident_news_type)
+						{
+							if(valid::url($incident_news_type)) {
+							?>
+							<a href="<?php echo $incident_news_type; ?> " target="_blank"><?php
+							echo $incident_news_type;?></a>
+							<?php } else {
+								echo $incident_news_type;
+							} ?>
+							<br/>
+							<?php
+						}
+			?>
+			</div>
+			<?php } ?>
+			<!-- end news source type link -->
+			
 			<!-- start media link -->
 			<?php if( count($incident_medias) > 0 ) { ?>
 			<div class="credibility">
