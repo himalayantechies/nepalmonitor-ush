@@ -1142,8 +1142,8 @@ class Reports_Controller extends Main_Controller {
 					$incident->adm_level = $data['adm_level'];
 					$incident->save();
 					echo 'Location updated for report ID: '.$rec->id;
-					echo '<br/>Data:'.$return;
-					echo '<br/>Incident record:'.json_encode($incident->as_array());
+					echo '<hr/><b>Data:</b><br/>'.$return;
+					echo '<hr/><b>Incident record:</b><br/>'.json_encode($incident->as_array());
 					echo '<script>window.location.replace("'.url::site().'reports/location/'.$rec->id.'");</script>';
 				}
 			}
