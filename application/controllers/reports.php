@@ -1135,7 +1135,7 @@ class Reports_Controller extends Main_Controller {
 				}
 				$incident = ORM::factory('incident', $rec->id);
 				{
-					$return = location_filter::json_pcode($rec->latitude, $rec->longitude, $pcodeLvl);
+					$return = location_filter::json_get_pcode($rec->latitude, $rec->longitude, $pcodeLvl);
 					$data = json_decode($return, true);
 					
 					$incident->pcode = $data['pcode'];
