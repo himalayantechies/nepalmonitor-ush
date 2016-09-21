@@ -249,11 +249,10 @@ class location_filter_Core {
 			$tree_html[$lvl] = "";
 			foreach ($location as $lid => $loc) {
 				if(!isset($loc->report_count)) {
-					$tmp = $tree_html[$lvl]."<li>" . "<a href=\"#\" class=\"loc_selected\" id=\"filter_link_adm_" . $loc->id . "\" title=\"{$loc->name}\">" . "<span class=\"item-title\">" . html::strip_tags($loc->name) . "</span>" . "</a></li>";
+					$tree_html[$lvl] .= "<li>" . "<a href=\"#\" class=\"loc_selected\" id=\"filter_link_adm_" . $loc->id . "\" title=\"{$loc->name}\">" . "<span class=\"item-title\">" . html::strip_tags($loc->name) . "</span>" . "</a></li>";
 				} else if(isset($loc->report_count) && $loc->report_count > 0) {
-					$tmp = $tree_html[$lvl]."<li>" . "<a href=\"#\" class=\"loc_selected\" id=\"filter_link_adm_" . $loc->id . "\" title=\"{$loc->name}\">" . "<span class=\"item-title\">" . html::strip_tags($loc->name) . "</span>" . "<span class=\"item-count\">" . $loc->report_count . "</span>" . "</a></li>";
+					$tree_html[$lvl] .= "<li>" . "<a href=\"#\" class=\"loc_selected\" id=\"filter_link_adm_" . $loc->id . "\" title=\"{$loc->name}\">" . "<span class=\"item-title\">" . html::strip_tags($loc->name) . "</span>" . "<span class=\"item-count\">" . $loc->report_count . "</span>" . "</a></li>";
 				}
-				$tree_html[$lvl] = $tmp;
 			}
 		}
 

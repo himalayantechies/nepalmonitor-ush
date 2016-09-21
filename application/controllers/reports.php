@@ -138,13 +138,13 @@ class Reports_Controller extends Main_Controller {
 		$adm_level = Kohana::config('map.adm_level');
 		$this->template->content->location_filter = array();
 		if(is_numeric($adm_level)) {
-			$location_views = location_filter::get_location_filter_view($adm_level, FALSE);
+			$location_views = location_filter::get_location_filter_view($adm_level, TRUE);
 			foreach($location_views as $key => $list) {
 				$this->template->content->location_filter[$key] = $list;
 			}
 		} else if(is_array($adm_level)) {
 			foreach($adm_level as $level) {
-				$location_views = location_filter::get_location_filter_view($adm_level, FALSE);
+				$location_views = location_filter::get_location_filter_view($level, TRUE);
 				foreach($location_views as $key => $list) {
 					$this->template->content->location_filter[$key] = $list;
 				}
@@ -152,7 +152,7 @@ class Reports_Controller extends Main_Controller {
 		} else {
 			foreach(location_filter::$admLevels as $adm_level => $admlvl) {
 				if(!$admlvl['dummy']) {
-					$location_views = location_filter::get_location_filter_view($adm_level, FALSE);
+					$location_views = location_filter::get_location_filter_view($adm_level, TRUE);
 					foreach($location_views as $key => $list) {
 						$this->template->content->location_filter[$key] = $list;
 					}
