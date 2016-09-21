@@ -1098,7 +1098,7 @@ class Reports_Controller extends Main_Controller {
 		echo location_filter::json_get_pcode($_POST['latitude'], $_POST['longitude'], $_POST['adm_level']);
 	}
 	
-	public function location() {
+	public function location($id = 0) {
 		set_time_limit(60);
 		$table_prefix = Kohana::config('database.default.table_prefix');
 		$this->auto_render = FALSE;
@@ -1106,11 +1106,11 @@ class Reports_Controller extends Main_Controller {
 		$loc = ORM::factory('form_field')->where('field_name', 'Location Accuracy')->find();
 		// Fetch the other locations
 		$sql = "SELECT DISTINCT i.id, i.location_id, r.form_response, l.latitude, l.longitude "
-					. " FROM " . $table_prefix . "incident i "
-							. " LEFT JOIN " . $table_prefix . "location l ON (i.location_id = l.id) "
-							. " LEFT JOIN " . $table_prefix . "form_response r ON (i.id = r.incident_id AND r.form_field_id = ".$loc->id.") "
-									. " WHERE i.pcode IS NULL OR i.pcode = '' "
-													. " ORDER BY i.id ASC LIMIT 1";
+				. " FROM " . $table_prefix . "incident i "
+				. " LEFT JOIN " . $table_prefix . "location l ON (i.location_id = l.id) "
+				. " LEFT JOIN " . $table_prefix . "form_response r ON (i.id = r.incident_id AND r.form_field_id = ".$loc->id.") "
+				. " WHERE i.pcode IS NULL OR i.pcode = '' AND i.id > ".$id
+				. " ORDER BY i.id ASC LIMIT 1";
 		$oldRec = $db->query($sql);
 		foreach($oldRec as $rec) {
 			if ($rec->id)
@@ -1139,9 +1139,9 @@ class Reports_Controller extends Main_Controller {
 					$data = json_decode($return, true);
 					$incident->pcode = $data['pcode'];
 					$incident->adm_level = $data['adm_level'];
-					$incident->save();
-					echo 'Location updated for report ID: '.$rec->id;
-					echo '<script>window.location.replace("'.url::site().'reports/location");</script>';
+					if($incident->save()) echo 'Location updated for report ID: '.$rec->id;
+					else echo 'Location update failed for report ID: '.$rec->id;
+					echo '<script>window.location.replace("'.url::site().'reports/location/'.$rec->id.'");</script>';
 				}
 			}
 		}
