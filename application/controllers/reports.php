@@ -1144,6 +1144,7 @@ class Reports_Controller extends Main_Controller {
 					echo 'Location updated for report ID: '.$rec->id;
 					echo '<hr/><b>Data:</b><br/>'.$return;
 					echo '<hr/><b>Incident record:</b><br/>'.json_encode($incident->as_array());
+					exit;
 					echo '<script>window.location.replace("'.url::site().'reports/location/'.$rec->id.'");</script>';
 				}
 			}

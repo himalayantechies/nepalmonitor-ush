@@ -403,7 +403,7 @@ class location_filter_Core {
 		$siblings = $locfilter_model -> query("SELECT DISTINCT name, pcode, id, parent_pcode, adm_level, coord FROM ".self::$table_prefix.".location_filter" 
 		." WHERE coord IS NOT NULL "
 		/*. "AND adm_level = '5' "*/
-		." AND lat_min <= ".$lat." AND lat_max >= ".$lat."  AND lng_min <= ".$lng." AND lng_max >= ".$lng." GROUP BY pcode");
+		." AND lat_min <= '".$lat."' AND lat_max >= '".$lat."'  AND lng_min <= '".$lng."' AND lng_max >= '".$lng."' GROUP BY pcode");
 		//$loc_model = new Location_Filter_Model();
 		//$siblings = $loc_model -> where('pcode', $parent->pcode) -> find_all();
 		$filter_match = false;
