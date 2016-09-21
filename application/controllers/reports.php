@@ -1109,7 +1109,7 @@ class Reports_Controller extends Main_Controller {
 				. " FROM " . $table_prefix . "incident i "
 				. " LEFT JOIN " . $table_prefix . "location l ON (i.location_id = l.id) "
 				. " LEFT JOIN " . $table_prefix . "form_response r ON (i.id = r.incident_id AND r.form_field_id = ".$loc->id.") "
-				. " WHERE i.pcode IS NULL OR i.pcode = '' AND i.id > ".$id
+				. " WHERE (i.pcode IS NULL OR i.pcode = '') AND i.id > ".$id
 				. " ORDER BY i.id ASC LIMIT 1";
 		$oldRec = $db->query($sql);
 		foreach($oldRec as $rec) {
