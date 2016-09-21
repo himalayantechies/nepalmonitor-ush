@@ -1140,8 +1140,7 @@ class Reports_Controller extends Main_Controller {
 					
 					$incident->pcode = $data['pcode'];
 					$incident->adm_level = $data['adm_level'];
-					if($incident->save()) echo 'Location updated for report ID: '.$rec->id;
-					else echo 'Location update failed for report ID: '.$rec->id;
+					$incident->save() echo 'Location updated for report ID: '.$rec->id;
 					echo '<br/>Data:'.$return;
 					echo '<br/>Incident record:'.json_encode($incident->as_array());
 					echo '<script>window.location.replace("'.url::site().'reports/location/'.$rec->id.'");</script>';
