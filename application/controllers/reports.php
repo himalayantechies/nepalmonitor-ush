@@ -1137,12 +1137,13 @@ class Reports_Controller extends Main_Controller {
 				{
 					$return = location_filter::json_pcode($rec->latitude, $rec->longitude, $pcodeLvl);
 					$data = json_decode($return, true);
-					print_r($data);
+					
 					$incident->pcode = $data['pcode'];
 					$incident->adm_level = $data['adm_level'];
 					if($incident->save()) echo 'Location updated for report ID: '.$rec->id;
 					else echo 'Location update failed for report ID: '.$rec->id;
-					print_r($incident->as_array());
+					echo '<br/>Data:'.$return;
+					echo '<br/>Incident record:'.json_encode($incident->as_array());
 					echo '<script>window.location.replace("'.url::site().'reports/location/'.$rec->id.'");</script>';
 				}
 			}
