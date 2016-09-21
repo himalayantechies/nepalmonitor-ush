@@ -1141,6 +1141,7 @@ class Reports_Controller extends Main_Controller {
 					$incident->adm_level = $data['adm_level'];
 					if($incident->save()) echo 'Location updated for report ID: '.$rec->id;
 					else echo 'Location update failed for report ID: '.$rec->id;
+					print_r($incident->as_array());
 					echo '<script>window.location.replace("'.url::site().'reports/location/'.$rec->id.'");</script>';
 				}
 			}
