@@ -1098,7 +1098,7 @@ class Reports_Controller extends Main_Controller {
 		echo location_filter::json_get_pcode($_POST['latitude'], $_POST['longitude'], $_POST['adm_level']);
 	}
 	
-	public function location($id = null) {
+	public function location() {
 		set_time_limit(60);
 		$table_prefix = Kohana::config('database.default.table_prefix');
 		$this->auto_render = FALSE;
