@@ -1140,7 +1140,8 @@ class Reports_Controller extends Main_Controller {
 					$incident->pcode = $data['pcode'];
 					$incident->adm_level = $data['adm_level'];
 					$incident->save();
-					url::redirect(url::site().'reports/location/'.$incident->id);
+					echo 'Location updated for report ID: '.$rec->id;
+					echo '<script>window.location.replace("'.url::site().'reports/location");</script>';
 				}
 			}
 		}
