@@ -229,8 +229,8 @@ class location_filter_Core {
 	 *
 	 * @return string
 	 */
-	public static function get_location_filter_view($adm_level = null) {
-		$location_data = self::get_location_filter_data(TRUE, $adm_level);
+	public static function get_location_filter_view($adm_level = null, $count = TRUE) {
+		$location_data = self::get_location_filter_data($count, $adm_level);
 		// Generate and return the HTML
 		return self::_generate_filterview_html($location_data);
 	}
