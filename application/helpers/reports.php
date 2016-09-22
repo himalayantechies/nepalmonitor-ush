@@ -87,6 +87,19 @@ class reports_Core {
 				}
 			}
 		}*/
+		
+		if ( ! empty($post->incident_news_type))
+		 {
+		 foreach ($post->incident_news_type as $key => $url)
+		 {
+		 if ( empty($url))
+		 {
+		 	$post->add_error('incident_news_type','required');
+		 }
+		 }
+		 } else {
+		 	$post->add_error('incident_news_type','required');
+		 }
 
 		// Validate only the fields that are filled in
 		if ( ! empty($post->incident_video))
@@ -475,7 +488,7 @@ class reports_Core {
 				}
 			}
 		}
-
+		
 		// b. Video
 		if (isset($post->incident_video))
 		{
@@ -597,6 +610,24 @@ class reports_Core {
 					$video->media_link = $item;
 					$video->media_date = date("Y-m-d H:i:s",time());
 					$video->save();
+				}
+			}
+		}
+		
+		// f. News Type
+		if (isset($post->incident_news_type))
+		{
+			foreach ($post->incident_news_type as $item)
+			{
+				if ( ! empty($item))
+				{
+					$news = new Media_Model();
+					$news->location_id = $incident->location_id;
+					$news->incident_id = $incident->id;
+					$news->media_type = 8;		// News
+					$news->media_link = $item;
+					$news->media_date = date("Y-m-d H:i:s",time());
+					$news->save();
 				}
 			}
 		}
