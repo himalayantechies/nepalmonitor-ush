@@ -751,7 +751,7 @@
 						$("#country_name").val(data.country);
 						$("#latitude").val(data.latitude);
 						$("#longitude").val(data.longitude);
-						$("#location_name").val('');
+						$("#location_name").val(data.name);
 						//$("#pcode").val('');
 						//$('#adm_location').html('');
 					} else {

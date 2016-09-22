@@ -365,7 +365,7 @@ class location_filter_Core {
 		if(empty(self::$pcode)) {
 			$loc_model = new Location_Filter_Model();
 			$child = $loc_model -> where(" ISNULL(parent_pcode) = '' ") -> find();
-			$location_name = '<span style=\"display:inline-block\"><i>'.self::$admLevels[$child->adm_level]['label'].'</i>: '.$child->name.'&nbsp;&nbsp;</span>';
+			$location_name = '<span style="display:inline-block"><i>'.self::$admLevels[$child->adm_level]['label'].'</i>: '.$child->name.'&nbsp;&nbsp;</span>';
 			self::$adm_level = $child->adm_level;
 			self::$pcode = $child->pcode;
 			self::$loc_name = $child->name;
@@ -386,7 +386,7 @@ class location_filter_Core {
 					}
 					
 					if($key <= $pcodeLvl) {
-						$location_name = '<span style=\"display:inline-block\"><i>'.$lvl['label'].'</i>: '.$child->name.'&nbsp;&nbsp;</span>'.$location_name;
+						$location_name = '<span style="display:inline-block"><i>'.$lvl['label'].'</i>: '.$child->name.'&nbsp;&nbsp;</span>'.$location_name;
 					}
 				}
 			}
