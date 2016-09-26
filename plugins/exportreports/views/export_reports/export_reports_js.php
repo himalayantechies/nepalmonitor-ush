@@ -1,7 +1,8 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("a.export-button").click(function() {
+		$("a.export-button").click(function(ev) {
+			ev.preventDefault();
 			//
 			// Get all the selected categories
 			//
@@ -27,6 +28,17 @@
 			
 			if (incidentModes.length > 0) {
 				urlParameters["mode"] = incidentModes;
+			}
+
+			var incidentForms = [];
+			$.each($(".fl-form li a.selected"), function(i, item){
+				formId = item.id.substring("filter_link_form_".length);
+				incidentForms.push(formId);
+			});
+			
+			if (incidentForms.length > 0)
+			{
+				urlParameters["fm"] = incidentForms;
 			}
 			
 			//
@@ -125,20 +137,22 @@
 		if ($.isEmptyObject(urlParameters)) {
 			urlParameters = {show: "all"}
 		}
+		console.log(urlParameters);
 		outparam = serializeExport(urlParameters);
+		console.log(outparam);
 		window.location.href = '<?php echo url::site().'export_reports/index/'?>'+exp+'?'+outparam;
 	}
 
 	serializeExport = function(obj, prefix) {
-		  var str = [];
-		  for(var p in obj) {
-		    if (obj.hasOwnProperty(p)) {
-		      var k = prefix ? prefix + "[" + p + "]" : p, v = obj[p];
-		      str.push(typeof v == "object" ?
-		    		  serializeExport(v, k) :
-		        encodeURIComponent(k) + "=" + encodeURIComponent(v));
-		    }
-		  }
-		  return str.join("&");
-		}
+	  var str = [];
+	  for(var p in obj) {
+	    if (obj.hasOwnProperty(p)) {
+	      var k = prefix ? prefix + "[" + p + "]" : p, v = obj[p];
+	      str.push(typeof v == "object" ?
+	    		  serializeExport(v, k) :
+	        encodeURIComponent(k) + "=" + encodeURIComponent(v));
+	    }
+	  }
+	  return str.join("&");
+	}
 </script>

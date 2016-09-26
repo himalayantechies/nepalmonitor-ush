@@ -985,19 +985,21 @@ class reports_Core {
 					continue;
 
 				$field_value = $field[1];
-				if (is_array($field_value))
-				{
-					$field_value = implode(",", $field_value);
-				}
-								
-				$i++;
-				if ($i > 1)
-				{
-					$where_text .= " OR ";
-				}
-				
-				$where_text .= "(form_field_id = ".intval($field_id)
+				if(!empty($field_value)) {
+					if (is_array($field_value))
+					{
+						$field_value = implode(",", $field_value);
+					}
+					
+					$i++;
+					if ($i > 1)
+					{
+						$where_text .= " OR ";
+					}
+					
+					$where_text .= "(form_field_id = ".intval($field_id)
 					. " AND form_response = '".Database::instance()->escape_str(trim($field_value))."')";
+				}
 			}
 			
 			// Make sure there was some valid input in there
@@ -1051,7 +1053,6 @@ class reports_Core {
 		{
 			$sort = (strtoupper($url_data['sort']) == 'ASC') ? 'ASC' : 'DESC';
 		}
-		
 		if ($paginate)
 		{
 			// Fetch incident count
