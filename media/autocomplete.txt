@@ -1,0 +1,16 @@
+{
+	"items": [{
+			"id": " ",
+			"text": "- None -"
+		}, {
+		"id": "1",
+		"text": "1",
+		"children": [{
+			"id": "5",
+			"text": "5"
+		}, {
+			"id": "3",
+			"text": "value 3"
+		}]
+	}]
+}
