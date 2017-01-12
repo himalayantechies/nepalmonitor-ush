@@ -119,6 +119,9 @@
 											<td><?php echo $alert->alert_sent->count(); ?></td>
 											<td class="col-4">
 												<ul>
+
+													<li class="none-separator"><a href="#add" onClick="fillFields('<?php echo(rawurlencode($alert->id)); ?>','<?php echo(rawurlencode($alert->alert_lat)); ?>','<?php echo(rawurlencode($alert->alert_lon)); ?>','<?php echo(rawurlencode($alert->alert_radius)); ?>')"><?php echo Kohana::lang('ui_main.edit');?></a></li>
+
 													<li class="none-separator"><a href="javascript:alertAction('d','DELETE','<?php echo(rawurlencode($alert->id)); ?>')" class="del"><?php echo Kohana::lang('ui_main.delete');?></a></li>
 												</ul>
 											</td>
@@ -132,3 +135,42 @@
 					<?php print form::close(); ?>
 				</div>
 			</div>
+
+			<div class="tabs">
+					<!-- tabset -->
+					<a name="add"></a>
+					<ul class="tabset">
+						<li><a href="#" class="active"><?php echo Kohana::lang('ui_main.add_edit');?></a></li>
+					</ul>
+					<!-- tab -->
+					<div class="tab">
+						<?php print form::open(NULL,array('id' => 'alertMainSave', 'name' => 'alertMainSave')); ?>
+						<input type="hidden" id="alert_id"  name="alert_id" value="" />
+						<input type="hidden" name="action" id="action" value="e"/>
+						
+						<div class="tab_form_item">
+							<strong><?php echo Kohana::lang('ui_main.location');?>:</strong> <br />
+							<strong><?php echo Kohana::lang('ui_main.latitude');?></strong> <br />							
+							<?php print form::input('alert_lat', '', ' class="text long"'); ?> <br />
+							<strong><?php echo Kohana::lang('ui_main.longitude');?></strong> <br />
+							<?php print form::input('alert_lon', '', ' class="text long"'); ?>
+						</div>	
+						<div class="tab_form_item">
+							<strong><?php echo Kohana::lang('ui_main.radius');?>:</strong><br />
+							<select id = "alert_radius" name = "alert_radius"> <br />
+  								<option value="1">1</option>
+								<option value="5">5</option>
+								<option value="10">10</option>
+								<option value="20">20</option>
+								<option value="100">100</option>
+								<option value="500">500</option>
+							</select>
+						</div>						
+						<div class="tab_form_item">
+							<input type="submit" class="save-rep-btn" value="<?php echo Kohana::lang('ui_main.save');?>" />
+						</div>
+						<?php print form::close(); ?>			
+					</div>
+				</div>
+			</div>
+

@@ -110,7 +110,12 @@ class Alerts_Controller extends Admin_Controller {
 			{
 				$post->add_rules('alert_id.*','required','numeric');
 			}
-			
+			if($post->action == 'e'){
+				$post->add_rules('alert_lat', 'required', 'between[-90,90]');
+				$post->add_rules('alert_lon', 'required', 'between[-180,180]');
+				$post->add_rules('alert_radius','required','in_array[1,5,10,20,50,100,500]');
+			}
+
 			if ($post->validate())
 			{
 				// Delete Alert
@@ -129,14 +134,37 @@ class Alerts_Controller extends Admin_Controller {
 					$form_saved = TRUE;
 					$form_action = strtoupper(Kohana::lang('ui_admin.deleted'));
 				}
-			}
+
+				//Edit Alert
+
+				elseif ($post->action == 'e')
+				{
+					
+					$data = arr::extract($_POST, 'alert_lat', 'alert_lon','alert_radius');
+						$alert = isset($_POST['alert_id']) ? new Alert_Model($_POST['alert_id'])
+						: new Alert_Model();
+
+						if ($alert->loaded) {
+							$alert->alert_lat = $data['alert_lat'];
+							$alert->alert_lon = $data['alert_lon'];
+							$alert->alert_radius = $data['alert_radius'];
+								
+							$alert->save();
+							$alert_saved = TRUE;
+							$form_action = utf8::strtoupper(Kohana::lang('ui_admin.added_edited'));
+							
+						}
+				}
+
+
+			}	
 			else
 			{
 				$errors = arr::overwrite($errors, $post->errors('alerts'));
 				$form_error = TRUE;
 			}
+
 		}
-		
 		// Pagination
 		$pagination = new Pagination(array(
 			'query_string'   => 'page',
@@ -164,4 +192,5 @@ class Alerts_Controller extends Admin_Controller {
 		// Javascript Header
 		$this->template->js = new View('admin/manage/alerts/alerts_js');
 	}
+
 }
