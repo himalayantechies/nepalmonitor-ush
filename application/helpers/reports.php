@@ -1043,7 +1043,8 @@ class reports_Core {
 		$order_options = array(
 			'title' => 'i.incident_title',
 			'date' => 'i.incident_date',
-			'id' => 'i.id'
+			'id' => 'i.id',
+			'name' => 'u.name'
 		);
 		if (isset($url_data['order']) AND isset($order_options[$url_data['order']]))
 		{

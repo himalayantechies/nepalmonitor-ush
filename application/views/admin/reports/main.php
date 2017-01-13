@@ -64,6 +64,7 @@
 								'datemodify' => Kohana::lang('ui_admin.date_modified'),
 								'dateadd' => Kohana::lang('ui_admin.date_added'),
 								'title' => Kohana::lang('ui_admin.report_title'),
+								'name' => Kohana::lang('ui_admin.submitted_by'),
 							), $order_field); 
 							echo form::input(array(
 									'type'  => 'hidden',
@@ -71,8 +72,11 @@
 									'value' => $sort,
 									'class' => 'sort-field'
 								));
-							echo form::hidden('status', $status);
-							echo form::close(); ?>
+							echo form::hidden('status', $status); ?>
+							<input type="text" name="u" class="" value="" placeholder="Enter Username">
+							<button class="username"> <?php echo Kohana::lang('ui_main.search');?></button>
+
+							<?php echo form::close(); ?>
 						</div>
 					</div>
 				</div>

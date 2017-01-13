@@ -285,6 +285,7 @@ $lang = array(
 	'stats_collection_error_short' => 'Stat Collection Failed!',
 	'specific_days' => 'Specific Days',
 	'subject' => 'Subject',
+	'submitted_by' => 'Submitted By',
 	'superadmin_role' => 'Super Admin',
 	'task_performed' => 'Task Performed',
 	'text_field' => 'Text Field',

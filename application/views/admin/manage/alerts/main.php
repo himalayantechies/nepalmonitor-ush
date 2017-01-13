@@ -156,7 +156,7 @@
 							<?php print form::input('alert_lon', '', ' class="text long"'); ?>
 						</div>	
 						<div class="tab_form_item">
-							<strong><?php echo Kohana::lang('ui_main.radius');?>:</strong><br />
+							<strong><?php echo Kohana::lang('ui_main.radius');?>:</strong> <br />
 							<select id = "alert_radius" name = "alert_radius"> <br />
   								<option value="1">1</option>
 								<option value="5">5</option>

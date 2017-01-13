@@ -67,6 +67,10 @@ $(function () {
 		$('.sort-field').val('ASC');
 		$('.sort-form').submit();
 		return false;
+	$(".username").click(function(){
+		$('.sort-form').submit();
+		return false;
+	})
 	});
 });
 

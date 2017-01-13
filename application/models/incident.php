@@ -260,7 +260,7 @@ class Incident_Model extends ORM {
 		if (! $count)
 		{
 			$sql = 'SELECT DISTINCT i.id incident_id, i.form_id, i.incident_title, i.incident_description, i.incident_date, i.incident_mode, i.incident_active, '
-				. 'i.incident_verified, i.location_id, i.pcode, i.adm_level, l.country_id, l.location_name, l.latitude, l.longitude ';
+				. 'i.incident_verified, i.location_id, i.pcode, i.adm_level, l.country_id, l.location_name, l.latitude, l.longitude , u.name ';
 		}
 		// Count query
 		else
@@ -285,7 +285,8 @@ class Incident_Model extends ORM {
 		$sql .=  'FROM '.$table_prefix.'incident i '
 			. 'LEFT JOIN '.$table_prefix.'location l ON (i.location_id = l.id) '
 			. 'LEFT JOIN '.$table_prefix.'incident_category ic ON (ic.incident_id = i.id) '
-			. 'LEFT JOIN '.$table_prefix.'category c ON (ic.category_id = c.id) ';
+			. 'LEFT JOIN '.$table_prefix.'category c ON (ic.category_id = c.id) '
+			. 'LEFT JOIN '.$table_prefix.'users u ON (i.user_id = u.id) ' ;
 		
 		// Check if the all reports flag has been specified
 		if (array_key_exists('all_reports', $where) AND $where['all_reports'] == TRUE)
