@@ -72,6 +72,21 @@ class Reports_Controller extends Admin_Controller {
 			}
 		}
 
+		if (isset($_GET['u'])){
+			$keyword_raw = (isset($_GET['u']))? preg_replace('#/\w+/#', '', $_GET['u']) : "";
+
+			// Strip any HTML tags that may have been missed in Phase 1
+			$keyword_raw = strip_tags($keyword_raw);
+
+			// Phase 3 - Invoke Kohana's XSS cleaning mechanism just incase an outlier wasn't caught
+			// in the first 2 steps
+			$keyword_raw = $this->input->xss_clean($keyword_raw);
+
+			array_push($this->params, "(u.name LIKE '%".$keyword_raw."%')");
+		}
+
+
+
 		// Get Search Keywords (If Any)
 		if (isset($_GET['k']))
 		{

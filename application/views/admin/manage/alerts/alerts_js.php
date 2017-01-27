@@ -16,6 +16,15 @@
 
 <?php require SYSPATH.'../application/views/admin/utils_js.php' ?>
 
+function fillFields(id, alert_lat, alert_lon,
+ alert_radius )
+{
+	$("#alert_id").attr("value", decodeURIComponent(id));
+	$("#alert_lat").attr("value", decodeURIComponent(alert_lat));
+	$("#alert_lon").attr("value", decodeURIComponent(alert_lon));
+	$("#alert_radius").attr("value", decodeURIComponent(alert_radius));
+}
+
 		// Ajax Submission
 		function alertAction ( action, confirmAction, alert_id )
 		{

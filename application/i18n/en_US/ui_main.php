@@ -405,6 +405,7 @@ $lang = array(
 	'profile_saved' => 'Your Profile Has Been Saved',
 	'quick_stats' => 'Quick Stats',
 	'rating' => 'Rating',
+	'radius' => 'Radius',
 	'read' => 'Read',
 	'receive' => 'Receive',
 	'receive_from' => 'Receive from',
