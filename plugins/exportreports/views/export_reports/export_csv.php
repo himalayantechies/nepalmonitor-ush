@@ -1,5 +1,13 @@
 <?php
-ob_start();
+set_time_limit(0);
+ob_clean();
+
+	header("Content-type: text/x-csv");
+	header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+	header("Content-Disposition: attachment; filename=" . time() . ".csv");
+	header('Content-Transfer-Encoding: binary');
+	flush();
+
 	echo "#,INCIDENT TITLE,INCIDENT DATE,LOCATION,DESCRIPTION,CATEGORY,LATITUDE,LONGITUDE,".strtoupper(Kohana::lang('ui_main.pcode'));
 	echo ",".strtoupper(Kohana::lang('ui_main.adm_level'));
 	foreach(location_filter::$admLevels as $key => $admLvl) {
@@ -14,8 +22,10 @@ ob_start();
 
 	// Incase a plugin would like to add some custom fields
 	Event::run('ushahidi_filter.report_download_csv_header', $custom_headers);
+	flush();
 
 	echo "\n";
+	$incident_count = 0;
 	foreach ($incidents as $incident) {
 		$incident_id = $incident->incident_id;
 		echo '"'.$incident->incident_id.'",';
@@ -104,12 +114,12 @@ ob_start();
 		// Incase a plugin would like to add some custom data for an incident
 		Event::run('ushahidi_filter.report_download_csv_incident', $incident->incident_id);
 		echo "\n";
+		if($incident_count%100 == 0)
+		flush();
+	$incident_count++;
 	}
-	$report_csv = ob_get_clean();
-	header("Content-type: text/x-csv");
-	header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-	header("Content-Disposition: attachment; filename=" . time() . ".csv");
-	header('Content-Transfer-Encoding: binary');
-	header("Content-Length: " . strlen($report_csv));
-	echo $report_csv;
+	flush();
+//	$report_csv = ob_get_clean();
+	exit();
+	
 ?>
