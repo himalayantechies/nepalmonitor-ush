@@ -148,7 +148,7 @@
 			<!-- start news source type link -->
 			<?php if( count($incident_news_types) > 0 ) { ?>
 			<div class="credibility">
-			<h5><?php echo Kohana::lang('ui_main.reports_news_type');?></h5>
+			<h5><?php echo Kohana::lang('ui_main.source_type');?></h5>
 					<?php
 						foreach( $incident_news_types as $incident_news_type)
 						{
