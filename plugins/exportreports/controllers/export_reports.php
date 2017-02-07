@@ -44,7 +44,8 @@ class Export_reports_Controller extends Template_Controller {
 			$locale = Kohana::config('locale.language.0');
 		}
 		$report_listing = new View('export_reports/export_'.$type);
-		$report_listing->incidents = reports::fetch_incidents();
+		$report_listing->incidents = reports::fetch_incidents(true, 30);		
+		$report_listing->pagin = reports::$pagination;
 		print $report_listing;
 	}
 	
