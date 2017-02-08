@@ -304,7 +304,7 @@
 							
 							<!-- News Source Type Fields -->
 							<div class="row link-row">
-								<h4><?php echo Kohana::lang('ui_main.source_type');?></h4>
+								<h4><?php echo Kohana::lang('ui_main.reports_news_type');?></h4>
 							</div>
 							<div id="divNewsType">
 								<?php

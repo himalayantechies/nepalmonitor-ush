@@ -335,7 +335,9 @@ jQuery(function() {
 
 		return false;
 	});
-		
+	
+	$('#layer_25').trigger('click'); // HT: force trigger kml load
+	
 	// Timeslider and date change actions
 	$("select#startDate, select#endDate").selectToUISlider({
 		labels: 4,
