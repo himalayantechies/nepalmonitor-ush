@@ -40,6 +40,17 @@ class Export_reports_Controller extends Template_Controller {
 	public function index($type = 'csv') {
 		$this->template = "";
 		$this->auto_render = FALSE;
+		$dir = SYSPATH.'../plugins/exportreports/tmpexport';
+		$files_list = scandir($dir);
+
+		foreach ($files_list as $file) {
+			if(is_file($dir.'/'.$file)) {
+				if (filectime($dir.'/'.$file) < (time() - (60 * 60 * 24))) {
+					unlink($dir.'/'.$file);
+				}
+			}
+			
+		}
 		if (empty($locale)) {
 			$locale = Kohana::config('locale.language.0');
 		}

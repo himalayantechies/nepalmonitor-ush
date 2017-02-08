@@ -100,6 +100,7 @@ echo "<?xml-stylesheet type=\"text/xsl\" href=\"export.xsl\" ?>"; ?>
 $report_xml = ob_get_clean();
 
 $nameVar = time().'_'.rand();
+$fext = '.xml';
 $zipName = $nameVar.'.zip';
 $zipPath = SYSPATH.'../plugins/exportreports/tmpexport/'.$zipName;
 
@@ -114,7 +115,7 @@ if($zip->open($zipPath, ZIPARCHIVE::CREATE)!==TRUE){
 	if(!$zip->addFile(SYSPATH.'../plugins/exportreports/css/export.xsl', 'export.xsl')) {
 		$error .= "* Sorry Stylesheet file failed to attach<br/>";
 	}
-	if(!$zip->addFromString($nameVar.'.xml', $report_xml)) {
+	if(!$zip->addFromString($nameVar.$fext, $report_xml)) {
 		$error .= "* Sorry XML file not created<br/>";
 	}
 	$zip->close();
