@@ -298,7 +298,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 
 				<!-- News Type Fields -->
 				<div id="divNewsType" class="report_row">
-					<h4><?php echo Kohana::lang('ui_main.reports_news_type'); ?></h4>
+					<h4><?php echo Kohana::lang('ui_main.source_type'); ?></h4>
 					
 					<?php 
 						// Initialize the counter

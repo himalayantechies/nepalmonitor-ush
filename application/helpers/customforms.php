@@ -269,7 +269,7 @@ class customforms_Core {
 							$errors[$custom_name] = "The $custom_name field requires a valid email address";
 						}
 
-						if ($value == 'numeric' AND (!valid::numeric($field_response) AND strtolower($field_response) != 'na' AND strtolower($field_response) != 'n/a'))
+						if ($value == 'numeric' AND (!valid::numeric($field_response) AND strtolower($field_response) != 'na' AND strtolower($field_response) != 'n/a' AND strtolower($field_response) != 'unknown'))
 						{
 							$errors[$custom_name] = "The $custom_name field must be numeric";
 						}

@@ -529,6 +529,7 @@ $lang = array(
 	'sorry_no_badges' => 'Sorry, you do not have any badges.',
 	'source' => 'Source',
 	'source_name' => 'Source name',
+	'source_type' => 'Source Type',
 	'sort' => 'Sort',
 	'sort_by' => 'Sort By',
 	'source_url' => 'Source URL',
