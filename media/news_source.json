@@ -1,36 +1,427 @@
 {
 	"items": [{
-		"id": "The Rising Nepal",
-		"text": "The Rising Nepal"
-	},{
-		"id": "Gorkhapatra",
-		"text": "Gorkhapatra"
-	},{
-		"id": "Nepal Samacharpatra",
-		"text": "Nepal Samacharpatra"
-	},{
-		"id": "Nepal News",
-		"text": "Nepal News"
-	},{
-		"id": "Sahara Sansar",
-		"text": "Sahara Sansar"
-	},{
-		"id": "Nepali Times",
-		"text": "Nepali Times"
-	},{
-		"id": "Nepal Metro Online",
-		"text": "Nepal Metro Online"
-	},{
-		"id": "Arthik Abhiyan",
-		"text": "Arthik Abhiyan"
-	},{
-		"id": "The Himalayan Times",
-		"text": "The Himalayan Times"
-	},{
-		"id": "The Kathmandu Post",
-		"text": "The Kathmandu Post"
-	},{
-		"id": "Kantipur",
-		"text": "Kantipur"
-	}]
+			"id": " ",
+			"text": "- none -"
+		
+	},  {
+		"id": "Kaski",
+		"text": "Kaski",
+		"children": [{
+
+			"id": "Adarsha Samaj",
+			"text": "Adarsha Samaj"
+		},{
+			"id": "Samadhan Dainik",
+			"text": "Samadhan Dainik"
+		},{
+			"id": "Pokharapatra",
+			"text": "Pokharapatra"
+		},{
+			"id": "Pokhara Hotline",
+			"text": "Pokhara Hotline"
+		},{
+			"id": "Himdoot National Daily",
+			"text": "Himdoot National Daily"
+		}]
+
+	}, {
+		"id": "Makwanpur",
+		"text": "Makwanpur",
+		"children": [{
+
+			"id": "Thaha Sandesh",
+			"text": "Thaha Sandesh"
+		},{
+			"id": "Pradesh National Daily",
+			"text": "Pradesh National Daily"
+		},{
+			"id": "Sajha Kura",
+			"text": "Sajha Kura"
+		},{
+			"id": "Hetauda Sandesh",
+			"text": "Hetauda Sandesh"
+		},{
+			"id": "Samriddha Samaj",
+			"text": "Samriddha Samaj"
+		}]
+
+	}, {
+		"id": "Morang",
+		"text": "Morang",
+		"children": [{
+
+			"id": "New Srishti Dainik",
+			"text": "New Srishti Dainik"
+		},{
+			"id": "Udghosh",
+			"text": "Udghosh"
+		},{
+			"id": "Darsan",
+			"text": "Darsan"
+		},{
+			"id": "Gograha",
+			"text": "Gograha"
+		},{
+			"id": "Jana Bidroha",
+			"text": "Jana Bidroha"
+		}]
+
+	}, {
+		"id": "Rupandehi",
+		"text": "Rupandehi",
+		"children": [{
+
+			"id": "Nawa Tilottama",
+			"text": "Nawa Tilottama"
+		},{
+			"id": "Dainik Patra",
+			"text": "Dainik Patra"
+		},{
+			"id": "Butwal Today",
+			"text": "Butwal Today"
+		},{
+			"id": "Mechi Kali",
+			"text": "Mechi Kali"
+		},{
+			"id": "Lumbini Dainik",
+			"text": "Lumbini Dainik"
+		}]	
+
+	}, {
+		"id": "Jumla",
+		"text": "Jumla",
+		"children": [{
+
+			"id": "Karnali Sarokar",
+			"text": "Karnali Sarokar"
+		},{
+			"id": "Mountain Today",
+			"text": "Mountain Today"
+		}]
+
+	}, {
+		"id": "Kanchanpur",
+		"text": "Kanchanpur",
+		"children": [{
+
+			"id": "Farwest Times",
+			"text": "Farwest Times"
+		},{
+			"id": "Janakranti",
+			"text": "Janakranti"
+		},{
+			"id": "Paschim Nepal",
+			"text": "Paschim Nepal"
+		},{
+			"id": "Ajako Naya Bikalpa",
+			"text": "Ajako Naya Bikalpa"
+		},{
+			"id": "Abhiyan Dainik",
+			"text": "Abhiyan Dainik"
+		}]
+
+	}, {
+		"id": "Kailali",
+		"text": "Kailali",
+		"children": [{
+
+			"id": "Dhangadhi Post",
+			"text": "Dhangadhi Post"
+		},{
+			"id": "Pahura Tharu",
+			"text": "Pahura Tharu"
+		},{
+			"id": "Paschim Today",
+			"text": "Paschim Today"
+		},{
+			"id": "Morning Bell",
+			"text": "Morning Bell"
+		},{
+			"id": "Kailali Times",
+			"text": "Kailali Times"
+		}]
+
+	}, {
+		"id": "Banke",
+		"text": "Banke",
+		"children": [{
+
+			"id": "Dainik Nepalgunj",
+			"text": "Dainik Nepalgunj"
+		},{
+			"id": "Sadbhav",
+			"text": "Sadbhav"
+		},{
+			"id": "Kalpristha",
+			"text": "Kalpristha"
+		},{
+			"id": "Ritambhara",
+			"text": "Ritambhara"
+		},{
+			"id": "Hamro Samachar",
+			"text": "Hamro Samachar"
+		}]
+
+	}, {
+		"id": "Parsa",
+		"text": "Parsa",
+		"children": [{
+
+			"id": "Ankush",
+			"text": "Ankush"
+		},{
+			"id": "Lok Times",
+			"text": "Lok Times"
+		},{
+			"id": "Pratik Dainik",
+			"text": "Pratik Dainik"
+		},{
+			"id": "Bypass",
+			"text": "Bypass"
+		},{
+			"id": "Satya Sandesh",
+			"text": "Satya Sandesh"
+		},{
+			"id": "Bhojpuri Times",
+			"text": "Bhojpuri Times"
+		},{
+			"id": "Sarwa Rashtriya Dainik",
+			"text": "Sarwa Rashtriya Dainik"
+		}]
+
+	}, {
+		"id": "Dhading",
+		"text": "Dhading",
+		"children": [{
+
+			"id": "Dhading Aawaz",
+			"text": "Dhading Aawaz"
+		},{
+			"id": "Pabil News",
+			"text": "Pabil News"
+		}]
+		}, {
+		"id": "Surkhet",
+		"text": "Surkhet",
+		"children": [{
+
+			"id": "Sajha Bisauni",
+			"text": "Sajha Bisauni"
+		},{
+			"id": "Yug Aahwaan",
+			"text": "Yug Aahwaan"
+		},{
+			"id": "Surkhet Pahichaan",
+			"text": "Surkhet Pahichaan"
+		},{
+			"id": "Hamro Naya Nepal",
+			"text": "Hamro Naya Nepal"
+		},{
+			"id": "Kaakre Bihar",
+			"text": "Kaakre Bihar"
+		}]
+},{
+		"id": "Sarlahi",
+		"text": "Sarlahi",
+		"children": [{
+
+			"id": "Loktantra Daily",
+			"text": "Loktantra Daily"
+		},{
+			"id": "Sarlahi Daily",
+			"text": "Sarlahi Daily"
+		}]
+},{
+		"id": "Rautahat",
+		"text": "Rautahat",
+		"children": [{
+
+			"id": "Kranti Dwaar",
+			"text": "Kranti Dwaar"
+		},{
+			"id": "Rautahat District",
+			"text": "Rautahat District"
+		},{
+			"id": "Pratik Dainik",
+			"text": "Pratik Dainik"
+		},{
+			"id": "Highway News",
+			"text": "Highway News"
+		},{
+			"id": "Madhesh Monthly",
+			"text": "Madhesh Monthly"
+		}]
+},{
+		"id": "Sindhul",
+		"text": "Sindhuli",
+		"children": [{
+
+			"id": "Saugat",
+			"text": "Saugat"
+		},{
+			"id": "Prabhat",
+			"text": "Prabhat"
+		}]
+},{
+		"id": "Achham",
+		"text": "Achham",
+		"children": 
+[{
+
+			"id": "Khaptad News Rashtriya Dainik",
+			"text": "Khaptad News Rashtriya Dainik"
+		}]
+
+	},{"id": "Dang",
+		"text": "Dang",
+		"children": [{
+
+			"id": "Naya Yug Bodh",
+			"text": "Naya Yug Bodh"
+		},{
+			"id": "Gorakhshya",
+			"text": "Gorakhshya"
+		},{
+			"id": "Rapti Samachar",
+			"text": "Rapti Samachar"
+		},{
+			"id": "Ganatantra",
+			"text": "Ganatantra"
+		},{
+			"id": "Rapti Post",
+			"text": "Rapti Post"
+		}]
+},{"id": "Palpa",
+		"text": "Palpa",
+		"children": [{
+
+			"id": "Nava Jana Chetana Daily",
+			"text": "Nava Jana Chetana Daily"
+		}]
+		},{
+"id": "Chitwan",
+		"text": "Chitwan",
+		"children": [{
+
+			"id": "Chitwan Post",
+			"text": "Chitwan Post"
+		},{
+			"id": "Sanchar Patra Daily",
+			"text": "Sanchar Patra Daily"
+		},{
+			"id": "Lok Tantra Sandesh",
+			"text": "Lok Tantra Sandesh"
+		},{
+			"id": "Kaaya Kairan Dainik",
+			"text": "Kaaya Kairan Dainik"
+		},{
+			"id": "Paradarshi Dainik",
+			"text": "Paradarshi Dainik"
+		}]
+},{
+"id": "Mahottari",
+		"text": "Mahottari",
+		"children": [{
+
+			"id": "The Public Today",
+			"text": "The Public Today"
+		}]
+},{
+"id": "Sindhupalchowk",
+		"text": "Sindhupalchowk",
+		"children": [{
+
+			"id": "Lokpriya Dainik",
+			"text": "Lokpriya Dainik"
+		}]
+		},{
+"id": "Jhapa",
+		"text": "Jhapa",
+		"children": [{
+
+			"id": "Purwanchal",
+			"text": "Purwanchal"
+		},{
+			"id": "Pratidin",
+			"text": "Pratidin"
+		},{
+			"id": "Bibechana",
+			"text": "Bibechana"
+		},{
+			"id": "Mechi Times",
+			"text": "Mechi Times"
+		},{
+			"id": "Jana Sansad",
+			"text": "Jana Sansad"
+		}]
+},{
+"id": "Kothang",
+		"text": "Kothang",
+		"children": [{
+
+			"id": "Halesi Times",
+			"text": "Halesi Times"
+		}]
+		},{
+"id": "Panchthar",
+		"text": "Panchthar",
+		"children": [{
+
+			"id": "Mechi Post News Daily",
+			"text": "Mechi Post News Daily"
+		}]
+		},{
+"id": "Dhanusha",
+		"text": "Dhanusha",
+		"children": [{
+
+			"id": "Janakpur Today",
+			"text": "Janakpur Today"
+		},{
+			"id": "Janakpur Express",
+			"text": "Janakpur Express"
+		},{
+			"id": "Daily Express",
+			"text": "Daily Express"
+		},{
+			"id": "Terai Times",
+			"text": "Terai Times"
+		},{
+			"id": "Newspaper",
+			"text": "Newspaper"
+		}]
+},{
+"id": "Saptari",
+		"text": "Saptari",
+		"children": [{
+
+			"id": "Krishna",
+			"text": "Krishna"
+		},{
+			"id": "Rajbiraj Today",
+			"text": "Rajbiraj Today"
+		},{
+			"id": "Natkhat Dainik",
+			"text": "Natkhat Dainik"
+		},{
+			"id": "Current Post",
+			"text": "Current Post"
+		},{
+			"id": "Madhesh Kranti",
+			"text": "Madhesh Kranti"
+		}]
+},{
+		"id": "Siraha",
+		"text": "Siraha",
+		"children": [{
+
+			"id": "Maraganugaami",
+			"text": "Maraganugaami"
+		},{
+			"id": "Upon Dainik",
+			"text": "Upon Dainik"
+		}]
+}
+
+]
 }
