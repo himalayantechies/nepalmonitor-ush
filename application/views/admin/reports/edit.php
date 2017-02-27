@@ -362,7 +362,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 							
 							<!-- News Type Fields -->
 							<div class="row link-row">
-								<h4><?php echo Kohana::lang('ui_main.reports_news_type');?></h4>
+								<h4><?php echo Kohana::lang('ui_main.source_type');?></h4>
 							</div>
 							<div id="divNewsType">
 								<?php
@@ -417,7 +417,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 												newsTypeList = data.items;
 												$(\"#divNewsType select.incident_news_type\").select2({
 												  data: newsTypeList,
-												  tags: false
+												  tags: true
 												});
 												
 											},complete: function(data) {

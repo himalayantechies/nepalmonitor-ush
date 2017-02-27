@@ -1,11 +1,12 @@
 <?php
 set_time_limit(0);
+$fext = '.csv';
 if ($pagin->current_page <= 1){
-$fname = time().'.csv';
+	$fname = time().'_'.rand();
 } else {
 	$fname = $_GET['file'];
 }
-$filePath = '/plugins/exportreports/tmpexport/'.$fname;
+$filePath = '/plugins/exportreports/tmpexport/'.$fname.$fext;
 $fileName = SYSPATH.'..'.$filePath;
 if ($pagin->current_page <= 1){
  
