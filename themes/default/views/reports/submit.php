@@ -340,7 +340,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 									newsTypeList = data.items;
 									$(\"#divNewsType select.incident_news_type\").select2({
 									  data: newsTypeList,
-									  tags: false
+									  tags: true
 									});
 								}
 							});
@@ -348,7 +348,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 					});
 					</script>";
 					?>
-					<?php print form::input(array('name'=>'news_id', 'type'=>'hidden', 'id'=>'news_id'), $i); ?>
+					<?php print form::input(array('name'=>'news_id', 'type'=>'hidden', 'id'=>'news_type_id'), $i); ?>
 				</div>
 
 				<!-- Video Fields -->

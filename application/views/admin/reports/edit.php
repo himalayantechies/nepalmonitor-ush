@@ -417,7 +417,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 												newsTypeList = data.items;
 												$(\"#divNewsType select.incident_news_type\").select2({
 												  data: newsTypeList,
-												  tags: false
+												  tags: true
 												});
 												
 											},complete: function(data) {
