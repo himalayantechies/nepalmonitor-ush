@@ -664,8 +664,8 @@ class Json_Controller extends Template_Controller {
 
 			if ($content !== false)
 			{
-				//echo $content;  // HT Code: uncommented this line and commented the next line.
-				echo $this->render_layer(array('layer_id' => $layer->id, 'content' => $content)); //--Changed by HT while merging
+				echo $content;  // HT Code: uncommented this line and commented the next line.
+				//echo $this->render_layer(array('layer_id' => $layer->id, 'content' => $content)); //--Changed by HT while merging
 			}
 		}
 		else

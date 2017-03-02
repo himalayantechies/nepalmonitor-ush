@@ -8,3 +8,4 @@ application/config/email.php
 application/logs/*
 media/uploads/*
 .htaccess
+error_log

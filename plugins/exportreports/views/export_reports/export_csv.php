@@ -133,6 +133,7 @@ if($pagin->total_pages == $pagin->current_page) {
 }
 $Download_percent = round(($pagin->current_page / $pagin->total_pages) * 100 , 0 , PHP_ROUND_HALF_EVEN);
 echo nl2br("It may take a while. Please wait...\nExporting:$Download_percent%");
+echo '<progress max="100" value="'.$Download_percent.'"></progress>';
 echo '<input id="reloadUrl" type="hidden" value="'.$nxtUrl.'">';
 ?>
 <script>
