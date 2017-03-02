@@ -362,6 +362,7 @@
 			echo "<h4>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</h4>";
 			//echo form::input('custom_field['.$field_id.']', $field_value, $id_name .' class="text custom_text"');
 			if(!isset($editor)) {
+				if(!empty($field_value)) $ddoptions = array($field_value => $field_value);
 				echo form::dropdown("custom_field[".$field_id.']',$ddoptions, $field_value, $id_name);
 			} 
 			echo "</div>";
