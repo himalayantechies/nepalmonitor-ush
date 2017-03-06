@@ -381,7 +381,7 @@
 										if($tag_flag) $script .= "tags: true,";
 										$script .= "data: items
 									});
-									if(".$field_value.") {
+									if(\"".$field_value."\" != '') {
 										if($(\"#custom_field_".$field_id." option[value='".$field_value."']\").length <= 0) {
 											$(\"#custom_field_".$field_id."\").prepend('<option value=\"".$field_value."\">".$field_value."</option>');
 										}
