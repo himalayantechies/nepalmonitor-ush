@@ -362,7 +362,6 @@
 			echo "<h4>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</h4>";
 			//echo form::input('custom_field['.$field_id.']', $field_value, $id_name .' class="text custom_text"');
 			if(!isset($editor)) {
-				//if(!empty($field_value)) $ddoptions = array($field_value => $field_value);
 				echo form::dropdown("custom_field[".$field_id.']',$ddoptions, $field_value, $id_name);
 			} 
 			echo "</div>";
@@ -375,21 +374,17 @@
 								dataType: 'json',
 								success: function(data) {
 									var items = data.items;
-									
 									$(\"#custom_field_".$field_id."\").select2({
 										placeholder: \"".$field_placeholder."\",";
 										if($tag_flag) $script .= "tags: true,";
 										$script .= "data: items
 									});
-									setTimeout(function() {
-										if(\"".$field_value."\" != '') {
+									if(\"".$field_value."\" != '') {
 										if($(\"#custom_field_".$field_id." option[value='".$field_value."']\").length <= 0) {
 											$(\"#custom_field_".$field_id."\").prepend('<option value=\"".$field_value."\">".$field_value."</option>');
 										}
+										$(\"#custom_field_".$field_id."\").val(\"".$field_value."\").trigger(\"change\");
 									}
-									$(\"#custom_field_".$field_id."\").val(\"".$field_value."\").trigger(\"change\");
-								}, 1000);
-									
 								}
 							});
 						
