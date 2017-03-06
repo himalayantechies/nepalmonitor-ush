@@ -375,18 +375,17 @@
 								dataType: 'json',
 								success: function(data) {
 									var items = data.items;
-									var inList = false;
-									for (var item in items){
-										if(item.id == ".$field_value.")
-											inList = true;
-									}
-									if(!inList) items.push({id:\"".$field_value."\" , text:\"".$field_value."\"});
-									console.log(".$field_id.", items);
+									
 									$(\"#custom_field_".$field_id."\").select2({
 										placeholder: \"".$field_placeholder."\",";
 										if($tag_flag) $script .= "tags: true,";
 										$script .= "data: items
 									});
+									if(".$field_value.") {
+										if($(\"#custom_field_".$field_id." option[value='".$field_value."']\").length <= 0) {
+											$(\"#custom_field_".$field_id."\").prepend('<option value=\"".$field_value."\">".$field_value."</option>'');
+										}
+									}
 									$(\"#custom_field_".$field_id."\").val(\"".$field_value."\").trigger(\"change\");
 								}
 							});
