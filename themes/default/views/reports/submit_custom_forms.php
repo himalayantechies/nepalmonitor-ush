@@ -377,10 +377,11 @@
 									var items = data.items;
 									var inList = false;
 									for (var item in items){
-										if(item.id == \"".$field_value."\")
+										if(item.id == ".$field_value.")
 											inList = true;
 									}
-									if(inList !== true) items.push({id:\"".$field_value."\" , text:\"".$field_value."\"});
+									if(!inList) items.push({id:\"".$field_value."\" , text:\"".$field_value."\"});
+									console.log(".$field_id.", items);
 									$(\"#custom_field_".$field_id."\").select2({
 										placeholder: \"".$field_placeholder."\",";
 										if($tag_flag) $script .= "tags: true,";
