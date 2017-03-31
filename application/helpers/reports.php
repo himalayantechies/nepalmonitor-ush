@@ -931,6 +931,22 @@ class reports_Core {
 			}
 		}
 		
+		if (isset($url_data['a']) AND is_array($url_data['a']))
+		{
+			$active_status = array();
+			foreach ($url_data['a'] as $active)
+			{
+				if (intval($active) >= 0)
+				{
+					$active_status[] = intval($active);
+				}
+			}
+			
+			if (count($active_status) > 0 && in_array(0, $active_status))
+			{
+				self::$params['all_reports'] = true;
+			}
+		}
 		//
 		// Check if the adm location has been specified
 		// 
@@ -1031,9 +1047,8 @@ class reports_Core {
 				{
 					array_push(self::$params, 'i.id IN (0)');
 				}
-			}
-			
-		} // End of handling cff
+			}	
+		}// End of handling cff
 		// In case a plugin or something wants to get in on the parameter fetching fun
 		Event::run('ushahidi_filter.fetch_incidents_set_params', self::$params);
 		//> END PARAMETER FETCH

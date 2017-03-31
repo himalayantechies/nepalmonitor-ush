@@ -123,6 +123,16 @@
 			} else {
 				delete urlParameters["cff"];
 			}
+			//for unapproved reports
+			if (<?php echo (intval(Auth::instance()->has_permission('reports_approve'))) ?>){
+				var approvalStatus = [0,1]
+				if (approvalStatus.length > 0) {
+					urlParameters["a"] = approvalStatus;
+				}
+			}	
+			else{
+				delete urlParameters["a"];
+			}
 			<?php
 				// Action, allows plugins to add custom filters
 				Event::run('ushahidi_action.report_js_filterReportsAction');
