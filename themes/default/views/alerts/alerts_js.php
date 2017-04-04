@@ -141,4 +141,6 @@ function geoCode() {
 			$('#find_loading').html('');
 		}, "json");
 	return false;
+
 }
+

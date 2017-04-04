@@ -18,7 +18,7 @@
 					$feed_title = text::limit_chars($feed->item_title, 70, '...', True);
 					$feed_link = $feed->item_link;
 					$feed_date = date('M j Y', strtotime($feed->item_date));
-					$feed_source = text::limit_chars($feed->feed->feed_name, 45, "...");
+					$feed_source = text::limit_chars($feed->feed->feed_name, 30, "...");
 			?>
 			<tr>
 				<td><a href="<?php echo $feed_link; ?>" target="_blank"><?php echo $feed_title ?></a></td>

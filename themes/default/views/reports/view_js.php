@@ -22,10 +22,16 @@ Ushahidi.baseURL = "<?php echo url::site(); ?>";
 // Attempt to set facebook image to map. Set in /themes/default/views/reports/view_js.php - NH
 //]]> closes cdata tag so the browser looks at the following tags. Closes the Javascript and reopens it below meta tag.
 </script>
-
-	<meta property="og:image" content="https://maps.google.com/maps/api/staticmap?markers=color:red%7C<?php echo $latitude; ?>%2C<?php echo$longitude; ?>&amp;zoom=10&amp;size=650x650&amp;language=en&amp;key=AIzaSyDADoHqkWBeeR4mYb_gkvWGBz9d3r7Ie58&amp;key=AIzaSyDdvni1bbT4CPAGo8s_5ToqY9LngWUaXFA"/>
+	<meta property="og:type" content="article"/> 
+	<!--meta property="og:image" content="https://maps.google.com/maps/api/staticmap?markers=color:red%7C<?php echo $latitude; ?>%2C<?php echo$longitude; ?>&amp;zoom=10&amp;size=650x650&amp;language=en&amp;key=AIzaSyDADoHqkWBeeR4mYb_gkvWGBz9d3r7Ie58&amp;key=AIzaSyDdvni1bbT4CPAGo8s_5ToqY9LngWUaXFA"/-->	
+	<meta name="viewport" content="width=device-width"> <!-- , initial-scale=.8 smartphone page width config -->
+	<meta property="og:image:url" content="https://api.mapbox.com/styles/v1/mapbox/streets-v8/static/pin-l(<?php echo$longitude; ?>,<?php echo $latitude; ?>)/<?php echo$longitude; ?>,<?php echo $latitude; ?>,12/570x300?access_token=pk.eyJ1Ijoibmhvcm5pbmciLCJhIjoiY2owbW9vc2MwMDAwcjMzcGtzbjc3MnhzcSJ9.6nqCwoYOuW-bPT-rXCVzmA">
 	<meta property="og:image:width" content="650"/>
 	<meta property="og:image:height" content="300"/>
+	<meta property="og:image" content="https://www.nepalmonitor.org/themes/default/images/logomod_260x260.png"/>
+	<meta property="og:image:height" content="158"/>
+	<meta property="og:image:width" content="158"/>
+	<meta property="og:image:type" content="image/png"/>
 
 <script>
 //<![CDATA[ Re-opens cdata tag so the browser doesn't look at the following as html or xml

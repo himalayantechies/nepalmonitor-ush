@@ -8,14 +8,36 @@
 			#graph{display:none;}
 			#map{height:480px;}
 		</style>
+	
 	<?php } ?>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<!-- Next lines to moderate facebook comments set default image etc. Set in /themes/default/views/header - NH -->
 	<meta property="fb:app_id" content="140091756132653" />
+	<?php if (!empty($page_title))
+	{
+	?>
+	<meta property="og:title" content="<?php echo $page_title;?>" />
+	<?php
+	} else {
+	?>
+	 	<meta property="og:title" content="<?php echo $site_name;?>" />
+	<?php
+		}
+	?>
+	<?php if (empty($page_title)) {
+	?>
 	<meta property="og:image" content="https://www.nepalmonitor.org/themes/default/images/logomod_260x260.png"/>
 	<meta property="og:image:height" content="158"/>
 	<meta property="og:image:width" content="158"/>
 	<meta property="og:image:type" content="image/png"/>
+	<?php
+	} else {
+	?>
+	<meta name="viewport" content="width=device-width"> <!-- , initial-scale=.8 smartphone page width config -->
+	<?php
+	}
+	?>
+	
 
 	<?php echo $header_block; ?>
 	<?php

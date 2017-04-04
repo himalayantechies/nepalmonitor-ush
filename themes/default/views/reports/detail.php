@@ -1,6 +1,8 @@
 <div id="main" class="report_detail">
-
+<div class="section group">
+	
 	<div class="left-col">
+	<!--div class="col span_1_of_2"-->
 
   	  <?php
     	  if ($incident_verified)
@@ -30,18 +32,20 @@
 			<?php Event::run('ushahidi_action.report_meta_after_time', $incident_id); ?>
 		</p>
 		<p>
-			<?php if(!empty($adm_level)) { ?>
-			<span><strong><?php echo Kohana::lang('ui_main.adm_level').': ';?></strong>
-			<?php echo location_filter::$admLevels[$adm_level]['label'].'&nbsp;&nbsp;'; ?></span>
-			<span><strong><?php echo Kohana::lang('ui_main.pcode').': ';?></strong>
-			<?php echo $pcode; ?></span><br/>
-			<?php 
+			<?php if(!empty($adm_level)) { //get locations based on P-Code -NH
 			$admList = location_filter::get_adm_levels($adm_level, $pcode);
 			foreach(location_filter::$admLevels as $key => $admLvl) {
 				if(isset($admList[$key])) {
 					echo '<span style="display:inline-block"><strong>'.$admLvl['label'].': </strong>'.$admList[$key]->name.'&nbsp;&nbsp;</span>';
 				}
-			}
+			}// Display location accuracy and HLCIT code - NH
+			?>
+			<br><span><strong><?php echo Kohana::lang('ui_main.adm_level').': ';?></strong> 
+			<?php echo location_filter::$admLevels[$adm_level]['label'].'&nbsp;&nbsp;'; ?></span>
+			<span><strong><?php echo Kohana::lang('ui_main.pcode').': ';?></strong>
+			<?php echo $pcode; ?></span><br/>
+			<?php 
+			
 			}
 			?>
 		</p>
@@ -264,6 +268,7 @@
 	</div>
 
 	<div class="right-col">
+	<!--div class="col span_1_of_3"-->
 
 		<div class="report-media-box-content">
 
@@ -295,7 +300,7 @@
       <?php } ?>
 		</div>
 <!---Start facebook likebox-->
-			<iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fnepalmonitor&amp;width=350&amp;height=558&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=true&amp;header=false&amp;appId=140091756132653" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:350px; height:558px;" allowTransparency="true"></iframe>
+			<iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fnepalmonitor&amp;width=350&amp;height=558&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=true&amp;header=false&amp;appId=140091756132653" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:558px;" allowTransparency="true"></iframe>
 			<!---end facebook likebox--->
 
 	</div>
