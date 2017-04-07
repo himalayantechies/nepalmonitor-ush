@@ -619,7 +619,14 @@
 				verification = elementId.substring('filter_link_verification_'.length);
 				removeParameterItem("v", verification);
 				
-			} else if (elementId.indexOf('filter_link_adm_') != -1)
+			}
+			else if (elementId.indexOf('filter_link_approval_') != -1)
+			{
+				approval = elementId.substring('filter_link_approval_'.length);
+				removeParameterItem("a", approval);
+				
+			}
+			else if (elementId.indexOf('filter_link_adm_') != -1)
 			{
 				admFilter = elementId.substring('filter_link_adm_'.length);
 				removeParameterItem("adm", admFilter);
@@ -704,6 +711,26 @@
 			if (verificationStatus.length > 0)
 			{
 				urlParameters["v"] = verificationStatus;
+			}
+			
+			var admIds = [];
+			$.each($("[class^='filter-list fl-adm'] li a.selected"), function(i, item){
+				admId = item.id.substring("filter_link_adm_".length);
+				admIds.push(admId);
+			});
+			if (admIds.length > 0)
+			{
+				urlParameters["adm"] = admIds;
+			}
+			// Get the approval status
+			var approvalStatus = [];
+			$.each($(".fl-approval li a.selected"), function(i, item){
+				statusVal = item.id.substring("filter_link_approval_".length);
+				approvalStatus.push(statusVal);
+			});
+			if (approvalStatus.length > 0)
+			{
+				urlParameters["a"] = approvalStatus;
 			}
 			
 			var admIds = [];

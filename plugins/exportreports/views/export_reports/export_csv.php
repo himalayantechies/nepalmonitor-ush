@@ -125,16 +125,20 @@ if ($fp) {
  	@fwrite($fp, $content);
 	@fclose($fp);
 }
-
 if($pagin->total_pages == $pagin->current_page) {
 	$nxtUrl = url::site().$filePath;
 } else {
 	$nxtUrl = url::site().url::merge(array('page' => $pagin->current_page+1, 'file' => $fname));
 }
-$Download_percent = round(($pagin->current_page / $pagin->total_pages) * 100 , 0 , PHP_ROUND_HALF_EVEN);
-echo nl2br("It may take a while. Please wait...\nExporting:$Download_percent%");
-echo '<progress max="100" value="'.$Download_percent.'"></progress>';
-echo '<input id="reloadUrl" type="hidden" value="'.$nxtUrl.'">';
+if($pagin->total_pages == 0){
+	echo "No reports to export!!!";
+}
+else{
+	$Download_percent = round(($pagin->current_page / $pagin->total_pages) * 100 , 0 , PHP_ROUND_HALF_EVEN);
+	echo nl2br("It may take a while. Please wait...\nExporting:$Download_percent%");
+	echo '<progress max="100" value="'.$Download_percent.'"></progress>';
+	echo '<input id="reloadUrl" type="hidden" value="'.$nxtUrl.'">';
+}
 ?>
 <script>
 window.location = document.getElementById('reloadUrl').value;

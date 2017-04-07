@@ -73,7 +73,27 @@
 			{
 				urlParameters["adm"] = admIds;
 			}
-						//
+						
+			//Get the approval status
+			var approvalStatus = [];
+			$.each($(".fl-approval li a.selected"), function(i, item) {
+				statusVal = item.id.substring("filter_link_approval_".length);
+				approvalStatus.push(statusVal);
+			});
+			if (approvalStatus.length > 0) {
+				urlParameters["a"] = approvalStatus;
+			}
+			
+			var admIds = [];
+			$.each($("[class^='filter-list fl-adm'] li a.selected"), function(i, item){
+				admId = item.id.substring("filter_link_adm_".length);
+				admIds.push(admId);
+			});
+			if (admIds.length > 0)
+			{
+				urlParameters["adm"] = admIds;
+			}
+					//
 			// Get the Custom Form Fields
 			//
 			var customFields = new Array();
@@ -124,15 +144,15 @@
 				delete urlParameters["cff"];
 			}
 			//for unapproved reports
-			if (<?php echo (intval(Auth::instance()->has_permission('reports_approve'))) ?>){
-				var approvalStatus = [0,1]
-				if (approvalStatus.length > 0) {
-					urlParameters["a"] = approvalStatus;
-				}
-			}	
-			else{
-				delete urlParameters["a"];
-			}
+			// if (<?php echo (intval(Auth::instance()->has_permission('reports_approve'))) ?>){
+			// 	var approvalStatus = [0,1]
+			// 	if (approvalStatus.length > 0) {
+			// 		urlParameters["a"] = approvalStatus;
+			// 	}
+			// }	
+			// else{
+			// 	delete urlParameters["a"];
+			// }
 			<?php
 				// Action, allows plugins to add custom filters
 				Event::run('ushahidi_action.report_js_filterReportsAction');
