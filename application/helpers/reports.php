@@ -941,16 +941,16 @@ class reports_Core {
 				{
 					$active_status[] = intval($active);
 				}
-			}
-			//if (count($active_status) > 0 )
+			}	
+			
 			if ((count($active_status) > 0 ) && in_array(0, $active_status))
 			{
 				self::$params['all_reports'] = true;
-				// array_push(self::$params['all_reports'] = true,
-				// 	'i.incident_active IN ('.implode(",", $active_status).')');
+				array_push(self::$params,
+					'i.incident_active IN ('.implode(",", $active_status).')'
+				);
 			}
 		}
-		//
 		// Check if the adm location has been specified
 		// 
 		if (isset($url_data['adm']))
