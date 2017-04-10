@@ -202,7 +202,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 								
 							</ul>
 						</div>
-
+				<?php if (Auth::instance()->has_permission('reports_approve')) { ?>
 						<h3>
 							<a href="#" class="small-link-button f-clear reset" onclick="removeParameterKey('a', 'fl-approval');">
 								<?php echo Kohana::lang('ui_main.clear'); ?>
@@ -226,6 +226,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 								
 							</ul>
 						</div>
+				<?php	} ?>
 						<h3>
 							<a href="#" class="small-link-button f-clear reset" onclick="removeParameterKey('cff', 'fl-customFields');">
 								<?php echo Kohana::lang('ui_main.clear'); ?>
