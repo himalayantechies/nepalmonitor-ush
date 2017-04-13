@@ -6,6 +6,7 @@ class location_filter_Core {
 	protected static $pcode = '';
 	protected static $adm_level = '';
 	protected static $loc_name = '';
+	protected static $new_loc_name = '';
 	public static $admLevels = array(0 => array('label' => 'Country', 'types' => 'country', 'pcode' => 'admin0Pcode', 'name' => 'admin0Name_en', 'dummy' => false), 1 => array('label' => 'Development Region', 'types' => 'administrative_area_level_1', 'pcode' => 'admin1Pcode', 'name' => 'admin1Name_en', 'dummy' => false), 2 => array('label' => 'Zone', 'types' => 'administrative_area_level_2', 'pcode' => 'admin2Pcode', 'name' => 'admin2Name_en', 'dummy' => false), 3 => array('label' => 'District', 'types' => 'administrative_area_level_3', 'pcode' => 'admin3Pcode', 'name' => 'admin3Name_en', 'dummy' => false), 4 => array('label' => 'Municipality/VDC', 'types' => 'locality', 'pcode' => 'admin4Pcode', 'name' => 'admin4Name_en', 'dummy' => false), 5 => array('label' => 'Ward', 'types' => '', 'pcode' => 'admin5Pcode', 'name' => 'admin5Name_en', 'dummy' => false), 6 => array('label' => 'Settlement', 'types' => '', 'pcode' => 'admin5Pcode', 'name' => 'admin5Name_en', 'dummy' => true), 7 => array('label' => 'Exact location', 'types' => '', 'pcode' => 'admin5Pcode', 'name' => 'admin5Name_en', 'dummy' => true));
 
 	static function init() {
@@ -334,11 +335,13 @@ class location_filter_Core {
 	
 	function json_get_pcode($lat, $lng, $pcodeLvl) {
 		$location_name = '';
+		$new_location_name = '';
 		$plain_name = '';
+		$new_plain_name = '';
 		$child_pcode = '';
 		$child_adm = '';
 		$locfilter_model = new Database();		
-		$siblings = $locfilter_model -> query("SELECT DISTINCT name, pcode, id, parent_pcode, adm_level, coord FROM ".self::$table_prefix.".location_filter" 
+		$siblings = $locfilter_model -> query("SELECT DISTINCT name, new_name, pcode, id, parent_pcode, adm_level, coord FROM ".self::$table_prefix.".location_filter" 
 		." WHERE coord IS NOT NULL "
 		/*. "AND adm_level = '5' "*/
 		." AND lat_min <= '".$lat."' AND lat_max >= '".$lat."'  AND lng_min <= '".$lng."' AND lng_max >= '".$lng."' GROUP BY pcode");
@@ -355,6 +358,7 @@ class location_filter_Core {
 							self::$pcode = $pnt -> pcode;
 							self::$adm_level = $pnt -> adm_level;
 							self::$loc_name = $pnt -> name;
+							self::$new_loc_name = $pnt -> new_name;
 							$child_pcode = $pnt -> pcode;
 							break;
 						}
@@ -366,7 +370,7 @@ class location_filter_Core {
 		if(empty(self::$pcode)) {
 			$loc_model = new Location_Filter_Model();
 			$child = $loc_model -> where(" ISNULL(parent_pcode) = '' ") -> find();
-			$location_name = '<span style="display:inline-block"><i>'.self::$admLevels[$child->adm_level]['label'].'</i>: '.$child->name.'&nbsp;&nbsp;</span>';
+			$location_name = '<span style="display:inline-block"><i>'.self::$admLevels[$child->adm_level]['label'].'(O)</i>: '.$child->name.'&nbsp;&nbsp;</span>';
 			$plain_name = $child->name;
 			self::$adm_level = $child->adm_level;
 			self::$pcode = $child->pcode;
@@ -388,12 +392,45 @@ class location_filter_Core {
 					}
 					
 					if($key <= $pcodeLvl) {
-						$location_name = '<span style="display:inline-block"><i>'.$lvl['label'].'</i>: '.$child->name.'&nbsp;&nbsp;</span>'.$location_name;
+						$location_name = '<span style="display:inline-block"><i>'.$lvl['label'].'(O)</i>: '.$child->name.'&nbsp;&nbsp;</span>'.$location_name;
 						$plain_name = $child->name.',&nbsp;'.$plain_name;
 					}
 				}
 			}
 		}
+		
+		if(empty(self::$pcode)) {
+			$loc_model = new Location_Filter_Model();
+			$child = $loc_model -> where(" ISNULL(parent_pcode) = '' ") -> find();
+			$new_location_name = '<span style="display:inline-block"><i>'.self::$admLevels[$child->adm_level]['label'].'(N) </i>: '.$child->new_name.'&nbsp;&nbsp;</span>';
+			$new_plain_name = $child->new_name;
+			self::$adm_level = $child->adm_level;
+			self::$pcode = $child->pcode;
+			self::$new_loc_name = $child->new_name;
+		} else {
+			$loc_levels = self::$admLevels;
+			krsort($loc_levels);
+			foreach($loc_levels as $key => $lvl) {
+				if($key <= self::$adm_level) {
+					$loc_model = new Location_Filter_Model();
+					$child = $loc_model -> where('pcode', $child_pcode) -> where('adm_level', $key) -> find();
+					$lvl_model = new Location_Filter_Model();
+					$parent = $lvl_model -> where('pcode', $child->parent_pcode) -> where('adm_level', $key-1) -> find();
+					$child_pcode = $parent->pcode;
+					if(!empty($parent) && (self::$adm_level > $pcodeLvl)) {
+						self::$adm_level = $parent->adm_level;
+						self::$pcode = $parent->pcode;
+						self::$new_loc_name = $parent->new_name;
+					}
+					
+					if($key <= $pcodeLvl) {
+						$new_location_name = '<span style="display:inline-block"><i>'.$lvl['label'].'(N)</i>: '.$child->new_name.'&nbsp;&nbsp;</span>'.$new_location_name;
+						$new_plain_name = $child->new_name.',&nbsp;'.$new_plain_name;
+					}
+				}
+			}
+		}
+
 		/*while(self::$adm_level > $pcodeLvl) {
 			$loc_model = new Location_Filter_Model();
 			$child = $loc_model -> where('pcode', self::$pcode) -> where('adm_level', self::$adm_level) -> find();
@@ -403,7 +440,7 @@ class location_filter_Core {
 			self::$pcode = $parent->pcode;
 			self::$loc_name = $parent->name;
 		}*/
-		return json_encode(array('pcode' => self::$pcode, 'adm_level' => self::$adm_level, 'name' => self::$loc_name, 'location' => $location_name, 'location_name' => $plain_name));
+		return json_encode(array('pcode' => self::$pcode, 'adm_level' => self::$adm_level, 'name' => self::$loc_name, 'location' => $location_name, 'location_name' => $plain_name, 'new_name' => self::$new_loc_name, 'new_location' => $new_location_name, 'new_location_name' => $new_plain_name));
 	}
 
 }

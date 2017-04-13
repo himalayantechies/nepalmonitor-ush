@@ -16,6 +16,9 @@ if ($pagin->current_page <= 1){
 	foreach(location_filter::$admLevels as $key => $admLvl) {
 		if(!$admLvl['dummy']){ $head .= ",".$admLvl['label'];} 
 	}
+	foreach(location_filter::$admLevels as $key => $admLvl) {
+		if(!$admLvl['dummy']){ $head .= ",".$admLvl['label'].'(New)';} 
+	}
 	$head .= ",SOURCE,SOURCE TYPE";
 	$custom_titles = customforms::get_custom_form_fields('','',false);
 	foreach($custom_titles as $field_name) {
@@ -61,6 +64,13 @@ if ($fp) {
 				else $content .= ',""';
 			}
 		}
+		foreach(location_filter::$admLevels as $key => $admLvl) {
+			if(!$admLvl['dummy']) {
+				if(isset($admList[$key])) { $content .= ',"'.$admList[$key]->new_name.'"'; }
+				else $content .= ',""';
+			}
+		}
+
 		$media_news = reports::get_media($incident->incident_id, 4);
 		if(!empty($media_news)) {
 			$content .= ',';
