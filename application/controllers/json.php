@@ -895,7 +895,7 @@ class Json_Controller extends Template_Controller {
 		$emptyOpt = ORM::factory('form_autosearch_option');
 		$emptyOpt->form_field_id = $field_id;
 		$emptyOpt->id = ' ';
-		$emptyOpt->text = '- None -';
+		$emptyOpt->text = '- Blank -';
 		$emptyOpt->disabled = 0;
 		if(!empty($opt)) {
 			$options['items'][] = $emptyOpt->as_array();
