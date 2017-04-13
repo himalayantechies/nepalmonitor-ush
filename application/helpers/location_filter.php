@@ -405,8 +405,7 @@ class location_filter_Core {
 			$plain_name = $child->new_name;
 			self::$adm_level = $child->adm_level;
 			self::$pcode = $child->pcode;
-			self::$new_loc_name = $child->new_name;
-			print_r(self::$new_loc_name);exit;
+			self::$loc_name = $child->new_name;
 		} else {
 			$loc_levels = self::$admLevels;
 			krsort($loc_levels);
@@ -420,7 +419,7 @@ class location_filter_Core {
 					if(!empty($parent) && (self::$adm_level > $pcodeLvl)) {
 						self::$adm_level = $parent->adm_level;
 						self::$pcode = $parent->pcode;
-						self::$new_loc_name = $parent->new_name;
+						self::$loc_name = $parent->new_name;
 					}
 					
 					if($key <= $pcodeLvl) {
@@ -440,7 +439,7 @@ class location_filter_Core {
 			self::$pcode = $parent->pcode;
 			self::$loc_name = $parent->name;
 		}*/
-		return json_encode(array('pcode' => self::$pcode, 'adm_level' => self::$adm_level, 'name' => self::$loc_name, 'location' => $location_name, 'location_name' => $plain_name, 'new_name' => self::$new_loc_name));
+		return json_encode(array('pcode' => self::$pcode, 'adm_level' => self::$adm_level, 'name' => self::$loc_name, 'location' => $location_name, 'location_name' => $plain_name));
 	}
 
 }
