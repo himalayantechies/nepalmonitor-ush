@@ -395,7 +395,7 @@ class location_filter_Core {
 					
 					if($key <= $pcodeLvl) {
 						$location_name = '<span style="display:inline-block"><i>'.$lvl['label'].'(O)</i>: '.$child->name.'&nbsp;&nbsp;</span>'.$location_name;
-						$location_new_name = '<span style="display:inline-block"><i>'.$lvl['label'].'(N)</i>: '.$child->name.'&nbsp;&nbsp;</span>'.$location_new_name;
+						$location_new_name = '<span style="display:inline-block"><i>'.$lvl['label'].'(N)</i>: '.$child->new_name.'&nbsp;&nbsp;</span>'.$location_new_name;
 						$plain_name = $child->name.',&nbsp;'.$plain_name;
 					}
 				}
@@ -412,7 +412,7 @@ class location_filter_Core {
 			self::$pcode = $parent->pcode;
 			self::$loc_name = $parent->name;
 		}*/
-		return json_encode(array('pcode' => self::$pcode, 'adm_level' => self::$adm_level, 'name' => self::$loc_name, 'location' => $location_name, 'location_name' => $plain_name, 'location_new' => $location_new_name));
+		return json_encode(array('pcode' => self::$pcode, 'adm_level' => self::$adm_level, 'name' => self::$loc_name, 'new_name' => self::$new_loc_name, 'location' => $location_name, 'location_name' => $plain_name, 'location_new' => $location_new_name));
 	}
 
 }
