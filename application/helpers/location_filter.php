@@ -406,6 +406,7 @@ class location_filter_Core {
 			self::$adm_level = $child->adm_level;
 			self::$pcode = $child->pcode;
 			self::$new_loc_name = $child->new_name;
+			print_r(self::$new_loc_name);exit;
 		} else {
 			$loc_levels = self::$admLevels;
 			krsort($loc_levels);
