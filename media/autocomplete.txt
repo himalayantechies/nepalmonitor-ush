@@ -1,7 +1,7 @@
 {
 	"items": [{
 			"id": " ",
-			"text": "- None -"
+			"text": "- blank -"
 		}, {
 		"id": "1",
 		"text": "1",

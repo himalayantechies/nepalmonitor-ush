@@ -719,7 +719,7 @@ class reports_Core {
 		
 		// Split selected parameters on ","
 		// For simplicity, always turn them into arrays even theres just one value
-		$exclude_params = array('c', 'v', 'm', 'mode', 'sw', 'ne', 'start_loc', 'fm');
+		$exclude_params = array('c', 'v','a', 'm', 'mode', 'sw', 'ne', 'start_loc', 'fm');
 		//$exclude_params = array('c', 'v', 'm', 'mode', 'sw', 'ne', 'start_loc', 'ly', 'lkey');
 		foreach ($url_data as $key => $value)
 		{
@@ -930,7 +930,8 @@ class reports_Core {
 				);
 			}
 		}
-		
+		//Check if the approval status has been specified
+
 		if (isset($url_data['a']) AND is_array($url_data['a']))
 		{
 			$active_status = array();
@@ -940,14 +941,16 @@ class reports_Core {
 				{
 					$active_status[] = intval($active);
 				}
-			}
+			}	
 			
-			if (count($active_status) > 0 && in_array(0, $active_status))
+			if ((count($active_status) > 0 ) && in_array(0, $active_status))
 			{
 				self::$params['all_reports'] = true;
+				array_push(self::$params,
+					'i.incident_active IN ('.implode(",", $active_status).')'
+				);
 			}
 		}
-		//
 		// Check if the adm location has been specified
 		// 
 		if (isset($url_data['adm']))

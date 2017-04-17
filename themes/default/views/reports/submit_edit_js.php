@@ -991,13 +991,13 @@
 					if ( data.adm_level == adm)
 					{
 						$('#pcode').val(data.pcode);
-						$('#adm_location').html(data.location);
+						$('#adm_location').html(data.location+'<br/>'+data.location_new);
 						$('#location').val(data.location_name);
 					}
 					else if(data.pcode != '')
 					{
 						$('#pcode').val(data.pcode);
-						$('#adm_location').html(data.location);
+						$('#adm_location').html(data.location+'<br/>'+data.location_new);
 						$('#location').val(data.location_name);
 						alert("Location for that accuracy could not be mapped. Returned closest location!!");
 					} else {

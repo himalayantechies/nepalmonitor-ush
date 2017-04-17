@@ -36,7 +36,13 @@
 			$admList = location_filter::get_adm_levels($adm_level, $pcode);
 			foreach(location_filter::$admLevels as $key => $admLvl) {
 				if(isset($admList[$key])) {
-					echo '<span style="display:inline-block"><strong>'.$admLvl['label'].': </strong>'.$admList[$key]->name.'&nbsp;&nbsp;</span>';
+					echo '<span style="display:inline-block"><strong>'.$admLvl['label'].' (O): </strong>'.$admList[$key]->name.'&nbsp;&nbsp;</span>';
+				}
+			}
+			echo '<hr/>';
+			foreach(location_filter::$admLevels as $key => $admLvl) {
+				if(isset($admList[$key])) {
+					echo '<span style="display:inline-block"><strong>'.$admLvl['label'].' (N): </strong>'.$admList[$key]->new_name.'&nbsp;&nbsp;</span>';
 				}
 			}// Display location accuracy and HLCIT code - NH
 			?>

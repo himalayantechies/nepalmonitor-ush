@@ -14,16 +14,15 @@ $zipName = SYSPATH.'..'.$filePath.$zext;
 if ($pagin->current_page <= 1){
 	$fp = @fopen($fileName,"w");
 	$head = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
-	$head .= "<?xml-stylesheet type=\"text/xsl\" href=\"export.xsl\" ?>"; ?>
-	<export xmlns:atom="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss">
-	<channel>
-	<copyright uri="http://himalayantechies.com">HimalayanTechies Pvt. Ltd.</copyright>
-	<updated><?php $head .= gmdate("c", time()); ?></updated>
-	<title><?php $head .= Kohana::config('settings.site_name'); ?></title>
-	<description><?php $head .= Kohana::config('settings.site_tagline'); ?></description>
-	<link rel="alternate" type="text/html" href="<?php $head .= url::base(); ?>"/>
-	<generator uri="<?php $head .= 'https://github.com/HTSolution/Ushahidi-plugin-exportreports'; ?>" version="1.0">Export Report Plugin - HTSolution</generator>
-	<?php
+	$head .= "<?xml-stylesheet type=\"text/xsl\" href=\"export.xsl\" ?>";
+	$head .= '<export xmlns:atom="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss">';
+	$head .= '<channel>';
+	$head .= '<copyright uri="http://himalayantechies.com">HimalayanTechies Pvt. Ltd. </copyright>';
+	$head .= '<updated>' .gmdate("c", time()) .'</updated>';
+	$head .= '<title>' .Kohana::config('settings.site_name') .'</title>';
+	$head .= '<description>' .Kohana::config('settings.site_tagline').'</description>';
+	$head .= '<link rel="alternate" type="text/html" .href="url::base(); "/>';
+	$head .= '<generator uri="https://github.com/HTSolution/Ushahidi-plugin-exportreports" version="1.0">.Export Report Plugin - HTSolution </generator>';
 			// Event::report_download_xml_head - Add to the xml head
 		Event::run('ushahidi_action.report_download_xml_head');
 		fwrite ($fp, $head);
@@ -50,8 +49,9 @@ if ($fp) {
 			$content .= '<longitude>'.exportreports_helper::_csv_text($incident->longitude).'</longitude>';
 			$content .= '<latitude>'.exportreports_helper::_csv_text($incident->longitude).'</latitude>';
 			$content .= '<pcode>'.exportreports_helper::_csv_text($incident->pcode).'</pcode>';
-			if(isset(location_filter::$admLevels[$incident->adm_level]['label']))
+			if(isset(location_filter::$admLevels[$incident->adm_level]['label'])) {
 			$content .= '<adm_level>'.exportreports_helper::_csv_text(location_filter::$admLevels[$incident->adm_level]['label']).'</adm_level>';
+			}
 			$media = reports::get_media($incident->incident_id, 4);
 			if(!empty($media)) {
 				foreach($media as $m) {

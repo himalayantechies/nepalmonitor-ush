@@ -202,6 +202,31 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 								
 							</ul>
 						</div>
+				<?php if (Auth::instance()->has_permission('reports_approve')) { ?>
+						<h3>
+							<a href="#" class="small-link-button f-clear reset" onclick="removeParameterKey('a', 'fl-approval');">
+								<?php echo Kohana::lang('ui_main.clear'); ?>
+							</a>
+							<a class="f-title" href="#"><?php echo Kohana::lang('ui_main.approval'); ?></a>
+						</h3>
+						<div class="f-approval-box">
+							<ul class="filter-list fl-approval">
+								<li>
+									<a href="#" id="filter_link_approval_1">
+										<span class="item-icon ic-verified">&nbsp;</span>
+										<span class="item-title"><?php echo Kohana::lang('ui_main.approved'); ?></span>
+									</a>
+								</li>
+								<li>
+									<a href="#" id="filter_link_approval_0">
+										<span class="item-icon ic-unverified">&nbsp;</span>
+										<span class="item-title"><?php echo Kohana::lang('ui_main.unapproved'); ?></span>
+									</a>
+								</li>
+								
+							</ul>
+						</div>
+				<?php	} ?>
 						<h3>
 							<a href="#" class="small-link-button f-clear reset" onclick="removeParameterKey('cff', 'fl-customFields');">
 								<?php echo Kohana::lang('ui_main.clear'); ?>
