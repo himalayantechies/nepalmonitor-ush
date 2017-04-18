@@ -277,7 +277,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 											if(!empty($adm_location[$key]->name))
 											echo '<span style="display:inline-block;"><i>'.$lvl['label'].' (O):</i> '.$adm_location[$key]->name.'&nbsp;&nbsp;</span>';
 										}
-										echo "<br />"
+										echo "<br />";
 										foreach(location_filter::$admLevels as $key => $lvl) {
 										if(!empty($adm_location[$key]->new_name))
 											echo '<span style="display:inline-block;"><i>'.$lvl['label'].' (N):</i> '.$adm_location[$key]->new_name.'&nbsp;&nbsp;</span>';
