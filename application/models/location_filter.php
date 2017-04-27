@@ -12,3 +12,9 @@ class Location_Filter_Model extends ORM
 	
 	protected $children = "location_filter";
 }
+
+class Location_Filter_Coord_Model extends ORM
+{
+	protected $table_name = 'loc_coord';
+	protected $children = 'loc_coord';
+}
