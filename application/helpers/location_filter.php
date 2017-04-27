@@ -345,8 +345,6 @@ class location_filter_Core {
 		$child_adm = '';
 		$locfilter_model = new Database();		
 		$siblings = $locfilter_model -> query("SELECT DISTINCT name, new_name, pcode, id, parent_pcode, adm_level FROM ".self::$table_prefix."location_filter"  
-		// ." WHERE coord IS NOT NULL "
-		/*. "AND adm_level = '5' "*/
 		." WHERE lat_min <= '".$lat."' AND lat_max >= '".$lat."'  AND lng_min <= '".$lng."' AND lng_max >= '".$lng."' GROUP BY pcode");
 		//$loc_model = new Location_Filter_Model();
 		//$siblings = $loc_model -> where('pcode', $parent->pcode) -> find_all();
@@ -355,8 +353,8 @@ class location_filter_Core {
 			if(!$filter_match) {
 				$locfilter_coord_model = new Database();
 				$pnt_coord = $locfilter_coord_model -> query("SELECT coord FROM ".self::$table_prefix."loc_coord WHERE location_filter_id = '".$pnt -> id."'");
-				if(!empty($pnt_coord -> coord)) {
-					$sql = 'SELECT myWithin(PointFromText(CONCAT( "POINT(", ' . $lat . ', " ", ' . $lng . ', ")" )), PolyFromText("POLYGON((' . $pnt_coord -> coord . '))")) AS inPolygon';
+				if(!empty($pnt_coord[0] -> coord)) {
+					$sql = 'SELECT myWithin(PointFromText(CONCAT( "POINT(", ' . $lat . ', " ", ' . $lng . ', ")" )), PolyFromText("POLYGON((' . $pnt_coord[0] -> coord . '))")) AS inPolygon';
 					foreach ($locfilter_model->query($sql) as $item) {
 						if ($item -> inPolygon) {
 							$filter_match = true;
