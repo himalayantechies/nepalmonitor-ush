@@ -190,8 +190,8 @@ class location_filter_Core {
 					$filter_match = self::check_child($post, $child);
 				}
 				$child_coord = $locfilter_model -> query("SELECT coord FROM ".self::$table_prefix."loc_coord WHERE location_filter_id = '".$child -> id."'");
-				if (!$filter_match && !empty($child_coord -> coord)) {
-					$sql = 'SELECT myWithin(PointFromText(CONCAT( "POINT(", ' . $post['latitude'] . ', " ", ' . $post['longitude'] . ', ")" )), PolyFromText("POLYGON((' . $child_coord -> coord . '))")) AS inPolygon';
+				if (!$filter_match && !empty($child_coord[0] -> coord)) {
+					$sql = 'SELECT myWithin(PointFromText(CONCAT( "POINT(", ' . $post['latitude'] . ', " ", ' . $post['longitude'] . ', ")" )), PolyFromText("POLYGON((' . $child_coord[0] -> coord . '))")) AS inPolygon';
 					foreach ($db->query($sql) as $item) {
 						if ($item -> inPolygon) {
 							$filter_match = true;
@@ -212,8 +212,8 @@ class location_filter_Core {
 			$siblings = $loc_model -> where('pcode', $parent->pcode) -> find_all();
 			foreach($siblings as $pnt) {
 				$pnt_coord = $loc_model -> query("SELECT coord FROM ".self::$table_prefix."loc_coord WHERE location_filter_id = '".$pnt -> id."'");
-				if(!empty($pnt_coord -> coord)) {
-					$sql = 'SELECT myWithin(PointFromText(CONCAT( "POINT(", ' . $post['latitude'] . ', " ", ' . $post['longitude'] . ', ")" )), PolyFromText("POLYGON((' . $pnt_coord -> coord . '))")) AS inPolygon';
+				if(!empty($pnt_coord[0] -> coord)) {
+					$sql = 'SELECT myWithin(PointFromText(CONCAT( "POINT(", ' . $post['latitude'] . ', " ", ' . $post['longitude'] . ', ")" )), PolyFromText("POLYGON((' . $pnt_coord[0] -> coord . '))")) AS inPolygon';
 					foreach ($db->query($sql) as $item) {
 						if ($item -> inPolygon) {
 							$filter_match = true;
