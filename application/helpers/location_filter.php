@@ -189,7 +189,7 @@ class location_filter_Core {
 				if ($locfilter_model -> where('parent_pcode', $child -> pcode) -> count_all() > 0) {
 					$filter_match = self::check_child($post, $child);
 				}
-				$child_coord = query("SELECT coord FROM ".self::$table_prefix.".loc_coord WHERE location_filter_id = '".$child -> id."'");
+				$child_coord = $locfilter_model -> query("SELECT coord FROM ".self::$table_prefix.".loc_coord WHERE location_filter_id = '".$child -> id."'");
 				if (!$filter_match && !empty($child_coord -> coord)) {
 					$sql = 'SELECT myWithin(PointFromText(CONCAT( "POINT(", ' . $post['latitude'] . ', " ", ' . $post['longitude'] . ', ")" )), PolyFromText("POLYGON((' . $child_coord -> coord . '))")) AS inPolygon';
 					foreach ($db->query($sql) as $item) {
