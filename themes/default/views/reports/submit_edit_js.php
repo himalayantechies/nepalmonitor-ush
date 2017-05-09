@@ -688,7 +688,7 @@
 				});
 				$("#" + field + "_" + id + " select.incident_news_type").select2({
 					data: newsTypeList,
-					tags: true
+					tags: false
 				});
 			}
 			$("#" + field + "_" + id).effect("highlight", {}, 800);
