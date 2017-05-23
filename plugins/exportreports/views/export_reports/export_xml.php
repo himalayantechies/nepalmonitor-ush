@@ -21,7 +21,7 @@ if ($pagin->current_page <= 1){
 	$head .= '<updated>' .gmdate("c", time()) .'</updated>';
 	$head .= '<title>' .Kohana::config('settings.site_name') .'</title>';
 	$head .= '<description>' .Kohana::config('settings.site_tagline').'</description>';
-	$head .= '<link rel="alternate" type="text/html" href="'.url::base(); .'"/>';
+	$head .= '<link rel="alternate" type="text/html" href="'.url::base().'"/>';
 	$head .= '<generator uri="https://github.com/HTSolution/Ushahidi-plugin-exportreports" version="1.0">Export Report Plugin - HTSolution </generator>';
 			// Event::report_download_xml_head - Add to the xml head
 		Event::run('ushahidi_action.report_download_xml_head');
