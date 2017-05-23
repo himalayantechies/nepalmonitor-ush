@@ -18,6 +18,7 @@
 // HT: start of new css and script for select2 autosearch
 echo html::stylesheet(url::file_loc('css')."media/css/select2.min","",TRUE);
 echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
+
 // HT: End of new css and script for select2 autosearch
 ?>
 			<div class="bg">
@@ -269,6 +270,39 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 								<div style="clear:both;"><?php echo Kohana::lang('ui_main.pinpoint_location');?>.</div>
 							</div>
 							<?php Event::run('ushahidi_action.report_form_admin_location', $id); ?>
+					<!-- Location Search Field -->
+				<div id="locationSearch" class="report_row">
+					<h4><?php echo Kohana::lang('ui_main.search_location'); ?></h4>
+						<input type="longtext " class = "text long" id="location_search" placeholder="Enter the location" />
+						<div id="location_suggesstion"></div>
+					<?php
+					$url_loc = url::site().'json/autosearch_location'; ?>
+					<script type="text/javascript">
+						$(document).ready(function(){
+							$('#location_search').autocomplete({
+								source: function( request, response ){
+									<?php echo " $.getJSON('".$url_loc."', { keyword: $('#location_search').val() }, response);" ?>
+								},
+								search: function() {
+							        var keyword = $('#location_search').val();
+	    						    if ( keyword.length < 2 ) {
+	        					    	return false;
+	        						}
+  							    },
+  							    select: function( event, ui){
+							        $( '#location_search' ).val( ui.item.label );
+							        $( '#location_name' ).val( ui.item.value );
+							        $( '#latitude' ).val( ui.item.y_coord );
+							        $( '#longitude' ).val( ui.item.x_coord ).trigger('focusout');
+							        $('#adm_level').val(5).trigger('change');
+							        $('#getPcode').trigger('click');
+							        return false; 
+  							    }
+  							})
+  							.autocomplete("widget").addClass("ac-location");  
+        				});
+					</script>
+				</div>
 							<div class="row">
 								<h4><?php echo Kohana::lang('ui_main.reports_adm_level'); ?><span class="required">*</span> <small><a href="javascript://" id="getPcode" onclick="getPcode()" <?php echo (empty($form['adm_level'])) ? 'style="display:none;"' : '';?>>Get HLCIT Code</a></small><br />
 									<span id="adm_location" class="example">
