@@ -140,7 +140,9 @@
 								</div>
 								<xsl:for-each select="customfields/*">
 									<xsl:if test="string-length() != 0">
-										<xsl:variable name="customfieldLabel" select="local-name()">
+									    <xsl:variable name="customtype" select="local-name()">
+										</xsl:variable>
+										<xsl:variable name="customfieldLabel" select="@name">
 										</xsl:variable>
 										<div><span class="label"><xsl:value-of select="$customfieldLabel" />: </span>
 											<xsl:value-of select="." />

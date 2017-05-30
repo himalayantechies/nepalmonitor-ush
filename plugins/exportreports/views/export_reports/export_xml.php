@@ -69,7 +69,7 @@ if ($fp) {
 			if (!empty($custom_fields)) {
 				$content .= '<customfields>';
 				foreach($custom_fields as $custom_field) {
-					$tag = exportreports_helper::_xml_tag($custom_field['field_name']);
+					$tag = 'field'; //exportreports_helper::_xml_tag($custom_field['field_name']);
 					if($custom_field['field_type'] == 10) {
 						$value = $custom_field['field_response'];
 						$field_options = customforms::get_custom_field_options($custom_field['field_id']);
@@ -82,9 +82,10 @@ if ($fp) {
 						} else {
 							$value = customforms::get_autosearchDb_text($custom_field['field_id'], $value, true);
 						}
-						$content .= '<'.$tag.'>'.exportreports_helper::_csv_text($value).'</'.$tag.'>';
+						$content .= '<'.$tag.' name="'.exportreports_helper::_csv_text(strip_tags($custom_field['field_name'])).'">'.exportreports_helper::_csv_text($value).'</'.$tag.'>';
 					} else {
-						$content .= '<'.$tag.'>'.exportreports_helper::_csv_text($custom_field['field_response']).'</'.$tag.'>';	
+					    $content .= '<'.$tag.' name="'.exportreports_helper::_csv_text(strip_tags($custom_field['field_name'])).'">'.exportreports_helper::_csv_text($custom_field['field_response']).'</'.$tag.'>';
+						//$content .= '<'.$tag.'>'.exportreports_helper::_csv_text($custom_field['field_response']).'</'.$tag.'>';	
 					}
 					
 				}
@@ -113,7 +114,7 @@ if ($fp) {
 			Event::run('ushahidi_filter.report_download_xml_incident', $incident->incident_id);
 		$content .= '</item>';
 	}
-	if($pagin->total_pages != $pagin->current_page) {
+	if($pagin->total_pages == $pagin->current_page) {
 	$content .= "</channel>";
 	$content .= "</export>";
 	}
