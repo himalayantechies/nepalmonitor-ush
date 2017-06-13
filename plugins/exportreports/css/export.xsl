@@ -117,8 +117,12 @@
 									</xsl:if>
 								</div>
 								<div>
+								<xsl:if test="string-length(approved) != 0">
 									<span class="label">Approved: </span><xsl:value-of select="approved"/>
+								</xsl:if>
+								<xsl:if test="string-length(verified) != 0">
 									<span class="label"> Verified: </span><xsl:value-of select="verified"/>
+								</xsl:if>	
 								</div>
 								<div class="location">
 									<xsl:if test="string-length(location) != 0">
