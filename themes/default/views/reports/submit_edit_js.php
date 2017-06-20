@@ -992,13 +992,13 @@
 					{
 						$('#pcode').val(data.pcode);
 						$('#adm_location').html(data.location+'<br/>'+data.location_new);
-						$('#location').val(data.location_name);
+						$('#location_name').val(data.location_name);
 					}
 					else if(data.pcode != '')
 					{
 						$('#pcode').val(data.pcode);
 						$('#adm_location').html(data.location+'<br/>'+data.location_new);
-						$('#location').val(data.location_name);
+						$('#location_name').val(data.location_name);
 						alert("Location for that accuracy could not be mapped. Returned closest location!!");
 					} else {
 						$('#pcode').val();

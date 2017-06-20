@@ -242,7 +242,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
   							    },
   							    select: function( event, ui){
 							        $( '#location_search' ).val( ui.item.label );
-							        $( '#location_name' ).val( ui.item.value );
+							        //$( '#location_name' ).val( ui.item.value );
 							        $( '#latitude' ).val( ui.item.y_coord );
 							        $( '#longitude' ).val( ui.item.x_coord ).trigger('focusout');
 							        $('#adm_level').val(5).trigger('change');
