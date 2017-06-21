@@ -397,11 +397,11 @@ class location_filter_Core {
 						self::$new_loc_name = $parent->new_name;
 					}
 					
-					if($key <= $pcodeLvl) {
+					if( $key <= $pcodeLvl) {
 						$location_name = '<span style="display:inline-block"><i>'.$lvl['label'].'(O)</i>: '.$child->name.'&nbsp;&nbsp;</span>'.$location_name;
 						$location_new_name = '<span style="display:inline-block"><i>'.$lvl['label'].'(N)</i>: '.$child->new_name.'&nbsp;&nbsp;</span>'.$location_new_name;
-						if(!empty($plain_name)) $plain_name = ', '.$plain_name;
-						$plain_name = $child->new_name.$plain_name;
+						if(!empty($plain_name)) $plain_name = $plain_name.', ';
+						$plain_name = $plain_name.$child->new_name;
 						
 						
 					}
