@@ -58,7 +58,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 					<h4><?php echo Kohana::lang('ui_main.reports_description'); ?> <span class="required">*</span> </h4>
 					<?php print form::textarea('incident_description', $form['incident_description'], ' rows="10" class="textarea long" ') ?>
 				</div>
-				<div class="report_row" id="datetime_default">
+				<!-- <div class="report_row" id="datetime_default">
 					<h4>
 						<a href="#" id="date_toggle" class="show-more"><?php echo Kohana::lang('ui_main.modify_date'); ?></a>
 						<?php echo Kohana::lang('ui_main.date_time'); ?>: 
@@ -68,8 +68,8 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 							<small>(<?php echo $site_timezone; ?>)</small>
 						<?php endif; ?>
 					</h4>
-				</div>
-				<div class="report_row hide" id="datetime_edit">
+				</div> -->
+				<div class="report_row" id="datetime_edit">
 					<div class="date-box">
 						<h4><?php echo Kohana::lang('ui_main.reports_date'); ?></h4>
 						<?php print form::input('incident_date', $form['incident_date'], ' class="text short"'); ?>
@@ -78,7 +78,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 								$("#incident_date").datepicker({ 
 									showOn: "both", 
 									buttonImage: "<?php echo url::file_loc('img'); ?>media/img/icon-calendar.gif", 
-									buttonImageOnly: true 
+									buttonImageOnly: true,
 								});
 							});
 						</script>
@@ -96,7 +96,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 								// Add Leading Zero
 								$minute_array[sprintf("%02d", $j)] = sprintf("%02d", $j);
 							}
-							$ampm_array = array('pm'=>'pm','am'=>'am');
+							$ampm_array = array('am'=>'am','pm'=>'pm');
 							print form::dropdown('incident_hour',$hour_array,$form['incident_hour']);
 							print '<span class="dots">:</span>';
 							print form::dropdown('incident_minute',$minute_array,$form['incident_minute']);
