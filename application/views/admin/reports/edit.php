@@ -118,7 +118,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 							Event::run('ushahidi_action.report_form_admin', $id);
 							?>
 
-							<?php
+							<!--  <?php
 							if (!($id))
 							{ // Use default date for new report
 								?>
@@ -129,12 +129,8 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 								</div>
 								<?php
 							}
-							?>
-							<div class="row <?php
-								if (!($id))
-								{ // Hide date editor for new report
-									echo "hide";
-								}?> " id="datetime_edit">
+							?> -->
+							<div class="row" id="datetime_edit">
 								<div class="date-box">
 									<h4><?php echo Kohana::lang('ui_main.date');?> <span><?php echo Kohana::lang('ui_main.date_format');?></span></h4>
 									<?php print form::input('incident_date', $form['incident_date'], ' class="text"'); ?>								
@@ -164,6 +160,9 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 							<div class="row">
 								<h4><?php echo Kohana::lang('ui_main.reports_alert_mode'); ?></h4>
 								<?php print form::dropdown('alert_mode', $alert_mode,$form['alert_mode'], ' class="select" '); ?>
+								<?php if ($form['alert_mode'] == 3)
+											echo "Alert had been sent already."; ?>
+								
 							</div>
 							<div class="row">
 							<?php Event::run('ushahidi_action.report_form_admin_after_time', $id); ?>
@@ -291,10 +290,10 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
   							    },
   							    select: function( event, ui){
 							        $( '#location_search' ).val( ui.item.label );
-							        $( '#location_name' ).val( ui.item.value );
+							        //$( '#location_name' ).val( ui.item.value );
 							        $( '#latitude' ).val( ui.item.y_coord );
 							        $( '#longitude' ).val( ui.item.x_coord ).trigger('focusout');
-							        $('#adm_level').val(5).trigger('change');
+							        //$('#adm_level').val(5).trigger('change');
 							        $('#getPcode').trigger('click');
 							        return false; 
   							    }
