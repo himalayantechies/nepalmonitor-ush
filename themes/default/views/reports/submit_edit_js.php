@@ -442,11 +442,13 @@
 			<?php endif; ?>
 		
 			// Category treeview
-			// $(".category-column").treeview({
-			//  persist: "location",
-			  //collapsed: true,
-			//  unique: false
-			//});
+			 $(".category-column").treeview({
+			  persist: "location",
+			  collapsed: true,
+			  unique: false
+			});
+			$('.category-column').find('input.check-box:checked').parents('li.expandable').find('.expandable-hitarea').trigger('click');
+			//$('.category-column').find('input.check-box:checked').parents('.expandable-hitarea');
 			
 			// Date Picker JS
 			$("#incident_date").datepicker({ 
