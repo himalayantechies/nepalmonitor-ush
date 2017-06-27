@@ -442,11 +442,11 @@
 			<?php endif; ?>
 		
 			// Category treeview
-			$(".category-column").treeview({
-			  persist: "location",
-			  collapsed: true,
-			  unique: false
-			});
+			// $(".category-column").treeview({
+			//  persist: "location",
+			  //collapsed: true,
+			//  unique: false
+			//});
 			
 			// Date Picker JS
 			$("#incident_date").datepicker({ 

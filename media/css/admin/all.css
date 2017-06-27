@@ -2584,3 +2584,6 @@ div.dp-popup td.disabled {
 .ac-location li a{
     text-decoration: none !important;
     }
+div.report_category ul{
+    list-style: none !important;
+	}
