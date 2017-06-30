@@ -2569,3 +2569,21 @@ div.dp-popup td.disabled {
 	.sort-DESC {
 		background: url(../../img/admin/drag.gif) 0 -8px no-repeat;
 	}
+.ac-location{
+    width: 426px !important;
+    height: 150px !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.ac-location li{
+    display: block;
+    position: relative;
+    list-style: none !important;
+    left: -35px !important;
+}
+.ac-location li a{
+    text-decoration: none !important;
+    }
+div.report_category ul{
+    list-style: none !important;
+	}

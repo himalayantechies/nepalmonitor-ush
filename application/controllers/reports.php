@@ -329,10 +329,10 @@ class Reports_Controller extends Main_Controller {
 		$form_saved = ($saved == 'saved');
 
 		// Initialize Default Values
-		$form['incident_date'] = date("m/d/Y",time());
-		$form['incident_hour'] = date('g');
-		$form['incident_minute'] = date('i');
-		$form['incident_ampm'] = date('a');
+		$form['incident_date'] = '';
+		$form['incident_hour'] = '';
+		$form['incident_minute'] = '';
+		$form['incident_ampm'] = '';
 		$form['country_id'] = Kohana::config('settings.default_country');
 
 		// Initialize Default Value for Hidden Field Country Name, just incase Reverse Geo coding yields no result

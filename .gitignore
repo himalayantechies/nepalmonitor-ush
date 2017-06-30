@@ -9,3 +9,4 @@ application/logs/*
 media/uploads/*
 .htaccess
 error_log
+.ftpquota

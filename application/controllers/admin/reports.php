@@ -387,10 +387,10 @@ class Reports_Controller extends Admin_Controller {
 		$form['locale'] = Kohana::config('locale.language');
 		//$form['latitude'] = Kohana::config('settings.default_lat');
 		//$form['longitude'] = Kohana::config('settings.default_lon');
-		$form['incident_date'] = date("m/d/Y",time());
-		$form['incident_hour'] = date('h');
-		$form['incident_minute'] = date('i');
-		$form['incident_ampm'] = date('a');
+		$form['incident_date'] = '';
+		$form['incident_hour'] = '';
+		$form['incident_minute'] = '';
+		$form['incident_ampm'] = '';
 		$form['country_id'] = Kohana::config('settings.default_country');
 		$form['alert_mode'] = 0;
 
@@ -436,15 +436,15 @@ class Reports_Controller extends Admin_Controller {
 			}
 			$countries[$country->id] = $this_country;
 		}
-
+		$forms = array();
 		// Initialize Default Value for Hidden Field Country Name,
 		// just incase Reverse Geo coding yields no result
 		$form['country_name'] = $countries[$form['country_id']];
 		$this->template->content->countries = $countries;
+		
 		$this->template->content->alert_mode = array(0 => Kohana::lang('alerts.both_alert'), 1 => Kohana::lang('alerts.email_alert'), 2 => Kohana::lang('alerts.sms_alert'), 3 => Kohana::lang('alerts.no_alert'));
 
 		// GET custom forms
-		$forms = array();
 		foreach (customforms::get_custom_forms(FALSE) as $custom_forms)
 		{
 			$forms[$custom_forms->id] = $custom_forms->form_title;
@@ -823,6 +823,9 @@ class Reports_Controller extends Admin_Controller {
 
 					// Merge To Form Array For Display
 					$form = arr::overwrite($form, $incident_arr);
+					if($incident->incident_alert_status != 1){
+						$form['alert_mode'] = 3;
+					}
 				}
 				else
 				{
@@ -833,6 +836,7 @@ class Reports_Controller extends Admin_Controller {
 			}
 		}
 
+		
 		$this->template->content->id = $id;
 		$this->template->content->form = $form;
 		$this->template->content->errors = $errors;

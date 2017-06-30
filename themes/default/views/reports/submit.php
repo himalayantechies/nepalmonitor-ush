@@ -58,7 +58,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 					<h4><?php echo Kohana::lang('ui_main.reports_description'); ?> <span class="required">*</span> </h4>
 					<?php print form::textarea('incident_description', $form['incident_description'], ' rows="10" class="textarea long" ') ?>
 				</div>
-				<div class="report_row" id="datetime_default">
+				<!-- <div class="report_row" id="datetime_default">
 					<h4>
 						<a href="#" id="date_toggle" class="show-more"><?php echo Kohana::lang('ui_main.modify_date'); ?></a>
 						<?php echo Kohana::lang('ui_main.date_time'); ?>: 
@@ -68,8 +68,8 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 							<small>(<?php echo $site_timezone; ?>)</small>
 						<?php endif; ?>
 					</h4>
-				</div>
-				<div class="report_row hide" id="datetime_edit">
+				</div> -->
+				<div class="report_row" id="datetime_edit">
 					<div class="date-box">
 						<h4><?php echo Kohana::lang('ui_main.reports_date'); ?></h4>
 						<?php print form::input('incident_date', $form['incident_date'], ' class="text short"'); ?>
@@ -78,7 +78,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 								$("#incident_date").datepicker({ 
 									showOn: "both", 
 									buttonImage: "<?php echo url::file_loc('img'); ?>media/img/icon-calendar.gif", 
-									buttonImageOnly: true 
+									buttonImageOnly: true,
 								});
 							});
 						</script>
@@ -96,7 +96,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 								// Add Leading Zero
 								$minute_array[sprintf("%02d", $j)] = sprintf("%02d", $j);
 							}
-							$ampm_array = array('pm'=>'pm','am'=>'am');
+							$ampm_array = array('am'=>'am','pm'=>'pm');
 							print form::dropdown('incident_hour',$hour_array,$form['incident_hour']);
 							print '<span class="dots">:</span>';
 							print form::dropdown('incident_minute',$minute_array,$form['incident_minute']);
@@ -220,6 +220,41 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 					</div>
 				</div>
 				<?php Event::run('ushahidi_action.report_form_location', $id); ?>
+
+				<!-- Location Search Field -->
+				<div id="locationSearch" class="report_row">
+					<h4><?php echo Kohana::lang('ui_main.search_location'); ?></h4>
+						<input type="longtext " class = "text long" id="location_search" placeholder="Enter the location" />
+						<div id="location_suggesstion"></div>
+					<?php
+					$url_loc = url::site().'json/autosearch_location'; ?>
+					<script type="text/javascript">
+						$(document).ready(function(){
+							$('#location_search').autocomplete({
+								source: function( request, response ){
+									<?php echo " $.getJSON('".$url_loc."', { keyword: $('#location_search').val() }, response);" ?>
+								},
+								search: function() {
+							        var keyword = $('#location_search').val();
+	    						    if ( keyword.length < 2 ) {
+	        					    	return false;
+	        						}
+  							    },
+  							    select: function( event, ui){
+							        $( '#location_search' ).val( ui.item.label );
+							        //$( '#location_name' ).val( ui.item.value );
+							        $( '#latitude' ).val( ui.item.y_coord );
+							        $( '#longitude' ).val( ui.item.x_coord ).trigger('focusout');
+							        //$('#adm_level').val(5).trigger('change');
+							        $('#getPcode').trigger('click');
+							        return false; 
+  							    }
+  							})
+  							.autocomplete("widget").addClass("ac-location");  
+        				});
+					</script>
+				</div>
+
 				<div class="report_row">
 					<h4>
 						<?php echo Kohana::lang('ui_main.reports_adm_level'); ?> 
@@ -288,9 +323,8 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 									  tags: true
 									});
 								}
-							});
-						
-					});
+							});	
+						});
 					</script>";
 					?>
 					<?php print form::input(array('name'=>'news_id', 'type'=>'hidden', 'id'=>'news_id'), $i); ?>
@@ -340,7 +374,7 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 									newsTypeList = data.items;
 									$(\"#divNewsType select.incident_news_type\").select2({
 									  data: newsTypeList,
-									  tags: true
+									  tags: false
 									});
 								}
 							});

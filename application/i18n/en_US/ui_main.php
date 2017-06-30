@@ -494,6 +494,7 @@ $lang = array(
 	'scheduler_weekday' => 'Day of the Week',
 	'search' => 'Search',
 	'search_results' => 'Search Results',
+	'search_location' => 'Search Location',
 	'security_code' => 'Security Code',
 	'select_all' => 'Select All',
 	'select_field_type' => 'Select a Field Type',

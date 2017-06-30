@@ -442,11 +442,13 @@
 			<?php endif; ?>
 		
 			// Category treeview
-			$(".category-column").treeview({
+			 $(".category-column").treeview({
 			  persist: "location",
 			  collapsed: true,
 			  unique: false
 			});
+			$('.category-column').find('input.check-box:checked').parents('li.expandable').find('.expandable-hitarea').trigger('click');
+			//$('.category-column').find('input.check-box:checked').parents('.expandable-hitarea');
 			
 			// Date Picker JS
 			$("#incident_date").datepicker({ 
@@ -688,7 +690,7 @@
 				});
 				$("#" + field + "_" + id + " select.incident_news_type").select2({
 					data: newsTypeList,
-					tags: true
+					tags: false
 				});
 			}
 			$("#" + field + "_" + id).effect("highlight", {}, 800);
@@ -992,13 +994,13 @@
 					{
 						$('#pcode').val(data.pcode);
 						$('#adm_location').html(data.location+'<br/>'+data.location_new);
-						$('#location').val(data.location_name);
+						$('#location_name').val(data.location_name);
 					}
 					else if(data.pcode != '')
 					{
 						$('#pcode').val(data.pcode);
 						$('#adm_location').html(data.location+'<br/>'+data.location_new);
-						$('#location').val(data.location_name);
+						$('#location_name').val(data.location_name);
 						alert("Location for that accuracy could not be mapped. Returned closest location!!");
 					} else {
 						$('#pcode').val();

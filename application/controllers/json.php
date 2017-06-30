@@ -912,4 +912,14 @@ class Json_Controller extends Template_Controller {
 		header('Content-type: application/json; charset=utf-8');
 		echo json_encode($options);
 	}
+	public function autosearch_location() {
+		if(isset($_REQUEST["keyword"])){
+			$options = array();
+			$location_search_model = new Database();
+			$opt = $location_search_model -> query(" SELECT DISTINCT CONCAT(name, ' (', status, ')') as label, x_coord, y_coord, name as value  FROM new_loc where name like '%". $_REQUEST["keyword"] ."%' order by label LIMIT 40 ")->as_array();
+	
+			header('Content-type: application/json; charset=utf-8');
+			echo json_encode($opt);
+		}
+	}
 }

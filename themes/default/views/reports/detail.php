@@ -307,7 +307,7 @@
 		</div>
 <!---Start facebook likebox-->
 			<iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fnepalmonitor&amp;width=350&amp;height=558&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=true&amp;header=false&amp;appId=140091756132653" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:558px;" allowTransparency="true"></iframe>
-			<!---end facebook likebox--->
+			<!---end facebook likebox-->
 
 	</div>
 

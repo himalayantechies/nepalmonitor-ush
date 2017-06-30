@@ -2593,3 +2593,20 @@ div.ci_colorfade {
 div.ci_checkin {
 	border-bottom:1px solid #B3B3B3;
 }
+
+.ac-location{
+    width: 423px !important;
+    height: 150px !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.ac-location li{
+    z-index: 1;
+    display: block;
+    position: relative;
+    list-style: none !important;
+    padding: 0 0 0 5px !important;
+}
+.ac-location li a{
+    text-decoration: none !important;
+    }

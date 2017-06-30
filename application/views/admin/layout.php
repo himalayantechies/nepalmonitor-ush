@@ -41,7 +41,7 @@
 	echo html::script(url::file_loc('js').'media/js/jquery', TRUE);
 	echo html::script(url::file_loc('js').'media/js/jquery.form', TRUE);
 	echo html::script(url::file_loc('js').'media/js/jquery.validate.min', TRUE);
-	echo html::script(url::file_loc('js').'media/js/jquery.ui.min', TRUE);
+	echo html::script(url::file_loc('js').'media/js/jquery-ui.min-1.8.13', TRUE);
 	echo html::script(url::file_loc('js').'media/js/selectToUISlider.jQuery', TRUE);
 	echo html::script(url::file_loc('js').'media/js/jquery.hovertip-1.0', TRUE);
 	echo html::script(url::file_loc('js').'media/js/jquery.base64', TRUE);
