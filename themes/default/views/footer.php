@@ -4,7 +4,6 @@
 
 	</div>
 	<!-- / wrapper -->
-
 	<!-- footer -->
 	<div id="footer" class="clearingfix">
 
@@ -74,11 +73,28 @@
 
 	</div>
 	<!-- / footer -->
-
+	<div id="welcome" style="display:none">
+        <p> <?php echo Kohana::lang('ui_main.welcome_message');?> </p>
+	</div>
 	<?php
 	echo $footer_block;
 	// Action::main_footer - Add items before the </body> tag
 	Event::run('ushahidi_action.main_footer');
+	echo html::script($this->themes->js_url."media/js/jquery.session.js");
+	echo html::stylesheet($this->themes->css_url."media/js/jQuery-popModal/popModal.css");
+	echo html::script($this->themes->js_url."media/js/jQuery-popModal/popModal.js");
 	?>
+	<script type="text/javascript">
+	$(window).load(function(){
+        if($.session.get('welcome') == undefined) {
+           	$('#welcome').notifyModal({
+				duration : 100000,
+				placement : 'center',
+				onTop : true,
+				});
+           	$.session.set('welcome', true);
+        }
+    });
+    </script>
 </body>
 </html>
