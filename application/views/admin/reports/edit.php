@@ -160,9 +160,37 @@ echo html::script(url::file_loc('js')."media/js/select2/select2.min", TRUE);
 							<div class="row">
 								<h4><?php echo Kohana::lang('ui_main.reports_alert_mode'); ?></h4>
 								<?php print form::dropdown('alert_mode', $alert_mode,$form['alert_mode'], ' class="select" '); ?>
-								<?php if ($form['alert_mode'] == 3)
-											echo "Alert had been sent already."; ?>
-								
+								</br>
+							<?php if($id) {?>
+								<b><i><?php echo Kohana::lang('ui_main.current_alert_status');?></i></b>
+								<?php
+								if($form['alert_status'] == 0){
+									echo Kohana::lang('ui_main.alert_not_send');
+								}
+								elseif ($form['alert_status'] == 1) {
+									echo Kohana::lang('ui_main.alert_sending');
+								}
+								else{
+									echo Kohana::lang('ui_main.alert_sent');
+								}
+								?>
+								</br>
+								<b><i><?php echo Kohana::lang('ui_main.current_alert_mode');?></i></b>
+								<?php
+								if ($form['alert_current'] == 0){
+									echo Kohana::lang('ui_main.email_sms');
+								}
+								elseif ($form['alert_current'] == 1) {
+									echo Kohana::lang('ui_main.email');
+								}
+								elseif ($form['alert_current'] == 2) {
+									echo Kohana::lang('ui_main.sms');
+								}
+								else{
+									echo Kohana::lang('ui_main.no_alert');
+								}
+								?>
+							<?php } ?>
 							</div>
 							<div class="row">
 							<?php Event::run('ushahidi_action.report_form_admin_after_time', $id); ?>

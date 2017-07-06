@@ -374,7 +374,9 @@ class Reports_Controller extends Admin_Controller {
 			'incident_zoom' => '',
 			'alert_mode' => '0',
 			'adm_level' => '',
-			'pcode' => ''
+			'pcode' => '',
+			'alert_current' => '',
+			'alert_status' => ''
 		);
 
 		// Copy the form as errors, so the errors will be stored with keys
@@ -823,9 +825,13 @@ class Reports_Controller extends Admin_Controller {
 
 					// Merge To Form Array For Display
 					$form = arr::overwrite($form, $incident_arr);
-					if($incident->incident_alert_status != 1){
-						$form['alert_mode'] = 3;
-					}
+
+					$form['alert_status'] = $incident->incident_alert_status;
+					$form['alert_current'] = $incident->alert_mode;
+
+					if($incident->incident_alert_status == 2){
+					 	$form['alert_mode'] = 3;
+					 }
 				}
 				else
 				{
@@ -836,7 +842,6 @@ class Reports_Controller extends Admin_Controller {
 			}
 		}
 
-		
 		$this->template->content->id = $id;
 		$this->template->content->form = $form;
 		$this->template->content->errors = $errors;

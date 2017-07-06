@@ -80,6 +80,8 @@
 	echo $footer_block;
 	// Action::main_footer - Add items before the </body> tag
 	Event::run('ushahidi_action.main_footer');
+
+	//welcome popup
 	echo html::script($this->themes->js_url."media/js/jquery.session.js");
 	echo html::stylesheet($this->themes->css_url."media/js/jQuery-popModal/popModal.css");
 	echo html::script($this->themes->js_url."media/js/jQuery-popModal/popModal.js");
