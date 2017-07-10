@@ -638,9 +638,17 @@ $lang = array(
 	'waiting_approval' => 'Waiting Approval',
 	'waiting_verification' => 'Waiting Verification',
 	'wider_map' => 'Wider Map',
-	'welcome_message' => 'Thank you for visiting NepalMonitor.org!
-						We are redesigning our platform and would love your help by filling out a brief user survey.
-						Please participate here:',
+	'welcome_message' => 'Greetings from Nepal Monitor!<br>
+Thank you for visiting NepalMonitor.org!<br>
+We are redesigning our platform and would love your help by filling out a brief user survey. <br>
+If you have not already participated please click on the link below.<br>
+- Nepal Monitor
+<br>
+<br>
+नमस्ते, नेपाल मोनिटरको तर्फबाट यहाँहरुलाई अभिवादन !<br>
+NepalMonitor.org प्रयोग गर्नुभएकोमा धन्यबाद! हामी हाम्रो यस प्लाटफर्म लाई नयाँ स्वरूप दिने क्रममा छौं र त्यसका लागि यो सानो सर्वेक्षण फारम भरिदिनु हुन आग्रह गर्दछौं । <br>
+यदि पहिले यो फारम नभर्नुभएको भए कृपया तलको लिंकमा click गरेर फारम भर्नुहोस्। <br>
+-नेपाल मोनिटर',
 	'web_form' => 'Web Form',
 	'web' => 'Web',
 	'weight' => 'Weight',
