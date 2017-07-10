@@ -75,7 +75,9 @@
 	<!-- / footer -->
 	<div id="welcome" style="display:none">
         <p> <?php echo Kohana::lang('ui_main.welcome_message');?> </p>
-        <a href="https://docs.google.com/forms/d/1mcJFkYqhWMRWrU2ufS3ZfpcK3fXYABwWkj7KtsjFj5E/edit?ts=595330d8" target="_blank">Click here to fill the form</a> 
+    <div align="center">
+        <a href="https://docs.google.com/forms/d/1mcJFkYqhWMRWrU2ufS3ZfpcK3fXYABwWkj7KtsjFj5E/edit?ts=595330d8" target="_blank" align="center">Click here to fill the form</a> 
+    </div>
 	</div>
 	<?php
 	echo $footer_block;
