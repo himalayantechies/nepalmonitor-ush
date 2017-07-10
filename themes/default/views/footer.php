@@ -1,7 +1,11 @@
 			</div>
 		</div>
 		<!-- / main body -->
-
+<?php
+	echo html::script($this->themes->js_url."media/js/jquery.session.js");
+	echo html::stylesheet($this->themes->css_url."media/js/jQuery-popModal/popModal.css");
+	echo html::script($this->themes->js_url."media/js/jQuery-popModal/popModal.js");
+?>
 	</div>
 	<!-- / wrapper -->
 	<!-- footer -->
@@ -73,11 +77,12 @@
 
 	</div>
 	<!-- / footer -->
-	<div id="welcome" style="display:none">
-        <p> <?php echo Kohana::lang('ui_main.welcome_message');?> </p>
-    <div align="center">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXtNU5oYJR1ty7ufQibBvqcs-CHwSIXU9UIBradASmVIKSjw/viewform" target="_blank">Click here to fill the form</a> 
-    </div>
+	<div id="welcome" class="welcome" style="display:none">
+		<div class="dialogModal_header"><?php echo Kohana::lang('ui_main.welcome_message.header');?></div>
+		<div class="dialogModal_content">
+	        <?php echo Kohana::lang('ui_main.welcome_message.content');?>
+    	</div>
+    	<div class="dialogModal_footer"><?php echo Kohana::lang('ui_main.welcome_message.footer');?></div>
 	</div>
 	<?php
 	echo $footer_block;
@@ -85,19 +90,26 @@
 	Event::run('ushahidi_action.main_footer');
 
 	//welcome popup
-	echo html::script($this->themes->js_url."media/js/jquery.session.js");
-	echo html::stylesheet($this->themes->css_url."media/js/jQuery-popModal/popModal.css");
-	echo html::script($this->themes->js_url."media/js/jQuery-popModal/popModal.js");
+	//echo html::script($this->themes->js_url."media/js/jquery.session.js");
+	//echo html::stylesheet($this->themes->css_url."media/js/jQuery-popModal/popModal.css");
+	//echo html::script($this->themes->js_url."media/js/jQuery-popModal/popModal.js");
 	?>
 	<script type="text/javascript">
-	$(window).load(function(){
+	$(document).ready(function(){
         if($.session.get('welcome') == undefined) {
-           	$('#welcome').notifyModal({
-				duration : -1,
-				placement : 'center',
-				onTop : true,
-				});
-           	$.session.set('welcome', true);
+			$('.welcome').dialogModal({
+				topOffset : 25,
+				top : 25,
+				type : '',
+				onOkBut : function() {},
+				onCancelBut : function() {},
+				onLoad : function(el, current) {},
+				onClose: function() {
+					$.session.set('welcome', true);
+				},
+				onChange : function(el, current) {
+				}
+			});
         }
     });
     </script>
