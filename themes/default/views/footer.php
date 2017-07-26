@@ -90,11 +90,8 @@
 	Event::run('ushahidi_action.main_footer');
 
 	//welcome popup
-	//echo html::script($this->themes->js_url."media/js/jquery.session.js");
-	//echo html::stylesheet($this->themes->css_url."media/js/jQuery-popModal/popModal.css");
-	//echo html::script($this->themes->js_url."media/js/jQuery-popModal/popModal.js");
 	?>
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 	$(document).ready(function(){
         if($.session.get('welcome') == undefined) {
 			$('.welcome').dialogModal({
@@ -112,6 +109,6 @@
 			});
         }
     });
-    </script>
+    </script> -->
 </body>
 </html>
