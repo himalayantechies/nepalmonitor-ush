@@ -236,7 +236,6 @@ class S_Alerts_Controller extends Controller {
 						.'<br/>'
 						.Kohana::lang('alerts.disclaimer')
 						."<br/>";
-						
 						//if (email::send($to, $from, $subject, $message, FALSE) == 1)
 						if (email::send($to, $from, $subject, $message, TRUE) == 1) // HT: New Code to make email as html
 						{
